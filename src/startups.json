@@ -1,0 +1,25 @@
+[
+  {
+    "titre": "Work In France",
+    "timeout": 60,
+    "description":
+      "La plateforme de demande d'autorisation provisoire de travail pour les étudiants étrangers"
+  },
+  {
+    "titre": "e-MJPM",
+    "timeout": 60,
+    "description":
+      "Trouver rapidement le bon professionnel pour les majeurs à protéger."
+  },
+  {
+    "titre": "Code du travail numérique",
+    "timeout": 60,
+    "description":
+      "Faciliter l'accès au droit du travail pour les employeur·e·s et les employé·e·s."
+  },
+  {
+    "titre": "Sujets transverses",
+    "timeout": 180,
+    "description": "🎉"
+  }
+]
