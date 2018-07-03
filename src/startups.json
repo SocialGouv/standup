@@ -1,25 +1,31 @@
 [
   {
     "titre": "Work In France",
-    "timeout": 60,
+    "timeout": 120,
     "description":
       "La plateforme de demande d'autorisation provisoire de travail pour les étudiants étrangers"
   },
   {
     "titre": "e-MJPM",
-    "timeout": 60,
+    "timeout": 120,
     "description":
       "Trouver rapidement le bon professionnel pour les majeurs à protéger."
   },
   {
     "titre": "Code du travail numérique",
-    "timeout": 60,
+    "timeout": 120,
     "description":
       "Faciliter l'accès au droit du travail pour les employeur·e·s et les employé·e·s."
   },
   {
+    "titre": "Data lab",
+    "timeout": 120,
+    "description":
+      "Concevoir des solutions d’exploration des informations et les analyser pour répondre à des problématiques métiers"
+  },
+  {
     "titre": "Sujets transverses",
-    "timeout": 180,
+    "timeout": 300,
     "description": "🎉"
   }
 ]
