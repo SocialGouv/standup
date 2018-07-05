@@ -24,6 +24,12 @@
       "Concevoir des solutions d’exploration des informations et les analyser pour répondre à des problématiques métiers"
   },
   {
+    "titre": "UDD",
+    "timeout": 120,
+    "description":
+      "Mettre à disposition une infrastructure DevOps pour réduire le time-to-market des développements et améliorer la qualité"
+  },
+  {
     "titre": "Sujets transverses",
     "timeout": 300,
     "description": "🎉"
