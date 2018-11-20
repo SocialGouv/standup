@@ -30,6 +30,12 @@
       "Mettre à disposition une infrastructure DevOps pour réduire le time-to-market des développements et améliorer la qualité"
   },
   {
+    "titre": "FCE",
+    "timeout": 120,
+    "description":
+      "Un portail pour faciliter l’accès aux informations disponibles sur les entreprises et les échanges entre services"
+  },
+  {
     "titre": "Sujets transverses",
     "timeout": 300,
     "description": "🎉"
