@@ -83,8 +83,8 @@ h3 {
   color: #000;
   right: 10vh;
   width: calc(100% - (50vh + (2 * 10vh) + 10vh));
-  font-size: 8vh;
-  text-align: left;
+  font-size: 5vh;
+  text-align: center;
   padding-left: 5vh;
   padding-right: 5vh;
   border: 1vh solid #000;

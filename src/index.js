@@ -110,14 +110,26 @@ class Standup extends React.Component {
 
         <h2 className="timed-slide__title">{startup.titre}</h2>
         <h3 className="timed-slide__subtitle">{startup.description}</h3>
+        {startup.url && (
+          <a
+            href={startup.url}
+            target="_blank"
+            style={{
+              textDecoration: "underline",
+              color: "#0091ff",
+              fontSize: "1.5em"
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            slides
+          </a>
+        )}
         <Timer
           render={({ elapsed }) => (
             <Counter seconds={elapsed} timeout={startup.timeout} />
           )}
         />
-        {nextStartup && (
-          <div className="next-slide">Suivant : {nextStartup.titre}</div>
-        )}
+        {nextStartup && <div className="next-slide">> {nextStartup.titre}</div>}
       </div>
     );
   }

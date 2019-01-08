@@ -2,38 +2,33 @@
   {
     "titre": "Work In France",
     "timeout": 120,
-    "description":
-      "La plateforme de demande d'autorisation provisoire de travail pour les étudiants étrangers"
+    "description": "La plateforme de demande d'autorisation provisoire de travail pour les étudiants étrangers"
   },
   {
     "titre": "e-MJPM",
     "timeout": 120,
-    "description":
-      "Trouver rapidement le bon professionnel pour les majeurs à protéger."
+    "description": "Trouver rapidement le bon professionnel pour les majeurs à protéger."
   },
   {
     "titre": "Code du travail numérique",
     "timeout": 120,
-    "description":
-      "Faciliter l'accès au droit du travail pour les employeur·e·s et les employé·e·s."
+    "description": "Faciliter l'accès au droit du travail pour les employeur·e·s et les employé·e·s.",
+    "url": "https://socialgouv.github.io/code-du-travail-slides"
   },
   {
     "titre": "Data lab",
     "timeout": 120,
-    "description":
-      "Concevoir des solutions d’exploration des informations et les analyser pour répondre à des problématiques métiers"
+    "description": "Concevoir des solutions d’exploration des informations et les analyser pour répondre à des problématiques métiers"
   },
   {
     "titre": "UDD",
     "timeout": 120,
-    "description":
-      "Mettre à disposition une infrastructure DevOps pour réduire le time-to-market des développements et améliorer la qualité"
+    "description": "Mettre à disposition une infrastructure DevOps pour réduire le time-to-market des développements et améliorer la qualité"
   },
   {
     "titre": "FCE",
     "timeout": 120,
-    "description":
-      "Un portail pour faciliter l’accès aux informations disponibles sur les entreprises et les échanges entre services"
+    "description": "Un portail pour faciliter l’accès aux informations disponibles sur les entreprises et les échanges entre services"
   },
   {
     "titre": "Sujets transverses",
