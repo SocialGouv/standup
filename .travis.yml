@@ -1,0 +1,32 @@
+---
+dist: xenial
+language: node_js
+sudo: false
+git:
+  depth: 5
+node_js: stable
+cache: yarn
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+
+script:
+- yarn build
+
+before_deploy:
+  - git config user.name "Social Groovy Bot"
+  - git config user.email "45039513+SocialGroovyBot@users.noreply.github.com"
+
+deploy:
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  local_dir: build
+  provider: pages
+  skip_cleanup: true
+  target-branch: gh-pages
+  on:
+    branch: master
+
+env:
+  secure: "etzKXLL95ZvB4CTo4Ql1/PMMyUgO1LdJfg8xC6x7C5W8KxH9scE2taI8pdq4Ehf8/hnqlPcsCkkRA/4J+COtGud2uOJMfwPBezzhoMB+SMQFb58pYrWx2/hQ+BipbEo/g9kqb4TOlqgcYcwP3cJ8xTvu7uj/TSDzl0CguVfFL7cWhUBuc1uq1STxwkCm5TOkR3fWpXsolP+kV5BSs9ywS6/k95/uT+B7iwoaekSZu1tOISWc+53C2f10DBG+XisS3DXuCFa060IFkIFjc6+hsjlt++0KroaguZn8fSifqHcbcIG/iBKaRuMrJdESFhzb27ENk4QgepDAPkqOEoIViNfCpc7rRcXqTRmSJsUb7voWPelvPmLyTm3M447qvtvLgmhRGE4TQ1tg5p1bRrZp2h/XwhJLO6cxX3Mz+nPoPVCwcfo//10kJ7HU5XYd/AzAlSyRJ1IltNPh0soGImKptb9gE417ZNC/BADRbLtzkDAoaXuEWgyIc0rTq/bzIsuKoh7DsyaQD2ntoLz8YUf+kZxR4F/PcPw2A5/QXVYdMLnrKnM2J7eSP9WNX3O+18EZNIoETp3Sb2JJMRTgJylOdy8fh589OSSXVhX/Es39tUxOBq8TOJQDaRYhb8nFzLWa/7+ZWYD0tRdd2eYe/AG+IvHhX4Y+vWXe8WtMpGWfDw0="
