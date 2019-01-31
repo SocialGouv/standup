@@ -1,4 +1,6 @@
-# standup [![CircleCI](https://circleci.com/gh/SocialGouv/standup.svg?style=svg)](https://circleci.com/gh/SocialGouv/standup)
+# standup 
+
+[![Build Status](https://travis-ci.com/SocialGouv/standup.svg?branch=master)](https://travis-ci.com/SocialGouv/standup)
 
 Reprise de l'outil [standup de beta.gouv](https://github.com/betagouv/standup)
 
