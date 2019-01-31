@@ -41,13 +41,8 @@
     "description": "Un portail pour faciliter l’accès aux informations disponibles sur les entreprises et les échanges entre services"
   },
   {
-    "titre": "Séminaire",
-    "timeout": 120,
-    "description": "RDV le 22 février 2019"
-  },
-  {
     "titre": "Sujets transverses",
     "timeout": 300,
-    "description": "🎉"
+    "description": "🎉<br><br><br> Prochain seminaire le Vendredi 22 février 2019"
   }
 ]

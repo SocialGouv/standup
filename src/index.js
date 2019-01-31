@@ -108,7 +108,10 @@ class Standup extends React.Component {
         />
 
         <h2 className="timed-slide__title">{startup.titre}</h2>
-        <h3 className="timed-slide__subtitle">{startup.description}</h3>
+        <h3
+          className="timed-slide__subtitle"
+          dangerouslySetInnerHTML={{ __html: startup.description }}
+        />
         {startup.url && (
           <a
             href={startup.url}
