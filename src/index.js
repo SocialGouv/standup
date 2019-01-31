@@ -54,9 +54,9 @@ class Timer extends React.Component {
 const StandupIntro = ({ onClick }) => (
   <div>
     <h1>STAND-UP</h1>
-    <a href="#" className="start-button" onClick={onClick}>
+    <button className="start-button" onClick={onClick}>
       COMMENCER
-    </a>
+    </button>
   </div>
 );
 
@@ -84,7 +84,6 @@ class Standup extends React.Component {
     }
   };
   onKeyEvent = key => {
-    console.log(key);
     if (key === "left") {
       this.prev();
     } else if (key === "right") {
@@ -114,6 +113,7 @@ class Standup extends React.Component {
           <a
             href={startup.url}
             target="_blank"
+            rel="noopener noreferrer"
             style={{
               textDecoration: "underline",
               color: "#0091ff",
