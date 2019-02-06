@@ -5,8 +5,8 @@
   "homepage": "https://socialgouv.github.io/standup/",
   "main": "src/index.js",
   "dependencies": {
-    "react": "16.8.0",
-    "react-dom": "16.8.0",
+    "react": "16.8.1",
+    "react-dom": "16.8.1",
     "react-keyboard-event-handler": "1.4.1"
   },
   "devDependencies": {
