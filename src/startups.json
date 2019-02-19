@@ -31,7 +31,7 @@
     "description": "Comment l'analyse des données peut aider le 115 à mieux répondre aux demandes des personnes en détresse"
   },
   {
-    "titre": "UDD",
+    "titre": "Ops",
     "timeout": 120,
     "description": "Mettre à disposition une infrastructure DevOps pour réduire le time-to-market des développements et améliorer la qualité"
   },
