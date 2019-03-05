@@ -4,19 +4,20 @@ variables:
   YARN_VERSION: "1.13.0"
 
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+  - node_modules/
+
+image: node:${NODE_VERSION}-slim
+before_script:
+- npm install -g yarn@${YARN_VERSION}
+- yarn --frozen-lockfile
+
 stages:
-- "Install"
 - "Test"
 - "Dockerize"
 - "Integration tests"
-
-yarn:
-  stage: "Install"
-  image: node:${NODE_VERSION}-slim
-  before_script:
-  - npm install -g yarn@${YARN_VERSION}
-  script:
-  - yarn --frozen-lockfile
 
 build:
   stage: "Test"
