@@ -5,22 +5,37 @@ variables:
 
 
 stages:
-- "Build"
+- "Install"
+- "Test"
 - "Dockerize"
 - "Integration tests"
 
-yarn_build:
-  stage: "Build"
+yarn:
+  stage: "Install"
   image: node:${NODE_VERSION}-slim
   before_script:
   - npm install -g yarn@${YARN_VERSION}
   script:
-  - yarn
+  - yarn --frozen-lockfile
+
+build:
+  stage: "Test"
+  script:
   - yarn build
   artifacts:
     expire_in: "1 day"
     paths:
     - build
+
+test:
+  stage: "Test"
+  script:
+  - yarn test
+
+lint:
+  stage: "Test"
+  script:
+  - yarn lint
 
 docker_image:
   stage: "Dockerize"
@@ -43,5 +58,5 @@ run_docker_image:
   - apt update && apt install -y curl
   - curl -v http://localhost/
 
-#TODO: Deploy test env 
+#TODO: Deploy test env
 #TODO: Release and publish (manual ? on tag only)
