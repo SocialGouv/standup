@@ -1,11 +1,47 @@
 ---
-stages:
-- "Sample build step"
+variables:
+  NODE_VERSION: "10.15"
+  YARN_VERSION: "1.13.0"
 
-sample_build:
-  stage: "Sample build step"
-  image: node:current-slim
+
+stages:
+- "Build"
+- "Dockerize"
+- "Integration tests"
+
+yarn_build:
+  stage: "Build"
+  image: node:${NODE_VERSION}-slim
+  before_script:
+  - npm install -g yarn@${YARN_VERSION}
+  script:
+  - yarn build
+  artifacts:
+    expire_in: "1 day"
+    paths:
+    - build
+
+docker_image:
+  stage: "Dockerize"
+  image: docker:stable
   variables:
     DOCKER_HOST: tcp://localhost:2375
+  services:
+  - name: docker:stable-dind
   script:
-  - echo "Hello world"
+    - docker login DOCKER_REGISTRY_URL -u gitlab-ci-token -p $CI_JOB_TOKEN
+    - docker build -t "$DOCKER_REGISTRY_URL/$APP_IMAGE_NAME:$CI_COMMIT_SHA" .
+    - docker build push "$DOCKER_REGISTRY_URL/$APP_IMAGE_NAME:$CI_COMMIT_SHA"
+
+run_docker_image:
+  stage: "Integration tests"
+  image: ubuntu:18.10
+  service:
+  - name: "$DOCKER_REGISTRY_URL/$APP_IMAGE_NAME:$CI_COMMIT_SHA"
+    alias: standup_app
+  script:
+  - apt install -y curl
+  - curl -v http://standup_app/
+
+#TODO: Deploy test env 
+#TODO: Release and publish (manual ? on tag only)
