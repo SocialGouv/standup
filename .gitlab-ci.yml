@@ -15,6 +15,7 @@ yarn_build:
   before_script:
   - npm install -g yarn@${YARN_VERSION}
   script:
+  - yarn
   - yarn build
   artifacts:
     expire_in: "1 day"
