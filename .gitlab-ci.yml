@@ -1,0 +1,47 @@
+---
+variables:
+  NODE_VERSION: "10.15"
+  YARN_VERSION: "1.13.0"
+
+
+stages:
+- "Build"
+- "Dockerize"
+- "Integration tests"
+
+yarn_build:
+  stage: "Build"
+  image: node:${NODE_VERSION}-slim
+  before_script:
+  - npm install -g yarn@${YARN_VERSION}
+  script:
+  - yarn
+  - yarn build
+  artifacts:
+    expire_in: "1 day"
+    paths:
+    - build
+
+docker_image:
+  stage: "Dockerize"
+  image: docker:stable
+  variables:
+    DOCKER_HOST: tcp://localhost:2375
+  services:
+  - name: docker:stable-dind
+  script:
+    - docker login $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
+
+run_docker_image:
+  stage: "Integration tests"
+  image: ubuntu:18.10
+  services:
+  - name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+  script:
+  - apt update && apt install -y curl
+  - curl -v http://localhost/
+
+#TODO: Deploy test env 
+#TODO: Release and publish (manual ? on tag only)
