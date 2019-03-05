@@ -90,3 +90,14 @@ h3 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+h2.timed-slide__title {
+  margin: 2vh;
+}
+h3.timed-slide__subtitle {
+  font-size: 4vh;
+}
+
+h3.timed-slide__subtitle img {
+  height: 25vh;
+}
