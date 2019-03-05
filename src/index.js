@@ -31,7 +31,10 @@ class Timer extends React.Component {
   render() {
     const elapsed =
       (this.state.start &&
-        parseInt((new Date().getTime() - this.state.start.getTime()) / 1000)) ||
+        parseInt(
+          (new Date().getTime() - this.state.start.getTime()) / 1000,
+          10
+        )) ||
       0;
     return this.props.render({
       elapsed
@@ -106,9 +109,9 @@ class Standup extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              textDecoration: "underline",
               color: "#0091ff",
-              fontSize: "1.5em"
+              fontSize: "1.5em",
+              textDecoration: "underline"
             }}
             onClick={e => e.stopPropagation()}
           >
