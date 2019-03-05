@@ -15,12 +15,13 @@ before_script:
 - yarn --frozen-lockfile
 
 stages:
+- "Build"
 - "Test"
 - "Dockerize"
 - "Integration tests"
 
 build:
-  stage: "Test"
+  stage: "Build"
   script:
   - yarn build
   artifacts:
