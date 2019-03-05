@@ -41,7 +41,7 @@ run_docker_image:
   - name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     alias: standup_app
   script:
-  - apt install -y curl
+  - apt update && apt install -y curl
   - curl -v http://standup_app/
 
 #TODO: Deploy test env 
