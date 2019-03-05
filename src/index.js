@@ -5,19 +5,7 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 import "./styles.css";
 import startups from "./startups.json";
 
-const pad = num => (num < 10 ? "0" + num : num);
-
-const formatSeconds = seconds => {
-  let minutes = 0,
-    secs = 0;
-  if (seconds > 60) {
-    minutes = Math.floor(seconds / 60);
-    secs = seconds - minutes * 60;
-  } else {
-    secs = seconds;
-  }
-  return `${pad(minutes)}:${pad(secs)}`;
-};
+import { formatSeconds } from "./formatSeconds";
 
 class Timer extends React.Component {
   state = {

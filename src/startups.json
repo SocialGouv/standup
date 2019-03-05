@@ -41,7 +41,7 @@
     "description": "Un portail pour faciliter l’accès aux informations disponibles sur les entreprises et les échanges entre services"
   },
   {
-    "title": "Archifiltre"
+    "title": "Archifiltre",
     "timeout": 60,
     "description": ""
   },
