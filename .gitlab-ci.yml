@@ -39,10 +39,9 @@ run_docker_image:
   image: ubuntu:18.10
   services:
   - name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-    alias: standup_app
   script:
   - apt update && apt install -y curl
-  - curl -v http://standup_app/
+  - curl -v http://localhost/
 
 #TODO: Deploy test env 
 #TODO: Release and publish (manual ? on tag only)
