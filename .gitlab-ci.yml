@@ -36,7 +36,7 @@ docker_image:
 run_docker_image:
   stage: "Integration tests"
   image: ubuntu:18.10
-  service:
+  services:
   - name: "$DOCKER_REGISTRY_URL/$APP_IMAGE_NAME:$CI_COMMIT_SHA"
     alias: standup_app
   script:
