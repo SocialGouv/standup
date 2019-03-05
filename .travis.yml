@@ -10,8 +10,13 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 
+install:
+  - yarn --frozen-lockfile
+
 script:
-- yarn build
+  - yarn build
+  - yarn lint
+  - yarn test
 
 before_deploy:
   - git config user.name "Social Groovy Bot"
