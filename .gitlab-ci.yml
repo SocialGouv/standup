@@ -1,0 +1,11 @@
+---
+stages:
+- "Sample build step"
+
+sample_build:
+  stage: "Sample build step"
+  image: node:current-slim
+  variables:
+    DOCKER_HOST: tcp://localhost:2375
+  script:
+  - echo "Hello world"
