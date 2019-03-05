@@ -30,15 +30,15 @@ docker_image:
   services:
   - name: docker:stable-dind
   script:
-    - docker login $DOCKER_REGISTRY_URL -u gitlab-ci-token -p $CI_JOB_TOKEN
-    - docker build -t "$DOCKER_REGISTRY_URL/$APP_IMAGE_NAME:$CI_COMMIT_SHA" .
-    - docker build push "$DOCKER_REGISTRY_URL/$APP_IMAGE_NAME:$CI_COMMIT_SHA"
+    - docker login $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
 
 run_docker_image:
   stage: "Integration tests"
   image: ubuntu:18.10
   services:
-  - name: "$DOCKER_REGISTRY_URL/$APP_IMAGE_NAME:$CI_COMMIT_SHA"
+  - name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     alias: standup_app
   script:
   - apt install -y curl
