@@ -4,16 +4,15 @@ variables:
   YARN_VERSION: "1.13.0"
 
 
-_steps:
-  - &node_stage
-    cache:
-      key: ${CI_COMMIT_REF_SLUG}
-      paths:
-      - node_modules/
-    image: node:${NODE_VERSION}-slim
-    before_script:
-    - npm install -g yarn@${YARN_VERSION}
-    - yarn --frozen-lockfile
+.node_stage_template: &node_stage
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - node_modules/
+  image: node:${NODE_VERSION}-slim
+  before_script:
+  - npm install -g yarn@${YARN_VERSION}
+  - yarn --frozen-lockfile
 
 
 
