@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/standup/static/js/runtime~main.a64436a7.js"
   },
   {
-    "revision": "b3869b052dbb3e68f563",
-    "url": "/standup/static/js/2.b3869b05.chunk.js"
+    "revision": "5ae293f1d27ec7432367",
+    "url": "/standup/static/js/2.5ae293f1.chunk.js"
   },
   {
-    "revision": "c2a0f5b667166a14a6070cf37a16039b",
+    "revision": "56c242f265e2bc5b3de6fdbb47c81687",
     "url": "/standup/index.html"
   }
 ];
