@@ -4,15 +4,18 @@ variables:
   YARN_VERSION: "1.13.0"
 
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-  - node_modules/
+_steps:
+  - &node_stage
+    cache:
+      key: ${CI_COMMIT_REF_SLUG}
+      paths:
+      - node_modules/
+    image: node:${NODE_VERSION}-slim
+    before_script:
+    - npm install -g yarn@${YARN_VERSION}
+    - yarn --frozen-lockfile
 
-image: node:${NODE_VERSION}-slim
-before_script:
-- npm install -g yarn@${YARN_VERSION}
-- yarn --frozen-lockfile
+
 
 stages:
 - "Build"
@@ -21,6 +24,7 @@ stages:
 - "Integration tests"
 
 build:
+  <<: *node_stage
   stage: "Build"
   script:
   - yarn build
@@ -30,11 +34,13 @@ build:
     - build
 
 test:
+  <<: *node_stage
   stage: "Test"
   script:
   - yarn test
 
 lint:
+  <<: *node_stage
   stage: "Test"
   script:
   - yarn lint
