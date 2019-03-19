@@ -5,19 +5,7 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 import "./styles.css";
 import startups from "./startups.json";
 
-const pad = num => (num < 10 ? "0" + num : num);
-
-const formatSeconds = seconds => {
-  let minutes = 0,
-    secs = 0;
-  if (seconds > 60) {
-    minutes = Math.floor(seconds / 60);
-    secs = seconds - minutes * 60;
-  } else {
-    secs = seconds;
-  }
-  return `${pad(minutes)}:${pad(secs)}`;
-};
+import { formatSeconds } from "./formatSeconds";
 
 class Timer extends React.Component {
   state = {
@@ -43,7 +31,10 @@ class Timer extends React.Component {
   render() {
     const elapsed =
       (this.state.start &&
-        parseInt((new Date().getTime() - this.state.start.getTime()) / 1000)) ||
+        parseInt(
+          (new Date().getTime() - this.state.start.getTime()) / 1000,
+          10
+        )) ||
       0;
     return this.props.render({
       elapsed
@@ -118,9 +109,9 @@ class Standup extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              textDecoration: "underline",
               color: "#0091ff",
-              fontSize: "1.5em"
+              fontSize: "1.5em",
+              textDecoration: "underline"
             }}
             onClick={e => e.stopPropagation()}
           >
