@@ -41,7 +41,7 @@
     "description": "Un portail pour faciliter l’accès aux informations disponibles sur les entreprises et les échanges entre services"
   },
   {
-    "title": "Archifiltre",
+    "titre": "Archifiltre",
     "timeout": 60,
     "description": "Aider les archivistes et les producteurs de documents bureautiques à appréhender des arborescences complètes de fichiers pour les traiter"
   },
