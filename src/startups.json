@@ -46,6 +46,11 @@
     "description": "Aider les archivistes et les producteurs de documents bureautiques à appréhender des arborescences complètes de fichiers pour les traiter"
   },
   {
+    "titre": "EgaPro",
+    "timeout": 60,
+    "description": "Calculateur de l'égalité professionnelle"
+  },
+  {
     "titre": "Sujets transverses",
     "timeout": 300,
     "description": "🎉<br><br><br> Prochain seminaire (IIe) le Vendredi 29 Mars 2019 15h @ Ground Control"
