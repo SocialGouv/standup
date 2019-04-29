@@ -1280,10 +1280,10 @@
   resolved "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@socialgouv/tslint-config-recommended@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@socialgouv/tslint-config-recommended/-/tslint-config-recommended-0.6.0.tgz#539992416248c60b1030add441c604fe9f7088a5"
-  integrity sha512-OzFeL1LDQhVXKbXbYAtHlsv0+HDWTHTbQxI/vUrlQhhpT9UIBJKSGd+AfjEacjCQTNy2Dp0KPhmnRPxrDR0n0g==
+"@socialgouv/tslint-config-recommended@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@socialgouv/tslint-config-recommended/-/tslint-config-recommended-0.6.1.tgz#1af9cd93155e23ffc47411492f2fd21ba98a994a"
+  integrity sha512-afnHad8cZrX8WUj9B2/e7NAwLY4U/wpsdUZ4qL3IU0A0f3pSCHIqvPq5QeWPCUk891kIAYAL/9RTgztk059hzQ==
   dependencies:
     tslint-config-prettier "~1.18.0"
 
