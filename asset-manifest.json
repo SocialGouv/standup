@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/standup/static/css/main.be73a2a2.chunk.css",
-    "main.js": "/standup/static/js/main.503b5047.chunk.js",
-    "main.js.map": "/standup/static/js/main.503b5047.chunk.js.map",
+    "main.js": "/standup/static/js/main.e3e24ef3.chunk.js",
+    "main.js.map": "/standup/static/js/main.e3e24ef3.chunk.js.map",
     "runtime~main.js": "/standup/static/js/runtime~main.f5bb6ac8.js",
     "runtime~main.js.map": "/standup/static/js/runtime~main.f5bb6ac8.js.map",
     "static/js/2.66e470ab.chunk.js": "/standup/static/js/2.66e470ab.chunk.js",
     "static/js/2.66e470ab.chunk.js.map": "/standup/static/js/2.66e470ab.chunk.js.map",
     "index.html": "/standup/index.html",
-    "precache-manifest.fa7b7791ab6d83eb072064f20351d3d0.js": "/standup/precache-manifest.fa7b7791ab6d83eb072064f20351d3d0.js",
+    "precache-manifest.7a64e0ff9cf479b62ef7a10277f8415c.js": "/standup/precache-manifest.7a64e0ff9cf479b62ef7a10277f8415c.js",
     "service-worker.js": "/standup/service-worker.js",
     "static/css/main.be73a2a2.chunk.css.map": "/standup/static/css/main.be73a2a2.chunk.css.map"
   }
