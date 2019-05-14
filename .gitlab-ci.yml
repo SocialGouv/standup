@@ -2,10 +2,6 @@
 
 .node_stage_template: &node_stage
   image: node:10.15-slim
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
   before_script:
     - yarn --frozen-lockfile
 
@@ -24,10 +20,15 @@ build:
   stage: "Build"
   script:
     - yarn build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
   artifacts:
     expire_in: "1 day"
     paths:
       - build
+      - node_modules
 
 test:
   <<: *node_stage
