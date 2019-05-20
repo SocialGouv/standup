@@ -157,6 +157,16 @@ Deploy Standup (dev):
   except:
   - master
 
+Deploy Standup (prod):
+  <<: *deploy_stage
+  extends: .deploy-standup-k8s-prod
+  variables:
+    <<: *deploy_stage_variables
+    PORT: $FRONT_PORT
+  environment:
+    name: incubateur
+  only:
+  - master
 
 ###########################################
 ###         SEND URL TO GITHUB          ###
