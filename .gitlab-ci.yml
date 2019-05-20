@@ -2,11 +2,15 @@
 include:
 - '/k8s/.deploy-standup.yml'
 
+#
+
 variables:
   DOCKER_DRIVER: overlay2
   DOCKER_HOST: tcp://localhost:2375
   IMAGE_INFRA_BASE_NAME: "infra/images-docker"
   FRONT_PORT: 3000
+
+#
 
 .get_github_id_stage: &get_github_id_stage
   image:
@@ -33,7 +37,7 @@ variables:
     IMAGE_TAG: $CI_COMMIT_SHA
 
 .send_url_to_github_stage: &send_url_to_github_stage
-  stage: "Send Url"
+  stage: "Send Url to GitHub"
   image:
     name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
     entrypoint: [""]
@@ -47,13 +51,17 @@ variables:
 stages:
   - "Prepare"
   - "Build"
-  - "Test"
-  - "Dockerize"
-  - "Integration tests"
+  - "Code Quality"
+  - "Register Docker Image"
+  - "Test Docker Image"
   - "Deploy Standup"
-  - "Send Url"
+  - "Send Url to GitHub"
 
-#
+
+###########################################
+###               PREPARE               ###
+###########################################
+
 
 Get Github Id (dev):
   <<: *get_github_id_stage
@@ -63,9 +71,9 @@ Get Github Id (dev):
   except:
   - master
 
-build:
+Build Assets:
   <<: *node_stage
-  stage: "Build"
+  stage: "Prepare"
   script:
     - yarn build
   cache:
@@ -78,20 +86,32 @@ build:
       - build
       - node_modules
 
-test:
+
+###########################################
+###             CODE QUALITY            ###
+###########################################
+
+
+Test:
   <<: *node_stage
-  stage: "Test"
+  stage: "Code Quality"
   script:
     - yarn test
 
-lint:
+Lint:
   <<: *node_stage
-  stage: "Test"
+  stage: "Code Quality"
   script:
   - yarn lint
 
-docker_image:
-  stage: "Dockerize"
+
+###########################################
+###       REGISTER DOCKER IMAGES        ###
+###########################################
+
+
+Register Docker image:
+  stage: "Register Docker Image"
   image: docker:stable
   services:
     - name: docker:stable-dind
@@ -105,14 +125,26 @@ docker_image:
       -t  "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
 
-run_docker_image:
-  stage: "Integration tests"
+
+###########################################
+###          TEST DOCKER IMAGE          ###
+###########################################
+
+
+Test Docker image:
+  stage: "Test Docker Image"
   image: ubuntu:18.10
   services:
     - name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   script:
     - apt update && apt install -y curl
     - curl -v http://localhost:$FRONT_PORT
+
+
+###########################################
+###            DEPLOY TO K8S            ###
+###########################################
+
 
 Deploy Standup (dev):
   <<: *deploy_stage
@@ -125,6 +157,12 @@ Deploy Standup (dev):
   except:
   - master
 
+
+###########################################
+###         SEND URL TO GITHUB          ###
+###########################################
+
+
 Send deployment url to Github (dev):
   <<: *send_url_to_github_stage
   before_script:
@@ -136,5 +174,4 @@ Send deployment url to Github (dev):
   except:
   - master
 
-#TODO: Deploy test env
 #TODO: Release and publish (manual ? on tag only)
