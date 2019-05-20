@@ -71,6 +71,14 @@ Get Github Id (dev):
   except:
   - master
 
+Get Github Id (prod):
+  <<: *get_github_id_stage
+  stage: "Prepare"
+  environment:
+    name: incubateur
+  only:
+  - master
+
 Build Assets:
   <<: *node_stage
   stage: "Prepare"
@@ -183,5 +191,15 @@ Send deployment url to Github (dev):
     name: dev.factory
   except:
   - master
+
+Send deployment url to Github (prod):
+  <<: *send_url_to_github_stage
+  variables:
+    URL: https://standup.$CI_ENVIRONMENT_NAME.social.gouv.fr/
+  environment:
+    name: incubateur
+  only:
+  - master
+
 
 #TODO: Release and publish (manual ? on tag only)
