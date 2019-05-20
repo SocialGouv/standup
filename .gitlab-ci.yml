@@ -63,9 +63,14 @@ docker_image:
   image: docker:stable
   services:
     - name: docker:stable-dind
-  script:
+  before_script:
     - docker login $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
-    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
+  script:
+    - docker pull  $CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA|| true
+    - >-
+      docker build
+      --cache-from "$CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA"
+      -t  "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
 
 run_docker_image:
