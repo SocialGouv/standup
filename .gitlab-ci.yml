@@ -1,9 +1,24 @@
 ---
+include:
+- '/k8s/.deploy-standup.yml'
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://localhost:2375
+  IMAGE_INFRA_BASE_NAME: "infra/images-docker"
+  FRONT_PORT: 3000
 
 .node_stage_template: &node_stage
   image: node:10.15-slim
   before_script:
     - yarn --frozen-lockfile
+
+.deploy_stage: &deploy_stage
+  stage: "Deploy Standup"
+  dependencies: []
+  variables: &deploy_stage_variables
+    STANDUP_REGISTRY: $CI_REGISTRY_IMAGE
+    IMAGE_TAG: $CI_COMMIT_SHA
 
 # 
 
@@ -12,6 +27,7 @@ stages:
   - "Test"
   - "Dockerize"
   - "Integration tests"
+  - "Deploy Standup"
 
 #
 
@@ -45,8 +61,6 @@ lint:
 docker_image:
   stage: "Dockerize"
   image: docker:stable
-  variables:
-    DOCKER_HOST: tcp://localhost:2375
   services:
     - name: docker:stable-dind
   script:
@@ -61,7 +75,18 @@ run_docker_image:
     - name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   script:
     - apt update && apt install -y curl
-    - curl -v http://localhost/
+    - curl -v http://localhost:$FRONT_PORT
+
+Deploy Standup (dev):
+  <<: *deploy_stage
+  extends: .deploy-standup-k8s-dev
+  variables:
+    <<: *deploy_stage_variables
+    PORT: $FRONT_PORT
+  environment:
+    name: dev.factory
+  except:
+  - master
 
 #TODO: Deploy test env
 #TODO: Release and publish (manual ? on tag only)

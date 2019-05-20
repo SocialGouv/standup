@@ -1,0 +1,17 @@
+.deploy-standup-k8s-dev:
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  before_script:
+  - /apps/create-kubeconfig.sh
+  - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
+  - export HASH_BRANCH_INGRESS=$HASH_BRANCH_NAME-
+  - export HASH_BRANCH_NAME=-$HASH_BRANCH_NAME
+  - envsubst < k8s/deployment.yml > k8s/deployment-standup.yml
+  - envsubst < k8s/service.yml > k8s/service-standup.yml
+  - envsubst < k8s/ingress.yml > k8s/ingress-standup.yml
+  script:
+  - kubectl apply -f k8s/deployment-standup.yml
+  - kubectl apply -f k8s/service-standup.yml
+  - kubectl apply -f k8s/ingress-standup.yml
+  allow_failure: false

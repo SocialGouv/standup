@@ -1,0 +1,14 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: standup${HASH_BRANCH_NAME}
+  labels:
+    app: standup${HASH_BRANCH_NAME}
+    branch: standup${HASH_BRANCH_NAME}
+spec:
+  selector:
+    app: standup${HASH_BRANCH_NAME}
+  ports:
+  - port: ${PORT}
+    name: front-port
