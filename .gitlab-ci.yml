@@ -8,7 +8,11 @@ variables:
   DOCKER_DRIVER: overlay2
   DOCKER_HOST: tcp://localhost:2375
   IMAGE_INFRA_BASE_NAME: "infra/images-docker"
+  NODE_VERSION: "10.15-slim"
+  UBUNTU_VERSION: "18.10"
   FRONT_PORT: 3000
+  DEV_ENVIRONMENT_NAME: "dev.factory"
+  PROD_ENVIRONMENT_NAME: "incubateur"
 
 #
 
@@ -25,7 +29,7 @@ variables:
     - github_deploy_id
 
 .node_stage_template: &node_stage
-  image: node:10.15-slim
+  image: node:$NODE_VERSION
   before_script:
     - yarn --frozen-lockfile
 
@@ -56,6 +60,7 @@ stages:
   - "Test Docker Image"
   - "Deploy Standup"
   - "Send Url to GitHub"
+  - "Delete k8s objects"
 
 
 ###########################################
@@ -67,7 +72,7 @@ Get Github Id (dev):
   <<: *get_github_id_stage
   stage: "Prepare"
   environment:
-    name: dev.factory
+    name: $DEV_ENVIRONMENT_NAME
   except:
   - master
 
@@ -75,7 +80,7 @@ Get Github Id (prod):
   <<: *get_github_id_stage
   stage: "Prepare"
   environment:
-    name: incubateur
+    name: $PROD_ENVIRONMENT_NAME
   only:
   - master
 
@@ -129,6 +134,8 @@ Register Docker image:
     - docker pull  $CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA|| true
     - >-
       docker build
+      --build-arg NODE_VERSION=$NODE_VERSION
+      --build-arg EXPOSED_PORT=$FRONT_PORT
       --cache-from "$CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA"
       -t  "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
@@ -141,7 +148,7 @@ Register Docker image:
 
 Test Docker image:
   stage: "Test Docker Image"
-  image: ubuntu:18.10
+  image: ubuntu:$UBUNTU_VERSION
   services:
     - name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   script:
@@ -161,7 +168,7 @@ Deploy Standup (dev):
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
   environment:
-    name: dev.factory
+    name: $DEV_ENVIRONMENT_NAME
   except:
   - master
 
@@ -172,7 +179,7 @@ Deploy Standup (prod):
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
   environment:
-    name: incubateur
+    name: $PROD_ENVIRONMENT_NAME
   only:
   - master
 
@@ -188,7 +195,7 @@ Send deployment url to Github (dev):
   - export HASH_BRANCH_NAME=$HASH_BRANCH_NAME
   - export URL=http://$HASH_BRANCH_NAME-standup.${CI_ENVIRONMENT_NAME}.social.gouv.fr/
   environment:
-    name: dev.factory
+    name: $DEV_ENVIRONMENT_NAME
   except:
   - master
 
@@ -197,7 +204,27 @@ Send deployment url to Github (prod):
   variables:
     URL: https://standup.$CI_ENVIRONMENT_NAME.social.gouv.fr/
   environment:
-    name: incubateur
+    name: $PROD_ENVIRONMENT_NAME
+  only:
+  - master
+
+
+###########################################
+###     DELETE USELESS K8S OBJECTS      ###
+###########################################
+
+
+Delete useless k8s objects:
+  stage: "Delete k8s objects"
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  before_script:
+  - /apps/create-kubeconfig.sh
+  script:
+  - python3 k8s/scripts/delete-k8s-objects.py
+  environment:
+    name: $DEV_ENVIRONMENT_NAME
   only:
   - master
 
