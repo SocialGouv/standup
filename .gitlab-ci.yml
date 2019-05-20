@@ -8,6 +8,18 @@ variables:
   IMAGE_INFRA_BASE_NAME: "infra/images-docker"
   FRONT_PORT: 3000
 
+.get_github_id_stage: &get_github_id_stage
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  before_script:
+  - envsubst < k8s/scripts/get-deploy-id.sh > k8s/scripts/get-github-deploy-id.sh
+  script:
+  - sh k8s/scripts/get-github-deploy-id.sh
+  artifacts:
+    paths:
+    - github_deploy_id
+
 .node_stage_template: &node_stage
   image: node:10.15-slim
   before_script:
@@ -20,16 +32,36 @@ variables:
     STANDUP_REGISTRY: $CI_REGISTRY_IMAGE
     IMAGE_TAG: $CI_COMMIT_SHA
 
+.send_url_to_github_stage: &send_url_to_github_stage
+  stage: "Send Url"
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  script:
+  - export DEPLOY_ID=$(cat github_deploy_id)
+  - envsubst < k8s/scripts/send-url.sh > k8s/scripts/send-url-to-github.sh
+  - sh k8s/scripts/send-url-to-github.sh $CI_COMMIT_REF_NAME
+
 # 
 
 stages:
+  - "Prepare"
   - "Build"
   - "Test"
   - "Dockerize"
   - "Integration tests"
   - "Deploy Standup"
+  - "Send Url"
 
 #
+
+Get Github Id (dev):
+  <<: *get_github_id_stage
+  stage: "Prepare"
+  environment:
+    name: dev.factory
+  except:
+  - master
 
 build:
   <<: *node_stage
@@ -88,6 +120,17 @@ Deploy Standup (dev):
   variables:
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
+  environment:
+    name: dev.factory
+  except:
+  - master
+
+Send deployment url to Github (dev):
+  <<: *send_url_to_github_stage
+  before_script:
+  - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
+  - export HASH_BRANCH_NAME=$HASH_BRANCH_NAME
+  - export URL=http://$HASH_BRANCH_NAME-standup.${CI_ENVIRONMENT_NAME}.social.gouv.fr/
   environment:
     name: dev.factory
   except:
