@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: standup
+  labels:
+    app: standup
+    branch: standup
+spec:
+  rules:
+  - host: ${HASH_BRANCH_INGRESS}standup.${ENVIRONMENT}.social.gouv.fr
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: standup
+          servicePort: ${PORT}
+  tls:
+  - secretName: standup-crt-secret

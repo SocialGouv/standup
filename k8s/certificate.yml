@@ -1,0 +1,18 @@
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: standup-crt
+spec:
+  secretName: standup-crt-secret
+  dnsNames:
+  - standup.${ENVIRONMENT}.social.gouv.fr
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - standup.${ENVIRONMENT}.social.gouv.fr
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
