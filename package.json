@@ -7,7 +7,7 @@
   "dependencies": {
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-keyboard-event-handler": "1.4.1"
+    "react-keyboard-event-handler": "1.5.0"
   },
   "devDependencies": {
     "@socialgouv/tslint-config-recommended": "^0.7.2",

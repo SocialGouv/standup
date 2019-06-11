@@ -8692,10 +8692,10 @@ react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
-react-keyboard-event-handler@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.npmjs.org/react-keyboard-event-handler/-/react-keyboard-event-handler-1.4.1.tgz#3122ab3ceab3df0414a8afb58aa07e93fc34f30e"
-  integrity sha512-F7e/nHXyfY8Szle1lxTf7iJ7Vnnq9xGV5Jcu1nB1+lmLRkLiLFhMk4Kc1iOJWdxuhj9pg5xsB8IuAAVpawkTwg==
+react-keyboard-event-handler@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-keyboard-event-handler/-/react-keyboard-event-handler-1.5.0.tgz#732163bd82ea9699a7ab42f09825e0e713201005"
+  integrity sha512-jRu7zT8QcI5UuZT9nVzErG8WWMW/wjlblskysxUdrmco/K11X3Gn7PSS+lFv1lEWC8wbgGmeycwETpEtZEyKPw==
 
 react-scripts@3.0.1:
   version "3.0.1"
