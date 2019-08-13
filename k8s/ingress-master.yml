@@ -6,9 +6,11 @@ metadata:
   labels:
     app: standup
     branch: standup
+  annotations:
+    kubernetes.io/ingress.class: "azure/application-gateway"
 spec:
   rules:
-  - host: ${HASH_BRANCH_INGRESS}standup.${ENVIRONMENT}.social.gouv.fr
+  - host: master.standup.${DOMAIN_NAME}
     http:
       paths:
       - path: /
