@@ -62,6 +62,7 @@ stages:
   - "Deploy Standup"
   - "Send Url to GitHub"
   - "Delete k8s objects"
+  - "Tag release version"
 
 
 ###########################################
@@ -199,7 +200,7 @@ Send deployment url to Github (feature):
   except:
   - master
 
-Send deployment url to Github (prod):
+Send deployment url to Github (master):
   <<: *send_url_to_github_stage
   variables:
     URL: https://master.standup.${DOMAIN_NAME}/
@@ -207,6 +208,33 @@ Send deployment url to Github (prod):
     name: $MASTER_ENVIRONMENT_NAME
   only:
   - master
+
+
+###########################################
+###           RELEASE VERSION           ###
+###########################################
+
+Make a new release to deploy to preprod environment :
+  stage: "Make a new release"
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+    - eval $(ssh-agent -s)
+    - echo "$GIT_SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+    - git config --global user.email "LD-DSI-MITECH@sg.social.gouv.fr"
+    - git config --global user.name "Botops Incubateur"
+  script:
+    - git clone git@github.com:SocialGouv/standup.git
+    - cd standup
+    - git checkout boni-ci
+    - git pull origin boni-ci
+    - git tag $RELEASE_VERSION
+    - git push origin boni-ci $RELEASE_VERSION
+  when: manual
+  only:
+    - master
 
 
 ###########################################
