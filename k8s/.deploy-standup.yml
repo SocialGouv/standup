@@ -24,4 +24,5 @@
 .deploy-standup-k8s-master:
   <<: *deploy_stand_up
 
-
+.deploy-standup-k8s-preprod:
+  <<: *deploy_stand_up

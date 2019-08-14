@@ -15,6 +15,7 @@ variables:
   CLUSTER_NAME: "dev"
   FEATURE_ENVIRONMENT_NAME: "feature"
   MASTER_ENVIRONMENT_NAME: "master"
+  PREPROD_ENVIRONMENT_NAME: "prep"
 
 #
 
@@ -221,6 +222,20 @@ Deploy Standup (master):
   only:
     - master
 
+Deploy Standup (preprod):
+  <<: *deploy_stage
+  extends: .deploy-standup-k8s-preprod
+  variables:
+    <<: *deploy_stage_variables
+    PORT: $FRONT_PORT
+    NAMESPACE: $PREPROD_ENVIRONMENT_NAME
+    INGRESS_ENVIRONMENT_PREFIX: $PREPROD_ENVIRONMENT_NAME
+    LETSENCRYPT_ISSUER: letsencrypt-prod
+  environment:
+    name: $PREPROD_ENVIRONMENT_NAME-$CLUSTER_NAME
+  only:
+    - /^v.*/
+
 ###########################################
 ###         SEND URL TO GITHUB          ###
 ###########################################
@@ -230,8 +245,8 @@ Send deployment url to Github (feature):
   <<: *send_url_to_github_stage
   before_script:
     - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
-    - export HASH_BRANCH_NAME=$HASH_BRANCH_NAME
-    - export URL=https://$HASH_BRANCH_NAME.standup.${DOMAIN_NAME}/
+    - export INGRESS_ENVIRONMENT_PREFIX=$HASH_BRANCH_NAME
+    - export URL=https://$INGRESS_ENVIRONMENT_PREFIX.standup.${DOMAIN_NAME}/
   environment:
     name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
@@ -241,11 +256,20 @@ Send deployment url to Github (feature):
 Send deployment url to Github (master):
   <<: *send_url_to_github_stage
   variables:
-    URL: https://master.standup.${DOMAIN_NAME}/
+    URL: https://$MASTER_ENVIRONMENT_NAME.standup.${DOMAIN_NAME}/
   environment:
     name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
     - master
+
+Send deployment url to Github (preprod):
+  <<: *send_url_to_github_stage
+  variables:
+    URL: https://$PREPROD_ENVIRONMENT_NAME.standup.${DOMAIN_NAME}/
+  environment:
+    name: $PREPROD_ENVIRONMENT_NAME-$CLUSTER_NAME
+  only:
+    - /^v.*/
 
 
 ###########################################
