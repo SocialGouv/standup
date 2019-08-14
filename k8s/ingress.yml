@@ -17,3 +17,5 @@ spec:
         backend:
           serviceName: standup${HASH_BRANCH_NAME}
           servicePort: ${PORT}
+  tls:
+  - secretName: standup-crt-secret
