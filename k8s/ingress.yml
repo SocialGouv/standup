@@ -10,7 +10,7 @@ metadata:
     kubernetes.io/ingress.class: "azure/application-gateway"
 spec:
   rules:
-  - host: ${HASH_BRANCH_INGRESS}.standup.${DOMAIN_NAME}
+  - host: ${INGRESS_ENVIRONMENT_PREFIX}.standup.${DOMAIN_NAME}
     http:
       paths:
       - path: /
@@ -18,4 +18,4 @@ spec:
           serviceName: standup${HASH_BRANCH_NAME}
           servicePort: ${PORT}
   tls:
-  - secretName: standup-crt-secret
+  - secretName: standup-crt-secret${HASH_BRANCH_NAME}

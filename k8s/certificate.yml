@@ -2,17 +2,20 @@
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
-  name: standup-crt
+  name: standup-crt${HASH_BRANCH_NAME}
+  labels:
+    app: standup${HASH_BRANCH_NAME}
+    branch: standup${HASH_BRANCH_NAME}
 spec:
-  secretName: standup-crt-secret
+  secretName: standup-crt-secret${HASH_BRANCH_NAME}
   dnsNames:
-  - ${HASH_BRANCH_INGRESS}.standup.${DOMAIN_NAME}
+  - ${INGRESS_ENVIRONMENT_PREFIX}.standup.${DOMAIN_NAME}
   acme:
     config:
     - http01:
         ingressClass: azure/application-gateway
       domains:
-      - ${HASH_BRANCH_INGRESS}.standup.${DOMAIN_NAME}
+      - ${INGRESS_ENVIRONMENT_PREFIX}.standup.${DOMAIN_NAME}
   issuerRef:
-    name: letsencrypt-staging
+    name: ${LETSENCRYPT_ISSUER}
     kind: ClusterIssuer

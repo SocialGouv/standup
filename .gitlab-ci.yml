@@ -12,8 +12,9 @@ variables:
   NGINX_VERSION: "1.17"
   UBUNTU_VERSION: "18.10"
   FRONT_PORT: 80
-  FEATURE_ENVIRONMENT_NAME: "feature-dev"
-  MASTER_ENVIRONMENT_NAME: "master-dev"
+  CLUSTER_NAME: "dev"
+  FEATURE_ENVIRONMENT_NAME: "feature"
+  MASTER_ENVIRONMENT_NAME: "master"
 
 #
 
@@ -73,7 +74,7 @@ Get Github Id (feature):
   <<: *get_github_id_stage
   stage: "Prepare"
   environment:
-    name: $FEATURE_ENVIRONMENT_NAME
+    name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
     - master
 
@@ -81,7 +82,7 @@ Get Github Id (master):
   <<: *get_github_id_stage
   stage: "Prepare"
   environment:
-    name: $MASTER_ENVIRONMENT_NAME
+    name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
     - master
 
@@ -198,10 +199,13 @@ Deploy Standup (feature):
   variables:
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
+    NAMESPACE: $FEATURE_ENVIRONMENT_NAME
+    LETSENCRYPT_ISSUER: letsencrypt-staging
   environment:
-    name: $FEATURE_ENVIRONMENT_NAME
+    name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
     - master
+    - /^v.*/
 
 Deploy Standup (master):
   <<: *deploy_stage
@@ -209,8 +213,11 @@ Deploy Standup (master):
   variables:
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
+    NAMESPACE: $MASTER_ENVIRONMENT_NAME
+    INGRESS_ENVIRONMENT_PREFIX: $MASTER_ENVIRONMENT_NAME
+    LETSENCRYPT_ISSUER: letsencrypt-prod
   environment:
-    name: $MASTER_ENVIRONMENT_NAME
+    name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
     - master
 
@@ -224,18 +231,19 @@ Send deployment url to Github (feature):
   before_script:
     - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
     - export HASH_BRANCH_NAME=$HASH_BRANCH_NAME
-    - export URL=http://$HASH_BRANCH_NAME.standup.${DOMAIN_NAME}/
+    - export URL=https://$HASH_BRANCH_NAME.standup.${DOMAIN_NAME}/
   environment:
-    name: $FEATURE_ENVIRONMENT_NAME
+    name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
     - master
+    - /^v.*/
 
 Send deployment url to Github (master):
   <<: *send_url_to_github_stage
   variables:
     URL: https://master.standup.${DOMAIN_NAME}/
   environment:
-    name: $MASTER_ENVIRONMENT_NAME
+    name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
     - master
 
