@@ -173,7 +173,19 @@ Test Docker image:
   script:
     - apt update && apt install -y curl
     - curl -v http://localhost:$FRONT_PORT
+  except:
+    - /^v.*/
 
+Test Docker image tagged with release version:
+  stage: "Test Docker Image"
+  image: ubuntu:$UBUNTU_VERSION
+  services:
+    - name: $CI_REGISTRY_IMAGE:$RELEASE_VERSION
+  script:
+    - apt update && apt install -y curl
+    - curl -v http://localhost:$FRONT_PORT
+  only:
+    - /^v.*/
 
 ###########################################
 ###            DEPLOY TO K8S            ###
@@ -189,7 +201,7 @@ Deploy Standup (feature):
   environment:
     name: $FEATURE_ENVIRONMENT_NAME
   except:
-   - master
+    - master
 
 Deploy Standup (master):
   <<: *deploy_stage
@@ -200,7 +212,7 @@ Deploy Standup (master):
   environment:
     name: $MASTER_ENVIRONMENT_NAME
   only:
-   - master
+    - master
 
 ###########################################
 ###         SEND URL TO GITHUB          ###
