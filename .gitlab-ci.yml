@@ -16,6 +16,7 @@ variables:
   FEATURE_ENVIRONMENT_NAME: "feature"
   MASTER_ENVIRONMENT_NAME: "master"
   PREPROD_ENVIRONMENT_NAME: "prep"
+  PROD_ENVIRONMENT_NAME: "prod"
 
 #
 
@@ -63,6 +64,7 @@ stages:
   - "Deploy Standup"
   - "Send Url to GitHub"
   - "Make a new release"
+  - "Deploy Standup to prod"
 
 
 ###########################################
@@ -76,7 +78,7 @@ Get Github Id (feature):
   environment:
     name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
-    - boni-ci
+    - master
     - /^v.*/
 
 Get Github Id (master):
@@ -85,7 +87,7 @@ Get Github Id (master):
   environment:
     name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
-    - boni-ci
+    - master
 
 Get Github Id (preprod):
   <<: *get_github_id_stage
@@ -214,7 +216,7 @@ Deploy Standup (feature):
   environment:
     name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
-    - boni-ci
+    - master
     - /^v.*/
 
 Deploy Standup (master):
@@ -224,13 +226,14 @@ Deploy Standup (master):
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
     NAMESPACE: $MASTER_ENVIRONMENT_NAME
-    INGRESS_ENVIRONMENT_PREFIX: $MASTER_ENVIRONMENT_NAME
+    HASH_BRANCH_NAME: ''
+    INGRESS_ENVIRONMENT_PREFIX: $MASTER_ENVIRONMENT_NAME.
     LETSENCRYPT_ISSUER: letsencrypt-prod
     IMAGE_TAG: $CI_COMMIT_SHA
   environment:
     name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
-    - boni-ci
+    - master
 
 Deploy Standup (preprod):
   <<: *deploy_stage
@@ -239,7 +242,8 @@ Deploy Standup (preprod):
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
     NAMESPACE: $PREPROD_ENVIRONMENT_NAME
-    INGRESS_ENVIRONMENT_PREFIX: $PREPROD_ENVIRONMENT_NAME
+    HASH_BRANCH_NAME: ''
+    INGRESS_ENVIRONMENT_PREFIX: $PREPROD_ENVIRONMENT_NAME.
     LETSENCRYPT_ISSUER: letsencrypt-prod
     IMAGE_TAG: $RELEASE_VERSION
   environment:
@@ -256,12 +260,12 @@ Send deployment url to Github (feature):
   <<: *send_url_to_github_stage
   before_script:
     - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
-    - export INGRESS_ENVIRONMENT_PREFIX=$HASH_BRANCH_NAME
-    - export URL=https://$INGRESS_ENVIRONMENT_PREFIX.standup.${DOMAIN_NAME}/
+    - export INGRESS_ENVIRONMENT_PREFIX=$HASH_BRANCH_NAME.
+    - export URL=https://${INGRESS_ENVIRONMENT_PREFIX}standup.${DOMAIN_NAME}/
   environment:
     name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
-    - boni-ci
+    - master
     - /^v.*/
 
 Send deployment url to Github (master):
@@ -271,7 +275,7 @@ Send deployment url to Github (master):
   environment:
     name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
-    - boni-ci
+    - master
 
 Send deployment url to Github (preprod):
   <<: *send_url_to_github_stage
@@ -307,5 +311,25 @@ Make a new release to deploy to preprod environment :
     - git push origin boni-ci $RELEASE_VERSION
   when: manual
   only:
-    - boni-ci
+    - master
 
+
+###########################################
+###            DEPLOY TO PROD           ###
+###########################################
+
+Deploy Standup (prod) :
+  stage: "Deploy Standup to prod"
+  extends: .deploy-standup-k8s-prod
+  variables:
+    <<: *deploy_stage_variables
+    PORT: $FRONT_PORT
+    NAMESPACE: $PROD_ENVIRONMENT_NAME
+    INGRESS_ENVIRONMENT_PREFIX: ''
+    LETSENCRYPT_ISSUER: letsencrypt-prod
+    IMAGE_TAG: $RELEASE_VERSION
+  environment:
+    name: $PROD_ENVIRONMENT_NAME
+  when: manual
+  only:
+    - /^v.*/

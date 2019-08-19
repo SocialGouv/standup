@@ -9,13 +9,13 @@ metadata:
 spec:
   secretName: standup-crt-secret${HASH_BRANCH_NAME}
   dnsNames:
-  - ${INGRESS_ENVIRONMENT_PREFIX}.standup.${DOMAIN_NAME}
+  - ${INGRESS_ENVIRONMENT_PREFIX}standup.${DOMAIN_NAME}
   acme:
     config:
     - http01:
         ingressClass: azure/application-gateway
       domains:
-      - ${INGRESS_ENVIRONMENT_PREFIX}.standup.${DOMAIN_NAME}
+      - ${INGRESS_ENVIRONMENT_PREFIX}standup.${DOMAIN_NAME}
   issuerRef:
     name: ${LETSENCRYPT_ISSUER}
     kind: ClusterIssuer

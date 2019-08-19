@@ -17,7 +17,7 @@
   <<: *deploy_stand_up
   before_script:
   - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
-  - export INGRESS_ENVIRONMENT_PREFIX=$HASH_BRANCH_NAME
+  - export INGRESS_ENVIRONMENT_PREFIX=$HASH_BRANCH_NAME.
   - export HASH_BRANCH_NAME=-$HASH_BRANCH_NAME
 
 
@@ -25,4 +25,7 @@
   <<: *deploy_stand_up
 
 .deploy-standup-k8s-preprod:
+  <<: *deploy_stand_up
+
+.deploy-standup-k8s-prod:
   <<: *deploy_stand_up
