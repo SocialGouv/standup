@@ -41,7 +41,6 @@ variables:
   dependencies: []
   variables: &deploy_stage_variables
     STANDUP_REGISTRY: $CI_REGISTRY_IMAGE
-    IMAGE_TAG: $CI_COMMIT_SHA
 
 .send_url_to_github_stage: &send_url_to_github_stage
   stage: "Send Url to GitHub"
@@ -77,7 +76,8 @@ Get Github Id (feature):
   environment:
     name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
-    - master
+    - boni-ci
+    - /^v.*/
 
 Get Github Id (master):
   <<: *get_github_id_stage
@@ -85,7 +85,15 @@ Get Github Id (master):
   environment:
     name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
-    - master
+    - boni-ci
+
+Get Github Id (preprod):
+  <<: *get_github_id_stage
+  stage: "Prepare"
+  environment:
+    name: $PREPROD_ENVIRONMENT_NAME-$CLUSTER_NAME
+  only:
+    - /^v.*/
 
 Build Assets:
   <<: *node_stage
@@ -133,13 +141,13 @@ Register Docker Image Tagged with Commit SHA:
   before_script:
     - docker login $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
   script:
-    - docker pull  $CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA|| true
+    - docker pull  $CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA || true
     - >-
       docker build
       --build-arg NGINX_VERSION=$NGINX_VERSION
       --build-arg EXPOSED_PORT=$FRONT_PORT
       --cache-from "$CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA"
-      -t  "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
+      -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
   except:
     - /^v.*/
@@ -202,10 +210,11 @@ Deploy Standup (feature):
     PORT: $FRONT_PORT
     NAMESPACE: $FEATURE_ENVIRONMENT_NAME
     LETSENCRYPT_ISSUER: letsencrypt-staging
+    IMAGE_TAG: $CI_COMMIT_SHA
   environment:
     name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
-    - master
+    - boni-ci
     - /^v.*/
 
 Deploy Standup (master):
@@ -217,10 +226,11 @@ Deploy Standup (master):
     NAMESPACE: $MASTER_ENVIRONMENT_NAME
     INGRESS_ENVIRONMENT_PREFIX: $MASTER_ENVIRONMENT_NAME
     LETSENCRYPT_ISSUER: letsencrypt-prod
+    IMAGE_TAG: $CI_COMMIT_SHA
   environment:
     name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
-    - master
+    - boni-ci
 
 Deploy Standup (preprod):
   <<: *deploy_stage
@@ -231,6 +241,7 @@ Deploy Standup (preprod):
     NAMESPACE: $PREPROD_ENVIRONMENT_NAME
     INGRESS_ENVIRONMENT_PREFIX: $PREPROD_ENVIRONMENT_NAME
     LETSENCRYPT_ISSUER: letsencrypt-prod
+    IMAGE_TAG: $RELEASE_VERSION
   environment:
     name: $PREPROD_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
@@ -250,7 +261,7 @@ Send deployment url to Github (feature):
   environment:
     name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
   except:
-    - master
+    - boni-ci
     - /^v.*/
 
 Send deployment url to Github (master):
@@ -260,7 +271,7 @@ Send deployment url to Github (master):
   environment:
     name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
   only:
-    - master
+    - boni-ci
 
 Send deployment url to Github (preprod):
   <<: *send_url_to_github_stage
@@ -296,5 +307,5 @@ Make a new release to deploy to preprod environment :
     - git push origin boni-ci $RELEASE_VERSION
   when: manual
   only:
-    - master
+    - boni-ci
 
