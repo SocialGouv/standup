@@ -13,6 +13,7 @@ variables:
   UBUNTU_VERSION: "18.10"
   FRONT_PORT: 80
   CLUSTER_NAME: "dev"
+  APP_NAME: "standup"
   FEATURE_ENVIRONMENT_NAME: "feature"
   MASTER_ENVIRONMENT_NAME: "master"
   PREPROD_ENVIRONMENT_NAME: "prep"
@@ -41,7 +42,7 @@ variables:
   stage: "Deploy Standup"
   dependencies: []
   variables: &deploy_stage_variables
-    STANDUP_REGISTRY: $CI_REGISTRY_IMAGE
+    APP_REGISTRY: $CI_REGISTRY_IMAGE
 
 .send_url_to_github_stage: &send_url_to_github_stage
   stage: "Send Url to GitHub"
