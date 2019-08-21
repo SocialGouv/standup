@@ -1,6 +1,6 @@
 ---
 include:
-- '/k8s/.deploy-standup.yml'
+- '/.gitlab-ci/.deploy-standup.yml'
 
 #
 

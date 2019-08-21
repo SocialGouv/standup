@@ -5,8 +5,8 @@
   script:
     - helm init --client-only
     - helm repo add mas-incubateur https://socialgouv.github.io/helm-charts/
-    - envsubst < k8s/values.yaml > k8s/values-${APP_NAME}.yaml
-    - helm upgrade --install --wait --namespace standup-${NAMESPACE} --values=k8s/values-${APP_NAME}.yaml ${HELM_RELEASE_NAME} mas-incubateur/webapp
+    - envsubst < .gitlab-ci/values.yaml > .gitlab-ci/values-${APP_NAME}.yaml
+    - helm upgrade --install --wait --namespace standup-${NAMESPACE} --values=.gitlab-ci/values-${APP_NAME}.yaml ${HELM_RELEASE_NAME} mas-incubateur/webapp
   allow_failure: false
 
 .deploy-standup-k8s-feature:
