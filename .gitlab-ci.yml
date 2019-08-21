@@ -293,8 +293,8 @@ Send deployment url to Github (preprod):
 
 Make a new release to deploy to preprod environment :
   stage: "Make a new release"
+  image: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/git-tag-release:latest
   before_script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
     - eval $(ssh-agent -s)
     - echo "$GIT_SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - mkdir -p ~/.ssh
