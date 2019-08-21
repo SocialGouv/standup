@@ -1,6 +1,4 @@
 ---
-include:
-- '/.gitlab-ci/.deploy-standup.yml'
 
 #
 
@@ -27,7 +25,6 @@ variables:
 .get_github_id_stage: &get_github_id_stage
   image:
     name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/git-deploy:$INFRA_GIT_DEPLOY_VERSION
-    entrypoint: [""]
   before_script:
     - envsubst < /scripts/get-deploy-id.sh > /scripts/get-github-deploy-id.sh
   script:
@@ -42,16 +39,21 @@ variables:
     - yarn --frozen-lockfile
 
 .deploy_stage: &deploy_stage
-  stage: "Deploy Standup"
-  dependencies: []
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/helm:$INFRA_HELM_VERSION
   variables: &deploy_stage_variables
-    APP_REGISTRY: $CI_REGISTRY_IMAGE
+    PORT: $FRONT_PORT
+  script:
+    - helm init --client-only
+    - helm repo add mas-incubateur https://socialgouv.github.io/helm-charts/
+    - envsubst < .gitlab-ci/values.yaml > .gitlab-ci/values-${APP_NAME}.yaml
+    - helm upgrade --install --wait --namespace standup-${NAMESPACE} --values=.gitlab-ci/values-${APP_NAME}.yaml ${HELM_RELEASE_NAME} mas-incubateur/webapp
+  allow_failure: false
 
 .send_url_to_github_stage: &send_url_to_github_stage
   stage: "Send Url to GitHub"
   image:
     name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/git-deploy:$INFRA_GIT_DEPLOY_VERSION
-    entrypoint: [""]
   script:
     - export DEPLOY_ID=$(cat github_deploy_id)
     - envsubst < /scripts/send-url.sh > /scripts/send-url-to-github.sh
@@ -209,8 +211,8 @@ Test Docker image tagged with release version:
 
 
 Deploy Standup (feature):
+  stage: "Deploy Standup"
   <<: *deploy_stage
-  extends: .deploy-standup-k8s-feature
   variables:
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
@@ -219,13 +221,18 @@ Deploy Standup (feature):
     IMAGE_TAG: $CI_COMMIT_SHA
   environment:
     name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
+  before_script:
+    - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
+    - export INGRESS_ENVIRONMENT_PREFIX=$HASH_BRANCH_NAME.
+    - export HELM_RELEASE_NAME=$APP_NAME-$HASH_BRANCH_NAME-$FEATURE_ENVIRONMENT_NAME
+    - export HASH_BRANCH_NAME=-$HASH_BRANCH_NAME
   except:
     - master
     - /^v.*/
 
 Deploy Standup (master):
+  stage: "Deploy Standup"
   <<: *deploy_stage
-  extends: .deploy-standup-k8s-master
   variables:
     <<: *deploy_stage_variables
     PORT: $FRONT_PORT
@@ -236,15 +243,16 @@ Deploy Standup (master):
     IMAGE_TAG: $CI_COMMIT_SHA
   environment:
     name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
+  before_script:
+    - export HELM_RELEASE_NAME=$APP_NAME-$MASTER_ENVIRONMENT_NAME
   only:
     - master
 
 Deploy Standup (preprod):
+  stage: "Deploy Standup"
   <<: *deploy_stage
-  extends: .deploy-standup-k8s-preprod
   variables:
     <<: *deploy_stage_variables
-    PORT: $FRONT_PORT
     NAMESPACE: $PREPROD_ENVIRONMENT_NAME
     HASH_BRANCH_NAME: ''
     INGRESS_ENVIRONMENT_PREFIX: $PREPROD_ENVIRONMENT_NAME.
@@ -252,6 +260,8 @@ Deploy Standup (preprod):
     IMAGE_TAG: $RELEASE_VERSION
   environment:
     name: $PREPROD_ENVIRONMENT_NAME-$CLUSTER_NAME
+  before_script:
+    - export HELM_RELEASE_NAME=$APP_NAME-$PREPROD_ENVIRONMENT_NAME
   only:
     - /^v.*/
 
@@ -324,16 +334,17 @@ Make a new release to deploy to preprod environment :
 
 Deploy Standup (prod) :
   stage: "Deploy Standup to prod"
-  extends: .deploy-standup-k8s-prod
+  <<: *deploy_stage
   variables:
     <<: *deploy_stage_variables
-    PORT: $FRONT_PORT
     NAMESPACE: $PROD_ENVIRONMENT_NAME
     INGRESS_ENVIRONMENT_PREFIX: ''
     LETSENCRYPT_ISSUER: letsencrypt-prod
     IMAGE_TAG: $RELEASE_VERSION
   environment:
     name: $PROD_ENVIRONMENT_NAME
+  before_script:
+    - export HELM_RELEASE_NAME=$APP_NAME-$PROD_ENVIRONMENT_NAME
   when: manual
   only:
     - /^v.*/

@@ -5,7 +5,7 @@
 replicaCount: 1
 hashBranch: ''
 image:
-  repository: ${APP_REGISTRY}
+  repository: ${CI_REGISTRY_IMAGE}
   tag: ${IMAGE_TAG}
   pullPolicy: IfNotPresent
 
