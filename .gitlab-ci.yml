@@ -42,17 +42,17 @@ variables:
   stage: "Register Docker Image"
   image: docker:18
   services:
-  - name: docker:18-dind
+    - name: docker:18-dind
   before_script:
-  - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_JOB_TOKEN}
+    - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_JOB_TOKEN}
 
 .test_docker_image: &test_docker_image_stage
   stage: "Test Docker Image"
   image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/curl:${INFRA_CURL_VERSION}
   services:
-  - name: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
+    - name: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
   script:
-  - curl -v http://localhost:${FRONT_PORT}
+    - curl -v http://localhost:${FRONT_PORT}
 
 .deploy_stage: &deploy_stage
   image:
@@ -215,6 +215,7 @@ Deploy Standup (feature):
     IMAGE_TAG: ${CI_COMMIT_SHA}
   environment:
     name: ${FEATURE_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+    url: https://${INGRESS_ENVIRONMENT_PREFIX}${APP_NAME}.${DOMAIN_NAME}
   before_script:
     - HASH_BRANCH_NAME=$(printf "${CI_COMMIT_REF_NAME}" | sha1sum | cut -c1-5)
     - export INGRESS_ENVIRONMENT_PREFIX=${HASH_BRANCH_NAME}. # "." at the end of line is needed to deploy into hors prod environment
@@ -237,6 +238,7 @@ Deploy Standup (master):
     IMAGE_TAG: ${CI_COMMIT_SHA}
   environment:
     name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+    url: https://${MASTER_ENVIRONMENT_NAME}.${APP_NAME}.${DOMAIN_NAME}
   before_script:
     - export HELM_RELEASE_NAME=${APP_NAME}-${MASTER_ENVIRONMENT_NAME}
   only:
@@ -254,6 +256,7 @@ Deploy Standup (preprod):
     IMAGE_TAG: ${RELEASE_VERSION}
   environment:
     name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+    url: https://${PREPROD_ENVIRONMENT_NAME}.${APP_NAME}.${DOMAIN_NAME}
   before_script:
     - export HELM_RELEASE_NAME=${APP_NAME}-${PREPROD_ENVIRONMENT_NAME}
   only:
@@ -313,10 +316,10 @@ Make a new release to deploy to preprod environment :
   script:
     - git clone git@github.com:SocialGouv/standup.git
     - cd standup
-    - git checkout boni-ci
-    - git pull origin boni-ci
+    - git checkout master
+    - git pull origin master
     - git tag ${RELEASE_VERSION}
-    - git push origin boni-ci ${RELEASE_VERSION}
+    - git push origin master ${RELEASE_VERSION}
   when: manual
   only:
     - master
@@ -337,6 +340,7 @@ Deploy Standup (prod) :
     IMAGE_TAG: ${RELEASE_VERSION}
   environment:
     name: ${PROD_ENVIRONMENT_NAME}
+    url: https://${APP_NAME}.${DOMAIN_NAME}
   before_script:
     - export HELM_RELEASE_NAME=${APP_NAME}-${PROD_ENVIRONMENT_NAME}
   when: manual
