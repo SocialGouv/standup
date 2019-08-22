@@ -304,22 +304,13 @@ Send deployment url to Github (preprod):
 
 Make a new release to deploy to preprod environment :
   stage: "Make a new release"
-  image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-tag-release:${INFRA_GIT_TAG_RELEASE_VERSION}
-  before_script:
-    - eval $(ssh-agent -s)
-    - echo "$GIT_SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-    - git config --global user.email "LD-DSI-MITECH@sg.social.gouv.fr"
-    - git config --global user.name "Botops Incubateur"
+  image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/curl:${INFRA_CURL_VERSION}
   script:
-    - git clone git@github.com:SocialGouv/standup.git
-    - cd standup
-    - git checkout master
-    - git pull origin master
-    - git tag ${RELEASE_VERSION}
-    - git push origin master ${RELEASE_VERSION}
+  - >-
+    curl --verbose POST
+    https://${GITHUB_TOKEN}@api.github.com/repos/SocialGouv/standup/git/refs
+    --header 'Content-Type:application/json'
+    --data '{"ref": "refs/tags/'${RELEASE_VERSION}'", "sha": "'${CI_COMMIT_SHA}'"}'
   when: manual
   only:
     - master
