@@ -24,7 +24,7 @@ variables:
 
 .get_github_id_stage: &get_github_id_stage
   image:
-    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/git-deploy:$INFRA_GIT_DEPLOY_VERSION
+    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
   before_script:
     - envsubst < /scripts/get-deploy-id.sh > /scripts/get-github-deploy-id.sh
   script:
@@ -34,15 +34,31 @@ variables:
     - github_deploy_id
 
 .node_stage_template: &node_stage
-  image: node:$NODE_VERSION
+  image: node:${NODE_VERSION}
   before_script:
     - yarn --frozen-lockfile
 
+.register_docker_image: &register_docker_image
+  stage: "Register Docker Image"
+  image: docker:18
+  services:
+  - name: docker:18-dind
+  before_script:
+  - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_JOB_TOKEN}
+
+.test_docker_image: &test_docker_image_stage
+  stage: "Test Docker Image"
+  image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/curl:${INFRA_CURL_VERSION}
+  services:
+  - name: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
+  script:
+  - curl -v http://localhost:${FRONT_PORT}
+
 .deploy_stage: &deploy_stage
   image:
-    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/helm:$INFRA_HELM_VERSION
+    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/helm:${INFRA_HELM_VERSION}
   variables: &deploy_stage_variables
-    PORT: $FRONT_PORT
+    PORT: ${FRONT_PORT}
   script:
     - helm init --client-only
     - helm repo add mas-incubateur https://socialgouv.github.io/helm-charts/
@@ -53,7 +69,7 @@ variables:
 .send_url_to_github_stage: &send_url_to_github_stage
   stage: "Send Url to GitHub"
   image:
-    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/git-deploy:$INFRA_GIT_DEPLOY_VERSION
+    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
   script:
     - export DEPLOY_ID=$(cat github_deploy_id)
     - envsubst < /scripts/send-url.sh > /scripts/send-url-to-github.sh
@@ -82,7 +98,7 @@ Get Github Id (feature):
   <<: *get_github_id_stage
   stage: "Prepare"
   environment:
-    name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${FEATURE_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   except:
     - master
     - /^v.*/
@@ -91,7 +107,7 @@ Get Github Id (master):
   <<: *get_github_id_stage
   stage: "Prepare"
   environment:
-    name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   only:
     - master
 
@@ -99,7 +115,7 @@ Get Github Id (preprod):
   <<: *get_github_id_stage
   stage: "Prepare"
   environment:
-    name: $PREPROD_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   only:
     - /^v.*/
 
@@ -142,38 +158,28 @@ Lint:
 
 
 Register Docker Image Tagged with Commit SHA:
-  stage: "Register Docker Image"
-  image: docker:18
-  services:
-    - name: docker:18-dind
-  before_script:
-    - docker login $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
+  <<: *register_docker_image
   script:
-    - docker pull  $CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA || true
+    - docker pull  ${CI_REGISTRY_IMAGE}:${CI_COMMIT_BEFORE_SHA} || true
     - >-
       docker build
-      --build-arg NGINX_VERSION=$NGINX_VERSION
-      --build-arg EXPOSED_PORT=$FRONT_PORT
-      --cache-from "$CI_REGISTRY_IMAGE:$CI_COMMIT_BEFORE_SHA"
-      -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
+      --build-arg NGINX_VERSION=${NGINX_VERSION}
+      --build-arg EXPOSED_PORT=${FRONT_PORT}
+      --cache-from "${CI_REGISTRY_IMAGE}:${CI_COMMIT_BEFORE_SHA}"
+      -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" .
+    - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
   except:
     - /^v.*/
 
 Register Docker image tagged with release version:
-  stage: "Register Docker Image"
-  image: docker:18
-  services:
-    - name: docker:18-dind
-  before_script:
-    - docker login $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
+  <<: *register_docker_image
   script:
     - >-
       docker build
-      --build-arg NGINX_VERSION=$NGINX_VERSION
-      --build-arg EXPOSED_PORT=$FRONT_PORT
-      -t  "$CI_REGISTRY_IMAGE:$RELEASE_VERSION" .
-    - docker push "$CI_REGISTRY_IMAGE:$RELEASE_VERSION"
+      --build-arg NGINX_VERSION=${NGINX_VERSION}
+      --build-arg EXPOSED_PORT=${FRONT_PORT}
+      -t  "${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}" .
+    - docker push "${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}"
   only:
     - /^v.*/
 
@@ -184,24 +190,12 @@ Register Docker image tagged with release version:
 
 
 Test Docker image:
-  stage: "Test Docker Image"
-  image: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/curl:$INFRA_CURL_VERSION
-  services:
-    - name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-  script:
-    - apt update && apt install -y curl
-    - curl -v http://localhost:$FRONT_PORT
+  <<: *test_docker_image_stage
   except:
     - /^v.*/
 
 Test Docker image tagged with release version:
-  stage: "Test Docker Image"
-  image: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/curl:$INFRA_CURL_VERSION
-  services:
-    - name: $CI_REGISTRY_IMAGE:$RELEASE_VERSION
-  script:
-    - apt update && apt install -y curl
-    - curl -v http://localhost:$FRONT_PORT
+  <<: *test_docker_image_stage
   only:
     - /^v.*/
 
@@ -215,17 +209,17 @@ Deploy Standup (feature):
   <<: *deploy_stage
   variables:
     <<: *deploy_stage_variables
-    PORT: $FRONT_PORT
-    NAMESPACE: $FEATURE_ENVIRONMENT_NAME
+    PORT: ${FRONT_PORT}
+    NAMESPACE: ${FEATURE_ENVIRONMENT_NAME}
     LETSENCRYPT_ISSUER: letsencrypt-staging
-    IMAGE_TAG: $CI_COMMIT_SHA
+    IMAGE_TAG: ${CI_COMMIT_SHA}
   environment:
-    name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${FEATURE_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   before_script:
-    - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
-    - export INGRESS_ENVIRONMENT_PREFIX=$HASH_BRANCH_NAME.
-    - export HELM_RELEASE_NAME=$APP_NAME-$HASH_BRANCH_NAME-$FEATURE_ENVIRONMENT_NAME
-    - export HASH_BRANCH_NAME=-$HASH_BRANCH_NAME
+    - HASH_BRANCH_NAME=$(printf "${CI_COMMIT_REF_NAME}" | sha1sum | cut -c1-5)
+    - export INGRESS_ENVIRONMENT_PREFIX=${HASH_BRANCH_NAME}. # "." at the end of line is needed to deploy into hors prod environment
+    - export HELM_RELEASE_NAME=${APP_NAME}-${HASH_BRANCH_NAME}-${FEATURE_ENVIRONMENT_NAME}
+    - export HASH_BRANCH_NAME=-${HASH_BRANCH_NAME}
   except:
     - master
     - /^v.*/
@@ -235,16 +229,16 @@ Deploy Standup (master):
   <<: *deploy_stage
   variables:
     <<: *deploy_stage_variables
-    PORT: $FRONT_PORT
-    NAMESPACE: $MASTER_ENVIRONMENT_NAME
+    PORT: ${FRONT_PORT}
+    NAMESPACE: ${MASTER_ENVIRONMENT_NAME}
     HASH_BRANCH_NAME: ''
-    INGRESS_ENVIRONMENT_PREFIX: $MASTER_ENVIRONMENT_NAME.
+    INGRESS_ENVIRONMENT_PREFIX: ${MASTER_ENVIRONMENT_NAME}. # "." at the end of line is needed to deploy into hors prod environment
     LETSENCRYPT_ISSUER: letsencrypt-prod
-    IMAGE_TAG: $CI_COMMIT_SHA
+    IMAGE_TAG: ${CI_COMMIT_SHA}
   environment:
-    name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   before_script:
-    - export HELM_RELEASE_NAME=$APP_NAME-$MASTER_ENVIRONMENT_NAME
+    - export HELM_RELEASE_NAME=${APP_NAME}-${MASTER_ENVIRONMENT_NAME}
   only:
     - master
 
@@ -253,15 +247,15 @@ Deploy Standup (preprod):
   <<: *deploy_stage
   variables:
     <<: *deploy_stage_variables
-    NAMESPACE: $PREPROD_ENVIRONMENT_NAME
+    NAMESPACE: ${PREPROD_ENVIRONMENT_NAME}
     HASH_BRANCH_NAME: ''
-    INGRESS_ENVIRONMENT_PREFIX: $PREPROD_ENVIRONMENT_NAME.
+    INGRESS_ENVIRONMENT_PREFIX: ${PREPROD_ENVIRONMENT_NAME}. # "." at the end of line is needed to deploy into hors prod environment
     LETSENCRYPT_ISSUER: letsencrypt-prod
-    IMAGE_TAG: $RELEASE_VERSION
+    IMAGE_TAG: ${RELEASE_VERSION}
   environment:
-    name: $PREPROD_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   before_script:
-    - export HELM_RELEASE_NAME=$APP_NAME-$PREPROD_ENVIRONMENT_NAME
+    - export HELM_RELEASE_NAME=${APP_NAME}-${PREPROD_ENVIRONMENT_NAME}
   only:
     - /^v.*/
 
@@ -273,11 +267,11 @@ Deploy Standup (preprod):
 Send deployment url to Github (feature):
   <<: *send_url_to_github_stage
   before_script:
-    - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
-    - export INGRESS_ENVIRONMENT_PREFIX=$HASH_BRANCH_NAME.
+    - HASH_BRANCH_NAME=$(printf "${CI_COMMIT_REF_NAME}" | sha1sum | cut -c1-5)
+    - export INGRESS_ENVIRONMENT_PREFIX=${HASH_BRANCH_NAME}.
     - export URL=https://${INGRESS_ENVIRONMENT_PREFIX}standup.${DOMAIN_NAME}/
   environment:
-    name: $FEATURE_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${FEATURE_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   except:
     - master
     - /^v.*/
@@ -285,18 +279,18 @@ Send deployment url to Github (feature):
 Send deployment url to Github (master):
   <<: *send_url_to_github_stage
   variables:
-    URL: https://$MASTER_ENVIRONMENT_NAME.standup.${DOMAIN_NAME}/
+    URL: https://${MASTER_ENVIRONMENT_NAME}.standup.${DOMAIN_NAME}/
   environment:
-    name: $MASTER_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   only:
     - master
 
 Send deployment url to Github (preprod):
   <<: *send_url_to_github_stage
   variables:
-    URL: https://$PREPROD_ENVIRONMENT_NAME.standup.${DOMAIN_NAME}/
+    URL: https://${PREPROD_ENVIRONMENT_NAME}.standup.${DOMAIN_NAME}/
   environment:
-    name: $PREPROD_ENVIRONMENT_NAME-$CLUSTER_NAME
+    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
   only:
     - /^v.*/
 
@@ -307,7 +301,7 @@ Send deployment url to Github (preprod):
 
 Make a new release to deploy to preprod environment :
   stage: "Make a new release"
-  image: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/git-tag-release:$INFRA_GIT_TAG_RELEASE_VERSION
+  image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-tag-release:${INFRA_GIT_TAG_RELEASE_VERSION}
   before_script:
     - eval $(ssh-agent -s)
     - echo "$GIT_SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
@@ -321,8 +315,8 @@ Make a new release to deploy to preprod environment :
     - cd standup
     - git checkout boni-ci
     - git pull origin boni-ci
-    - git tag $RELEASE_VERSION
-    - git push origin boni-ci $RELEASE_VERSION
+    - git tag ${RELEASE_VERSION}
+    - git push origin boni-ci ${RELEASE_VERSION}
   when: manual
   only:
     - master
@@ -337,14 +331,14 @@ Deploy Standup (prod) :
   <<: *deploy_stage
   variables:
     <<: *deploy_stage_variables
-    NAMESPACE: $PROD_ENVIRONMENT_NAME
+    NAMESPACE: ${PROD_ENVIRONMENT_NAME}
     INGRESS_ENVIRONMENT_PREFIX: ''
     LETSENCRYPT_ISSUER: letsencrypt-prod
-    IMAGE_TAG: $RELEASE_VERSION
+    IMAGE_TAG: ${RELEASE_VERSION}
   environment:
-    name: $PROD_ENVIRONMENT_NAME
+    name: ${PROD_ENVIRONMENT_NAME}
   before_script:
-    - export HELM_RELEASE_NAME=$APP_NAME-$PROD_ENVIRONMENT_NAME
+    - export HELM_RELEASE_NAME=${APP_NAME}-${PROD_ENVIRONMENT_NAME}
   when: manual
   only:
     - /^v.*/
