@@ -1,4 +1,6 @@
 .base_node_stage:
   image: node:10
   before_script:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - export PATH="$HOME/.yarn/bin:$PATH"
     - yarn --frozen-lockfile
