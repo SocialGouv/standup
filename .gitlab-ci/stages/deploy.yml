@@ -1,5 +1,19 @@
 #
 
+.deploy_stage: &deploy_stage
+  image:
+    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/helm:${INFRA_HELM_VERSION}
+  variables: &deploy_stage_variables
+    PORT: ${FRONT_PORT}
+  script:
+    - helm init --client-only
+    - helm repo add mas-incubateur https://socialgouv.github.io/helm-charts/
+    - envsubst < .gitlab-ci/values.yaml > .gitlab-ci/values-${APP_NAME}.yaml
+    - helm upgrade --install --wait --namespace standup-${NAMESPACE} --values=.gitlab-ci/values-${APP_NAME}.yaml ${HELM_RELEASE_NAME} mas-incubateur/webapp
+  allow_failure: false
+
+#
+
 Deploy Standup (feature):
   stage: "Deploy Standup"
   <<: *deploy_stage
