@@ -10,13 +10,13 @@
 
 Test:
   <<: *quality_stage
-  <<: *node_stage
+  extends: .base_node_stage
   script:
     - yarn test
 
 Lint:
   <<: *quality_stage
-  <<: *node_stage
+  extends: .base_node_stage
   script:
     - yarn lint
 

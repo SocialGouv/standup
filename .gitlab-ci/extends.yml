@@ -1,6 +1,5 @@
-
-.node_stage_template: &node_stage
-  image: node:${NODE_VERSION}
+.base_node_stage:
+  image: node:10
   before_script:
     - yarn --frozen-lockfile
 

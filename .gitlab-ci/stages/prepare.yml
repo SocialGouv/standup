@@ -8,7 +8,7 @@
 
 Build Assets:
   <<: *prepare_stage
-  <<: *node_stage
+  extends: .base_node_stage
   script:
     - yarn build
   cache:
