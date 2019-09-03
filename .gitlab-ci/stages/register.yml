@@ -1,0 +1,27 @@
+#
+
+Register Docker Image Tagged with Commit SHA:
+  <<: *register_docker_image
+  script:
+    - docker pull  ${CI_REGISTRY_IMAGE}:${CI_COMMIT_BEFORE_SHA} || true
+    - >-
+      docker build
+      --build-arg NGINX_VERSION=${NGINX_VERSION}
+      --build-arg EXPOSED_PORT=${FRONT_PORT}
+      --cache-from "${CI_REGISTRY_IMAGE}:${CI_COMMIT_BEFORE_SHA}"
+      -t "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" .
+    - docker push "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+  except:
+    - /^v.*/
+
+Register Docker image tagged with release version:
+  <<: *register_docker_image
+  script:
+    - >-
+      docker build
+      --build-arg NGINX_VERSION=${NGINX_VERSION}
+      --build-arg EXPOSED_PORT=${FRONT_PORT}
+      -t  "${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}" .
+    - docker push "${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}"
+  only:
+    - /^v.*/

@@ -1,0 +1,21 @@
+#
+
+.prepare_stage: &prepare_stage
+  stage: "Prepare"
+  dependencies: []
+
+#
+
+Build Assets:
+  <<: *prepare_stage
+  <<: *node_stage
+  script:
+    - yarn build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+  artifacts:
+    expire_in: "1 day"
+    paths:
+      - build

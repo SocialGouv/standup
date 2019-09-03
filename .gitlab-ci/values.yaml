@@ -18,8 +18,8 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: "azure/application-gateway"
   hosts:
-  - ${INGRESS_ENVIRONMENT_PREFIX}${APP_NAME}.${DOMAIN_NAME}
-  tls:
-  - secretName: ${APP_NAME}-crt-secret${HASH_BRANCH_NAME}
-    hosts:
     - ${INGRESS_ENVIRONMENT_PREFIX}${APP_NAME}.${DOMAIN_NAME}
+  tls:
+    - secretName: ${APP_NAME}-crt-secret${HASH_BRANCH_NAME}
+      hosts:
+        - ${INGRESS_ENVIRONMENT_PREFIX}${APP_NAME}.${DOMAIN_NAME}

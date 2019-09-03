@@ -1,0 +1,57 @@
+#
+
+Get Github Id (feature):
+  <<: *get_github_id_stage
+  stage: "Prepare"
+  environment:
+    name: ${FEATURE_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+  except:
+    - master
+    - /^v.*/
+
+Get Github Id (master):
+  <<: *get_github_id_stage
+  stage: "Prepare"
+  environment:
+    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+  only:
+    - master
+
+Get Github Id (preprod):
+  <<: *get_github_id_stage
+  stage: "Prepare"
+  environment:
+    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+  only:
+    - /^v.*/
+
+
+Send deployment url to Github (feature):
+  <<: *send_url_to_github_stage
+  before_script:
+    - HASH_BRANCH_NAME=$(printf "${CI_COMMIT_REF_NAME}" | sha1sum | cut -c1-5)
+    - export INGRESS_ENVIRONMENT_PREFIX=${HASH_BRANCH_NAME}.
+    - export URL=https://${INGRESS_ENVIRONMENT_PREFIX}standup.${DOMAIN_NAME}/
+  environment:
+    name: ${FEATURE_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+  except:
+    - master
+    - /^v.*/
+
+Send deployment url to Github (master):
+  <<: *send_url_to_github_stage
+  variables:
+    URL: https://${MASTER_ENVIRONMENT_NAME}.standup.${DOMAIN_NAME}/
+  environment:
+    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+  only:
+    - master
+
+Send deployment url to Github (preprod):
+  <<: *send_url_to_github_stage
+  variables:
+    URL: https://${PREPROD_ENVIRONMENT_NAME}.standup.${DOMAIN_NAME}/
+  environment:
+    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
+  only:
+    - /^v.*/

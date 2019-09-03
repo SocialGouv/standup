@@ -1,0 +1,33 @@
+#
+
+.quality_stage: &quality_stage
+  stage: "Code Quality"
+  dependencies:
+    - Build Assets
+
+#
+
+
+Test:
+  <<: *quality_stage
+  <<: *node_stage
+  script:
+    - yarn test
+
+Lint:
+  <<: *quality_stage
+  <<: *node_stage
+  script:
+    - yarn lint
+
+#
+
+Test Docker image:
+  <<: *test_docker_image_stage
+  except:
+    - /^v.*/
+
+Test Docker image tagged with release version:
+  <<: *test_docker_image_stage
+  only:
+    - /^v.*/

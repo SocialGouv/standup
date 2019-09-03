@@ -1,0 +1,59 @@
+
+.node_stage_template: &node_stage
+  image: node:${NODE_VERSION}
+  before_script:
+    - yarn --frozen-lockfile
+
+
+.get_github_id_stage: &get_github_id_stage
+  image:
+    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
+  before_script:
+    - envsubst < /scripts/get-deploy-id.sh > /scripts/get-github-deploy-id.sh
+  script:
+    - sh /scripts/get-github-deploy-id.sh
+  artifacts:
+    paths:
+    - github_deploy_id
+
+.node_stage_template: &node_stage
+  image: node:${NODE_VERSION}
+  before_script:
+    - yarn --frozen-lockfile
+
+.register_docker_image: &register_docker_image
+  stage: "Register Docker Image"
+  image: docker:18
+  services:
+    - name: docker:18-dind
+  before_script:
+    - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_JOB_TOKEN}
+
+.test_docker_image: &test_docker_image_stage
+  stage: "Test Docker Image"
+  image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/curl:${INFRA_CURL_VERSION}
+  services:
+    - name: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
+  script:
+    - curl -v http://localhost:${FRONT_PORT}
+
+.deploy_stage: &deploy_stage
+  image:
+    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/helm:${INFRA_HELM_VERSION}
+  variables: &deploy_stage_variables
+    PORT: ${FRONT_PORT}
+  script:
+    - helm init --client-only
+    - helm repo add mas-incubateur https://socialgouv.github.io/helm-charts/
+    - envsubst < .gitlab-ci/values.yaml > .gitlab-ci/values-${APP_NAME}.yaml
+    - helm upgrade --install --wait --namespace standup-${NAMESPACE} --values=.gitlab-ci/values-${APP_NAME}.yaml ${HELM_RELEASE_NAME} mas-incubateur/webapp
+  allow_failure: false
+
+.send_url_to_github_stage: &send_url_to_github_stage
+  stage: "Send Url to GitHub"
+  image:
+    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
+  script:
+    - export DEPLOY_ID=$(cat github_deploy_id)
+    - envsubst < /scripts/send-url.sh > /scripts/send-url-to-github.sh
+    - sh /scripts/send-url-to-github.sh
