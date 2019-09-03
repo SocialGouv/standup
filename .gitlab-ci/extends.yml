@@ -15,14 +15,6 @@
     paths:
     - github_deploy_id
 
-.register_docker_image: &register_docker_image
-  stage: "Register Docker Image"
-  image: docker:18
-  services:
-    - name: docker:18-dind
-  before_script:
-    - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_JOB_TOKEN}
-
 
 .deploy_stage: &deploy_stage
   image:

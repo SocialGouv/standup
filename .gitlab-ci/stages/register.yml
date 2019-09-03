@@ -1,5 +1,22 @@
 #
 
+.register_stage: &register_stage
+  stage: "Register Docker Image"
+  dependencies:
+    - Build Assets
+
+
+.register_docker_image: &register_docker_image
+  <<: *register_stage
+  image: docker:18
+  services:
+    - name: docker:18-dind
+  before_script:
+    - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_JOB_TOKEN}
+
+
+#
+
 Register Docker Image Tagged with Commit SHA:
   <<: *register_docker_image
   script:
