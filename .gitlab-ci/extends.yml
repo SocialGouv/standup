@@ -15,11 +15,6 @@
     paths:
     - github_deploy_id
 
-.node_stage_template: &node_stage
-  image: node:${NODE_VERSION}
-  before_script:
-    - yarn --frozen-lockfile
-
 .register_docker_image: &register_docker_image
   stage: "Register Docker Image"
   image: docker:18
@@ -28,13 +23,6 @@
   before_script:
     - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_JOB_TOKEN}
 
-.test_docker_image: &test_docker_image_stage
-  stage: "Test Docker Image"
-  image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/curl:${INFRA_CURL_VERSION}
-  services:
-    - name: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
-  script:
-    - curl -v http://localhost:${FRONT_PORT}
 
 .deploy_stage: &deploy_stage
   image:
