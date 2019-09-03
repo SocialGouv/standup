@@ -2,7 +2,7 @@
   "name": "@socialgouv/standup",
   "version": "1.0.0",
   "keywords": [],
-  "homepage": "https://socialgouv.github.io/standup/",
+  "homepage": "https://standup.fabrique.social.gouv.fr",
   "main": "src/index.js",
   "dependencies": {
     "react": "16.9.0",
