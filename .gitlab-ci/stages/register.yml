@@ -2,7 +2,8 @@
 
 .register_stage: &register_stage
   stage: "Register"
-  dependencies: []
+  dependencies:
+    - Build Assets
 
 #
 
