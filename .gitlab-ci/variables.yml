@@ -4,7 +4,7 @@ variables:
   DOCKER_HOST: tcp://localhost:2375
   GIT_STRATEGY: fetch
 
-  DOCKER_VERSION: 19
+  DOCKER_VERSION: 18
   IMAGE_INFRA_BASE_NAME: "infra/images-docker"
   NGINX_VERSION: "1.17"
   INFRA_GIT_DEPLOY_VERSION: "1.0"
