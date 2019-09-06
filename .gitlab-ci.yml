@@ -22,3 +22,4 @@ stages:
   - "Send Url to GitHub"
   - "Make a new release"
   - "Deploy Standup to prod"
+  - "Notify Finished Deployment"

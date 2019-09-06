@@ -1,82 +1,33 @@
 #
 
-.get_github_id_stage: &get_github_id_stage
-  image:
-    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
+.notify_stage: &notify_stage
+  image: ${CI_REGISTRY}/socialgouv/docker/git-deploy:0.2.3
+  dependencies: []
   before_script:
-    - envsubst < /scripts/get-deploy-id.sh > /scripts/get-github-deploy-id.sh
+    - source .gitlab-ci/env.sh
+
+#
+
+Notify Starting Deployment:
+  <<: *notify_stage
+  stage: "Deploy Standup"
   script:
-    - sh /scripts/get-github-deploy-id.sh
+    - create-deployment
+    - extract-deploy-id
   artifacts:
     paths:
-      - github_deploy_id
+      - DEPLOY_ID
 
 #
 
-Get Github Id (feature):
-  <<: *get_github_id_stage
-  stage: "Prepare"
-  environment:
-    name: ${FEATURE_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-  except:
-    - master
-    - /^v.*/
-
-Get Github Id (master):
-  <<: *get_github_id_stage
-  stage: "Prepare"
-  environment:
-    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-  only:
-    - master
-
-Get Github Id (preprod):
-  <<: *get_github_id_stage
-  stage: "Prepare"
-  environment:
-    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-  only:
-    - /^v.*/
-
-#
-
-.send_url_to_github_stage: &send_url_to_github_stage
-  stage: "Send Url to GitHub"
-  image:
-    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
+Notify Fail:
+  <<: *notify_stage
+  stage: "Notify Finished Deployment"
+  allow_failure: true
+  when: on_failure
+  dependencies:
+    - Notify Starting Deployment
   script:
-    - export DEPLOY_ID=$(cat github_deploy_id)
-    - envsubst < /scripts/send-url.sh > /scripts/send-url-to-github.sh
-    - sh /scripts/send-url-to-github.sh
+    - echo "Notify Failure to GitHub deployment id '$(cat $DEPLOY_ID)'"
+    - update-deployment $(cat DEPLOY_ID) "${FRONTEND_HOST}" failure
 
-#
-
-Send deployment url to Github (feature):
-  <<: *send_url_to_github_stage
-  before_script:
-    - HASH_BRANCH_NAME=$(printf "${CI_COMMIT_REF_NAME}" | sha1sum | cut -c1-5)
-    - export INGRESS_ENVIRONMENT_PREFIX=${HASH_BRANCH_NAME}.
-    - export URL=https://${INGRESS_ENVIRONMENT_PREFIX}standup.${DOMAIN_NAME}/
-  environment:
-    name: ${FEATURE_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-  except:
-    - master
-    - /^v.*/
-
-Send deployment url to Github (master):
-  <<: *send_url_to_github_stage
-  variables:
-    URL: https://${MASTER_ENVIRONMENT_NAME}.standup.${DOMAIN_NAME}/
-  environment:
-    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-  only:
-    - master
-
-Send deployment url to Github (preprod):
-  <<: *send_url_to_github_stage
-  variables:
-    URL: https://${PREPROD_ENVIRONMENT_NAME}.standup.${DOMAIN_NAME}/
-  environment:
-    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-  only:
-    - /^v.*/
