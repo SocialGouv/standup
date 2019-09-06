@@ -16,7 +16,7 @@ stages:
   - "Prepare"
   - "Build"
   - "Code Quality"
-  - "Register Docker Image"
+  - "Register"
   - "Test Docker Image"
   - "Deploy Standup"
   - "Send Url to GitHub"

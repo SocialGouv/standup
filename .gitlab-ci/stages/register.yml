@@ -1,7 +1,7 @@
 #
 
 .register_stage: &register_stage
-  stage: "Prepare"
+  stage: "Register"
   dependencies: []
 
 #
