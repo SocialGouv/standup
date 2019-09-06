@@ -22,20 +22,12 @@ Lint:
 
 #
 
-.test_docker_image: &test_docker_image_stage
+Test Docker image:
   stage: "Test Docker Image"
+  except:
+    - tags
   image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/curl:${INFRA_CURL_VERSION}
   services:
     - name: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
   script:
-    - curl -v http://localhost:${FRONT_PORT}
-
-Test Docker image:
-  <<: *test_docker_image_stage
-  except:
-    - /^v.*/
-
-Test Docker image tagged with release version:
-  <<: *test_docker_image_stage
-  only:
-    - /^v.*/
+    - curl -v http://localhost:80
