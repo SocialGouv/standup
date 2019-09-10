@@ -1,0 +1,11 @@
+
+image:
+  repository: socialgouv/standup
+  tag: local
+  pullPolicy: Never
+
+ingress:
+  annotations: []
+  tls: false
+  hosts:
+    - standup.192.168.99.100.nip.io
