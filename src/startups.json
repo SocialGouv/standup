@@ -65,6 +65,11 @@
     "description": "Calculer et transmettre l'index égalité professionnelle hommes - femmes d'une entreprise<br/><br/><img src='images/egapro.png'/>"
   },
   {
+    "titre": "RAMSES",
+    "timeout": 60,
+    "description": "Réguler et Accompagner la Masse Salariale et l’Emploi du Secteur social et médico-social."
+  },
+  {
     "titre": "Sujets transverses",
     "timeout": 300,
     "description": "🎉<br>Petit déjeuner de l’incubateur - Jeudi 12 Septembre (09:30 à 10:00) - Démo EgaPro<br>Mardi 1 Octobre 14-15h Atelier KPI <br>Prochain seminaire (VIIIe) le Vendredi 25 Septembre 2019 15h @ Guinguette La Javelle"
