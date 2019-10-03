@@ -5,16 +5,16 @@
     "main.js.map": "/standup/static/js/main.feecde53.chunk.js.map",
     "runtime-main.js": "/standup/static/js/runtime-main.fbf6d1ed.js",
     "runtime-main.js.map": "/standup/static/js/runtime-main.fbf6d1ed.js.map",
-    "static/js/2.3f67e3f1.chunk.js": "/standup/static/js/2.3f67e3f1.chunk.js",
-    "static/js/2.3f67e3f1.chunk.js.map": "/standup/static/js/2.3f67e3f1.chunk.js.map",
+    "static/js/2.09cb7900.chunk.js": "/standup/static/js/2.09cb7900.chunk.js",
+    "static/js/2.09cb7900.chunk.js.map": "/standup/static/js/2.09cb7900.chunk.js.map",
     "index.html": "/standup/index.html",
-    "precache-manifest.f577ff107c50e70a869b7efc48ec54c2.js": "/standup/precache-manifest.f577ff107c50e70a869b7efc48ec54c2.js",
+    "precache-manifest.02e28bd1e48385e7bfc4ebe73372099d.js": "/standup/precache-manifest.02e28bd1e48385e7bfc4ebe73372099d.js",
     "service-worker.js": "/standup/service-worker.js",
     "static/css/main.be73a2a2.chunk.css.map": "/standup/static/css/main.be73a2a2.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.fbf6d1ed.js",
-    "static/js/2.3f67e3f1.chunk.js",
+    "static/js/2.09cb7900.chunk.js",
     "static/css/main.be73a2a2.chunk.css",
     "static/js/main.feecde53.chunk.js"
   ]
