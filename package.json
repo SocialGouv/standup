@@ -12,7 +12,7 @@
     "@socialgouv/tslint-config-recommended": "^0.7.2",
     "@types/jest": "^24.0.18",
     "prettier": "^1.18.2",
-    "react-scripts": "3.1.2",
+    "react-scripts": "3.2.0",
     "tslint": "^5.20.0",
     "typescript": "^3.6.3"
   },
