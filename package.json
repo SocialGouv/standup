@@ -4,8 +4,8 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "react": "16.10.1",
-    "react-dom": "16.10.1",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
     "react-keyboard-event-handler": "1.5.1"
   },
   "devDependencies": {
