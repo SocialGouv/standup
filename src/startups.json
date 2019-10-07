@@ -22,27 +22,32 @@
   {
     "titre": "Work In France",
     "timeout": 60,
-    "description": "La plateforme de demande d'autorisation provisoire de travail pour les étudiants étrangers<br/><br/><img src='images/work-in-france.png'/>"
+    "image": "images/work-in-france.png",
+    "description": "La plateforme de demande d'autorisation provisoire de travail pour les étudiants étrangers"
   },
   {
     "titre": "e-MJPM",
     "timeout": 60,
+    "image": "images/emjpm.png",
     "description": "Trouver rapidement le bon professionnel pour les majeurs à protéger."
   },
   {
     "titre": "DomiFa",
     "timeout": 60,
+    "image": "images/domifa.png",
     "description": "Faciliter l'accès aux droits pour les personnes sans domicile stable, en simplifiant la gestion de la domiciliation"
   },
   {
     "titre": "Code du travail numérique",
+    "image": "images/cdtn.png",
     "timeout": 60,
-    "description": "Faciliter l'accès au droit du travail pour les employeur·e·s et les employé·e·s.<br/><br/><img src='images/cdtn.png'/>"
+    "description": "Faciliter l'accès au droit du travail pour les employeur·e·s et les employé·e·s."
   },
   {
     "titre": "Siao Data",
     "timeout": 60,
-    "description": "Comment l'analyse des données peut aider le 115 à mieux répondre aux demandes des personnes en détresse<br/><br/><img src='images/datalab.png'/>"
+    "image": "images/datalab.png",
+    "description": "Comment l'analyse des données peut aider le 115 à mieux répondre aux demandes des personnes en détresse"
   },
   {
     "titre": "Ops",
@@ -57,12 +62,14 @@
   {
     "titre": "Archifiltre",
     "timeout": 60,
+    "image": "images/archifiltre.jpg",
     "description": "Aider les archivistes et les producteurs de documents bureautiques à appréhender des arborescences complètes de fichiers pour les traiter"
   },
   {
     "titre": "EgaPro",
     "timeout": 60,
-    "description": "Calculer et transmettre l'index égalité professionnelle hommes - femmes d'une entreprise<br/><br/><img src='images/egapro.png'/>"
+    "image": "images/egapro.png",
+    "description": "Calculer et transmettre l'index égalité professionnelle hommes - femmes d'une entreprise"
   },
   {
     "titre": "RAMSES",
