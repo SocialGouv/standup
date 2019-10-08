@@ -51,6 +51,36 @@ const StandupIntro = ({ onClick }) => (
   </div>
 );
 
+const Slide = ({ titre, description, image, url, timeout, buttonText }) => (
+  <React.Fragment>
+    <h2 className="timed-slide__title">{titre}</h2>
+    <h3
+      className="timed-slide__subtitle"
+      dangerouslySetInnerHTML={{ __html: description }}
+    />
+    {url && (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          color: "#0091ff",
+          fontSize: "1.5em",
+          textDecoration: "underline"
+        }}
+        onClick={e => e.stopPropagation()}
+      >
+        slides
+      </a>
+    )}
+    {image && <img alt={titre} src={image} />}
+    <Timer
+      render={({ elapsed }) => <Counter seconds={elapsed} timeout={timeout} />}
+    />
+    {buttonText && <div className="next-slide">> {buttonText}</div>}
+  </React.Fragment>
+);
+
 class Standup extends React.Component {
   state = {
     index: -1
@@ -97,33 +127,7 @@ class Standup extends React.Component {
           handleKeys={["left", "right", "space"]}
           onKeyEvent={this.onKeyEvent}
         />
-
-        <h2 className="timed-slide__title">{startup.titre}</h2>
-        <h3
-          className="timed-slide__subtitle"
-          dangerouslySetInnerHTML={{ __html: startup.description }}
-        />
-        {startup.url && (
-          <a
-            href={startup.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: "#0091ff",
-              fontSize: "1.5em",
-              textDecoration: "underline"
-            }}
-            onClick={e => e.stopPropagation()}
-          >
-            slides
-          </a>
-        )}
-        <Timer
-          render={({ elapsed }) => (
-            <Counter seconds={elapsed} timeout={startup.timeout} />
-          )}
-        />
-        {nextStartup && <div className="next-slide">> {nextStartup.titre}</div>}
+        <Slide {...startup} buttonText={nextStartup && nextStartup.titre} />
       </div>
     );
   }
