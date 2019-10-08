@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
+import ReactImageAppear from "react-image-appear";
 
 import "./styles.css";
 import startups from "./startups.json";
@@ -73,7 +74,16 @@ const Slide = ({ titre, description, image, url, timeout, buttonText }) => (
         slides
       </a>
     )}
-    {image && <img alt={titre} src={image} />}
+    {image && (
+      <ReactImageAppear
+        key={image}
+        src={image}
+        alt={titre}
+        animation="fadeIn"
+        animationDuration="0.3s"
+        showLoader={false}
+      />
+    )}
     <Timer
       render={({ elapsed }) => <Counter seconds={elapsed} timeout={timeout} />}
     />
