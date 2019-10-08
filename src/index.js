@@ -73,7 +73,7 @@ const Slide = ({ titre, description, image, url, timeout, buttonText }) => (
         slides
       </a>
     )}
-    {image && <img src={image} />}
+    {image && <img alt={titre} src={image} />}
     <Timer
       render={({ elapsed }) => <Counter seconds={elapsed} timeout={timeout} />}
     />
