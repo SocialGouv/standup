@@ -19,20 +19,11 @@ variables:
   MASTER_ENVIRONMENT_NAME: "master"
   PREPROD_ENVIRONMENT_NAME: "prep"
   PROD_ENVIRONMENT_NAME: "prod"
-  HELM_CHART_VERSION: "v2.0.2"
+  HELM_CHART_VERSION: "v2.0.3"
 
 #
 
-.get_github_id_stage: &get_github_id_stage
-  image:
-    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
-  before_script:
-    - envsubst < /scripts/get-deploy-id.sh > /scripts/get-github-deploy-id.sh
-  script:
-    - sh /scripts/get-github-deploy-id.sh
-  artifacts:
-    paths:
-    - github_deploy_id
+
 
 .node_stage_template: &node_stage
   image: node:${NODE_VERSION}
@@ -94,6 +85,16 @@ stages:
 ###               PREPARE               ###
 ###########################################
 
+.get_github_id_stage: &get_github_id_stage
+  image:
+    name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
+  before_script:
+  - envsubst < /scripts/get-deploy-id.sh > /scripts/get-github-deploy-id.sh
+  script:
+  - sh /scripts/get-github-deploy-id.sh
+  artifacts:
+    paths:
+    - github_deploy_id
 
 Get Github Id (feature):
   <<: *get_github_id_stage
