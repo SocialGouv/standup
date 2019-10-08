@@ -19,6 +19,7 @@ variables:
   MASTER_ENVIRONMENT_NAME: "master"
   PREPROD_ENVIRONMENT_NAME: "prep"
   PROD_ENVIRONMENT_NAME: "prod"
+  HELM_CHART_VERSION: "v2.0.2"
 
 #
 
@@ -61,7 +62,7 @@ variables:
     PORT: ${FRONT_PORT}
   script:
     - helm init --client-only
-    - helm repo add mas-incubateur https://github.com/SocialGouv/helm-charts/releases/download/v2.0.1
+    - helm repo add mas-incubateur https://github.com/SocialGouv/helm-charts/releases/download/${HELM_CHART_VERSION}
     - envsubst < .gitlab-ci/values.yaml > .gitlab-ci/values-${APP_NAME}.yaml
     - helm upgrade --install --wait --namespace standup-${NAMESPACE} --values=.gitlab-ci/values-${APP_NAME}.yaml ${HELM_RELEASE_NAME} mas-incubateur/webapp
   allow_failure: false
