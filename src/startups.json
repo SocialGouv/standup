@@ -52,6 +52,7 @@
   {
     "titre": "Ops",
     "timeout": 60,
+    "image": "images/udd.png",
     "description": "Mettre à disposition une infrastructure DevOps pour réduire le time-to-market des développements et améliorer la qualité"
   },
   {
