@@ -57,6 +57,7 @@
   {
     "titre": "FCE",
     "timeout": 60,
+    "image": "images/fce.png",
     "description": "Un portail pour faciliter l’accès aux informations disponibles sur les entreprises et les échanges entre services"
   },
   {
