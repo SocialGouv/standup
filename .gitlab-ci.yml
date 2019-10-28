@@ -244,7 +244,7 @@ Deploy Standup (prod) :
     NAMESPACE: ${PROD_ENVIRONMENT_NAME}
     INGRESS_ENVIRONMENT_PREFIX: ''
     LETSENCRYPT_ISSUER: letsencrypt-prod
-    IMAGE_TAG: ${RELEASE_VERSION}
+    IMAGE_TAG: ${CI_COMMIT_SHA}
   environment:
     name: ${PROD_ENVIRONMENT_NAME}
     url: https://${APP_NAME}.${DOMAIN_NAME}
