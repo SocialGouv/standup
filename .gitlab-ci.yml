@@ -77,7 +77,6 @@ stages:
   - "Test Docker Image"
   - "Deploy Standup"
   - "Send Url to GitHub"
-  - "Make a new release"
   - "Deploy Standup to prod"
 
 
@@ -173,18 +172,6 @@ Register Docker Image Tagged with Commit SHA:
   except:
     - /^v.*/
 
-Register Docker image tagged with release version:
-  <<: *register_docker_image
-  script:
-    - >-
-      docker build
-      --build-arg NGINX_VERSION=${NGINX_VERSION}
-      --build-arg EXPOSED_PORT=${FRONT_PORT}
-      -t  "${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}" .
-    - docker push "${CI_REGISTRY_IMAGE}:${RELEASE_VERSION}"
-  only:
-    - /^v.*/
-
 
 ###########################################
 ###          TEST DOCKER IMAGE          ###
@@ -227,42 +214,6 @@ Deploy Standup (feature):
     - master
     - /^v.*/
 
-Deploy Standup (master):
-  stage: "Deploy Standup"
-  <<: *deploy_stage
-  variables:
-    <<: *deploy_stage_variables
-    PORT: ${FRONT_PORT}
-    NAMESPACE: ${MASTER_ENVIRONMENT_NAME}
-    HASH_BRANCH_NAME: ''
-    INGRESS_ENVIRONMENT_PREFIX: ${MASTER_ENVIRONMENT_NAME}. # "." at the end of line is needed to deploy into hors prod environment
-    LETSENCRYPT_ISSUER: letsencrypt-prod
-    IMAGE_TAG: ${CI_COMMIT_SHA}
-  environment:
-    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-    url: https://${MASTER_ENVIRONMENT_NAME}.${APP_NAME}.${DOMAIN_NAME}
-  before_script:
-    - export HELM_RELEASE_NAME=${APP_NAME}-${MASTER_ENVIRONMENT_NAME}
-  only:
-    - master
-
-Deploy Standup (preprod):
-  stage: "Deploy Standup"
-  <<: *deploy_stage
-  variables:
-    <<: *deploy_stage_variables
-    NAMESPACE: ${PREPROD_ENVIRONMENT_NAME}
-    HASH_BRANCH_NAME: ''
-    INGRESS_ENVIRONMENT_PREFIX: ${PREPROD_ENVIRONMENT_NAME}. # "." at the end of line is needed to deploy into hors prod environment
-    LETSENCRYPT_ISSUER: letsencrypt-prod
-    IMAGE_TAG: ${RELEASE_VERSION}
-  environment:
-    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-    url: https://${PREPROD_ENVIRONMENT_NAME}.${APP_NAME}.${DOMAIN_NAME}
-  before_script:
-    - export HELM_RELEASE_NAME=${APP_NAME}-${PREPROD_ENVIRONMENT_NAME}
-  only:
-    - /^v.*/
 
 ###########################################
 ###         SEND URL TO GITHUB          ###
@@ -281,43 +232,6 @@ Send deployment url to Github (feature):
     - master
     - /^v.*/
 
-Send deployment url to Github (master):
-  <<: *send_url_to_github_stage
-  variables:
-    URL: https://${MASTER_ENVIRONMENT_NAME}.standup.${DOMAIN_NAME}/
-  environment:
-    name: ${MASTER_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-  only:
-    - master
-
-Send deployment url to Github (preprod):
-  <<: *send_url_to_github_stage
-  variables:
-    URL: https://${PREPROD_ENVIRONMENT_NAME}.standup.${DOMAIN_NAME}/
-  environment:
-    name: ${PREPROD_ENVIRONMENT_NAME}-${CLUSTER_NAME}
-  only:
-    - /^v.*/
-
-
-###########################################
-###           RELEASE VERSION           ###
-###########################################
-
-Make a new release to deploy to preprod environment :
-  stage: "Make a new release"
-  image: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/curl:${INFRA_CURL_VERSION}
-  script:
-  - >-
-    curl --verbose POST
-    https://${GITHUB_TOKEN}@api.github.com/repos/SocialGouv/standup/git/refs
-    --header 'Content-Type:application/json'
-    --data '{"ref": "refs/tags/'${RELEASE_VERSION}'", "sha": "'${CI_COMMIT_SHA}'"}'
-  when: manual
-  only:
-    - master
-
-
 ###########################################
 ###            DEPLOY TO PROD           ###
 ###########################################
@@ -330,12 +244,11 @@ Deploy Standup (prod) :
     NAMESPACE: ${PROD_ENVIRONMENT_NAME}
     INGRESS_ENVIRONMENT_PREFIX: ''
     LETSENCRYPT_ISSUER: letsencrypt-prod
-    IMAGE_TAG: ${RELEASE_VERSION}
+    IMAGE_TAG: ${CI_COMMIT_SHA}
   environment:
     name: ${PROD_ENVIRONMENT_NAME}
     url: https://${APP_NAME}.${DOMAIN_NAME}
   before_script:
     - export HELM_RELEASE_NAME=${APP_NAME}-${PROD_ENVIRONMENT_NAME}
-  when: manual
   only:
-    - /^v.*/
+    - master
