@@ -1,94 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
-import ReactImageAppear from "react-image-appear";
+import { Jumbotron, Button } from "reactstrap";
+
+import startups from "./startups.yml";
+import Slide from "./components/Slide";
+import BottomBar from "./components/BottomBar";
 
 import "./styles.css";
-import startups from "./startups.json";
-
-import { formatSeconds } from "./formatSeconds";
-
-class Timer extends React.Component {
-  state = {
-    start: null
-  };
-  componentDidMount() {
-    this.setState({
-      start: new Date()
-    });
-    this.interval = setInterval(this.tick, 1000);
-  }
-  tick = () => {
-    this.forceUpdate();
-  };
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-  componentWillReceiveProps() {
-    this.setState({
-      start: new Date()
-    });
-  }
-  render() {
-    const elapsed =
-      (this.state.start &&
-        parseInt(
-          (new Date().getTime() - this.state.start.getTime()) / 1000,
-          10
-        )) ||
-      0;
-    return this.props.render({
-      elapsed
-    });
-  }
-}
 
 const StandupIntro = ({ onClick }) => (
-  <div>
-    <h1>STAND-UP</h1>
-    <button className="start-button" onClick={onClick}>
-      COMMENCER
-    </button>
+  <div className="text-center">
+    <h1
+      className="text-intro"
+      data-h1="Stand up"
+      style={{ marginTop: "30%", fontSize: "10em" }}
+    >
+      Stand up
+    </h1>
+    <h3 style={{ color: "#999" }}>standup.fabrique.social.gouv.fr</h3>
+    <BottomBar style={{}} buttonText="commencer" />
   </div>
-);
-
-const Slide = ({ titre, description, image, url, timeout, buttonText }) => (
-  <React.Fragment>
-    <h2 className="timed-slide__title">{titre}</h2>
-    <h3
-      className="timed-slide__subtitle"
-      dangerouslySetInnerHTML={{ __html: description }}
-    />
-    {url && (
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          color: "#0091ff",
-          fontSize: "1.5em",
-          textDecoration: "underline"
-        }}
-        onClick={e => e.stopPropagation()}
-      >
-        slides
-      </a>
-    )}
-    {image && (
-      <ReactImageAppear
-        key={image}
-        src={image}
-        alt={titre}
-        animation="fadeIn"
-        animationDuration="0.3s"
-        showLoader={false}
-      />
-    )}
-    <Timer
-      render={({ elapsed }) => <Counter seconds={elapsed} timeout={timeout} />}
-    />
-    {buttonText && <div className="next-slide">> {buttonText}</div>}
-  </React.Fragment>
 );
 
 class Standup extends React.Component {
@@ -107,10 +39,10 @@ class Standup extends React.Component {
     }
   };
   prev = () => {
-    const prevIndex = Math.max(0, this.state.index - 1);
+    const prevIndex = Math.max(-1, this.state.index - 1);
     if (prevIndex !== this.state.index) {
       this.setState(curState => ({
-        index: Math.max(0, curState.index - 1)
+        index: Math.max(-1, curState.index - 1)
       }));
     }
   };
@@ -124,11 +56,10 @@ class Standup extends React.Component {
     }
   };
   render() {
-    if (this.state.index === -1) {
-      return <StandupIntro onClick={this.next} />;
-    }
-    const startup = this.props.startups[this.state.index];
+    const startup =
+      this.state.index > -1 && this.props.startups[this.state.index];
     const nextStartup =
+      this.state.index > -1 &&
       this.state.index < this.props.startups.length - 1 &&
       this.props.startups[this.state.index + 1];
     return (
@@ -137,16 +68,15 @@ class Standup extends React.Component {
           handleKeys={["left", "right", "space"]}
           onKeyEvent={this.onKeyEvent}
         />
-        <Slide {...startup} buttonText={nextStartup && nextStartup.titre} />
+        {this.state.index === -1 ? (
+          <StandupIntro onClick={this.next} />
+        ) : (
+          <Slide {...startup} buttonText={nextStartup && nextStartup.titre} />
+        )}
       </div>
     );
   }
 }
-const Counter = ({ seconds, timeout = 4 }) => (
-  <div className={`elapsed-time ${(seconds > timeout && "ending-soon") || ""}`}>
-    {formatSeconds(seconds)}
-  </div>
-);
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<Standup startups={startups} />, rootElement);

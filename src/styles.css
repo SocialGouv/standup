@@ -1,108 +1,58 @@
-body {
-  margin: 0 auto;
+img {
+  max-width: 100%;
+}
+
+.image-appear {
+  max-width: 100%;
   text-align: center;
-  user-select: none;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-.start-button {
+.text-intro {
   font-size: 10vh;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  border: 1.5vh solid #000;
-  border-radius: 100vh;
-  font-weight: 700;
-  color: #000;
-  text-decoration: none;
-  position: fixed;
-  bottom: 15vh;
-  width: 80vh;
-  left: calc(50% - (80vh / 2));
-}
-
-h1 {
-  font-size: 15vh;
-  margin-top: 15vh;
+  font-weight: bold;
+  position: relative;
   padding: 0;
+  margin-bottom: 2vh;
 }
-
-h2 {
-  font-size: 11vh;
-  margin-top: 5vh;
-}
-
-h3 {
-  font-size: 7vh;
-  color: rgba(0, 0, 0, 0.8);
-}
-
-.container {
-  position: fixed;
+.text-intro:after {
+  content: attr(data-h1);
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 2vh;
-  cursor: pointer;
+  right: 0;
+  color: transparent;
+  /* webkit only for graceful degradation to IE */
+  background: -webkit-repeating-linear-gradient(
+    -45deg,
+    #71b7e6,
+    #69a6ce,
+    #b98acc,
+    #ee8176,
+    #b98acc,
+    #69a6ce,
+    #9b59b6
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400%;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
+  animation: animateTextBackground 10s ease-in-out infinite;
 }
 
-.elapsed-time.ending-soon {
-  background-color: #b00;
-}
-
-.elapsed-time {
-  left: 5vh;
-  width: 50vh;
-  font-size: 14vh;
-  text-align: center;
-  border-radius: 2vh;
-}
-
-.elapsed-time,
-.start-button:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-.elapsed-time,
-.next-slide {
-  position: fixed;
-  bottom: 5vh;
-  height: 17vh;
-  line-height: 17vh;
-}
-
-.next-slide {
-  color: #000;
-  right: 5vh;
-  width: calc(100% - (50vh + (2 * 10vh) + 10vh));
-  font-size: 5vh;
-  text-align: center;
-  padding-left: 3vh;
-  padding-right: 3vh;
-  border: 1vh solid #000;
-  border-radius: 2vh;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-h2.timed-slide__title {
-  margin: 1rem;
-  font-size: 7vh;
-}
-
-h3.timed-slide__subtitle {
-  margin: 2rem;
-  font-size: 3vh;
-}
-
-.container img {
-  height: 50vh;
-  border: 1px solid #efefef;
-  box-shadow: 0px 0px 10px 5px #efefef;
+@keyframes animateTextBackground {
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }

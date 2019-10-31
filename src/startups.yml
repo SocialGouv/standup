@@ -1,0 +1,95 @@
+- titre: Maraudes
+  timeout: 60
+  description: Le dossier social partagé des personnes à la rue
+
+- titre: MedLé
+  timeout: 60
+  description:
+    Observatoire Interministériel de la Médecine Légale<br>Plateforme permettant
+    aux établissements de santé de déclarer leur activité médico-légale
+
+- titre: Pass Préservatif
+  timeout: 60
+  description: L'app de la santé et de l'éducation sexuelle pour les moins de 25 ans
+
+- titre: TextStyle
+  timeout: 60
+  description: TextStyle simplifie la rédaction des textes juridiques.
+
+- titre: Work In France
+  timeout: 60
+  image: images/work-in-france.png
+  kpis:
+    Nombre de demandes: 17319
+    Nombre de dossiers acceptés: 12995
+    Temps de traitement moyen: 9 jours
+  description:
+    La plateforme de demande d'autorisation provisoire de travail pour les
+    étudiants étrangers
+
+- titre: e-MJPM
+  timeout: 60
+  image: images/emjpm.png
+  description: Trouver rapidement le bon professionnel pour les majeurs à protéger.
+
+- titre: DomiFa
+  timeout: 60
+  image: images/domifa.png
+  description:
+    Faciliter l'accès aux droits pour les personnes sans domicile stable, en
+    simplifiant la gestion de la domiciliation
+
+- titre: Code du travail numérique
+  image: images/cdtn.png
+  timeout: 60
+  description:
+    Faciliter l'accès au droit du travail pour les employeur·e·s et les
+    employé·e·s.
+
+- titre: Siao Data
+  timeout: 60
+  image: images/datalab.png
+  description:
+    Comment l'analyse des données peut aider le 115 à mieux répondre aux
+    demandes des personnes en détresse
+
+- titre: Ops
+  timeout: 60
+  image: images/udd.png
+  description: Mettre à disposition une infrastructure DevOps pour réduire le
+    time-to-market des développements et améliorer la qualité
+
+- titre: FCE
+  timeout: 60
+  image: images/fce.png
+  description:
+    Un portail pour faciliter l’accès aux informations disponibles sur les
+    entreprises et les échanges entre services
+
+- titre: Archifiltre
+  timeout: 60
+  image: images/archifiltre.jpg
+  description:
+    Aider les archivistes et les producteurs de documents bureautiques à
+    appréhender des arborescences complètes de fichiers pour les traiter
+
+- titre: EgaPro
+  timeout: 60
+  image: images/egapro.png
+  description:
+    Calculer et transmettre l'index égalité professionnelle hommes - femmes
+    d'une entreprise
+
+- titre: RAMSES
+  timeout: 60
+  description:
+    Réguler et Accompagner la Masse Salariale et l’Emploi du Secteur social et
+    médico-social.
+
+- titre: Sujets transverses
+  timeout: 300
+  entries:
+    - 🎉 Petit dej de l'incubateur
+    - 📅 6 Novembre - Atelier KPI
+    - 📅 Prochain seminaire (Xe) le Vendredi 29 Novembre 2019 15h @L'incubateur
+    - 📃 Wiki à compléter sur Github 👉 socialgouv.github.io/wiki
