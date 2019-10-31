@@ -1,6 +1,6 @@
 import React from "react";
 import ReactImageAppear from "react-image-appear";
-import { Button, Card, CardTitle, CardBody, Row, Col } from "reactstrap";
+import { Card, CardBody, Row, Col } from "reactstrap";
 
 import Timer from "./Timer";
 import Counter from "./Counter";

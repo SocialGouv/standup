@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
-import { Jumbotron, Button } from "reactstrap";
 
 import startups from "./startups.yml";
 import Slide from "./components/Slide";
