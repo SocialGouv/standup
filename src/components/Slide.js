@@ -34,13 +34,13 @@ const Slide = ({
     </Row>
     <p className="h3" dangerouslySetInnerHTML={{ __html: description }}></p>
     <hr style={{ margin: "20px 0" }} />
-    <Row>
+    <Row style={{ justifyContent: "center" }}>
       {kpis &&
         Object.keys(kpis).map(k => (
           <Col xs={4} className="text-center">
             <Card className="text-center">
               <div className="display-4 ">{kpis[k]}</div>
-              <CardBody>
+              <CardBody style={{ padding: 10 }}>
                 <strong>{k}</strong>
               </CardBody>
             </Card>

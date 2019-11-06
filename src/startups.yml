@@ -42,6 +42,9 @@
 - titre: Code du travail numérique
   image: images/cdtn.png
   timeout: 60
+  kpis:
+    Visites par jour: 400
+    Taux de satisfaction: 34%
   description:
     Faciliter l'accès au droit du travail pour les employeur·e·s et les
     employé·e·s.
@@ -76,6 +79,9 @@
 - titre: EgaPro
   timeout: 60
   image: images/egapro.png
+  kpis:
+    Visites par jour: 400
+    Durée moyenne par visite: 20 minutes
   description:
     Calculer et transmettre l'index égalité professionnelle hommes - femmes
     d'une entreprise
@@ -91,5 +97,6 @@
   entries:
     - 🎉 Petit dej de l'incubateur
     - 📅 6 Novembre - Atelier KPI
+    - 📅 26 Novembre - Atelier RGPD
     - 📅 Prochain seminaire (Xe) le Vendredi 29 Novembre 2019 15h @L'incubateur
     - 📃 Wiki à compléter sur Github 👉 socialgouv.github.io/wiki
