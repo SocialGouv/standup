@@ -82,6 +82,7 @@
   kpis:
     Visites par jour: 400
     Durée moyenne par visite: 20 minutes
+    Tx de déclaration +250 au 1er Sept: 59%
   description:
     Calculer et transmettre l'index égalité professionnelle hommes - femmes
     d'une entreprise
@@ -99,4 +100,5 @@
     - 📅 6 Novembre - Atelier KPI
     - 📅 26 Novembre - Atelier RGPD
     - 📅 Prochain seminaire (Xe) le Vendredi 29 Novembre 2019 15h @L'incubateur
-    - 📃 Wiki à compléter sur Github 👉 socialgouv.github.io/wiki
+    - 📃 Wiki de l'incubateur à compléter sur Github 👉 <a href="https://github.com/SocialGouv/socialgouv.github.io/wiki">socialgouv.github.io/wiki</a>
+    - 📃 Editer le standup 👉 <a href="https://github.com/SocialGouv/standup">github.com/SocialGouv/standup</a>

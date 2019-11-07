@@ -2,6 +2,10 @@ img {
   max-width: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .image-appear {
   max-width: 100%;
   text-align: center;
@@ -14,6 +18,7 @@ img {
   padding: 0;
   margin-bottom: 2vh;
 }
+
 .text-intro:after {
   content: attr(data-h1);
   position: absolute;

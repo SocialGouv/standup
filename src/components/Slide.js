@@ -17,8 +17,8 @@ const Slide = ({
   buttonText,
   entries
 }) => (
-  <React.Fragment>
-    <Row>
+  <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+    <Row style={{ flex: "0 0 auto" }}>
       <Col>
         <h1 className="display-4" style={{ lineHeight: 2 }}>
           {titre}
@@ -32,11 +32,19 @@ const Slide = ({
         />
       </Col>
     </Row>
-    <p className="h3" dangerouslySetInnerHTML={{ __html: description }}></p>
-    <hr style={{ margin: "20px 0" }} />
-    <Row style={{ justifyContent: "center" }}>
-      {kpis &&
-        Object.keys(kpis).map(k => (
+    <p
+      style={{
+        flex: "0 0 auto",
+        borderBottom: "1px solid #efefef",
+        paddingBottom: 20,
+        marginBottom: 20
+      }}
+      className="h3"
+      dangerouslySetInnerHTML={{ __html: description }}
+    ></p>
+    {kpis && (
+      <Row style={{ justifyContent: "center", flex: "0 0 auto" }}>
+        {Object.keys(kpis).map(k => (
           <Col xs={4} className="text-center">
             <Card className="text-center">
               <div className="display-4 ">{kpis[k]}</div>
@@ -46,50 +54,53 @@ const Slide = ({
             </Card>
           </Col>
         ))}
-    </Row>
+      </Row>
+    )}
     {image && (
-      <Row>
-        <Col>
-          <Card
-            className="image-appear"
-            style={{ marginTop: 20, display: "block" }}
-          >
-            <ReactImageAppear
-              key={image}
-              src={image}
-              alt={titre}
-              animation="fadeIn"
-              animationDuration="0.3s"
-              showLoader={false}
-              placeholder
-            />
-          </Card>
-        </Col>
+      <Row style={{ flex: "1 0 auto" }}>
+        <Col
+          className="image-appear"
+          style={{
+            margin: 50,
+            display: "block",
+            backgroundImage: `url(${image})`,
+            backgroundPosition: "center center",
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat"
+          }}
+        ></Col>
       </Row>
     )}
     {entries && (
-      <ul className="h3" style={{ marginTop: 30 }}>
+      <ul className="h3" style={{ marginTop: 30, flex: "1 0 auto" }}>
         {entries.map(e => (
-          <li key={e} style={{ margin: "30px 0" }}>
-            {e}
-          </li>
+          <li
+            key={e}
+            style={{ margin: "30px 0" }}
+            dangerouslySetInnerHTML={{ __html: e }}
+          ></li>
         ))}
       </ul>
     )}
     {html && (
       <p
         className="h3"
-        style={{ margin: "20px 0" }}
+        style={{ margin: "20px 0", flex: "1 0 auto" }}
         dangerouslySetInnerHTML={{ __html: html }}
       ></p>
     )}
     {!image && !html && !entries && (
-      <div className="h1 text-center" style={{ color: "#999", marginTop: 250 }}>
+      <div
+        className="h1 text-center"
+        style={{ flex: "1 0 auto", color: "#999", marginTop: 250 }}
+      >
         En construction
       </div>
     )}
-    {buttonText && <BottomBar buttonText={buttonText} />}
-  </React.Fragment>
+    {buttonText && (
+      <BottomBar style={{ flex: "0 0 auto" }} buttonText={buttonText} />
+    )}
+  </div>
 );
 
 export default Slide;

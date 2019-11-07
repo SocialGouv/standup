@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "reactstrap";
 
 const BottomBar = ({ style, buttonText, onClick }) => (
-  <div class="fixed-bottom text-center" style={style}>
+  <div class="text-center" style={style}>
     <Button
       size="lg"
       outline
