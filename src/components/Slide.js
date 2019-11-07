@@ -1,5 +1,4 @@
 import React from "react";
-import ReactImageAppear from "react-image-appear";
 import { Card, CardBody, Row, Col } from "reactstrap";
 
 import Timer from "./Timer";
