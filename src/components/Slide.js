@@ -33,10 +33,10 @@ const Slide = ({
     </Row>
     <p
       style={{
-        flex: "0 0 auto",
         borderBottom: "1px solid #efefef",
-        paddingBottom: 20,
-        marginBottom: 20
+        flex: "0 0 auto",
+        marginBottom: 20,
+        paddingBottom: 20
       }}
       className="h3"
       dangerouslySetInnerHTML={{ __html: description }}
@@ -60,12 +60,12 @@ const Slide = ({
         <Col
           className="image-appear"
           style={{
-            margin: 50,
-            display: "block",
             backgroundImage: `url(${image})`,
             backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
             backgroundSize: "contain",
-            backgroundRepeat: "no-repeat"
+            display: "block",
+            margin: 50
           }}
         ></Col>
       </Row>
