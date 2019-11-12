@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "dependencies": {
     "react": "16.11.0",
-    "react-app-rewired": "^2.1.4",
+    "react-app-rewired": "^2.1.5",
     "react-dom": "16.11.0",
     "react-image-appear": "^1.1.22",
     "react-keyboard-event-handler": "1.5.1",
