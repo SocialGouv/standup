@@ -1,5 +1,4 @@
 ---
-
 #
 
 variables:
@@ -22,8 +21,6 @@ variables:
   HELM_CHART_VERSION: "v2.1.0"
 
 #
-
-
 
 .node_stage_template: &node_stage
   image: node:${NODE_VERSION}
@@ -67,7 +64,7 @@ variables:
     - envsubst < /scripts/send-url.sh > /scripts/send-url-to-github.sh
     - sh /scripts/send-url-to-github.sh
 
-# 
+#
 
 stages:
   - "Prepare"
@@ -79,7 +76,6 @@ stages:
   - "Send Url to GitHub"
   - "Deploy Standup to prod"
 
-
 ###########################################
 ###               PREPARE               ###
 ###########################################
@@ -88,12 +84,12 @@ stages:
   image:
     name: ${CI_REGISTRY}/${IMAGE_INFRA_BASE_NAME}/git-deploy:${INFRA_GIT_DEPLOY_VERSION}
   before_script:
-  - envsubst < /scripts/get-deploy-id.sh > /scripts/get-github-deploy-id.sh
+    - envsubst < /scripts/get-deploy-id.sh > /scripts/get-github-deploy-id.sh
   script:
-  - sh /scripts/get-github-deploy-id.sh
+    - sh /scripts/get-github-deploy-id.sh
   artifacts:
     paths:
-    - github_deploy_id
+      - github_deploy_id
 
 Get Github Id (feature):
   <<: *get_github_id_stage
@@ -125,20 +121,14 @@ Build Assets:
   stage: "Prepare"
   script:
     - yarn build
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
   artifacts:
     expire_in: "1 day"
     paths:
       - build
 
-
 ###########################################
 ###             CODE QUALITY            ###
 ###########################################
-
 
 Test:
   <<: *node_stage
@@ -152,11 +142,9 @@ Lint:
   script:
     - yarn lint
 
-
 ###########################################
 ###       REGISTER DOCKER IMAGES        ###
 ###########################################
-
 
 Register Docker Image Tagged with Commit SHA:
   <<: *register_docker_image
@@ -172,11 +160,9 @@ Register Docker Image Tagged with Commit SHA:
   except:
     - /^v.*/
 
-
 ###########################################
 ###          TEST DOCKER IMAGE          ###
 ###########################################
-
 
 Test Docker image:
   <<: *test_docker_image_stage
@@ -191,7 +177,6 @@ Test Docker image tagged with release version:
 ###########################################
 ###            DEPLOY TO K8S            ###
 ###########################################
-
 
 Deploy Standup (feature):
   stage: "Deploy Standup"
@@ -214,11 +199,9 @@ Deploy Standup (feature):
     - master
     - /^v.*/
 
-
 ###########################################
 ###         SEND URL TO GITHUB          ###
 ###########################################
-
 
 Send deployment url to Github (feature):
   <<: *send_url_to_github_stage
@@ -236,13 +219,13 @@ Send deployment url to Github (feature):
 ###            DEPLOY TO PROD           ###
 ###########################################
 
-Deploy Standup (prod) :
+Deploy Standup (prod):
   stage: "Deploy Standup to prod"
   <<: *deploy_stage
   variables:
     <<: *deploy_stage_variables
     NAMESPACE: ${PROD_ENVIRONMENT_NAME}
-    INGRESS_ENVIRONMENT_PREFIX: ''
+    INGRESS_ENVIRONMENT_PREFIX: ""
     LETSENCRYPT_ISSUER: letsencrypt-prod
     IMAGE_TAG: ${CI_COMMIT_SHA}
   environment:

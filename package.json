@@ -5,24 +5,27 @@
   "main": "src/index.js",
   "dependencies": {
     "react": "16.11.0",
+    "react-app-rewired": "^2.1.4",
     "react-dom": "16.11.0",
     "react-image-appear": "^1.1.22",
-    "react-keyboard-event-handler": "1.5.1"
+    "react-keyboard-event-handler": "1.5.1",
+    "reactstrap": "^8.1.1"
   },
   "devDependencies": {
     "@socialgouv/tslint-config-recommended": "^0.7.2",
     "@types/jest": "^24.0.22",
     "prettier": "^1.19.1",
+    "react-app-rewire-yaml": "^1.1.0",
     "react-scripts": "3.2.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "react-app-rewired build",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -t stylish",
-    "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "start": "react-app-rewired start",
+    "test": "react-app-rewired test --env=jsdom"
   },
   "author": "Julien Bouquillon <julien.bouquillon@sg.social.gouv.fr>",
   "license": "MIT",
