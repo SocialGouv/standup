@@ -1,3 +1,7 @@
+
+ARG NGINX_VERSION=1.17
+ARG EXPOSED_PORT=80
+
 FROM node:12-alpine as builder 
 
 WORKDIR /app
@@ -10,9 +14,6 @@ RUN yarn
 COPY . .
 
 RUN yarn build
-
-ARG NGINX_VERSION=1.17
-ARG EXPOSED_PORT=80
 
 FROM nginx:${NGINX_VERSION}
 
