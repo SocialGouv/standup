@@ -2,7 +2,13 @@ FROM node:12-alpine as builder
 
 WORKDIR /app
 
+COPY package.json .
+COPY yarn.lock .
+
 RUN yarn
+
+COPY . .
+
 RUN yarn build
 
 ARG NGINX_VERSION=1.17
