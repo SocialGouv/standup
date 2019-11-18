@@ -21,8 +21,6 @@ ENV PORT=${EXPOSED_PORT}
 # Copy built bundle files in container
 COPY --from=builder ./app/build/ /usr/share/nginx/html
 
-ENV echo $PORT
-ENV echo ${PORT}
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE ${PORT}
 CMD ["nginx", "-g", "daemon off;"]
