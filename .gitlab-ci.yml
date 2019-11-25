@@ -180,6 +180,7 @@ Test Docker image tagged with release version:
 
 Deploy Standup (feature):
   stage: "Deploy Standup"
+  when: manual
   <<: *deploy_stage
   variables:
     <<: *deploy_stage_variables
