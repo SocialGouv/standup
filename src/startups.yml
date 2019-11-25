@@ -80,9 +80,8 @@
   timeout: 60
   image: images/egapro.png
   kpis:
-    Visites par jour: 250
-    Durée moyenne par visite: 11 minutes
-    Tx de déclaration +250 au 1er Sept: 59%
+    Visites par jour: 300
+    Durée moyenne par visite: 7 minutes
   description:
     Calculer et transmettre l'index égalité professionnelle hommes - femmes
     d'une entreprise
