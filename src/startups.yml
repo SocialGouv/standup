@@ -43,8 +43,8 @@
   image: images/cdtn.png
   timeout: 60
   kpis:
-    Visites par jour: 400
-    Taux de satisfaction: 34%
+    Visites par jour: 800
+    Taux de satisfaction: 35%
   description:
     Faciliter l'accès au droit du travail pour les employeur·e·s et les
     employé·e·s.
