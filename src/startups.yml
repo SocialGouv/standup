@@ -1,107 +1,110 @@
-- titre: Maraudes
-  timeout: 60
-  description: Le dossier social partagé des personnes à la rue
+# - titre: Maraudes
+#   timeout: 60
+#   description: Le dossier social partagé des personnes à la rue
 
-- titre: MedLé
-  timeout: 60
-  description:
-    Observatoire Interministériel de la Médecine Légale<br>Plateforme permettant
-    aux établissements de santé de déclarer leur activité médico-légale
+# - titre: MedLé
+#   timeout: 60
+#   description:
+#     Observatoire Interministériel de la Médecine Légale<br>Plateforme permettant
+#     aux établissements de santé de déclarer leur activité médico-légale
 
-- titre: Pass Préservatif / Tumeplay
-  timeout: 60
-  description: L'app de la santé et de l'éducation sexuelle pour les moins de 25 ans
+# - titre: Pass Préservatif / Tumeplay
+#   timeout: 60
+#   description: L'app de la santé et de l'éducation sexuelle pour les moins de 25 ans
 
-- titre: TextStyle
-  timeout: 60
-  description: TextStyle simplifie la rédaction des textes juridiques.
+# - titre: TextStyle
+#   timeout: 60
+#   description: TextStyle simplifie la rédaction des textes juridiques.
 
-- titre: Work In France
-  timeout: 60
-  image: images/work-in-france.png
-  kpis:
-    Nombre de demandes: 20200
-    Temps de traitement moyen: 9 jours
-    Satisfaction usagers : 9.5/10
-  description:
-    La plateforme de demande d'autorisation provisoire de travail pour les
-    étudiants étrangers
+# - titre: Work In France
+#   timeout: 60
+#   image: images/work-in-france.png
+#   kpis:
+#     Nombre de demandes: 20200
+#     Temps de traitement moyen: 9 jours
+#     Satisfaction usagers : 9.5/10
+#   description:
+#     La plateforme de demande d'autorisation provisoire de travail pour les
+#     étudiants étrangers
 
-- titre: e-MJPM
-  timeout: 60
-  image: images/emjpm.png
-  description: Trouver rapidement le bon professionnel pour les majeurs à protéger.
+# - titre: e-MJPM
+#   timeout: 60
+#   image: images/emjpm.png
+#   description: Trouver rapidement le bon professionnel pour les majeurs à protéger.
 
-- titre: DomiFa
-  timeout: 60
-  image: images/domifa.png
-  description:
-    Faciliter l'accès aux droits pour les personnes sans domicile stable, en
-    simplifiant la gestion de la domiciliation
+# - titre: DomiFa
+#   timeout: 60
+#   image: images/domifa.png
+#   description:
+#     Faciliter l'accès aux droits pour les personnes sans domicile stable, en
+#     simplifiant la gestion de la domiciliation
 
-- titre: Code du travail numérique
-  image: images/cdtn.png
-  timeout: 60
-  kpis:
-    Visites par jour: 800
-    Taux de satisfaction: 35%
-  description:
-    Faciliter l'accès au droit du travail pour les employeur·e·s et les
-    employé·e·s.
+# - titre: Code du travail numérique
+#   image: images/cdtn.png
+#   timeout: 60
+#   kpis:
+#     Visites par jour: 800
+#     Taux de satisfaction: 35%
+#   description:
+#     Faciliter l'accès au droit du travail pour les employeur·e·s et les
+#     employé·e·s.
 
-- titre: Siao Data
-  timeout: 60
-  image: images/datalab.png
-  description:
-    Comment l'analyse des données peut aider le 115 à mieux répondre aux
-    demandes des personnes en détresse
+# - titre: Siao Data
+#   timeout: 60
+#   image: images/datalab.png
+#   description:
+#     Comment l'analyse des données peut aider le 115 à mieux répondre aux
+#     demandes des personnes en détresse
 
-- titre: Ops
-  timeout: 60
-  image: images/udd.png
-  description: Mettre à disposition une infrastructure DevOps pour réduire le
-    time-to-market des développements et améliorer la qualité
+# - titre: Ops
+#   timeout: 60
+#   image: images/udd.png
+#   description: Mettre à disposition une infrastructure DevOps pour réduire le
+#     time-to-market des développements et améliorer la qualité
 
-- titre: FCE
-  timeout: 60
-  image: images/fce.png
-  description:
-    Un portail pour faciliter l’accès aux informations disponibles sur les
-    entreprises et les échanges entre services
+# - titre: FCE
+#   timeout: 60
+#   image: images/fce.png
+#   description:
+#     Un portail pour faciliter l’accès aux informations disponibles sur les
+#     entreprises et les échanges entre services
 
-- titre: Archifiltre
-  timeout: 60
-  image: images/archifiltre.jpg
-  description:
-    Aider les archivistes et les producteurs de documents bureautiques à
-    appréhender des arborescences complètes de fichiers pour les traiter
+# - titre: Archifiltre
+#   timeout: 60
+#   image: images/archifiltre.jpg
+#   description:
+#     Aider les archivistes et les producteurs de documents bureautiques à
+#     appréhender des arborescences complètes de fichiers pour les traiter
 
-- titre: EgaPro
-  timeout: 60
-  image: images/egapro.png
-  kpis:
-    Visites par jour: 300
-    Durée moyenne par visite: 7 minutes
-  description:
-    Calculer et transmettre l'index égalité professionnelle hommes - femmes
-    d'une entreprise
+# - titre: EgaPro
+#   timeout: 60
+#   image: images/egapro.png
+#   kpis:
+#     Visites par jour: 300
+#     Durée moyenne par visite: 7 minutes
+#   description:
+#     Calculer et transmettre l'index égalité professionnelle hommes - femmes
+#     d'une entreprise
 
-- titre: RAMSES
-  timeout: 60
-  description:
-    Réguler et Accompagner la Masse Salariale et l’Emploi du Secteur social et
-    médico-social.
+# - titre: RAMSES
+#   timeout: 60
+#   description:
+#     Réguler et Accompagner la Masse Salariale et l’Emploi du Secteur social et
+#     médico-social.
 
 - titre: Incubateur
   timeout: 300
   entries:
-    - ⚫ Secret santa
-    - ⚫ Noël team building le 17/12 (repas de Noël, pulls etc)
-    - ⚫ Prochain séminaire le 17/12
-    - ⚫ Liste de fournitures
-    - ⚫ Nouveau format de tableau sera proposé par @virginie & @victoria
-    - ⚫ faire en sorte qu'à chaque séminaire on ait une idée de la vision stratégique de l'incub', ce qui a été décidé, où on va, etc.
-    - ⚫ Reprendre l'idée du tableau mood board / niko niko / info essentielles @yowa @lionelb
+    - |
+      🎅 Secret santa 17/12/2019 ; <br>
+      🎁 max 10€ tiré au sort chiffré ; <br>
+      🦮 Échanges à l'aveugle
+    - 🎅 Noël team building le 17/12 (repas de Noël, pulls etc)
+    - ☑️ Prochain séminaire le 17/12
+    - ☑️ @douglas & @victoria ⚫ Liste de fournitures
+    - ☑️ Nouveau format de tableau sera proposé par @virginie & @victoria
+    - ☑️ faire en sorte qu'à chaque séminaire on ait une idée de la vision stratégique de l'incub', ce qui a été décidé, où on va, etc.
+    - ☑️ Reprendre l'idée du tableau mood board / niko niko / info essentielles @yowa @lionelb
 
 - titre: Sujets transverses
   timeout: 300
