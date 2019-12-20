@@ -4,21 +4,21 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "react": "16.11.0",
+    "react": "16.12.0",
     "react-app-rewired": "^2.1.5",
-    "react-dom": "16.11.0",
+    "react-dom": "16.12.0",
     "react-image-appear": "^1.2.22",
     "react-keyboard-event-handler": "1.5.2",
-    "reactstrap": "^8.1.1"
+    "reactstrap": "^8.2.0"
   },
   "devDependencies": {
-    "@socialgouv/tslint-config-recommended": "^0.11.0",
-    "@types/jest": "^24.0.23",
+    "@socialgouv/tslint-config-recommended": "^0.11.1",
+    "@types/jest": "^24.0.24",
     "prettier": "^1.19.1",
     "react-app-rewire-yaml": "^1.1.0",
-    "react-scripts": "3.2.0",
+    "react-scripts": "3.3.0",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "build": "react-app-rewired build",
