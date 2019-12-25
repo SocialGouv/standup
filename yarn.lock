@@ -8035,10 +8035,10 @@ react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
-react-keyboard-event-handler@1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/react-keyboard-event-handler/-/react-keyboard-event-handler-1.5.2.tgz#6b163d69bf086b0a9114dc23843dad9471304473"
-  integrity sha512-ejJ5IMprAY4vH2sn8m8i6dTMo6xY5eCKnuBPULKYlFZqdnFc63eR4wJHtg1o0tz6j1ToABaxxsIq3gSgn84K0Q==
+react-keyboard-event-handler@1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/react-keyboard-event-handler/-/react-keyboard-event-handler-1.5.3.tgz#d10aa4d5e6d0e274ec27718ba1782c9fa41f4098"
+  integrity sha512-d1UYGtU5iHwINMQ2QXX5Cm1YhgYY7Zq9hx9bHVcgTFsFf93loI2yJfkgL4LO9UCBQBczroMs+RckPyPJDuEwuw==
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
