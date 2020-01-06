@@ -43,11 +43,11 @@
   image: images/cdtn.png
   timeout: 60
   kpis:
-    Visites par jour: 800
-    Taux de satisfaction: 35%
+    Visites la semaine dernière: 2330 (4062)
+    Taux de satisfaction déclaré: 47.8% (48.0%)
   description:
     Faciliter l'accès au droit du travail pour les employeur·e·s et les
-    employé·e·s.
+    salarié·e·s
 
 - titre: Siao Data
   timeout: 60
