@@ -20,9 +20,9 @@
   timeout: 60
   image: images/work-in-france.png
   kpis:
-    Nombre de demandes: 20200
+    Nombre de demandes: 22580
     Temps de traitement moyen: 9 jours
-    Satisfaction usagers : 9.5/10
+    Satisfaction usagers : 9.4/10
   description:
     La plateforme de demande d'autorisation provisoire de travail pour les
     étudiants étrangers
