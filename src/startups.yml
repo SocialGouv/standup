@@ -4,6 +4,7 @@
 
 - titre: MedLé
   timeout: 60
+  image: images/medle.png
   description:
     Observatoire Interministériel de la Médecine Légale<br>Plateforme permettant
     aux établissements de santé de déclarer leur activité médico-légale
