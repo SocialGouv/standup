@@ -15,6 +15,7 @@
 
 - titre: TextStyle
   timeout: 60
+  image: images/textstyle.png
   description: TextStyle simplifie la rédaction des textes juridiques.
 
 - titre: Work In France
