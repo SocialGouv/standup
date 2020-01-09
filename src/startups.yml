@@ -4,16 +4,19 @@
 
 - titre: MedLé
   timeout: 60
+  image: images/medle.png
   description:
     Observatoire Interministériel de la Médecine Légale<br>Plateforme permettant
     aux établissements de santé de déclarer leur activité médico-légale
 
 - titre: Pass Préservatif / Tumeplay
   timeout: 60
+  image: images/tumeplay.jpg
   description: L'app de la santé et de l'éducation sexuelle pour les moins de 25 ans
 
 - titre: TextStyle
   timeout: 60
+  image: images/textstyle.png
   description: TextStyle simplifie la rédaction des textes juridiques.
 
 - titre: Work In France
@@ -44,7 +47,7 @@
   timeout: 60
   kpis:
     Visites la semaine dernière: 2330 (4062)
-    Taux de satisfaction déclaré: 47.8% (48.0%)
+    Taux de satisfaction déclaré: 48.0%
   description:
     Faciliter l'accès au droit du travail pour les employeur·e·s et les
     salarié·e·s
@@ -109,9 +112,6 @@
 - titre: Sujets transverses
   timeout: 300
   entries:
-    - 📅 26 Novembre 9h45 - Petit dej Figma
-    - "📅 Jeudi 28 Novembre 9h : DSI se dévoile : intro Web / Javascript"
-    - 🏆 Mercredi KPI entre 14-16h
-    - 🗳️ Prochain seminaire (XIe) le Mardi 17 Décembre 2019 😉h @L'incubateur
+    - 🎅 Evènement de lancement 2020 à programmer
     - 📃 Wiki de l'incubateur à compléter sur Github 👉 <a href="https://github.com/SocialGouv/socialgouv.github.io/wiki">socialgouv.github.io/wiki</a>
     - 📃 Editer le standup 👉 <a href="https://github.com/SocialGouv/standup">github.com/SocialGouv/standup</a>
