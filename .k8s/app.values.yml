@@ -1,0 +1,44 @@
+# Default values for Mas webapp. https://github.com/SocialGouv/helm-charts/blob/master/charts/webapp/values.yaml
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+---
+
+image:
+  repository: registry.gitlab.factory.social.gouv.fr/socialgouv/standup
+
+deployment:
+  port: ${PORT}
+
+  livenessProbe:
+    path: /
+  readinessProbe:
+    path: /
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+
+service:
+  port: ${PORT}
+  targetPort: ${PORT}
+
+ingress:
+  enabled: true
+  annotations:
+    appgw.ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: "azure/application-gateway"
+  hosts:
+    - host: "standup.dev.fabrique.social.gouv.fr"
+      paths:
+        - path: /
+          servicePort: ${PORT}
+  tls:
+    - hosts:
+      - "standup.dev.fabrique.social.gouv.fr"
+      secretName: standup-crt
+
+...
