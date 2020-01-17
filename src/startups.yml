@@ -25,7 +25,7 @@
   kpis:
     Nombre de demandes: 22580
     Temps de traitement moyen: 9 jours
-    Satisfaction usagers : 9.4/10
+    Satisfaction usagers: 9.4/10
   description:
     La plateforme de demande d'autorisation provisoire de travail pour les
     étudiants étrangers
@@ -41,10 +41,10 @@
   description:
     Faciliter l'accès aux droits pour les personnes sans domicile stable, en
     simplifiant la gestion de la domiciliation
-  kpis: 
+  kpis:
     Structures inscrites: 21
     Dossiers enregistrés: 2109
-    Utilisateurs : 51
+    Utilisateurs: 51
 
 - titre: Code du travail numérique
   image: images/cdtn.png
@@ -98,20 +98,6 @@
   description:
     Réguler et Accompagner la Masse Salariale et l’Emploi du Secteur social et
     médico-social.
-
-- titre: Décisions du Xe séminaire (28/11)
-  timeout: 300
-  entries:
-    - |
-      🎅 Secret santa 17/12/2019 ; <br>
-      🎁 max 10€ tiré au sort chiffré ; <br>
-      🦮 Échanges à l'aveugle
-    - 🎅 Noël team building le 17/12 (repas de Noël, pulls etc)
-    - ☑️ @douglas & @victoria => Liste de fournitures
-    - ☑️ @virginie & @victoria => Nouveau format de tableau sera proposé par
-    - ☑️ @yann => faire en sorte qu'à chaque séminaire on ait une idée de la
-      vision stratégique de l'incub', ce qui a été décidé, où on va, etc.
-    - ☑️ @yowa @lionelb => Reprendre l'idée du tableau mood board / niko niko / info essentielles
 
 - titre: Sujets transverses
   timeout: 300
