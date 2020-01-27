@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@socialgouv/tslint-config-recommended": "^0.15.0",
-    "@types/jest": "^24.9.1",
+    "@types/jest": "^25.1.0",
     "prettier": "^1.19.1",
     "react-app-rewire-yaml": "^1.1.0",
     "react-scripts": "3.3.0",
