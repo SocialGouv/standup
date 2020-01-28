@@ -87,8 +87,9 @@
   timeout: 60
   image: images/egapro.png
   kpis:
-    Visites par jour: 300
-    Durée moyenne par visite: 7 minutes
+    Visites par jour: 370
+    Index moyen 2019: 82/100
+    Taux de satisfaction: 78%
   description:
     Calculer et transmettre l'index égalité professionnelle hommes - femmes
     d'une entreprise
