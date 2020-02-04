@@ -23,7 +23,7 @@
   timeout: 60
   image: images/work-in-france.png
   kpis:
-    Nombre de demandes: 23525
+    Nombre de demandes: 24415
     Temps de traitement moyen: 10 jours
     Satisfaction usagers: 9.4/10
   description:
