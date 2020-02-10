@@ -3,6 +3,7 @@
   description: Le dossier social partagé des personnes à la rue
 
 - titre: MedLé
+  slug: medle
   timeout: 60
   image: images/medle.png
   description:
@@ -10,16 +11,19 @@
     aux établissements de santé de déclarer leur activité médico-légale
 
 - titre: Pass Préservatif / Tumeplay
+  slug: passpreservatif
   timeout: 60
   image: images/tumeplay.jpg
   description: L'app de la santé et de l'éducation sexuelle pour les moins de 25 ans
 
 - titre: TextStyle
+  slug: textstyle
   timeout: 60
   image: images/textstyle.png
   description: TextStyle simplifie la rédaction des textes juridiques.
 
 - titre: Work In France
+  slug: workinfrance
   timeout: 60
   image: images/work-in-france.png
   kpis:
@@ -31,11 +35,13 @@
     étudiants étrangers
 
 - titre: e-MJPM
+  slug: emjpm
   timeout: 60
   image: images/emjpm.png
   description: Trouver rapidement le bon professionnel pour les majeurs à protéger.
 
 - titre: DomiFa
+  slug: domifa
   timeout: 60
   image: images/domifa.png
   description:
@@ -47,6 +53,7 @@
     Utilisateurs: 63
 
 - titre: Code du travail numérique
+  slug: code-du-travail
   image: images/cdtn.png
   timeout: 60
   kpis:
@@ -57,6 +64,7 @@
     salarié·e·s
 
 - titre: Siao Data
+  slug: siao-data
   timeout: 60
   image: images/datalab.png
   description:
@@ -64,12 +72,14 @@
     demandes des personnes en détresse
 
 - titre: Ops
+  slug: ops
   timeout: 60
   image: images/udd.png
   description: Mettre à disposition une infrastructure DevOps pour réduire le
     time-to-market des développements et améliorer la qualité
 
 - titre: FCE
+  slug: fce
   timeout: 60
   image: images/fce.png
   description:
@@ -77,6 +87,7 @@
     entreprises et les échanges entre services
 
 - titre: Archifiltre
+  slug: archifiltre
   timeout: 60
   image: images/archifiltre.jpg
   description:
@@ -84,6 +95,7 @@
     appréhender des arborescences complètes de fichiers pour les traiter
 
 - titre: EgaPro
+  slug: egapro
   timeout: 60
   image: images/egapro.png
   kpis:
