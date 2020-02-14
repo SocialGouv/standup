@@ -1,13 +1,11 @@
 ---
-
 include:
-- project: SocialGouv/gitlab-ci-yml
-  file: /autodevops_simple_app.yml
-  ref: v7.3.0
+  - project: SocialGouv/gitlab-ci-yml
+    file: /autodevops_simple_app.yml
+    ref: v7.3.0
 
 variables:
   PROJECT: "standup"
   PORT: 80
   VALUES_FILE: ./.k8s/app.values.yml
-
-...
+  KUBE_NAMESPACE: $KUBE_NAMESPACE
