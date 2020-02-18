@@ -14,11 +14,15 @@
     Observatoire Interministériel de la Médecine Légale<br>Plateforme permettant
     aux établissements de santé de déclarer leur activité médico-légale
 
-- titre: Pass Préservatif / Tumeplay
+- titre: Tumeplay
   slug: passpreservatif
   timeout: 60
   image: images/tumeplay.jpg
-  description: L'app de la santé et de l'éducation sexuelle pour les moins de 25 ans
+  kpis:
+    Nombre d'abonnés Instagram: 282
+    Publication avec le plus de likes: "Orgasme et jouissance : c'est la même chose ?"
+    Nombre de jeunes rencontrés en test utilisateurs: 38
+  description: L'app pour (presque) tout savoir sur la sexualité pour les moins de 25 ans !
 
 - titre: TextStyle
   slug: textstyle
