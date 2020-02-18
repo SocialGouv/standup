@@ -71,6 +71,9 @@
   slug: siao-data
   timeout: 60
   image: images/datalab.png
+  kpis:
+    Visites hebdo de la carte (moy.) : 80
+    Nb SIAO utilisant Dashboard: 65
   description:
     Comment l'analyse des données peut aider le 115 à mieux répondre aux
     demandes des personnes en détresse
@@ -112,6 +115,9 @@
 
 - titre: RAMSES
   timeout: 60
+  kpis:
+    Use cases traités: 1
+    Indicateurs calculés: 100%
   description:
     Réguler et Accompagner la Masse Salariale et l’Emploi du Secteur social et
     médico-social.
