@@ -122,3 +122,8 @@
     - 🥐 ☕️ 🥤 PtitDej "Présentation GitHub" le 18/02 à 9h30 
     - 📃 Wiki de l'incubateur à compléter sur Github 👉 <a href="https://github.com/SocialGouv/socialgouv.github.io/wiki">socialgouv.github.io/wiki</a>
     - 📃 Editer le standup 👉 <a href="https://github.com/SocialGouv/standup">github.com/SocialGouv/standup</a>
+
+- titre: Test petit-dej github
+  timeout: 90
+  description:
+    S'entrainer à utiliser github<br>parce que c'est trop cool
