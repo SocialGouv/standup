@@ -1,14 +1,34 @@
 import React from "react"
 import Counter from "./Counter"
+import styled from "styled-components"
 
-const Header = ({ team }) => (
-  <div className="header">
+const Header = ({ team, mood }) => (
+  <Wrapper className="header">
     <div className="title">
-      <h1>{team.name}</h1>
-      <h2>{team.description}</h2>
+      <h1>
+        {mood} {team.name}
+      </h1>
+      <p>{team.description}</p>
     </div>
     <Counter start={0} />
-  </div>
+  </Wrapper>
 )
+
+const Wrapper = styled.div`
+  display: flex;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: rgb(201, 211, 223) 0px 1px 4px;
+
+  .title {
+    flex: 1;
+
+    p {
+      margin: 0;
+      font-size: 1.2em;
+      font-style: italic;
+    }
+  }
+`
 
 export default Header

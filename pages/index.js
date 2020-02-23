@@ -2,9 +2,10 @@ import React, { useState } from "react"
 import fetch from "isomorphic-unfetch"
 import Slide from "../src/components/Slide"
 import Intro from "../src/components/Intro"
+import Control from "../src/components/Control"
 import KeyHandler, { KEYPRESS } from "react-key-handler"
 
-const Page = ({ posts }) => {
+const Page = ({ teams, posts }) => {
   const [index, setIndex] = useState(0)
   const [post, setPost] = useState(posts[0])
   const [started, setStarted] = useState(false)
@@ -23,13 +24,14 @@ const Page = ({ posts }) => {
 
   const onKeyEvent = event => {
     event.preventDefault()
-    console.log("onKeyEvent")
     if (event.code === "Space" || event.code === "Right") {
       next()
     } else if (event.code === "Left") {
       previous()
     }
   }
+
+  const getTeam = slug => teams.find(team => slug === team.slug)
 
   return (
     <>
@@ -40,44 +42,37 @@ const Page = ({ posts }) => {
             keyEventName={KEYPRESS}
             onKeyHandle={onKeyEvent}
           />
-          <Slide post={post} />
-          <a
-            tabIndex="0"
-            role="button"
-            onClick={previous}
-            onKeyPress={previous}
-            className="control previous"
-          >
-            &#60;
-          </a>
-          <a
-            tabIndex="0"
-            role="button"
-            onClick={next}
-            onKeyPress={next}
-            className="control next"
-          >
-            &#62;
-          </a>
+          <Slide post={post} team={getTeam(post.team_slug)} />
+          {index > 0 && <Control type="previous" handler={previous} />}
+          {index < posts.length - 1 && <Control type="next" handler={next} />}
         </>
       ) : (
-        <Intro started={started} onClick={() => setStarted(true)} />
+        <>
+          <KeyHandler
+            code={["Space"]}
+            keyEventName={KEYPRESS}
+            onKeyHandle={() => setStarted(true)}
+          />
+          <Intro started={started} onClick={() => setStarted(true)} />
+        </>
       )}
     </>
   )
 }
 
 Page.getInitialProps = async ({ req }) => {
-  let url = "/api/posts"
+  let teamsUrl = "/api/teams"
+  let postsUrl = "/api/posts"
 
   if (req) {
-    const protocol = req.headers["x-forwarded-proto"] || "http"
-    url = `${protocol}://${req.headers.host}${url}`
+    teamsUrl = `http://localhost:${req.socket.localPort}${teamsUrl}`
+    postsUrl = `http://localhost:${req.socket.localPort}${postsUrl}`
   }
 
-  const posts = await (await fetch(url)).json()
+  const teams = await (await fetch(teamsUrl)).json()
+  const posts = await (await fetch(postsUrl)).json()
 
-  return { posts }
+  return { teams, posts }
 }
 
 export default Page

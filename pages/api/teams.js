@@ -1,14 +1,11 @@
-import { GraphQLClient } from "graphql-request"
+import { fetch } from "../../src/lib/hasura"
+
+const org = process.env.GH_ORG
 
 export default async (req, res) => {
-  const user = process.env.GH_USER
-  const token = process.env.GH_TOKEN
-  const url = "https://api.github.com/graphql"
-  const auth = Buffer.from(`${user}:${token}`).toString("base64")
-
   const query = `
     query {
-      organization(login: "SocialGouv") {
+      organization(login: "${org}") {
         teams(
           first:100,
           privacy: VISIBLE,
@@ -16,12 +13,17 @@ export default async (req, res) => {
           orderBy: {field: NAME, direction: ASC}
         ) {
           totalCount
-          edges {
-            node {
-              slug
-              name
-              avatarUrl
-              description
+          nodes {
+            slug
+            name
+            avatarUrl
+            description
+            members(first: 100) {
+              nodes {
+                login
+                name
+                avatarUrl
+              }
             }
           }
         }
@@ -29,13 +31,6 @@ export default async (req, res) => {
     }
   `
 
-  const graphQLClient = new GraphQLClient(url, {
-    headers: {
-      Authorization: `Basic ${auth}`
-    }
-  })
-
-  const data = await graphQLClient.request(query)
-  console.log("Teams", data.organization.teams.edges.length)
-  res.json(data.organization.teams.edges)
+  const data = await fetch(query)
+  res.json(data.organization.teams.nodes)
 }
