@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    box-shadow: rgb(201, 211, 223) 0px 1px 4px;
+    box-shadow: 1px 1px 6px -6px rgba(0, 0, 0, 1);
   }
 
   .members {

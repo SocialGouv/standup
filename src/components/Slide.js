@@ -66,7 +66,8 @@ const Wrapper = styled.div`
         flex-direction: column;
         margin: 1rem 1rem 0 1rem;
         background-color: #ffffff;
-        box-shadow: rgb(201, 211, 223) 0px 1px 4px;
+        border: 1px solid #ccdee3;
+        box-shadow: 1px 1px 6px -6px rgba(0, 0, 0, 1);
 
         &:last-child {
           margin-bottom: 1rem;
@@ -74,7 +75,8 @@ const Wrapper = styled.div`
 
         h3 {
           padding: 0.2rem 0.5rem;
-          background-color: #e3d0cc;
+          background-color: #ccdee3;
+          border-bottom: 1px solid #eaeaea;
         }
 
         .markdown-body {

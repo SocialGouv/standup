@@ -9,7 +9,7 @@ const KPIs = ({ kpis }) => (
         <React.Fragment key={i}>
           {kpi.value && (
             <div className="kpi">
-              <div className="value">{kpi.value}</div>
+              <h3 className="value">{kpi.value}</h3>
               <div className="name">{kpi.name}</div>
             </div>
           )}
@@ -41,7 +41,7 @@ const Wrapper = styled.div`
     }
 
     .value {
-      color: #8bad95;
+      // color: #8bad95;
       font-size: 2rem;
       font-weight: bold;
       font-family: "Evolventa";

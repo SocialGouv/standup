@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   width: 60px;
   height: 60px;
   display: flex;
-  color: #e3d0cc;
+  color: #ccdee3;
   cursor: pointer;
   font-size: 1.5rem;
   border-radius: 50%;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   transition: font-size 0.2s;
 
   &:hover {
-    color: #7a5656;
+    color: #54677a;
     font-size: 2rem;
   }
 
