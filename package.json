@@ -8,7 +8,7 @@
     "react-app-rewired": "^2.1.5",
     "react-dom": "16.12.0",
     "react-image-appear": "^1.2.22",
-    "react-keyboard-event-handler": "1.5.3",
+    "react-keyboard-event-handler": "1.5.4",
     "reactstrap": "^8.4.1"
   },
   "devDependencies": {
