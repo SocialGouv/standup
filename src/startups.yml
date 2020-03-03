@@ -6,10 +6,6 @@
   timeout: 60
   description: Dématérialisation des Invitations au Dépistage Organisé des Cancer
 
-- titre: Maraudes
-  timeout: 60
-  description: Le dossier social partagé des personnes à la rue
-
 - titre: MedLé
   slug: medle
   timeout: 60
