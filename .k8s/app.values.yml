@@ -6,6 +6,8 @@
 image:
   repository: registry.gitlab.factory.social.gouv.fr/socialgouv/standup
 
+nameOverride: standup
+
 deployment:
   port: ${PORT}
 
