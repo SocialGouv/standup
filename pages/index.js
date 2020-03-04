@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import fetch from "isomorphic-unfetch"
+import styled from "styled-components"
 import Slide from "../src/components/Slide"
 import Intro from "../src/components/Intro"
 import Control from "../src/components/Control"
@@ -36,16 +37,22 @@ const Page = ({ teams, posts }) => {
   return (
     <>
       {started ? (
-        <>
-          <KeyHandler
-            code={["Space"]}
-            keyEventName={KEYPRESS}
-            onKeyHandle={onKeyEvent}
-          />
-          <Slide post={post} team={getTeam(post.team_slug)} />
-          {index > 0 && <Control type="previous" handler={previous} />}
-          {index < posts.length - 1 && <Control type="next" handler={next} />}
-        </>
+        posts && posts.length ? (
+          <>
+            <KeyHandler
+              code={["Space"]}
+              keyEventName={KEYPRESS}
+              onKeyHandle={onKeyEvent}
+            />
+            <Slide post={post} team={getTeam(post.team_slug)} />
+            {index > 0 && <Control type="previous" handler={previous} />}
+            {index < posts.length - 1 && <Control type="next" handler={next} />}
+          </>
+        ) : (
+          <NoDataWrapper className="card">
+            <h1>Pas de données !</h1>
+          </NoDataWrapper>
+        )
       ) : (
         <>
           <KeyHandler
@@ -74,5 +81,12 @@ Page.getInitialProps = async ({ req }) => {
 
   return { teams, posts }
 }
+
+const NoDataWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 export default Page

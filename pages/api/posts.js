@@ -21,7 +21,11 @@ export default async (req, res) => {
     }
   `
 
-  const data = await fetch(query)
-
-  res.json(data.posts)
+  try {
+    const data = await fetch(query)
+    res.json(data.posts)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json([])
+  }
 }

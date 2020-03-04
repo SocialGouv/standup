@@ -9,7 +9,7 @@
     "test": "exit 0",
     "build": "next build",
     "lint": "eslint src/* pages/*",
-    "start": "next start --port 5000",
+    "start": "next start",
     "build-start": "next build && yarn start"
   },
   "dependencies": {
