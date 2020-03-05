@@ -1,6 +1,6 @@
 import { fetch } from "../../src/lib/hasura"
 
-const org = process.env.GH_ORG
+const org = process.env.GITHUB_ORGANIZATION
 
 export default async (req, res) => {
   const query = `
