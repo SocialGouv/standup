@@ -1,6 +1,6 @@
 import { fetch } from "../../src/lib/hasura"
 
-const org = process.env.GH_ORG
+const org = process.env.GITHUB_ORGANIZATION
 
 export default async (req, res) => {
   const query = `
@@ -31,6 +31,11 @@ export default async (req, res) => {
     }
   `
 
-  const data = await fetch(query)
-  res.json(data.organization.teams.nodes)
+  try {
+    const data = await fetch(query)
+    res.json(data.organization.teams.nodes)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json([])
+  }
 }

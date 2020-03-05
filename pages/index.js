@@ -1,25 +1,29 @@
 import React, { useState } from "react"
 import fetch from "isomorphic-unfetch"
+import styled from "styled-components"
+import extraSlides from "../src/slides.yml"
 import Slide from "../src/components/Slide"
 import Intro from "../src/components/Intro"
 import Control from "../src/components/Control"
 import KeyHandler, { KEYPRESS } from "react-key-handler"
 
 const Page = ({ teams, posts }) => {
+  const slides = [...posts, ...extraSlides]
+
   const [index, setIndex] = useState(0)
-  const [post, setPost] = useState(posts[0])
+  const [slide, setSlide] = useState(slides[0])
   const [started, setStarted] = useState(false)
 
   const previous = () => {
     if (index - 1 < 0) return
     setIndex(index - 1)
-    setPost(posts[index - 1])
+    setSlide(slides[index - 1])
   }
 
   const next = () => {
-    if (index + 1 > posts.length - 1) return
+    if (index + 1 > slides.length - 1) return
     setIndex(index + 1)
-    setPost(posts[index + 1])
+    setSlide(slides[index + 1])
   }
 
   const onKeyEvent = event => {
@@ -31,21 +35,33 @@ const Page = ({ teams, posts }) => {
     }
   }
 
-  const getTeam = slug => teams.find(team => slug === team.slug)
+  const getTeam = slug => {
+    const team = teams.find(team => slug === team.slug)
+    console.log("getTeam", slug, team)
+    return team
+  }
 
   return (
     <>
       {started ? (
-        <>
-          <KeyHandler
-            code={["Space"]}
-            keyEventName={KEYPRESS}
-            onKeyHandle={onKeyEvent}
-          />
-          <Slide post={post} team={getTeam(post.team_slug)} />
-          {index > 0 && <Control type="previous" handler={previous} />}
-          {index < posts.length - 1 && <Control type="next" handler={next} />}
-        </>
+        slides && slides.length ? (
+          <>
+            <KeyHandler
+              code={["Space"]}
+              keyEventName={KEYPRESS}
+              onKeyHandle={onKeyEvent}
+            />
+            <Slide data={slide} team={getTeam(slide.team_slug)} />
+            {index > 0 && <Control type="previous" handler={previous} />}
+            {index < slides.length - 1 && (
+              <Control type="next" handler={next} />
+            )}
+          </>
+        ) : (
+          <NoDataWrapper className="card">
+            <h1>Pas de données !</h1>
+          </NoDataWrapper>
+        )
       ) : (
         <>
           <KeyHandler
@@ -74,5 +90,12 @@ Page.getInitialProps = async ({ req }) => {
 
   return { teams, posts }
 }
+
+const NoDataWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 export default Page

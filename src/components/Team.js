@@ -54,8 +54,8 @@ const Wrapper = styled.div`
       }
 
       .avatar {
-        width: 2rem;
-        height: 2rem;
+        min-width: 2rem;
+        min-height: 2rem;
         border-radius: 50%;
         background-size: cover;
         background-repeat: no-repeat;
@@ -63,7 +63,10 @@ const Wrapper = styled.div`
       }
 
       .name {
+        overflow: hidden;
         margin-left: 0.5rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
