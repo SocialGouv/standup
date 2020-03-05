@@ -17,11 +17,15 @@ const Header = ({ team, mood }) => (
 const Wrapper = styled.div`
   display: flex;
   padding: 1rem;
+  min-height: 80px;
   background-color: #ffffff;
   box-shadow: rgb(201, 211, 223) 0px 1px 4px;
 
   .title {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     p {
       margin: 0;
