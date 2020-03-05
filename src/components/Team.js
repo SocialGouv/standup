@@ -14,7 +14,6 @@ const Team = ({ team }) => (
             className="avatar"
             style={{ backgroundImage: `url(${member.avatarUrl})` }}
           ></div>
-          <div className="name">{member.name || member.login}</div>
         </div>
       ))}
     </div>
@@ -38,35 +37,25 @@ const Wrapper = styled.div`
 
   .members {
     flex: 1;
-    margin: 4px;
-    display: flex;
-    overflow: auto;
-    margin-left: 1rem;
-    flex-direction: column;
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(3, 1fr);
 
     .member {
       display: flex;
-      align-items: center;
-      margin-bottom: 0.5rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
+      justify-content: center;
 
       .avatar {
-        min-width: 2rem;
-        min-height: 2rem;
+        width: 4rem;
+        height: 4rem;
+        min-width: 4rem;
+        min-height: 4rem;
         border-radius: 50%;
         background-size: cover;
+        background-color: #ffffff;
         background-repeat: no-repeat;
         background-position: center center;
-      }
-
-      .name {
-        overflow: hidden;
-        margin-left: 0.5rem;
-        white-space: nowrap;
-        text-overflow: ellipsis;
       }
     }
   }
