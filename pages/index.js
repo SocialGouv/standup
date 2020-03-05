@@ -35,11 +35,7 @@ const Page = ({ teams, posts }) => {
     }
   }
 
-  const getTeam = slug => {
-    const team = teams.find(team => slug === team.slug)
-    console.log("getTeam", slug, team)
-    return team
-  }
+  const getTeam = slug => teams.find(team => slug === team.slug)
 
   return (
     <>
