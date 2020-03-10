@@ -1,12 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 
-const Footer = ({ team }) =>
-  console.log("TEAM", team) || (
-    <Wrapper className="footer">
-      <div className="team">{team.name}</div>
-    </Wrapper>
-  )
+const Footer = ({ team }) => (
+  <Wrapper className="footer">
+    <div className="team">{team.name}</div>
+  </Wrapper>
+)
 
 const Wrapper = styled.div`
   display: flex;

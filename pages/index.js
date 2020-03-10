@@ -10,9 +10,14 @@ import KeyHandler, { KEYPRESS } from "react-key-handler"
 const Page = ({ teams, posts }) => {
   // TODO: pretty dirty, to be done server side, idealy by joining local and remote schemas in Hasura.
   const getTeam = slug => teams.find(team => slug === team.slug)
-  posts = posts.filter(post => getTeam(post.team_slug))
 
-  const slides = [...posts, ...extraSlides]
+  const filterPosts = posts => posts.filter(post => getTeam(post.team_slug))
+
+  const getPosts = team => posts.find(post => post.team_slug === team.slug)
+
+  const getMissingTeams = () => teams.filter(team => getPosts(team))
+
+  const slides = [...filterPosts(posts), getMissingTeams(), ...extraSlides]
 
   const [index, setIndex] = useState(0)
   const [slide, setSlide] = useState(slides[0])
