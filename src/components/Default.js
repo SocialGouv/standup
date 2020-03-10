@@ -48,8 +48,8 @@ const Wrapper = styled.div`
     justify-content: center;
 
     ul {
-      margin: 3em;
-      font-size: 2.5em;
+      margin: 0 3em;
+      font-size: 1.5em;
     }
   }
 `
