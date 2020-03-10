@@ -8,6 +8,10 @@ import Control from "../src/components/Control"
 import KeyHandler, { KEYPRESS } from "react-key-handler"
 
 const Page = ({ teams, posts }) => {
+  // TODO: pretty dirty, to be done server side, idealy by joining local and remote schemas in Hasura.
+  const getTeam = slug => teams.find(team => slug === team.slug)
+  posts = posts.filter(post => getTeam(post.team_slug))
+
   const slides = [...posts, ...extraSlides]
 
   const [index, setIndex] = useState(0)
@@ -34,8 +38,6 @@ const Page = ({ teams, posts }) => {
       previous()
     }
   }
-
-  const getTeam = slug => teams.find(team => slug === team.slug)
 
   return (
     <>
