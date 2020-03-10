@@ -1,22 +1,16 @@
 import React from "react"
-import Counter from "./Counter"
 import styled from "styled-components"
 
-const Default = ({ data }) => (
+const MissingTeams = ({ data }) => (
   <Wrapper>
     <div className="header">
-      <h1>{data.title}</h1>
-      {data.timeout && <Counter start={0} />}
+      <h1>Les Absents</h1>
     </div>
     <div className="content">
       <ul>
-        {data.entries &&
-          data.entries.length &&
-          data.entries.map((entry, i) => (
-            <li key={i}>
-              <p dangerouslySetInnerHTML={{ __html: entry }}></p>
-            </li>
-          ))}
+        {data &&
+          data.length &&
+          data.map((team, i) => <li key={i}>{team.name}</li>)}
       </ul>
     </div>
   </Wrapper>
@@ -54,4 +48,4 @@ const Wrapper = styled.div`
   }
 `
 
-export default Default
+export default MissingTeams
