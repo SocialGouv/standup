@@ -39,6 +39,8 @@ const Page = ({ teams, posts }) => {
     }
   }
 
+  const getNextTeam = () => getTeam(slides[index + 1]?.team_slug)
+
   return (
     <>
       {started ? (
@@ -49,7 +51,11 @@ const Page = ({ teams, posts }) => {
               keyEventName={KEYPRESS}
               onKeyHandle={onKeyEvent}
             />
-            <Slide data={slide} team={getTeam(slide.team_slug)} />
+            <Slide
+              data={slide}
+              nextTeam={getNextTeam()}
+              team={getTeam(slide.team_slug)}
+            />
             {index > 0 && <Control type="previous" handler={previous} />}
             {index < slides.length - 1 && (
               <Control type="next" handler={next} />
