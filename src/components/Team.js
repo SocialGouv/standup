@@ -40,17 +40,17 @@ const Wrapper = styled.div`
     display: grid;
     grid-gap: 0.5rem;
     grid-auto-rows: min-content;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     .member {
       display: flex;
       justify-content: center;
 
       .avatar {
-        width: 4rem;
-        height: 4rem;
-        min-width: 4rem;
-        min-height: 4rem;
+        width: 3rem;
+        height: 3rem;
+        min-width: 3rem;
+        min-height: 3rem;
         border-radius: 50%;
         background-size: cover;
         background-color: #ffffff;
