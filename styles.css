@@ -2,14 +2,14 @@
   font-style: normal;
   font-weight: normal;
   font-family: "Source Sans Pro";
-  src: url(https://incubateur.social.gouv.fr/bootstrap/master/@socialgouv/bootstrap.core/fonts/Source%20Sans%20Pro/SourceSansPro-Regular.otf);
+  src: url(https://socialgouv.github.io/bootstrap/master/@socialgouv/bootstrap.core/fonts/Source%20Sans%20Pro/SourceSansPro-Regular.otf);
 }
 
 @font-face {
   font-weight: bold;
   font-style: normal;
   font-family: "Evolventa";
-  src: url(https://incubateur.social.gouv.fr/bootstrap/master/@socialgouv/bootstrap.core/fonts/Evolventa/Evolventa-Bold.ttf);
+  src: url(https://socialgouv.github.io/bootstrap/master/@socialgouv/bootstrap.core/fonts/Evolventa/Evolventa-Bold.ttf);
 }
 
 html, body {
