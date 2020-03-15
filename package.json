@@ -7,7 +7,7 @@
     "react": "16.13.0",
     "react-app-rewired": "^2.1.5",
     "react-dom": "16.13.0",
-    "react-image-appear": "^1.2.22",
+    "react-image-appear": "^1.2.23",
     "react-keyboard-event-handler": "1.5.4",
     "reactstrap": "^8.4.1"
   },
