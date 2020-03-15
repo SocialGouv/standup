@@ -8579,10 +8579,10 @@ react-error-overlay@^6.0.6:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.6.tgz#ac4d9dc4c1b5c536c2c312bf66aa2b09bfa384e2"
   integrity sha512-Yzpno3enVzSrSCnnljmr4b/2KUQSMZaPuqmS26t9k4nW7uwJk6STWmH9heNjPuvqUTO3jOSPkHoKgO4+Dw7uIw==
 
-react-image-appear@^1.2.22:
-  version "1.2.22"
-  resolved "https://registry.yarnpkg.com/react-image-appear/-/react-image-appear-1.2.22.tgz#077921a7b862445c3d3c6ffb2b52437205babb71"
-  integrity sha512-a0sDOZ4lSp4kiYKObQgZdGJCeU0P7t+W3/AnIKOC0zV08IfgF6h3QK5pv8b3TLWIRF7zqv0rSunJUwqDZZuSLg==
+react-image-appear@^1.2.23:
+  version "1.2.23"
+  resolved "https://registry.yarnpkg.com/react-image-appear/-/react-image-appear-1.2.23.tgz#4a8d17eda91f84ce3dca1e5a571dabb436b6616f"
+  integrity sha512-MO5IL9CmJTLUhgm7AnUl23z9V4FWowB9k2KNZQbITrNRdPZ8qgPY1aJwCaKvExApwPMe9AInnpby2TsVwx5YXQ==
   dependencies:
     prop-types "^15.6.1"
 
