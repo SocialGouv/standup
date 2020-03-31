@@ -13,7 +13,7 @@ const Page = ({ teams, posts }) => {
 
   const filterPosts = posts => posts.filter(post => getTeam(post.team_slug))
 
-  const getPosts = team => posts.find(post => post.team_slug === team.slug)
+  const getPosts = team => !posts.find(post => post.team_slug === team.slug)
 
   const getMissingTeams = () => teams.filter(team => getPosts(team))
 
