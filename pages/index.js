@@ -8,7 +8,6 @@ import Control from "../src/components/Control"
 import KeyHandler, { KEYPRESS } from "react-key-handler"
 
 const Page = ({ teams, posts }) => {
-  // TODO: pretty dirty, to be done server side, idealy by joining local and remote schemas in Hasura.
   const getTeam = slug => teams.find(team => slug === team.slug)
 
   const filterPosts = posts => posts.filter(post => getTeam(post.team_slug))
