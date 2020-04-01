@@ -41,7 +41,6 @@ const Wrapper = styled.div`
     }
 
     .value {
-      // color: #8bad95;
       font-size: 2rem;
       font-weight: bold;
       font-family: "Evolventa";
