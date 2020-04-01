@@ -5,6 +5,6 @@ include:
     ref: v7.3.3
 
 variables:
-  PROJECT: "standup2"
+  PROJECT: "standup"
   PORT: 3000
   VALUES_FILE: ./.k8s/app.values.yml

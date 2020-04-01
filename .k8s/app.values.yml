@@ -6,9 +6,9 @@ image:
   repository: registry.gitlab.factory.social.gouv.fr/socialgouv/standup2
 
 labels:
-  app.kubernetes.io/part-of: standup2
-  owner: standup2
-  team: standup2
+  app.kubernetes.io/part-of: standup
+  owner: standup
+  team: standup
 
 deployment:
   port: ${PORT}
