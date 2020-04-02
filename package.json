@@ -5,15 +5,13 @@
   "author": "SocialGouv",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
-    "test": "exit 0",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "build-start": "next build && yarn start",
-    "lint": "eslint src/pages/* src/lib/* src/components/*"
+    "lint": "eslint src/pages/* src/lib/* src/components/*",
+    "test": "exit 0"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "github-markdown-css": "^4.0.0",
     "graphql-request": "^1.8.2",
     "isomorphic-unfetch": "^3.0.0",
