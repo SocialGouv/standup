@@ -1,26 +1,26 @@
-import React, { useState } from "react"
 import fetch from "isomorphic-unfetch"
 import styled from "styled-components"
-import extraSlides from "../src/slides.yml"
-import Slide from "../src/components/Slide"
-import Intro from "../src/components/Intro"
-import Control from "../src/components/Control"
-import KeyHandler, { KEYPRESS } from "react-key-handler"
+import React, { useState, useRef, useEffect } from "react"
+
+import extraSlides from "../slides.yml"
+import Slide from "../components/Slide"
+import Intro from "../components/Intro"
+import Control from "../components/Control"
 
 const Page = ({ teams, posts }) => {
   const getTeam = slug => teams.find(team => slug === team.slug)
-
-  const filterPosts = posts => posts.filter(post => getTeam(post.team_slug))
-
-  const getPosts = team => !posts.find(post => post.team_slug === team.slug)
-
   const getMissingTeams = () => teams.filter(team => getPosts(team))
+  const filterPosts = posts => posts.filter(post => getTeam(post.team_slug))
+  const getPosts = team => !posts.find(post => post.team_slug === team.slug)
 
   const slides = [...filterPosts(posts), getMissingTeams(), ...extraSlides]
 
+  const pageRef = useRef()
   const [index, setIndex] = useState(0)
   const [slide, setSlide] = useState(slides[0])
   const [started, setStarted] = useState(false)
+
+  useEffect(() => pageRef.current.focus(), [pageRef])
 
   const previous = () => {
     if (index - 1 < 0) return
@@ -34,11 +34,17 @@ const Page = ({ teams, posts }) => {
     setSlide(slides[index + 1])
   }
 
-  const onKeyEvent = event => {
-    event.preventDefault()
-    if (event.code === "Space" || event.code === "Right") {
+  const start = () => {
+    setStarted(true)
+    pageRef.current.focus()
+  }
+
+  const onKeyDown = ({ key }) => {
+    if (!started && key === " ") {
+      start()
+    } else if (started && (key === " " || key === "ArrowRight")) {
       next()
-    } else if (event.code === "Left") {
+    } else if (started && key === "ArrowLeft") {
       previous()
     }
   }
@@ -46,15 +52,16 @@ const Page = ({ teams, posts }) => {
   const getNextTeam = () => getTeam(slides[index + 1]?.team_slug)
 
   return (
-    <>
+    <div
+      tabIndex={0}
+      role="button"
+      ref={pageRef}
+      className="slides"
+      onKeyDown={onKeyDown}
+    >
       {started ? (
         slides && slides.length ? (
           <>
-            <KeyHandler
-              code={["Space"]}
-              keyEventName={KEYPRESS}
-              onKeyHandle={onKeyEvent}
-            />
             <Slide
               data={slide}
               nextTeam={getNextTeam()}
@@ -72,31 +79,20 @@ const Page = ({ teams, posts }) => {
         )
       ) : (
         <>
-          <KeyHandler
-            code={["Space"]}
-            keyEventName={KEYPRESS}
-            onKeyHandle={() => setStarted(true)}
-          />
-          <Intro started={started} onClick={() => setStarted(true)} />
+          <Intro started={started} onClick={start} />
         </>
       )}
-    </>
+    </div>
   )
 }
 
-Page.getInitialProps = async ({ req }) => {
-  let teamsUrl = "/api/teams"
-  let postsUrl = "/api/posts"
+export async function getServerSideProps({ req }) {
+  const baseUrl = `http://localhost:${req.socket.localPort}`
 
-  if (req) {
-    teamsUrl = `http://localhost:${req.socket.localPort}${teamsUrl}`
-    postsUrl = `http://localhost:${req.socket.localPort}${postsUrl}`
-  }
+  const teams = await (await fetch(`${baseUrl}/api/teams`)).json()
+  const posts = await (await fetch(`${baseUrl}/api/posts`)).json()
 
-  const teams = await (await fetch(teamsUrl)).json()
-  const posts = await (await fetch(postsUrl)).json()
-
-  return { teams, posts }
+  return { props: { teams, posts } }
 }
 
 const NoDataWrapper = styled.div`

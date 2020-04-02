@@ -1,4 +1,4 @@
-import { fetch } from "../../src/lib/hasura"
+import { fetch } from "../../lib/hasura"
 
 const org = process.env.GITHUB_ORGANIZATION
 
