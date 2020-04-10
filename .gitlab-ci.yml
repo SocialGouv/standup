@@ -7,4 +7,4 @@ include:
 variables:
   PROJECT: "standup"
   PORT: 3000
-  VALUES_FILE: ./.k8s/app.values.yml
+  VALUES_FILE: ./.k8s.app.values.yml
