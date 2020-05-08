@@ -13,7 +13,7 @@
 #
 # ENTRYPOINT ["yarn", "run", "build-start"]
 
-FROM node:12-alpine
+FROM node:14-alpine
 
 WORKDIR /app
 
