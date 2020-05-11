@@ -89,8 +89,13 @@ const Page = ({ teams, posts }) => {
 export async function getServerSideProps({ req }) {
   const baseUrl = `http://localhost:${req.socket.localPort}`
 
+  console.log("INDEX base url:", `${baseUrl}`)
+
   const teams = await (await fetch(`${baseUrl}/api/teams`)).json()
   const posts = await (await fetch(`${baseUrl}/api/posts`)).json()
+
+  console.log("TEAMS:", teams.count)
+  console.log("POSTS:", posts.count)
 
   return { props: { teams, posts } }
 }
