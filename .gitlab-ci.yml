@@ -8,9 +8,4 @@ variables:
   PROJECT: "standup"
   PORT: 3000
   VALUES_FILE: ./.k8s.app.values.yml
-
-Deploy app (prod):
-  extends:
-    - .autodevops_deploy_app_prod
-  variables:
-    PRODUCTION: "true"
+  HASURA_URL: http://hasura-carnets.carnets.svc.cluster.local/v1/graphql
