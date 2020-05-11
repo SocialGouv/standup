@@ -7,7 +7,13 @@ image:
 deployment:
 
   livenessProbe:
-    initialDelaySeconds: 15
+    initialDelaySeconds: 30
+    path: /health
+    periodSeconds: 15
+  readinessProbe:
+    initialDelaySeconds: 30
+    path: /health
+    periodSeconds: 15
 
   resources:
     limits:
