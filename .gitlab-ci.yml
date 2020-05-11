@@ -8,4 +8,4 @@ variables:
   PROJECT: "standup"
   PORT: 3000
   VALUES_FILE: ./.k8s.app.values.yml
-  HASURA_URL: https://hasura-carnets.fabrique.social.gouv.fr/v1/graphql
+  HASURA_URL: http://hasura-carnets.carnets.svc.cluster.local/v1/graphql
