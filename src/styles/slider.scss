@@ -1,0 +1,29 @@
+.slider {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  background-color: blue;
+}
+
+.control {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.slides {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  scroll-behavior: smooth;
+  background-color: yellow;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}

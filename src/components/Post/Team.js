@@ -7,7 +7,7 @@ const Team = ({ team }) => (
       className="image"
       style={{ backgroundImage: `url(${team.avatarUrl})` }}
     ></div>
-    <div className="members">
+    {/* <div className="members">
       {team.members.nodes.map(member => (
         <div className="member" key={member.login}>
           <div
@@ -16,7 +16,7 @@ const Team = ({ team }) => (
           ></div>
         </div>
       ))}
-    </div>
+    </div> */}
   </Wrapper>
 )
 

@@ -7,6 +7,9 @@ import Slide from "../components/Slide"
 import Intro from "../components/Intro"
 import Control from "../components/Control"
 
+import Header from "components/Header"
+import Slides from "components/Slides"
+
 const Page = ({ teams, posts }) => {
   const getTeam = slug => teams.find(team => slug === team.slug)
   const getMissingTeams = () => teams.filter(team => getPosts(team))
@@ -20,7 +23,7 @@ const Page = ({ teams, posts }) => {
   const [slide, setSlide] = useState(slides[0])
   const [started, setStarted] = useState(false)
 
-  useEffect(() => pageRef.current.focus(), [pageRef])
+  // useEffect(() => pageRef.current.focus(), [pageRef])
 
   const previous = () => {
     if (index - 1 < 0) return
@@ -52,37 +55,41 @@ const Page = ({ teams, posts }) => {
   const getNextTeam = () => getTeam(slides[index + 1]?.team_slug)
 
   return (
-    <div
-      tabIndex={0}
-      role="button"
-      ref={pageRef}
-      className="slides"
-      onKeyDown={onKeyDown}
-    >
+    <>
       {started ? (
-        slides && slides.length ? (
-          <>
-            <Slide
-              data={slide}
-              nextTeam={getNextTeam()}
-              team={getTeam(slide.team_slug)}
-            />
-            {index > 0 && <Control type="previous" handler={previous} />}
-            {index < slides.length - 1 && (
-              <Control type="next" handler={next} />
-            )}
-          </>
-        ) : (
-          <NoDataWrapper className="card">
-            <h1>Pas de données !</h1>
-          </NoDataWrapper>
-        )
-      ) : (
+        // slides && slides.length ? (
+        //   <>
+        //     <Slide
+        //       data={slide}
+        //       nextTeam={getNextTeam()}
+        //       team={getTeam(slide.team_slug)}
+        //     />
+        //     {index > 0 && <Control type="previous" handler={previous} />}
+        //     {index < slides.length - 1 && (
+        //       <Control type="next" handler={next} />
+        //     )}
+        //   </>
+        // ) : (
+        //   <NoDataWrapper className="card">
+        //     <h1>Pas de données !</h1>
+        //   </NoDataWrapper>
+        // )
         <>
-          <Intro started={started} onClick={start} />
+          <Header />
+          <Slides data={slides} teams={teams} />
         </>
+      ) : (
+        <div
+          tabIndex={0}
+          role="button"
+          ref={pageRef}
+          className="slidesx"
+          onKeyDown={onKeyDown}
+        >
+          <Intro started={started} onClick={start} />
+        </div>
       )}
-    </div>
+    </>
   )
 }
 

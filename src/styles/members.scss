@@ -1,0 +1,26 @@
+.post .members {
+  // flex: 1;
+  // display: grid;
+  // grid-gap: 0.5rem;
+  // grid-auto-rows: min-content;
+  // grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: space-evenly;
+
+  .member {
+    display: flex;
+    // justify-content: center;
+
+    .avatar {
+      width: 3rem;
+      height: 3rem;
+      min-width: 3rem;
+      min-height: 3rem;
+      border-radius: 50%;
+      background-size: cover;
+      background-color: #ffffff;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+}
