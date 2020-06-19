@@ -1,28 +1,32 @@
-import { useRef, useEffect, useReducer } from "react"
+import React, { useContext, useReducer } from "react"
+
+const IndexContext = React.createContext()
 
 const initialState = { index: 0 }
 
 function reducer(state, action) {
-  switch (action.type) {
+  switch (action) {
     case "next":
+      console.log("NEXT")
       return { index: state.index + 1 }
     case "previous":
+      console.log("PREVIOUS")
       return { index: state.index - 1 }
     default:
       throw new Error()
   }
 }
 
-export const useIndex = () => {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    if (!ref.current) {
-      ref.current = useReducer(reducer, initialState)
-    }
-  }, [])
-
-  return ref.current
+export const IndexProvider = ({ children }) => {
+  const contextValue = useReducer(reducer, initialState)
+  return (
+    <IndexContext.Provider value={contextValue}>
+      {children}
+    </IndexContext.Provider>
+  )
 }
 
-export default useIndex
+export const useIndex = () => {
+  const contextValue = useContext(IndexContext)
+  return contextValue
+}

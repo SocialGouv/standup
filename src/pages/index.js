@@ -9,6 +9,7 @@ import Control from "../components/Control"
 
 import Header from "components/Header"
 import Slides from "components/Slides"
+import { IndexProvider } from "utils/index"
 
 const Page = ({ teams, posts }) => {
   const getTeam = slug => teams.find(team => slug === team.slug)
@@ -75,8 +76,10 @@ const Page = ({ teams, posts }) => {
         //   </NoDataWrapper>
         // )
         <>
-          <Header />
-          <Slides data={slides} teams={teams} />
+          <IndexProvider>
+            <Header />
+            <Slides data={slides} teams={teams} />
+          </IndexProvider>
         </>
       ) : (
         <div

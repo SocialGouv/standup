@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Slide from "components/Slide"
 
+import { useIndex } from "utils/index"
+
 const Control = ({ action }) => (
   <div
     tabIndex={0}
@@ -14,12 +16,16 @@ const Control = ({ action }) => (
 )
 
 const Slides = ({ teams = [], data = [] }) => {
-  const [index, setIndex] = useState(0)
+  // const [index, setIndex] = useState(0)
+  console.log("Slides", teams, data)
 
-  const previous = () => index && setIndex(index - 1)
+  const [index, dispatch] = useIndex()
+  console.log("SLIDES index", index)
+
+  // const previous = () => index && setIndex(index - 1)
   const getTeam = slug => teams.find(team => slug === team.slug)
   // const getNextTeam = () => getTeam(data[index + 1]?.team_slug)
-  const next = () => index < data.length - 1 && setIndex(index + 1)
+  // const next = () => index < data.length - 1 && setIndex(index + 1)
 
   useEffect(() => {
     window.location.hash = "#slide-" + index
@@ -30,7 +36,8 @@ const Slides = ({ teams = [], data = [] }) => {
 
   return (
     <div className="slider">
-      <Control action={previous} />
+      {/* <Control action={previous} /> */}
+      <Control action={() => dispatch("previous")} />
       <div className="slides">
         {data.map((slide, i) => (
           <Slide
@@ -42,7 +49,8 @@ const Slides = ({ teams = [], data = [] }) => {
           />
         ))}
       </div>
-      <Control action={next} />
+      {/* <Control action={next} /> */}
+      <Control action={() => dispatch("next")} />
     </div>
   )
 }

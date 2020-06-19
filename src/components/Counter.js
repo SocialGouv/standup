@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import React, { useState, useEffect, useRef } from "react"
 
+import { useIndex } from "utils/index"
+
 const useInterval = (callback, delay) => {
   const savedCallback = useRef()
 
@@ -19,6 +21,12 @@ const useInterval = (callback, delay) => {
 
 const Counter = ({ start }) => {
   const [count, setCount] = useState(start)
+  const [index] = useIndex()
+  console.log("COUNTER index", index)
+
+  useEffect(() => {
+    setCount(0)
+  }, [index])
 
   useInterval(() => {
     setCount(count + 1)
