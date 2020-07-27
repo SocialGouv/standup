@@ -1,9 +1,10 @@
 import React from "react"
+import ReactMarkdown from "react-markdown"
+import styled from "styled-components"
+
+import Header from "./Header"
 import KPIs from "./KPIs"
 import Team from "./Team"
-import Header from "./Header"
-import styled from "styled-components"
-import ReactMarkdown from "react-markdown"
 
 const Post = ({ data, team }) => (
   <Wrapper>

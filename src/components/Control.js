@@ -6,7 +6,7 @@ const Control = ({ type, handler }) => (
     onClick={handler}
     onKeyPress={handler}
     className={`control ${type}`}
-  ></Wrapper>
+  />
 )
 
 const Wrapper = styled.div`

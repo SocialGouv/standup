@@ -1,6 +1,7 @@
 import React from "react"
-import Counter from "./Counter"
 import styled from "styled-components"
+
+import Counter from "./Counter"
 
 const Extra = ({ data }) => (
   <Wrapper>
@@ -14,7 +15,7 @@ const Extra = ({ data }) => (
           data.entries.length &&
           data.entries.map((entry, i) => (
             <li key={i}>
-              <p dangerouslySetInnerHTML={{ __html: entry }}></p>
+              <p dangerouslySetInnerHTML={{ __html: entry }} />
             </li>
           ))}
       </ul>
