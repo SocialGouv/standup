@@ -1,11 +1,11 @@
 import fetch from "isomorphic-unfetch"
+import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import React, { useState, useRef, useEffect } from "react"
 
-import extraSlides from "../slides.yml"
-import Slide from "../components/Slide"
-import Intro from "../components/Intro"
 import Control from "../components/Control"
+import Intro from "../components/Intro"
+import Slide from "../components/Slide"
+import extraSlides from "../slides.yml"
 
 const Page = ({ teams, posts }) => {
   const getTeam = slug => teams.find(team => slug === team.slug)
@@ -91,7 +91,7 @@ export async function getServerSideProps({ req }) {
   const teams = await (await fetch(`${baseUrl}/api/teams`)).json()
   const posts = await (await fetch(`${baseUrl}/api/posts`)).json()
 
-  return { props: { teams, posts } }
+  return { props: { posts, teams } }
 }
 
 const NoDataWrapper = styled.div`

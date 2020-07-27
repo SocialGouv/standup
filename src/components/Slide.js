@@ -1,9 +1,10 @@
 import React from "react"
-import Post from "./Post"
+import styled from "styled-components"
+
 import Extra from "./Extra"
 import Footer from "./Footer"
-import styled from "styled-components"
 import MissingTeams from "./MissingTeams"
+import Post from "./Post"
 
 const Slide = ({ data, team, nextTeam, selected }) => (
   <Wrapper

@@ -1,6 +1,7 @@
 import React from "react"
-import Counter from "./Counter"
 import styled from "styled-components"
+
+import Counter from "./Counter"
 
 const Header = ({ team, mood }) => (
   <Wrapper className="header">

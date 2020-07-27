@@ -1,5 +1,5 @@
+import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import React, { useState, useEffect, useRef } from "react"
 
 const useInterval = (callback, delay) => {
   const savedCallback = useRef()
