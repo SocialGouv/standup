@@ -1,6 +1,6 @@
 @use "./variables";
 
-.header {
+#__next > .header {
   left: 0;
   right: 0;
   z-index: 1;
@@ -16,7 +16,7 @@
     height: 60px;
     background-size: auto 100%;
     background-repeat: no-repeat;
-    background-image: url(/marianne.svg);
+    background-image: url(/images/marianne.svg);
   }
 
   h1 {

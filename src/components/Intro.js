@@ -28,9 +28,10 @@ const Wrapper = styled.div`
 
   h1 {
     padding: 0;
-    font-size: 10em;
+    font-size: 9rem;
+    margin-bottom: 0;
+    line-height: 10rem;
     position: relative;
-    margin-bottom: 2vh;
   }
 
   h1:after {
@@ -77,6 +78,7 @@ const Wrapper = styled.div`
 
   h2 {
     color: #999;
+    margin-top: 0;
     margin-bottom: 20px;
   }
 

@@ -1,8 +1,8 @@
 import React from "react"
 
-const Members = ({ team }) => (
+const Members = ({ members }) => (
   <div className="members">
-    {team.members.nodes.map(member => (
+    {members.nodes.map(member => (
       <div className="member" key={member.login}>
         <div
           className="avatar"

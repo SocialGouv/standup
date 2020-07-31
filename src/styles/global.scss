@@ -81,12 +81,21 @@ button {
   font-weight: 400;
   color: variables.$font-color;
   font-size: variables.$font-size;
-  line-height: variables.$font-size * 1.2;
+  line-height: variables.$font-size * 1.5;
   font-family: "Source Sans Pro", sans-serif;
 }
 
 small {
   display: block;
+}
+
+a {
+  text-decoration: none;
+  color: variables.$link-color;
+
+  &:hover:not(.button) {
+    text-decoration: underline;
+  }
 }
 
 #__next {

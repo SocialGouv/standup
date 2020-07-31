@@ -1,0 +1,38 @@
+.slide > .control {
+  top: 50%;
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  transition: opacity 0.2s;
+
+  &.next {
+    right: 0.5rem;
+
+    &::after {
+      content: "\\25BA";
+      position: absolute;
+    }
+  }
+
+  &.previous {
+    left: 0.5rem;
+
+    &::after {
+      content: "\\25BA";
+      position: absolute;
+      transform: rotate(-180deg);
+    }
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}

@@ -2,12 +2,12 @@ import React from "react"
 import Link from "next/link"
 
 import Counter from "./Counter"
-// import { useIndex } from "utils/index"
+import { useIndex } from "utils/index"
+import { useSlides } from "utils/slides"
 
-const Header = () => {
-  // const [index] = useIndex()
-  // console.log("HEADER index", index)
-  // console.log("HEADER index 2")
+const Header = ({ sliding }) => {
+  const slides = useSlides()
+  const [{ index }] = useIndex()
 
   return (
     <div className="header">
@@ -20,10 +20,7 @@ const Header = () => {
           Le stand up de <a href="https://github.com/socialgouv">@SocialGouv</a>
         </small>
       </h1>
-      {/* <Menu /> */}
-      <div>
-        <Counter start={0} />
-      </div>
+      {slides[index].team && <Counter start={0} />}
     </div>
   )
 }

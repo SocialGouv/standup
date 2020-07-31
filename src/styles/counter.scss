@@ -1,0 +1,33 @@
+.counter {
+  opacity: 1;
+  font-size: 3rem;
+  color: #c7c7c7;
+  margin-right: 0.5rem;
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  &.blink {
+    animation: blinker 1s linear infinite;
+  }
+
+  &.blink,
+  &.overdue {
+    color: #b00;
+  }
+
+  &.warning {
+    color: #e8998b;
+  }
+
+  &.ontime {
+    color: inherit;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+}

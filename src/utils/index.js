@@ -1,23 +1,35 @@
 import React, { useContext, useReducer } from "react"
 
+import { useSlides } from "utils/slides"
+
 const IndexContext = React.createContext()
 
-const initialState = { index: 0 }
+const next = state => {
+  const { index, maxIndex } = state
+  const newIndex = index < maxIndex ? index + 1 : index
+  return { index: newIndex, maxIndex }
+}
+
+const previous = state => {
+  const { index, maxIndex } = state
+  const newIndex = index < 1 ? 0 : index - 1
+  return { index: newIndex, maxIndex }
+}
 
 function reducer(state, action) {
   switch (action) {
     case "next":
-      console.log("NEXT")
-      return { index: state.index + 1 }
+      return next(state)
     case "previous":
-      console.log("PREVIOUS")
-      return { index: state.index - 1 }
+      return previous(state)
     default:
       throw new Error()
   }
 }
 
 export const IndexProvider = ({ children }) => {
+  const slides = useSlides()
+  const initialState = { index: 0, maxIndex: slides.length }
   const contextValue = useReducer(reducer, initialState)
   return (
     <IndexContext.Provider value={contextValue}>
@@ -26,7 +38,4 @@ export const IndexProvider = ({ children }) => {
   )
 }
 
-export const useIndex = () => {
-  const contextValue = useContext(IndexContext)
-  return contextValue
-}
+export const useIndex = () => useContext(IndexContext)

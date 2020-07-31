@@ -1,0 +1,38 @@
+@use "./variables";
+
+.slides > .navigation {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+  display: flex;
+  position: absolute;
+  margin: 0 5rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  transition: opacity 0.5s ease-out;
+
+  &.hidden {
+    opacity: 0;
+    transition: none;
+  }
+
+  h4 {
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    color: lighten(variables.$font-color, 50);
+
+    &:hover {
+      color: variables.$font-color;
+    }
+
+    div {
+      outline: none;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+}
