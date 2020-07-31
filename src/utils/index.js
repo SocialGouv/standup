@@ -1,6 +1,6 @@
 import React, { useContext, useReducer } from "react"
 
-import { useSlides } from "utils/slides"
+import { useSlides } from "@utils/slides"
 
 const IndexContext = React.createContext()
 

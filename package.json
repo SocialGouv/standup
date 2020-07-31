@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src/pages/* src/lib/* src/components/*",
+    "lint": "eslint src/**/*.js",
     "test": "exit 0"
   },
   "dependencies": {
@@ -21,14 +21,14 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
-    "sass": "^1.26.5",
-    "slick-carousel": "^1.8.1",
-    "styled-components": "^5.1.0"
+    "sass": "^1.26.5"
   },
   "devDependencies": {
     "@socialgouv/eslint-config-react": "^0.21.0",
-    "@socialgouv/eslint-config-recommended": "^0.21.0",
     "eslint": "^7.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-react": "^7.20.5",
     "prettier": "^1.19.1"
   }
 }

@@ -1,11 +1,11 @@
 import fetch from "isomorphic-unfetch"
 import React, { useState, useRef, useEffect } from "react"
 
-import Intro from "components/Intro"
-import Header from "components/Header"
-import Slider from "components/Slider"
-import { IndexProvider } from "utils/index"
-import { SlidesProvider } from "utils/slides"
+import Intro from "@components/Intro"
+import Header from "@components/Header"
+import Slider from "@components/Slider"
+import { IndexProvider } from "@utils/index"
+import { SlidesProvider } from "@utils/slides"
 
 const Page = ({ teams, posts }) => {
   const pageRef = useRef()

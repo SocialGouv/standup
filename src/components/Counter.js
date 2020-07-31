@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 
-import { useIndex } from "utils/index"
+import { useIndex } from "@utils/index"
 
 const useInterval = (callback, delay) => {
   const savedCallback = useRef()

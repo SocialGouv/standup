@@ -1,9 +1,9 @@
 import { debounce } from "lodash"
 import React, { useState, useRef, useEffect } from "react"
 
-import Slide from "components/Slide"
-import { useIndex } from "utils/index"
-import Navigation from "components/Navigation"
+import Slide from "@components/Slide"
+import { useIndex } from "@utils/index"
+import Navigation from "@components/Navigation"
 
 const Slider = () => {
   const slidesEl = useRef(null)

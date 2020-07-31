@@ -1,9 +1,9 @@
 import React from "react"
 
-import Post from "components/Post"
-import Extra from "components/Extra"
-import { useIndex } from "utils/index"
-import Missing from "components/Missing"
+import Post from "@components/Post"
+import Extra from "@components/Extra"
+import { useIndex } from "@utils/index"
+import Missing from "@components/Missing"
 
 const Slide = ({ id, data }) => {
   const [{ isSliding }] = useIndex()

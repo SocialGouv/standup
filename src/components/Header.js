@@ -1,8 +1,8 @@
 import React from "react"
 import Link from "next/link"
 
-import Counter from "./Counter"
-import { useIndex } from "utils/index"
+import { useIndex } from "@utils/index"
+import Counter from "@components/Counter"
 
 const Header = () => {
   const [{ index, slides }] = useIndex()

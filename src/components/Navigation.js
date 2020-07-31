@@ -1,6 +1,6 @@
 import React from "react"
 
-import { useIndex } from "utils/index"
+import { useIndex } from "@utils/index"
 
 const Navigation = ({ handler }) => {
   const [{ index, isSliding, slides }] = useIndex()
