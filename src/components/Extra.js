@@ -1,9 +1,7 @@
 import React from "react"
-import Counter from "./Counter"
-import styled from "styled-components"
 
 const Extra = ({ data }) => (
-  <Wrapper>
+  <div className="extra">
     <ul>
       {data.entries &&
         data.entries.length &&
@@ -13,19 +11,7 @@ const Extra = ({ data }) => (
           </li>
         ))}
     </ul>
-  </Wrapper>
+  </div>
 )
-
-const Wrapper = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ul {
-    margin: 0 3em;
-    font-size: 1.5em;
-  }
-`
 
 export default Extra

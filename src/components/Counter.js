@@ -19,12 +19,12 @@ const useInterval = (callback, delay) => {
 }
 
 const Counter = ({ start }) => {
-  const [index] = useIndex()
+  const [state] = useIndex()
   const [count, setCount] = useState(start)
 
   useEffect(() => {
     setCount(0)
-  }, [index])
+  }, [state])
 
   useInterval(() => {
     setCount(count + 1)
@@ -42,17 +42,13 @@ const Counter = ({ start }) => {
 
   return (
     <div
-      className={`counter${
-        count > 120
-          ? " blink"
-          : count > 90
-          ? " overdue"
-          : count > 60
-          ? " warning"
-          : count > 30
-          ? " ontime"
-          : ""
-      }`}
+      className={`
+        counter
+        ${count > 1 ? " started" : ""}
+        ${count > 59 ? " overdue" : ""}
+        ${count > 119 ? " blink" : ""}
+        ${state.isSliding ? " hidden" : ""}
+      `}
     >
       {format(count)}
     </div>

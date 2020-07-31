@@ -1,16 +1,14 @@
 import React from "react"
 
 import { useIndex } from "utils/index"
-import { useSlides } from "utils/slides"
 
-const Navigation = ({ sliding, handler }) => {
-  const slides = useSlides()
-  const [{ index }] = useIndex()
+const Navigation = ({ handler }) => {
+  const [{ index, isSliding, slides }] = useIndex()
   const nextSlide = slides[index + 1]
   const previousSlide = slides[index - 1]
 
   return (
-    <div className={`navigation ${sliding ? "hidden" : ""}`}>
+    <div className={`navigation ${isSliding ? "hidden" : ""}`}>
       <h4 className="previous">
         {previousSlide && (
           <div

@@ -1,28 +1,28 @@
+@use "./variables";
+
 .counter {
   opacity: 1;
   font-size: 3rem;
-  color: #c7c7c7;
   margin-right: 0.5rem;
+  color: variables.$border-color;
+  transition: opacity 0.5s ease-out;
+
+  &.started {
+    transition: color 60s ease;
+    color: variables.$font-color;
+
+    &.overdue {
+      color: crimson;
+
+      &.blink {
+        animation: blinker 1s ease-out infinite;
+      }
+    }
+  }
 
   &.hidden {
     opacity: 0;
-  }
-
-  &.blink {
-    animation: blinker 1s linear infinite;
-  }
-
-  &.blink,
-  &.overdue {
-    color: #b00;
-  }
-
-  &.warning {
-    color: #e8998b;
-  }
-
-  &.ontime {
-    color: inherit;
+    transition: none;
   }
 
   @keyframes blinker {

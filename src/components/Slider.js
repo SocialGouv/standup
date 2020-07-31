@@ -3,16 +3,12 @@ import React, { useState, useRef, useEffect } from "react"
 
 import Slide from "components/Slide"
 import { useIndex } from "utils/index"
-import { useSlides } from "utils/slides"
-// import Controls from "components/Controls"
 import Navigation from "components/Navigation"
 
 const Slider = () => {
-  const slides = useSlides()
   const slidesEl = useRef(null)
-  const [, dispatch] = useIndex()
   const scrollPositionRef = useRef()
-  const [sliding, setSliding] = useState(false)
+  const [{ slides }, dispatch] = useIndex()
   const [scrollPosition, setScrollPosition] = useState(0)
 
   const slideTo = index => {
@@ -29,7 +25,7 @@ const Slider = () => {
     const el = slidesEl?.current
 
     const onSlide = debounce(event => {
-      setSliding(false)
+      dispatch("stopSliding")
       const currentPosition = event.target.scrollLeft
       const previousPosition = scrollPositionRef.current
       if (currentPosition > previousPosition) {
@@ -41,7 +37,7 @@ const Slider = () => {
     }, 100)
 
     const handler = event => {
-      setSliding(true)
+      dispatch("startSliding")
       onSlide(event)
     }
 
@@ -55,16 +51,9 @@ const Slider = () => {
     <div className="slider">
       <div tabIndex="-1" ref={slidesEl} className="slides">
         {slides.map((slide, i) => (
-          <Slide key={i} data={slide} id={`slide-${i}`} sliding={sliding}>
-            {/* <Controls
-              index={i}
-              sliding={sliding}
-              handler={slideTo}
-              maxIndex={slides.length - 1}
-            /> */}
-          </Slide>
+          <Slide key={i} data={slide} id={`slide-${i}`} />
         ))}
-        <Navigation sliding={sliding} handler={slideTo}></Navigation>
+        <Navigation handler={slideTo}></Navigation>
       </div>
     </div>
   )

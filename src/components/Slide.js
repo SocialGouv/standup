@@ -1,12 +1,16 @@
 import React from "react"
-import Post from "./Post"
-import Extra from "./Extra"
-import MissingTeams from "./MissingTeams"
 
-const Slide = ({ id, data, sliding, children }) => {
+import Post from "components/Post"
+import Extra from "components/Extra"
+import { useIndex } from "utils/index"
+import Missing from "components/Missing"
+
+const Slide = ({ id, data }) => {
+  const [{ isSliding }] = useIndex()
+
   return (
     <div id={id} className="slide" key={data.team_slug}>
-      <h1 className={`title ${sliding ? "hidden" : ""}`}>
+      <h1 className={`title ${isSliding ? "hidden" : ""}`}>
         {data.team && data.mood} {data.title}
       </h1>
 
@@ -14,12 +18,11 @@ const Slide = ({ id, data, sliding, children }) => {
         {data.team ? (
           <Post data={data} />
         ) : data.teams ? (
-          <MissingTeams teams={data.teams} />
+          <Missing teams={data.teams} />
         ) : (
           <Extra data={data} />
         )}
       </div>
-      {children}
     </div>
   )
 }

@@ -3,11 +3,9 @@ import Link from "next/link"
 
 import Counter from "./Counter"
 import { useIndex } from "utils/index"
-import { useSlides } from "utils/slides"
 
-const Header = ({ sliding }) => {
-  const slides = useSlides()
-  const [{ index }] = useIndex()
+const Header = () => {
+  const [{ index, slides }] = useIndex()
 
   return (
     <div className="header">
