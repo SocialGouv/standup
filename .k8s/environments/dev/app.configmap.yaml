@@ -6,4 +6,5 @@ data:
   NODE_ENV: "production"
   PORT: "3000"
   POSTGRES_SSL: "true"
-  K8S_NAMESPACE: "carnets-99-master-dev2"
+  GITHUB_ORGANIZATION: "SocialGouv"
+  HASURA_URL: "https://hasura-kosko3-dev2-carnets.dev2.fabrique.social.gouv.fr/v1/graphql"
