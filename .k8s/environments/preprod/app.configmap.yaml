@@ -6,3 +6,5 @@ data:
   NODE_ENV: "production"
   PORT: "3000"
   POSTGRES_SSL: "true"
+  GITHUB_ORGANIZATION: "SocialGouv"
+  HASURA_URL: "https://hasura-master-dev2-carnets.dev2.fabrique.social.gouv.fr/v1/graphql"
