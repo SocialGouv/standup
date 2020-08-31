@@ -1,0 +1,73 @@
+@use "./variables";
+
+#__next > .slider {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+
+  .title {
+    left: 0;
+    right: 0;
+    margin: 0;
+    height: 14rem;
+    font-size: 2.4rem;
+    position: absolute;
+    text-align: center;
+    padding-top: 1.6rem;
+    line-height: 2.4rem;
+    text-transform: uppercase;
+
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+
+    &.hidden {
+      opacity: 0;
+      transition: none;
+    }
+  }
+
+  .slides {
+    flex: 1;
+    z-index: 1;
+    display: flex;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-shrink: 0;
+      position: relative;
+      scroll-snap-align: start;
+      background: linear-gradient(
+        variables.$background-color 33%,
+        variables.$base-color
+      );
+
+      .content {
+        flex: 1;
+        z-index: 3;
+        display: flex;
+        overflow: auto;
+        position: relative;
+        flex-direction: column;
+        margin: 6rem 5rem 5rem;
+        background-color: white;
+        box-shadow: #c9d3df 0px 1px 2px;
+      }
+    }
+  }
+}
+
+.control {
+  cursor: pointer;
+  position: absolute;
+  color: variables.$background-color;
+
+  &:hover {
+    color: variables.$border-color;
+  }
+}

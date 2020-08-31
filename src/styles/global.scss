@@ -1,38 +1,74 @@
-@font-face {
-  font-style: normal;
-  font-weight: normal;
-  font-family: "Source Sans Pro";
-  src: url(https://socialgouv.github.io/bootstrap/master/@socialgouv/bootstrap.core/fonts/Source%20Sans%20Pro/SourceSansPro-Regular.otf);
-}
+@use "./variables";
 
-@font-face {
-  font-weight: bold;
-  font-style: normal;
-  font-family: "Evolventa";
-  src: url(https://socialgouv.github.io/bootstrap/master/@socialgouv/bootstrap.core/fonts/Evolventa/Evolventa-Bold.ttf);
-}
-
-html, body {
+html,
+body {
   height: 100%;
-  background-color: #fafafa;
 }
 
 body {
   margin: 0;
   display: flex;
-  color: #7A7A7A;
-  font-family: "Source Sans Pro";
+  text-rendering: optimizelegibility;
 }
 
-h1, h2, h3, h4 {
-  margin: 0;
-  padding: 0;
-  color: #54677A;
-  font-weight: bold;
-  font-family: "Evolventa";
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  margin: variables.$base-margin 0;
+  font-family: "Source Sans Pro Semi Bold";
 }
 
-#__next, .slides {
+h1 {
+  font-size: variables.$font-size * 2;
+  line-height: variables.$font-size * 2;
+}
+
+h2 {
+  font-size: variables.$font-size * 1.8;
+  line-height: variables.$font-size * 2;
+}
+
+h3 {
+  font-size: variables.$font-size * 1.5;
+  line-height: variables.$font-size * 1.5;
+}
+
+h4 {
+  font-size: variables.$font-size * 1.2;
+  line-height: variables.$font-size * 1.2;
+}
+
+body,
+small,
+input,
+select,
+textarea,
+button {
+  font-weight: 400;
+  color: variables.$font-color;
+  font-size: variables.$font-size;
+  line-height: variables.$font-size * 1.5;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+small {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: variables.$link-color;
+
+  &:hover:not(.button) {
+    text-decoration: underline;
+  }
+}
+
+#__next {
   flex: 1;
   display: flex;
+  overflow: auto;
+  flex-direction: column;
 }

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react"
-import styled from "styled-components"
+import React, { useState, useEffect, useRef } from "react"
+
+import { useIndex } from "@utils/index"
 
 const useInterval = (callback, delay) => {
   const savedCallback = useRef()
@@ -18,7 +19,12 @@ const useInterval = (callback, delay) => {
 }
 
 const Counter = ({ start }) => {
+  const [state] = useIndex()
   const [count, setCount] = useState(start)
+
+  useEffect(() => {
+    setCount(0)
+  }, [state])
 
   useInterval(() => {
     setCount(count + 1)
@@ -35,51 +41,18 @@ const Counter = ({ start }) => {
   }
 
   return (
-    <Wrapper
-      className={`counter${
-        count > 120
-          ? " blink"
-          : count > 90
-          ? " overdue"
-          : count > 60
-          ? " warning"
-          : count > 30
-          ? " ontime"
-          : ""
-      }`}
+    <div
+      className={`
+        counter
+        ${count > 1 ? " started" : ""}
+        ${count > 59 ? " overdue" : ""}
+        ${count > 119 ? " blink" : ""}
+        ${state.isSliding ? " hidden" : ""}
+      `}
     >
       {format(count)}
-    </Wrapper>
+    </div>
   )
 }
-
-const Wrapper = styled.div`
-  font-size: 4rem;
-  margin: 0 2rem;
-  color: #c7c7c7;
-
-  &.blink {
-    animation: blinker 1s linear infinite;
-  }
-
-  &.blink,
-  &.overdue {
-    color: #b00;
-  }
-
-  &.warning {
-    color: #e8998b;
-  }
-
-  &.ontime {
-    color: inherit;
-  }
-
-  @keyframes blinker {
-    50% {
-      opacity: 0;
-    }
-  }
-`
 
 export default Counter

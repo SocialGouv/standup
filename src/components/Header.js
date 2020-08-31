@@ -1,39 +1,26 @@
 import React from "react"
-import styled from "styled-components"
+import Link from "next/link"
 
-import Counter from "./Counter"
+import { useIndex } from "@utils/index"
+import Counter from "@components/Counter"
 
-const Header = ({ team, mood }) => (
-  <Wrapper className="header">
-    <div className="title">
+const Header = () => {
+  const [{ index, slides }] = useIndex()
+
+  return (
+    <div className="header">
+      <div className="marianne"></div>
       <h1>
-        {mood} {team.name}
+        <Link href="/" as="/">
+          <a>Stand up</a>
+        </Link>
+        <small className="description">
+          Le stand up de <a href="https://github.com/socialgouv">@SocialGouv</a>
+        </small>
       </h1>
-      <p>{team.description}</p>
+      {slides[index].team && <Counter start={0} />}
     </div>
-    <Counter start={0} />
-  </Wrapper>
-)
-
-const Wrapper = styled.div`
-  display: flex;
-  padding: 1rem;
-  min-height: 80px;
-  background-color: #ffffff;
-  box-shadow: rgb(201, 211, 223) 0px 1px 4px;
-
-  .title {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    p {
-      margin: 0;
-      font-size: 1.2em;
-      font-style: italic;
-    }
-  }
-`
+  )
+}
 
 export default Header

@@ -1,0 +1,33 @@
+@use "./variables";
+
+.counter {
+  opacity: 1;
+  font-size: 3rem;
+  margin-right: 0.5rem;
+  color: variables.$border-color;
+  transition: opacity 0.5s ease-out;
+
+  &.started {
+    transition: color 60s ease;
+    color: variables.$font-color;
+
+    &.overdue {
+      color: crimson;
+
+      &.blink {
+        animation: blinker 1s ease-out infinite;
+      }
+    }
+  }
+
+  &.hidden {
+    opacity: 0;
+    transition: none;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+}
