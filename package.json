@@ -4,6 +4,7 @@
   "main": "index.js",
   "author": "SocialGouv",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
