@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/SocialGouv/standup/compare/v1.0.0...v1.0.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* Replace Hasura url env var. ([95d35e5](https://github.com/SocialGouv/standup/commit/95d35e5f74d5135800f5cc6135de99d242089dd8))
+
 # 1.0.0 (2020-08-31)
 
 
