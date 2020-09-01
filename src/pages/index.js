@@ -35,9 +35,7 @@ const Page = ({ teams, posts }) => {
 export async function getServerSideProps({ req }) {
   const baseUrl = `http://localhost:${req.socket.localPort}`
   const teams = await (await fetch(`${baseUrl}/api/teams`)).json()
-  console.log("TEAMS", teams)
   const posts = await (await fetch(`${baseUrl}/api/posts`)).json()
-  console.log("POSTS", posts)
   return { props: { teams, posts } }
 }
 

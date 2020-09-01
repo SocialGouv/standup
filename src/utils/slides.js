@@ -13,16 +13,21 @@ export const SlidesProvider = ({ teams, posts, children }) => {
   const filterPosts = posts =>
     posts.filter(
       post => (
-        ((post.team = getTeam(post.team_slug)), (post.title = post.team.name)),
+        ((post.team = getTeam(post.team_slug)), (post.title = post.team?.name)),
         post.team
       )
     )
 
-  const slides = [
-    ...shuffle(filterPosts(posts)),
-    { title: "Les Absents", teams: getMissingTeams() },
-    ...extraSlides
-  ]
+  const missingTeams = getMissingTeams()
+  const filteredPosts = filterPosts(posts)
+  const slides = [...shuffle(filteredPosts), ...extraSlides]
+
+  if (missingTeams && missingTeams.length) {
+    slides.splice(filterPosts.length, 0, {
+      title: "Les Absents",
+      teams: missingTeams
+    })
+  }
 
   return (
     <SlidesContext.Provider value={slides}>{children}</SlidesContext.Provider>
