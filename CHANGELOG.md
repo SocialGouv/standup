@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/SocialGouv/standup/compare/v1.0.2...v1.0.3) (2020-09-01)
+
+
+### Bug Fixes
+
+* **slides:** Do not show missing teams slide if no team is missing. ([91fe2f9](https://github.com/SocialGouv/standup/commit/91fe2f9071cf61d0b78abd52048a2d17e27bd917))
+
 ## [1.0.2](https://github.com/SocialGouv/standup/compare/v1.0.1...v1.0.2) (2020-09-01)
 
 
