@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/SocialGouv/standup/compare/v1.0.5...v1.0.6) (2020-09-10)
+
+
+### Bug Fixes
+
+* Force team logo size. ([507ff69](https://github.com/SocialGouv/standup/commit/507ff6903c695b790069bc7f80320284573bd6c9))
+
 ## [1.0.5](https://github.com/SocialGouv/standup/compare/v1.0.4...v1.0.5) (2020-09-10)
 
 
