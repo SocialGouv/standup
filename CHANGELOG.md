@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/SocialGouv/standup/compare/v1.0.4...v1.0.5) (2020-09-10)
+
+
+### Bug Fixes
+
+* Debug Hasura connection. ([bf3c595](https://github.com/SocialGouv/standup/commit/bf3c59526e0927116fac47db89a06379005842ca))
+
 ## [1.0.4](https://github.com/SocialGouv/standup/compare/v1.0.3...v1.0.4) (2020-09-10)
 
 
