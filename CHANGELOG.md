@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/SocialGouv/standup/compare/v1.0.6...v1.0.7) (2020-09-11)
+
+
+### Bug Fixes
+
+* Fix missing teams slide insertion. ([32b397b](https://github.com/SocialGouv/standup/commit/32b397b1b90393f2ce28739d5e00e8caff0e0ae2))
+
 ## [1.0.6](https://github.com/SocialGouv/standup/compare/v1.0.5...v1.0.6) (2020-09-10)
 
 
