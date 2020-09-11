@@ -23,7 +23,7 @@ export const SlidesProvider = ({ teams, posts, children }) => {
   const slides = [...shuffle(filteredPosts), ...extraSlides]
 
   if (missingTeams && missingTeams.length) {
-    slides.splice(filterPosts.length, 0, {
+    slides.splice(filteredPosts.length, 0, {
       title: "Les Absents",
       teams: missingTeams
     })
