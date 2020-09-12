@@ -45,25 +45,25 @@
 
   .kpis {
     display: flex;
-    margin: 3rem 0;
-    padding: 0.5rem 0;
+    margin: 2rem 0;
     justify-content: center;
-    border: 1px solid variables.$border-color;
-    background-color: variables.$background-color;
 
     .kpi {
       flex: 1;
+      margin: 1rem;
+      min-width: 0;
       font-size: 1.2rem;
+      padding: 1rem 2rem;
       text-align: center;
       line-height: 1.6rem;
-      border-right: 1px solid #eaeaea;
+      border: 1px solid variables.$border-color;
+      background-color: variables.$background-color;
 
-      &:first-child {
-        border-left: none;
-      }
-
-      &:last-child {
-        border-right: none;
+      .value,
+      .name {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .value {
