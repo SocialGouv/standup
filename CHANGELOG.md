@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/SocialGouv/standup/compare/v1.0.7...v1.0.8) (2020-09-12)
+
+
+### Bug Fixes
+
+* Fix security issue. ([940a588](https://github.com/SocialGouv/standup/commit/940a588f169b0aa662692763127bdc7d4bc45c4b))
+
 ## [1.0.7](https://github.com/SocialGouv/standup/compare/v1.0.6...v1.0.7) (2020-09-11)
 
 
