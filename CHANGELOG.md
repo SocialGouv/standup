@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/SocialGouv/standup/compare/v1.0.8...v1.0.9) (2020-09-12)
+
+
+### Bug Fixes
+
+* Pretty KPIs display. ([43660f7](https://github.com/SocialGouv/standup/commit/43660f7a1dbe68f2e5395e7bd3ee1b1e994ae9cb))
+
 ## [1.0.8](https://github.com/SocialGouv/standup/compare/v1.0.7...v1.0.8) (2020-09-12)
 
 
