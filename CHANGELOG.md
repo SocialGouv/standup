@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/SocialGouv/standup/compare/v1.0.9...v1.1.0) (2020-09-13)
+
+
+### Features
+
+* **weather:** Replace mood by weather. ([#279](https://github.com/SocialGouv/standup/issues/279)) ([c65e0fa](https://github.com/SocialGouv/standup/commit/c65e0fa293b7c453031c5ad69add05b5df9ff164))
+
 ## [1.0.9](https://github.com/SocialGouv/standup/compare/v1.0.8...v1.0.9) (2020-09-12)
 
 
