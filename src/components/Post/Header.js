@@ -1,8 +1,8 @@
 import React from "react"
 
+import Description from "./Description"
 import Logo from "./Logo"
 import Members from "./Members"
-import Description from "./Description"
 
 const Header = ({ team }) => (
   <div className="header">

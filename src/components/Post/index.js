@@ -1,8 +1,8 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
 
-import KPIs from "./KPIs"
 import Header from "./Header"
+import KPIs from "./KPIs"
 
 const Post = ({ data }) => (
   <div className="post">

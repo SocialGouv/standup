@@ -1,18 +1,14 @@
-import fetch from "isomorphic-unfetch"
-import React, { useState, useRef, useEffect } from "react"
-
-import Intro from "@components/Intro"
 import Header from "@components/Header"
+import Intro from "@components/Intro"
 import Slider from "@components/Slider"
 import { IndexProvider } from "@utils/index"
 import { SlidesProvider } from "@utils/slides"
+import fetch from "isomorphic-unfetch"
+import React, { useState } from "react"
 
 const Page = ({ teams, posts }) => {
-  const pageRef = useRef()
   const [started, setStarted] = useState(false)
   const onKeyDown = ({ key }) => !started && key === " " && setStarted(true)
-
-  useEffect(() => pageRef?.current?.focus(), [])
 
   return (
     <>
@@ -24,9 +20,11 @@ const Page = ({ teams, posts }) => {
           </IndexProvider>
         </SlidesProvider>
       ) : (
-        <div tabIndex={0} role="button" ref={pageRef} onKeyDown={onKeyDown}>
-          <Intro started={started} onClick={() => setStarted(true)} />
-        </div>
+        <Intro
+          started={started}
+          onKeyDown={onKeyDown}
+          onClick={() => setStarted(true)}
+        />
       )}
     </>
   )
@@ -36,7 +34,7 @@ export async function getServerSideProps({ req }) {
   const baseUrl = `http://localhost:${req.socket.localPort}`
   const teams = await (await fetch(`${baseUrl}/api/teams`)).json()
   const posts = await (await fetch(`${baseUrl}/api/posts`)).json()
-  return { props: { teams, posts } }
+  return { props: { posts, teams } }
 }
 
 export default Page

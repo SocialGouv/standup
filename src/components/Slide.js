@@ -1,9 +1,9 @@
-import React from "react"
-
-import Post from "@components/Post"
 import Extra from "@components/Extra"
-import { useIndex } from "@utils/index"
 import Missing from "@components/Missing"
+import Post from "@components/Post"
+import Weather from "@components/Weather"
+import { useIndex } from "@utils/index"
+import React from "react"
 
 const Slide = ({ id, data }) => {
   const [{ isSliding }] = useIndex()
@@ -11,7 +11,8 @@ const Slide = ({ id, data }) => {
   return (
     <div id={id} className="slide" key={data.team_slug}>
       <h1 className={`title ${isSliding ? "hidden" : ""}`}>
-        {data.team && data.mood} {data.title}
+        <Weather status={data.mood} />
+        {data.title}
       </h1>
 
       <div className="content">

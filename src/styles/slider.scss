@@ -10,11 +10,13 @@
     right: 0;
     margin: 0;
     height: 14rem;
+    display: flex;
     font-size: 2.4rem;
     position: absolute;
     text-align: center;
     padding-top: 1.6rem;
     line-height: 2.4rem;
+    justify-content: center;
     text-transform: uppercase;
 
     opacity: 1;
@@ -23,6 +25,10 @@
     &.hidden {
       opacity: 0;
       transition: none;
+    }
+
+    .weather {
+      margin-right: 1rem;
     }
   }
 
