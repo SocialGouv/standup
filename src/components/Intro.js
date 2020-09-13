@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 
 const Intro = ({ started, onClick, onKeyDown }) => {
   const pageRef = useRef()
@@ -13,7 +13,7 @@ const Intro = ({ started, onClick, onKeyDown }) => {
       className="wrapper"
       onKeyDown={onKeyDown}
     >
-      <div className="background"></div>
+      <div className="background" />
 
       <div className={`intro${started ? " hidden" : ""}`}>
         <h1 data-h1="Stand up">Stand up</h1>

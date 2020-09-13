@@ -72,3 +72,15 @@ a {
   overflow: auto;
   flex-direction: column;
 }
+
+.weather {
+  .icon-sun {
+    color: gold;
+  }
+  .icon-cloud {
+    color: gray;
+  }
+  .icon-rain {
+    color: red;
+  }
+}

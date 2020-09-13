@@ -1,12 +1,12 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
 
-import KPIs from "./KPIs"
 import Header from "./Header"
+import KPIs from "./KPIs"
 
 const Post = ({ data }) => (
   <div className="post">
-    <Header data={data} />
+    <Header team={data.team} />
     <KPIs kpis={data.kpis} />
     <div className="cards">
       {data.priorities && (
