@@ -11,7 +11,8 @@ const Slide = ({ id, data }) => {
   return (
     <div id={id} className="slide" key={data.team_slug}>
       <h1 className={`title ${isSliding ? "hidden" : ""}`}>
-        {data.team && data.mood} {data.title}
+        {/* {data.team && data.mood} {data.title} */}
+        {data.title}
       </h1>
 
       <div className="content">

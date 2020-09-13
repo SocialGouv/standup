@@ -6,7 +6,7 @@ import Header from "./Header"
 
 const Post = ({ data }) => (
   <div className="post">
-    <Header team={data.team} />
+    <Header data={data} />
     <KPIs kpis={data.kpis} />
     <div className="cards">
       {data.priorities && (

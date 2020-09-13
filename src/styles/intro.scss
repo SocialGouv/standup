@@ -1,85 +1,134 @@
-.intro {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  margin: 10px;
-  display: flex;
-  position: absolute;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+@use "./variables" as *;
 
-  &.hidden {
-    display: none;
-  }
+#__next > .wrapper {
+  flex: 1;
+  background-color: black;
 
-  h1 {
-    padding: 0;
-    font-size: 9rem;
-    margin-bottom: 0;
-    line-height: 10rem;
-    position: relative;
-  }
-
-  h1:after {
+  .background {
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
+    // z-index: 3;
     position: absolute;
-    color: transparent;
-    background-size: 400%;
-    content: attr(data-h1);
-    background: -webkit-repeating-linear-gradient(
-      -45deg,
-      #71b7e6,
-      #69a6ce,
-      #b98acc,
-      #ee8176,
-      #b98acc,
-      #69a6ce,
-      #9b59b6
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
-    animation: animateTextBackground 10s ease-in-out infinite;
+    // display: flex;
+    background-image: url(/images/marianne-bg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
   }
 
-  @keyframes animateTextBackground {
-    0% {
-      background-position: 0 0;
-    }
-    25% {
-      background-position: 100% 0;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    75% {
-      background-position: 0 100%;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
+  .intro {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // z-index: 3;
+    // margin: 10px;
+    flex: 1;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    // background-color: rgba(0, 0, 0, 0.5);
 
-  h2 {
-    color: #999;
-    margin-top: 0;
-    margin-bottom: 20px;
-  }
+    // background-image: url(/images/marianne-bg.svg);
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
 
-  button {
-    color: white;
-    font-size: 2em;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 4px;
-    background-color: RoyalBlue;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: rgb(201, 211, 223) 0px 1px 4px;
+    // filter: blur(4px);
+    // -webkit-filter: blur(4px);
+
+    &.hidden {
+      display: none;
+    }
+
+    h1 {
+      padding: 0;
+      font-size: 9rem;
+      margin-bottom: 0;
+      line-height: 10rem;
+      position: relative;
+    }
+
+    h1:after {
+      content: attr(data-h1);
+      top: 0;
+      left: 0;
+      right: 0;
+      color: transparent;
+      position: absolute;
+      background: -webkit-repeating-linear-gradient(
+        -45deg,
+        #003189,
+        #fff,
+        #e2011c
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 400%;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
+      animation: animateTextBackground 10s ease-in-out infinite;
+    }
+
+    @keyframes animateTextBackground {
+      0% {
+        background-position: 0 0;
+      }
+      25% {
+        background-position: 100% 0;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      75% {
+        background-position: 0 100%;
+      }
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    h2 {
+      margin-top: -24px;
+      margin-left: -74px;
+      position: relative;
+      letter-spacing: 8px;
+      color: $border-color;
+    }
+
+    button {
+      outline: none;
+      font-size: 2em;
+      cursor: pointer;
+      margin-top: 40px;
+      border-radius: 2px;
+      color: $border-color;
+      transition: all 0.5s ease;
+      background-color: $base-color;
+      border: 1px solid $border-color;
+      padding: $base-margin $base-margin * 2;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        color: $base-color;
+        border: 1px solid $link-color;
+        background-color: $link-color;
+      }
+
+      &:active {
+        outline: none;
+        color: $base-color;
+        border: 1px solid darken($link-color, 10%);
+        background-color: darken($link-color, 10%);
+      }
+    }
   }
 }
