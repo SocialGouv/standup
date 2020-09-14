@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/SocialGouv/standup/compare/v1.1.0...v1.2.0) (2020-09-14)
+
+
+### Features
+
+* **paging:** Show current slide index and total pages. ([#280](https://github.com/SocialGouv/standup/issues/280)) ([5e85db1](https://github.com/SocialGouv/standup/commit/5e85db1713023b3a3f26857e1fc0d3b07e1dddae))
+
 # [1.1.0](https://github.com/SocialGouv/standup/compare/v1.0.9...v1.1.0) (2020-09-13)
 
 
