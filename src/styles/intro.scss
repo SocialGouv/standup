@@ -99,21 +99,21 @@
       transition: all 0.5s ease;
       background-color: $base-color;
       border: 1px solid $border-color;
-      padding: $base-margin $base-margin * 2;
+      padding: $base-size $base-size * 2;
 
       &:hover,
       &:focus {
         outline: none;
         color: $base-color;
-        border: 1px solid $link-color;
-        background-color: $link-color;
+        border: 1px solid $font-color-link;
+        background-color: $font-color-link;
       }
 
       &:active {
         outline: none;
         color: $base-color;
-        border: 1px solid darken($link-color, 10%);
-        background-color: darken($link-color, 10%);
+        border: 1px solid darken($font-color-link, 10%);
+        background-color: darken($font-color-link, 10%);
       }
     }
   }

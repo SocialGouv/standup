@@ -1,4 +1,4 @@
-@use "./variables";
+@use "./variables" as *;
 
 .post {
   flex: 1;
@@ -32,7 +32,7 @@
       justify-content: center;
       flex-direction: column;
       padding: 0.5rem 0.5rem 0.5rem 1rem;
-      border-left: 1px solid variables.$border-color;
+      border-left: 1px solid $border-color;
 
       .description {
         font-size: 1.2rem;
@@ -56,8 +56,8 @@
       padding: 1rem 2rem;
       text-align: center;
       line-height: 1.6rem;
-      border: 1px solid variables.$border-color;
-      background-color: variables.$background-color;
+      border: 1px solid $border-color;
+      background-color: $background-color;
 
       .value,
       .name {
@@ -87,7 +87,7 @@
       padding: 0rem 2rem;
       flex-direction: column;
       background-color: #ffffff;
-      border-left: 1px solid variables.$border-color;
+      border-left: 1px solid $border-color;
 
       &:first-child {
         padding-left: 1rem;
@@ -101,7 +101,7 @@
       h3 {
         padding-bottom: 0.5rem;
         margin: 0 0 0.5rem 0rem;
-        border-bottom: 1px solid variables.$border-color;
+        border-bottom: 1px solid $border-color;
       }
 
       &:last-child {

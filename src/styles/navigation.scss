@@ -1,4 +1,4 @@
-@use "./variables";
+@use "./variables" as *;
 
 .slides > .navigation {
   left: 0;
@@ -9,30 +9,33 @@
   position: absolute;
   margin: 0 5rem 2rem;
   align-items: center;
-  justify-content: space-between;
   transition: opacity 0.5s ease-out;
+
+  .next > div {
+    justify-content: flex-end;
+  }
+
+  .previous,
+  .next {
+    flex: 1;
+
+    & > div {
+      outline: none;
+      display: flex;
+      cursor: pointer;
+      font-weight: bold;
+      line-height: 1.5rem;
+      color: $border-color;
+      font-size: $font-size * 1.3;
+
+      &:hover {
+        color: $font-color-link;
+      }
+    }
+  }
 
   &.hidden {
     opacity: 0;
     transition: none;
-  }
-
-  h4 {
-    margin: 0;
-    outline: none;
-    cursor: pointer;
-    color: lighten(variables.$font-color, 50);
-
-    &:hover {
-      color: variables.$font-color;
-    }
-
-    div {
-      outline: none;
-    }
-
-    span {
-      font-size: 0.9rem;
-    }
   }
 }
