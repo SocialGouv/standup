@@ -1,15 +1,15 @@
-@use "./variables";
+@use "./variables" as *;
 
 .counter {
   opacity: 1;
   font-size: 3rem;
   margin-right: 0.5rem;
-  color: variables.$border-color;
+  color: $border-color;
   transition: opacity 0.5s ease-out;
 
   &.started {
     transition: color 60s ease;
-    color: variables.$font-color;
+    color: $font-color;
 
     &.overdue {
       color: crimson;

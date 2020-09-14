@@ -1,4 +1,4 @@
-@use "./variables";
+@use "./variables" as *;
 
 html,
 body {
@@ -16,28 +16,28 @@ h2,
 h3,
 h4 {
   font-weight: 600;
-  margin: variables.$base-margin 0;
+  margin: $base-size 0;
   font-family: "Source Sans Pro Semi Bold";
 }
 
 h1 {
-  font-size: variables.$font-size * 2;
-  line-height: variables.$font-size * 2;
+  font-size: $font-size * 2;
+  line-height: $font-size * 2;
 }
 
 h2 {
-  font-size: variables.$font-size * 1.8;
-  line-height: variables.$font-size * 2;
+  font-size: $font-size * 1.8;
+  line-height: $font-size * 2;
 }
 
 h3 {
-  font-size: variables.$font-size * 1.5;
-  line-height: variables.$font-size * 1.5;
+  font-size: $font-size * 1.5;
+  line-height: $font-size * 1.5;
 }
 
 h4 {
-  font-size: variables.$font-size * 1.2;
-  line-height: variables.$font-size * 1.2;
+  font-size: $font-size * 1.2;
+  line-height: $font-size * 1.2;
 }
 
 body,
@@ -47,9 +47,9 @@ select,
 textarea,
 button {
   font-weight: 400;
-  color: variables.$font-color;
-  font-size: variables.$font-size;
-  line-height: variables.$font-size * 1.5;
+  color: $font-color;
+  font-size: $font-size;
+  line-height: $font-size * 1.5;
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -59,7 +59,7 @@ small {
 
 a {
   text-decoration: none;
-  color: variables.$link-color;
+  color: $font-color-link;
 
   &:hover:not(.button) {
     text-decoration: underline;

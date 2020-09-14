@@ -1,15 +1,15 @@
-import React from "react"
-
 import { useIndex } from "@utils/index"
+import React from "react"
+import { ChevronLeft, ChevronRight } from "react-feather"
 
 const Navigation = ({ handler }) => {
   const [{ index, isSliding, slides }] = useIndex()
-  const nextSlide = slides[index + 1]
   const previousSlide = slides[index - 1]
+  const nextSlide = slides[index + 1]
 
   return (
     <div className={`navigation ${isSliding ? "hidden" : ""}`}>
-      <h4 className="previous">
+      <div className="previous">
         {previousSlide && (
           <div
             tabIndex={0}
@@ -17,13 +17,15 @@ const Navigation = ({ handler }) => {
             onClick={() => handler(index - 1)}
             onKeyPress={() => handler(index - 1)}
           >
-            <span>{`\u276E`}</span>
-            {"\u00A0\u00A0"}
+            <ChevronLeft />
             {previousSlide.title}
           </div>
         )}
-      </h4>
-      <h4 className="next">
+      </div>
+      <div className="paging">
+        {index + 1} / {slides.length}
+      </div>
+      <div className="next">
         {nextSlide && (
           <div
             tabIndex={0}
@@ -31,12 +33,11 @@ const Navigation = ({ handler }) => {
             onClick={() => handler(index + 1)}
             onKeyPress={() => handler(index + 1)}
           >
-            {nextSlide.title}
-            {"\u00A0\u00A0"}
-            <span>{`\u276F`}</span>
+            <span>{nextSlide.title}</span>
+            <ChevronRight />
           </div>
         )}
-      </h4>
+      </div>
     </div>
   )
 }

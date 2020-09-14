@@ -1,4 +1,4 @@
-@use "./variables";
+@use "./variables" as *;
 
 #__next > .slider {
   flex: 1;
@@ -48,10 +48,7 @@
       flex-shrink: 0;
       position: relative;
       scroll-snap-align: start;
-      background: linear-gradient(
-        variables.$background-color 33%,
-        variables.$base-color
-      );
+      background: linear-gradient($background-color 33%, $base-color);
 
       .content {
         flex: 1;
@@ -71,9 +68,9 @@
 .control {
   cursor: pointer;
   position: absolute;
-  color: variables.$background-color;
+  color: $background-color;
 
   &:hover {
-    color: variables.$border-color;
+    color: $border-color;
   }
 }
