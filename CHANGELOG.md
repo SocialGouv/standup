@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/SocialGouv/standup/compare/v1.2.1...v1.2.2) (2020-09-17)
+
+
+### Bug Fixes
+
+* Add matomo config. ([ce32f23](https://github.com/SocialGouv/standup/commit/ce32f23052fe326e80a04055367a3cfd9660a108))
+
 ## [1.2.1](https://github.com/SocialGouv/standup/compare/v1.2.0...v1.2.1) (2020-09-17)
 
 
