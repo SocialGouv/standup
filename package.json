@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src/**/*.js",
-    "test": "exit 0"
+    "test": "jest --ci",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@sentry/browser": "^5.23.0",
@@ -21,7 +22,6 @@
     "graphql": "^15.3.0",
     "graphql-request": "^3.1.0",
     "isomorphic-unfetch": "^3.0.0",
-    "jest": "^26.4.2",
     "js-yaml-loader": "^1.2.2",
     "lodash": "^4.17.20",
     "next": "^9.5.3",
@@ -33,10 +33,16 @@
   },
   "devDependencies": {
     "@socialgouv/eslint-config-react": "^1.32.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "babel-jest": "^26.3.0",
     "eslint": "^7.9.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-react": "^7.20.6",
-    "prettier": "^2.1.2"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2",
+    "react-test-renderer": "^16.13.1"
   }
 }
