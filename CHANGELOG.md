@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/SocialGouv/standup/compare/v1.2.0...v1.2.1) (2020-09-17)
+
+
+### Bug Fixes
+
+* Sync paging info and sliding moves. ([#284](https://github.com/SocialGouv/standup/issues/284)) ([c6189c6](https://github.com/SocialGouv/standup/commit/c6189c6becd581f6b52f6a52836ed4f8d620a5c7))
+
 # [1.2.0](https://github.com/SocialGouv/standup/compare/v1.1.0...v1.2.0) (2020-09-14)
 
 
