@@ -11,6 +11,7 @@
   "settings": {
     "import/resolver": {
       "alias": [
+        ["@lib", "./src/lib"],
         ["@utils", "./src/utils"],
         ["@components", "./src/components"]
       ]
