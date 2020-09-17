@@ -7,7 +7,7 @@ const Extra = ({ data }) => (
         data.entries.length &&
         data.entries.map((entry, i) => (
           <li key={i}>
-            <p dangerouslySetInnerHTML={{ __html: entry }}></p>
+            <p dangerouslySetInnerHTML={{ __html: entry }} />
           </li>
         ))}
     </ul>

@@ -1,43 +1,34 @@
-import { debounce } from "lodash"
-import React, { useState, useRef, useEffect } from "react"
-
+import Navigation from "@components/Navigation"
 import Slide from "@components/Slide"
 import { useIndex } from "@utils/index"
-import Navigation from "@components/Navigation"
+import { debounce } from "lodash"
+import React, { useEffect, useRef } from "react"
 
 const Slider = () => {
   const slidesEl = useRef(null)
-  const scrollPositionRef = useRef()
   const [{ slides }, dispatch] = useIndex()
-  const [scrollPosition, setScrollPosition] = useState(0)
 
-  const slideTo = index => {
+  const slideTo = (index) => {
     document.querySelector("#slide-" + index).scrollIntoView({
-      behavior: "smooth"
+      behavior: "smooth",
     })
   }
 
   useEffect(() => {
-    scrollPositionRef.current = scrollPosition
-  })
-
-  useEffect(() => {
     const el = slidesEl?.current
 
-    const onSlide = debounce(event => {
-      dispatch("stopSliding")
-      const currentPosition = event.target.scrollLeft
-      const previousPosition = scrollPositionRef.current
-      if (currentPosition > previousPosition) {
-        dispatch("next")
-      } else if (currentPosition < previousPosition) {
-        dispatch("previous")
-      }
-      setScrollPosition(currentPosition)
+    const onSlide = debounce((event) => {
+      dispatch({ name: "stopSliding" })
+      const scrollPosition = event.target.scrollLeft
+      const scrollWidth = event.target.scrollWidth
+      const index = scrollPosition
+        ? Math.round((scrollPosition * slides.length) / scrollWidth)
+        : 0
+      dispatch({ index, name: "update" })
     }, 100)
 
-    const handler = event => {
-      dispatch("startSliding")
+    const handler = (event) => {
+      dispatch({ name: "startSliding" })
       onSlide(event)
     }
 
@@ -53,7 +44,7 @@ const Slider = () => {
         {slides.map((slide, i) => (
           <Slide key={i} data={slide} id={`slide-${i}`} />
         ))}
-        <Navigation handler={slideTo}></Navigation>
+        <Navigation handler={slideTo} />
       </div>
     </div>
   )

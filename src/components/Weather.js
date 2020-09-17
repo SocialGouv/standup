@@ -6,7 +6,7 @@ const Weather = ({ status }) => {
   const mapping = {
     average: <Cloud className="icon-cloud" size={size} />,
     bad: <CloudLightning className="icon-rain" size={size} />,
-    good: <Sun className="icon-sun" size={size} />
+    good: <Sun className="icon-sun" size={size} />,
   }
 
   return <div className="weather">{mapping[status]}</div>

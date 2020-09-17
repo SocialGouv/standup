@@ -1,5 +1,5 @@
-import React from "react"
 import Error from "next/error"
+import React from "react"
 
 import sentry from "../sentry"
 
@@ -23,7 +23,7 @@ const MyError = ({ hasGetInitialPropsRun, statusCode, err }) => {
 }
 
 MyError.getInitialProps = async ({ res, err, asPath }) => {
-  const errorInitialProps = await Error.getInitialProps({ res, err })
+  const errorInitialProps = await Error.getInitialProps({ err, res })
   // Workaround for https://github.com/zeit/next.js/issues/8592, mark when
   // getInitialProps has run
   errorInitialProps.hasGetInitialPropsRun = true
@@ -60,8 +60,9 @@ MyError.getInitialProps = async ({ res, err, asPath }) => {
   // information about what the error might be. This is unexpected and may
   // indicate a bug introduced in Next.js, so record it in Sentry
   Sentry.captureMessage(
-    `_error.js status=${res &&
-      res.statusCode} getInitialProps missing data at path: ${asPath}`
+    `_error.js status=${
+      res && res.statusCode
+    } getInitialProps missing data at path: ${asPath}`
   )
 
   return errorInitialProps

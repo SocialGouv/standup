@@ -1,15 +1,14 @@
-import React from "react"
-import Link from "next/link"
-
-import { useIndex } from "@utils/index"
 import Counter from "@components/Counter"
+import { useIndex } from "@utils/index"
+import Link from "next/link"
+import React from "react"
 
 const Header = () => {
   const [{ index, slides }] = useIndex()
 
   return (
     <div className="header">
-      <div className="marianne"></div>
+      <div className="marianne" />
       <h1>
         <Link href="/" as="/">
           <a>Stand up</a>

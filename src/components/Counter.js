@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react"
-
 import { useIndex } from "@utils/index"
+import React, { useEffect, useRef, useState } from "react"
 
 const useInterval = (callback, delay) => {
   const savedCallback = useRef()
@@ -30,7 +29,7 @@ const Counter = ({ start }) => {
     setCount(count + 1)
   }, 1000)
 
-  const format = count => {
+  const format = (count) => {
     const dt = new Date(null)
     dt.setSeconds(count)
     const seconds = dt.getSeconds()
