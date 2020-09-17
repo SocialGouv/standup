@@ -5,8 +5,8 @@ const url = process.env.HASURA_URL
 export const fetch = async (query, variables) => {
   const graphQLClient = new GraphQLClient(url, {
     headers: {
-      "content-type": "application/json"
-    }
+      "content-type": "application/json",
+    },
   })
 
   return await graphQLClient.request(query, variables)
