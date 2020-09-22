@@ -13,9 +13,9 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/config/jest/setup.js"],
   testPathIgnorePatterns: ["/node_modules/", "/.next/"],
   transform: {
+    "\\.yml$": "yaml-jest",
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
     "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-    "^.+\\.yml$": "<rootDir>/config/jest/jsYamlLoader.js",
   },
   transformIgnorePatterns: [
     "/node_modules/",
