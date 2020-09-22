@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/SocialGouv/standup/compare/v1.2.2...v1.2.3) (2020-09-22)
+
+
+### Bug Fixes
+
+* Add test to count slides after start. ([#288](https://github.com/SocialGouv/standup/issues/288)) ([10f4cd1](https://github.com/SocialGouv/standup/commit/10f4cd1df21b649507fbdd486468b20403e128d6))
+
 ## [1.2.2](https://github.com/SocialGouv/standup/compare/v1.2.1...v1.2.2) (2020-09-17)
 
 
