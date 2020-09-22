@@ -5,7 +5,7 @@ import extraSlides from "../slides.yml"
 
 const SlidesContext = React.createContext()
 
-export const SlidesProvider = ({ teams, posts, children }) => {
+export const SlidesProvider = ({ teams = [], posts = [], children }) => {
   const getTeam = (slug) => teams.find((team) => slug === team.slug)
   const getMissingTeams = () => teams.filter((team) => !hasPost(team))
   const hasPost = (team) => posts.find((post) => post.team_slug === team.slug)
