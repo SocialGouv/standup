@@ -18,21 +18,3 @@ Register image:
     DOCKER_BUILD_ARGS: >-
       --shm-size 512M
     IMAGE_NAME: $CI_REGISTRY_IMAGE/app
-# ---
-# include:
-#   - project: SocialGouv/gitlab-ci-yml
-#     file: /autodevops_simple_app.yml
-#     ref: v16.2.0
-
-# variables:
-#   PROJECT: "standup"
-#   PORT: 3000
-#   VALUES_FILE: ./.k8s.app.values.yml
-#   K8S_NAMESPACE: carnets
-
-# Deploy app (prod):
-#   extends:
-#     - .autodevops_deploy_app_prod
-#   variables:
-#     PRODUCTION: "true"
-#     K8S_NAMESPACE: carnets

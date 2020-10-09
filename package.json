@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "eslint src/**/*.js",
     "test": "jest --ci",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "seal-secrets": "sre-secrets"
   },
   "dependencies": {
     "@sentry/browser": "^5.25.0",
