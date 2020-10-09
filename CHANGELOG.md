@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/SocialGouv/standup/compare/v1.2.3...v1.2.4) (2020-10-09)
+
+
+### Bug Fixes
+
+* Use sre-secrets tool to generate sealed secrets. ([#296](https://github.com/SocialGouv/standup/issues/296)) ([0c1ab78](https://github.com/SocialGouv/standup/commit/0c1ab785412cb8878af21fa15af9d3d61a382af5))
+
 ## [1.2.3](https://github.com/SocialGouv/standup/compare/v1.2.2...v1.2.3) (2020-09-22)
 
 
