@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/SocialGouv/standup/compare/v1.2.4...v1.2.5) (2020-10-10)
+
+
+### Bug Fixes
+
+* Add sre-screts as dev dependency. ([21802c3](https://github.com/SocialGouv/standup/commit/21802c3041268f75ecce33e16d9c78ff4622f2fd))
+
 ## [1.2.4](https://github.com/SocialGouv/standup/compare/v1.2.3...v1.2.4) (2020-10-09)
 
 
