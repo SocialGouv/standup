@@ -2,6 +2,7 @@ import { shuffle } from "lodash"
 import React, { useContext } from "react"
 
 import extraSlides from "../slides.yml"
+import thanksSlide from "../thanksSlide"
 
 const SlidesContext = React.createContext()
 
@@ -20,7 +21,7 @@ export const SlidesProvider = ({ teams = [], posts = [], children }) => {
 
   const missingTeams = getMissingTeams()
   const filteredPosts = filterPosts(posts)
-  const slides = [...shuffle(filteredPosts), ...extraSlides]
+  const slides = [...shuffle(filteredPosts), ...extraSlides, thanksSlide]
 
   if (missingTeams && missingTeams.length) {
     slides.splice(filteredPosts.length, 0, {
