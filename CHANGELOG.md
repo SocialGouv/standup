@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/SocialGouv/standup/compare/v1.2.5...v1.2.6) (2020-11-16)
+
+
+### Bug Fixes
+
+* Update slides.yml ([#317](https://github.com/SocialGouv/standup/issues/317)) ([9627eb5](https://github.com/SocialGouv/standup/commit/9627eb579f01c306ef983156ad41048fd33c0201))
+
 ## [1.2.5](https://github.com/SocialGouv/standup/compare/v1.2.4...v1.2.5) (2020-10-10)
 
 
