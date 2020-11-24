@@ -12,5 +12,5 @@ test("renders deploy link", async () => {
 
   fireEvent.click(button)
   const items = await getById(component.container, /slide-[0-9]/)
-  expect(items.length).toBeGreaterThanOrEqual(2)
+  expect(items.length).toBeGreaterThanOrEqual(1)
 })
