@@ -1,3 +1,10 @@
+## [1.2.8](https://github.com/SocialGouv/standup/compare/v1.2.7...v1.2.8) (2020-11-24)
+
+
+### Bug Fixes
+
+* Merge last slides ([#321](https://github.com/SocialGouv/standup/issues/321)) ([9454f05](https://github.com/SocialGouv/standup/commit/9454f05c09d4bf6292fa2aa958417265e60df6d1))
+
 ## [1.2.7](https://github.com/SocialGouv/standup/compare/v1.2.6...v1.2.7) (2020-11-24)
 
 
