@@ -130,14 +130,14 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.0.0.tgz#2ff674e9611b45b528896d820d3d7a812de2f0e4"
   integrity sha512-FyD2meJpDPjyNQejSjvnhpgI/azsQkA4lGbuu5BQZfjvJ9cbRZXzeWL2HceCekW4lixO9JPesIIQkSoLjeJHNQ==
 
-"@socialgouv/kosko-charts@^3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@socialgouv/kosko-charts/-/kosko-charts-3.2.4.tgz#e903f6775b3ceb0c2e3b4dcf3efadcae2efb2f29"
-  integrity sha512-VipYrrj/3tYpCeVjE2naKTkg0R8bo/i/nqXaxLPXIJkBflaLmQKBIn0Xa15Mu+N9gdlsNsIfB2TTHTYwnWMJww==
+"@socialgouv/kosko-charts@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/@socialgouv/kosko-charts/-/kosko-charts-3.2.5.tgz#0c5a3d14a35db229f62792e473adb49cb9ed432c"
+  integrity sha512-4aMsWRq7sC76Lnpj+IjteuJjBdMSM92aJEcLYmCeSpK7JB06icmB++1cQMUuNbsHR86va6xrUJRyZVXOxtmdWg==
   dependencies:
     "@kubernetes-models/sealed-secrets" "^1.0.1"
     "@sindresorhus/is" "^4.0.0"
-    fp-ts "^2.8.6"
+    fp-ts "^2.9.0"
     io-ts "2.2.7"
 
 "@types/color-name@^1.1.1":
@@ -145,10 +145,10 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
-"@types/node@^14.14.9":
-  version "14.14.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.9.tgz#04afc9a25c6ff93da14deabd65dc44485b53c8d6"
-  integrity sha512-JsoLXFppG62tWTklIoO4knA+oDTYsmqWxHRvd4lpmfQRNhX6osheUOWETP2jMoV/2bEHuMra8Pp3Dmo/stBFcw==
+"@types/node@^14.14.10":
+  version "14.14.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.10.tgz#5958a82e41863cfc71f2307b3748e3491ba03785"
+  integrity sha512-J32dgx2hw8vXrSbu4ZlVhn1Nm3GbeCFNw2FWL8S5QKucHGY0cyNwjdQdO+KMBZ4wpmC7KhLCiNsdk1RFRIYUQQ==
 
 ajv@^6.12.6:
   version "6.12.6"
@@ -418,10 +418,10 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-fp-ts@^2.8.6:
-  version "2.8.6"
-  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.8.6.tgz#1a0e6c3f29f5b0fbfa3120f034ea266aa73c811b"
-  integrity sha512-fGGpKf/Jy3UT4s16oM+hr/8F5QXFcZ+20NAvaZXH5Y5jsiLPMDCaNqffXq0z1Kr6ZUJj0346cH9tq+cI2SoJ4w==
+fp-ts@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.9.0.tgz#0b8974ef9d2b1c0a14fb05f99c2f5129c5c5eb34"
+  integrity sha512-zYPaS+3BWy+hRhkCMJXLTHxdy7oshyKOfHge/S/n+LcLL5VIhctR9Xucxi3GwJbjwDZaz9IIbU1o+YjK0LsgYg==
 
 get-caller-file@^2.0.1:
   version "2.0.5"
