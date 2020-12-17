@@ -1,3 +1,10 @@
+## [1.2.11](https://github.com/SocialGouv/standup/compare/v1.2.10...v1.2.11) (2020-12-17)
+
+
+### Bug Fixes
+
+* Upgrade autodevops to v20 ([#330](https://github.com/SocialGouv/standup/issues/330)) ([84c106f](https://github.com/SocialGouv/standup/commit/84c106f108e1e33c1e1b5b9072757ad558a6874e))
+
 ## [1.2.10](https://github.com/SocialGouv/standup/compare/v1.2.9...v1.2.10) (2020-12-15)
 
 
