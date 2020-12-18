@@ -1,7 +1,7 @@
 include:
   - project: SocialGouv/gitlab-ci-yml
     file: /autodevops.yml
-    ref: v20.1.2
+    ref: no-k8s
 
 variables:
   AUTO_DEVOPS_RELEASE_AUTO: "🔖"
