@@ -1,3 +1,12 @@
+## [1.2.12](https://github.com/SocialGouv/standup/compare/v1.2.11...v1.2.12) (2020-12-18)
+
+
+### Bug Fixes
+
+* Flush cache. ([aaa5857](https://github.com/SocialGouv/standup/commit/aaa58570f485fae00cbadf0b253286f175a8230f))
+* Replace .k8s directory by .socialgouv ([#331](https://github.com/SocialGouv/standup/issues/331)) ([8084f72](https://github.com/SocialGouv/standup/commit/8084f72a37a3091f269ff6183eee0b875171b5a1))
+* Update README. ([8715825](https://github.com/SocialGouv/standup/commit/8715825688f7c7dde0e6f2114780a351db13e1d0))
+
 ## [1.2.11](https://github.com/SocialGouv/standup/compare/v1.2.10...v1.2.11) (2020-12-17)
 
 
