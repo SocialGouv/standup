@@ -1,3 +1,10 @@
+## [1.2.13](https://github.com/SocialGouv/standup/compare/v1.2.12...v1.2.13) (2020-12-18)
+
+
+### Bug Fixes
+
+* Trigger release. ([ba70670](https://github.com/SocialGouv/standup/commit/ba70670e368be96d756b19c8ca3c8b70aa3093b3))
+
 ## [1.2.12](https://github.com/SocialGouv/standup/compare/v1.2.11...v1.2.12) (2020-12-18)
 
 
