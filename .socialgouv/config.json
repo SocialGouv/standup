@@ -1,4 +1,5 @@
 {
   "name": "standup",
-  "type": "app"
+  "type": "app",
+  "subdomain": "standup"
 }
