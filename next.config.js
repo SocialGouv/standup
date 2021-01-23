@@ -3,6 +3,8 @@ const nextSourceMaps = require("@zeit/next-source-maps")
 
 module.exports = nextSourceMaps({
   env: {
+    GITHUB_ORGANIZATION: process.env.GITHUB_ORGANIZATION,
+    HASURA_URL: process.env.HASURA_URL,
     MATOMO_SITE_ID: process.env.MATOMO_SITE_ID,
     MATOMO_URL: process.env.MATOMO_URL,
     SENTRY_DSN: process.env.SENTRY_DSN,
