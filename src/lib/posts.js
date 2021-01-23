@@ -1,6 +1,6 @@
-import { fetch } from "../../lib/hasura"
+import { fetch } from "./hasura"
 
-export default async (req, res) => {
+export default async () => {
   const query = `
     {
       posts(distinct_on: team_slug, order_by: {team_slug: asc, created_at: desc}) {
@@ -23,9 +23,10 @@ export default async (req, res) => {
 
   try {
     const data = await fetch(query)
-    res.json(data.posts)
+    const { posts } = data
+    return posts
   } catch (error) {
-    console.log(error)
-    res.status(500).json([])
+    console.error(error)
+    return []
   }
 }

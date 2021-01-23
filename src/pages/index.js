@@ -1,9 +1,10 @@
 import Header from "@components/Header"
 import Intro from "@components/Intro"
 import Slider from "@components/Slider"
+import Posts from "@lib/posts"
+import Teams from "@lib/teams"
 import { IndexProvider } from "@utils/index"
 import { SlidesProvider } from "@utils/slides"
-import fetch from "isomorphic-unfetch"
 import React, { useState } from "react"
 
 const Page = ({ teams, posts }) => {
@@ -30,10 +31,9 @@ const Page = ({ teams, posts }) => {
   )
 }
 
-export async function getServerSideProps({ req }) {
-  const baseUrl = `http://localhost:${req.socket.localPort}`
-  const teams = await (await fetch(`${baseUrl}/api/teams`)).json()
-  const posts = await (await fetch(`${baseUrl}/api/posts`)).json()
+export async function getServerSideProps() {
+  const teams = await Teams()
+  const posts = await Posts()
   return { props: { posts, teams } }
 }
 
