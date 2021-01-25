@@ -1,52 +1,55 @@
+import Header from "@components/Header"
 import Navigation from "@components/Navigation"
 import Slide from "@components/Slide"
-import { useIndex } from "@utils/index"
+import useIndex from "@utils/index"
+import useSlides from "@utils/slides"
 import { debounce } from "lodash"
 import React, { useEffect, useRef } from "react"
 
 const Slider = () => {
   const slidesEl = useRef(null)
-  const [{ slides }, dispatch] = useIndex()
+  const [, setIndex] = useIndex()
+  const { slides } = useSlides()
+  const { length } = slides
 
-  const slideTo = (index) => {
-    document.querySelector("#slide-" + index).scrollIntoView({
-      behavior: "smooth",
-    })
-  }
+  useEffect(() => setIndex(0), [setIndex])
 
   useEffect(() => {
     const el = slidesEl?.current
 
     const onSlide = debounce((event) => {
-      dispatch({ name: "stopSliding" })
-      const scrollPosition = event.target.scrollLeft
       const scrollWidth = event.target.scrollWidth
+      const scrollPosition = event.target.scrollLeft
       const index = scrollPosition
-        ? Math.round((scrollPosition * slides.length) / scrollWidth)
+        ? Math.round((scrollPosition * length) / scrollWidth)
         : 0
-      dispatch({ index, name: "update" })
+      setIndex(index)
     }, 100)
 
-    const handler = (event) => {
-      dispatch({ name: "startSliding" })
-      onSlide(event)
-    }
-
     el?.focus()
-    el?.addEventListener("scroll", handler)
+    el?.addEventListener("scroll", onSlide)
 
-    return () => el?.removeEventListener("scroll", handler)
-  }, [slidesEl, dispatch])
+    return () => el?.removeEventListener("scroll", onSlide)
+  }, [slidesEl, setIndex, length])
 
   return (
-    <div className="slider">
-      <div tabIndex="-1" ref={slidesEl} className="slides">
-        {slides.map((slide, i) => (
-          <Slide key={i} data={slide} id={`slide-${i}`} />
-        ))}
-        <Navigation handler={slideTo} />
-      </div>
-    </div>
+    <>
+      {slides ? (
+        <>
+          <Header />
+          <div className="slider">
+            <div tabIndex="-1" ref={slidesEl} className="slides">
+              {slides.map((slide, i) => (
+                <Slide key={i} data={slide} id={`slide-${i}`} />
+              ))}
+              <Navigation />
+            </div>
+          </div>
+        </>
+      ) : (
+        <div>Loading...</div>
+      )}
+    </>
   )
 }
 

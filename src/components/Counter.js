@@ -1,4 +1,4 @@
-import { useIndex } from "@utils/index"
+import setIndex from "@utils/index"
 import React, { useEffect, useRef, useState } from "react"
 
 const useInterval = (callback, delay) => {
@@ -18,12 +18,12 @@ const useInterval = (callback, delay) => {
 }
 
 const Counter = ({ start }) => {
-  const [state] = useIndex()
+  const [index] = setIndex()
   const [count, setCount] = useState(start)
 
   useEffect(() => {
     setCount(0)
-  }, [state])
+  }, [index])
 
   useInterval(() => {
     setCount(count + 1)
@@ -46,7 +46,6 @@ const Counter = ({ start }) => {
         ${count > 1 ? " started" : ""}
         ${count > 59 ? " overdue" : ""}
         ${count > 119 ? " blink" : ""}
-        ${state.isSliding ? " hidden" : ""}
       `}
     >
       {format(count)}
