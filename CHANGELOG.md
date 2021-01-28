@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/SocialGouv/standup/compare/v1.2.13...v1.3.0) (2021-01-28)
+
+
+### Bug Fixes
+
+* rm outdated ptitdej ([#336](https://github.com/SocialGouv/standup/issues/336)) ([46f9afe](https://github.com/SocialGouv/standup/commit/46f9afebcb4d168d752767f0436c9d2504879929))
+
+
+### Features
+
+* Make it a static app. ([#337](https://github.com/SocialGouv/standup/issues/337)) ([5937b04](https://github.com/SocialGouv/standup/commit/5937b04e5a31ee793ffe759ae8279d254badc29f))
+
 ## [1.2.13](https://github.com/SocialGouv/standup/compare/v1.2.12...v1.2.13) (2020-12-18)
 
 
