@@ -13,21 +13,24 @@
 #
 # ENTRYPOINT ["yarn", "run", "build-start"]
 
-FROM node:14-alpine
+# FROM node:14-alpine
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package.json yarn.lock ./
+# COPY package.json yarn.lock ./
 
-RUN yarn --production --frozen-lockfile
+# RUN yarn --production --frozen-lockfile
 
-COPY next.config.js  ./
-COPY .next/ ./.next
-COPY public/ ./public
+# COPY next.config.js  ./
+# COPY .next/ ./.next
+# COPY public/ ./public
 
-USER node
+# USER node
 
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
+# ENV NODE_ENV=production
+# ENV NEXT_TELEMETRY_DISABLED=1
 
-CMD ["yarn", "start"]
+# CMD ["yarn", "start"]
+
+FROM registry.gitlab.factory.social.gouv.fr/socialgouv/docker/nginx4spa:1.60.0
+COPY ./out /usr/share/nginx/html

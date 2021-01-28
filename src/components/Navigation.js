@@ -1,24 +1,32 @@
-import { useIndex } from "@utils/index"
+import useIndex from "@utils/index"
+import useSlides from "@utils/slides"
 import React from "react"
 import { ChevronLeft, ChevronRight } from "react-feather"
 
-const Navigation = ({ handler }) => {
-  const [{ index, isSliding, slides }] = useIndex()
-  const previousSlide = slides[index - 1]
+const Navigation = () => {
+  const [index] = useIndex()
+  const { slides = [] } = useSlides()
   const nextSlide = slides[index + 1]
+  const previousSlide = slides[index - 1]
+
+  const slideTo = (index) => {
+    document.querySelector("#slide-" + index).scrollIntoView({
+      behavior: "smooth",
+    })
+  }
 
   return (
-    <div className={`navigation ${isSliding ? "hidden" : ""}`}>
+    <div className="navigation">
       <div className="previous">
         {previousSlide && (
           <div
             tabIndex={0}
             role="button"
-            onClick={() => handler(index - 1)}
-            onKeyPress={() => handler(index - 1)}
+            onClick={() => slideTo(index - 1)}
+            onKeyPress={() => slideTo(index - 1)}
           >
             <ChevronLeft />
-            {previousSlide.title}
+            {previousSlide.team.name}
           </div>
         )}
       </div>
@@ -30,10 +38,10 @@ const Navigation = ({ handler }) => {
           <div
             tabIndex={0}
             role="button"
-            onClick={() => handler(index + 1)}
-            onKeyPress={() => handler(index + 1)}
+            onClick={() => slideTo(index + 1)}
+            onKeyPress={() => slideTo(index + 1)}
           >
-            <span>{nextSlide.title}</span>
+            <span>{nextSlide.team?.name || nextSlide.title}</span>
             <ChevronRight />
           </div>
         )}

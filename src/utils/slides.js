@@ -1,37 +1,66 @@
+import { request } from "graphql-request"
 import { shuffle } from "lodash"
-import React, { useContext } from "react"
+import useSWR from "swr"
 
 import extraSlides from "../slides.yml"
 
-const SlidesContext = React.createContext()
+const url = process.env.NEXT_PUBLIC_HASURA_URL
 
-export const SlidesProvider = ({ teams = [], posts = [], children }) => {
-  const getTeam = (slug) => teams.find((team) => slug === team.slug)
-  const getMissingTeams = () => teams.filter((team) => !hasPost(team))
-  const hasPost = (team) => posts.find((post) => post.team_slug === team.slug)
-
-  const filterPosts = (posts) =>
+const fetcher = async (query) => {
+  const { posts } = await request(url, query)
+  const filteredPosts =
+    posts &&
     posts.filter(
-      (post) => (
-        ((post.team = getTeam(post.team_slug)), (post.title = post.team?.name)),
-        post.team
-      )
+      (slide) =>
+        slide.team && !slide.team.parentTeam && slide.team.privacy === "VISIBLE"
     )
-
-  const missingTeams = getMissingTeams()
-  const filteredPosts = filterPosts(posts)
-  const slides = [...shuffle(filteredPosts), ...extraSlides]
-
-  if (missingTeams && missingTeams.length) {
-    slides.splice(filteredPosts.length, 0, {
-      teams: missingTeams,
-      title: "Les Absents",
-    })
-  }
-
-  return (
-    <SlidesContext.Provider value={slides}>{children}</SlidesContext.Provider>
-  )
+  const slides = filteredPosts && [...shuffle(filteredPosts), ...extraSlides]
+  return Promise.resolve(slides)
 }
 
-export const useSlides = () => useContext(SlidesContext)
+const query = `{
+  posts(
+    distinct_on: team_slug,
+    order_by: {team_slug: asc, created_at: desc}
+  ) {
+    id
+    mood
+    term
+    needs
+    author
+    team_slug
+    priorities
+    created_at
+    team {
+      name
+      privacy
+      avatarUrl
+      description
+      parentTeam {
+        name
+      }
+      members(first: 100) {
+        nodes {
+          login
+          name
+          avatarUrl
+        }
+      }
+    }
+    kpis {
+      id
+      value
+      name
+    }
+  }
+}`
+
+const useSlides = () => {
+  const { data: slides, error } = useSWR(query, fetcher, {
+    revalidateOnFocus: false,
+  })
+
+  return { error, slides }
+}
+
+export default useSlides

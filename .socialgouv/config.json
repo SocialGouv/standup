@@ -1,5 +1,5 @@
 {
   "name": "standup",
-  "type": "app",
+  "type": "static",
   "subdomain": "standup"
 }
