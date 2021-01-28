@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/SocialGouv/standup/compare/v1.3.0...v1.3.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* Deploy with kapp. ([ff09b22](https://github.com/SocialGouv/standup/commit/ff09b2263a58a2df75098bb214b71cb80954a611))
+
 # [1.3.0](https://github.com/SocialGouv/standup/compare/v1.2.13...v1.3.0) (2021-01-28)
 
 
