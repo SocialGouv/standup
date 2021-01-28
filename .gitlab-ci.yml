@@ -28,13 +28,3 @@ Build:
     expire_in: 1 day
     paths:
       - out
-# Lint:
-#   rules:
-#     - when: never
-
-# Register image:
-#   extends: .autodevops_register_image
-#   variables:
-#     DOCKER_BUILD_ARGS: >-
-#       --shm-size 512M
-#     IMAGE_NAME: $CI_REGISTRY_IMAGE/app

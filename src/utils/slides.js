@@ -4,7 +4,7 @@ import useSWR from "swr"
 
 import extraSlides from "../slides.yml"
 
-const url = process.env.HASURA_URL
+const url = process.env.NEXT_PUBLIC_HASURA_URL
 
 const fetcher = async (query) => {
   const { posts } = await request(url, query)
