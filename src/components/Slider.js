@@ -1,4 +1,3 @@
-import Header from "@components/Header"
 import Navigation from "@components/Navigation"
 import Slide from "@components/Slide"
 import useIndex from "@utils/index"
@@ -33,23 +32,14 @@ const Slider = () => {
   }, [slidesEl, setIndex, length])
 
   return (
-    <>
-      {slides ? (
-        <>
-          <Header />
-          <div className="slider">
-            <div tabIndex="-1" ref={slidesEl} className="slides">
-              {slides.map((slide, i) => (
-                <Slide key={i} data={slide} id={`slide-${i}`} />
-              ))}
-              <Navigation />
-            </div>
-          </div>
-        </>
-      ) : (
-        <div>Loading!!!</div>
-      )}
-    </>
+    <div className="slider">
+      <div tabIndex="-1" ref={slidesEl} className="slides">
+        {slides.map((slide, i) => (
+          <Slide key={i} data={slide} id={`slide-${i}`} />
+        ))}
+        <Navigation />
+      </div>
+    </div>
   )
 }
 
