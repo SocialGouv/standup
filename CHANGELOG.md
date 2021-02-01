@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/SocialGouv/standup/compare/v1.3.1...v1.4.0) (2021-02-01)
+
+
+### Features
+
+* Show spinner while loading slides data. ([#340](https://github.com/SocialGouv/standup/issues/340)) ([eb6bec9](https://github.com/SocialGouv/standup/commit/eb6bec94c6d7d20612dc9306cd6a2608f0a6a3e0))
+
 ## [1.3.1](https://github.com/SocialGouv/standup/compare/v1.3.0...v1.3.1) (2021-01-28)
 
 
