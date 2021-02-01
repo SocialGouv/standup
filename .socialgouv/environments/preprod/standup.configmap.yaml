@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: app-configmap
+  name: standup-configmap
 data:
   NODE_ENV: "production"
   PORT: "3000"
