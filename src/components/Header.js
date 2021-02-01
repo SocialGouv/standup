@@ -7,7 +7,6 @@ import React from "react"
 const Header = () => {
   const [index] = useIndex()
   const { slides } = useSlides()
-  const slide = slides[index]
 
   return (
     <div className="header">
@@ -20,7 +19,7 @@ const Header = () => {
           Le stand up de <a href="https://github.com/socialgouv">@SocialGouv</a>
         </small>
       </h1>
-      {slide.team && <Counter start={0} />}
+      {slides && slides[index].team && <Counter start={0} />}
     </div>
   )
 }
