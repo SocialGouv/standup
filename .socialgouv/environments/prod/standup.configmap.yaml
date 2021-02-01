@@ -4,8 +4,6 @@ metadata:
   name: standup-configmap
 data:
   NODE_ENV: "production"
-  PORT: "3000"
-  POSTGRES_SSL: "true"
   GITHUB_ORGANIZATION: "SocialGouv"
   HASURA_URL: "https://hasura.carnets.fabrique.social.gouv.fr/v1/graphql"
   MATOMO_SITE_ID: "30"
