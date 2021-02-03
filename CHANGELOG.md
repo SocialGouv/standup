@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/SocialGouv/standup/compare/v1.4.0...v1.4.1) (2021-02-03)
+
+
+### Bug Fixes
+
+* Limit KPIs size. ([#341](https://github.com/SocialGouv/standup/issues/341)) ([7c9fecd](https://github.com/SocialGouv/standup/commit/7c9fecdac3e6495bca4380c228ec18b63a2cb76f))
+
 # [1.4.0](https://github.com/SocialGouv/standup/compare/v1.3.1...v1.4.0) (2021-02-01)
 
 
