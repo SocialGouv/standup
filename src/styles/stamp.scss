@@ -1,0 +1,16 @@
+@use "./variables" as *;
+
+.stamp {
+  padding: 2.5rem;
+  font-size: 6rem;
+  font-weight: 700;
+  color: crimson;
+  display: inline-block;
+  mix-blend-mode: multiply;
+  transform: rotate(-20deg);
+  text-transform: uppercase;
+  -webkit-mask-size: 944px 604px;
+  border: 1rem double crimson;
+  -webkit-mask-image: url("/images/grunge.png");
+  font-family: "Open sans", Helvetica, Arial, sans-serif;
+}
