@@ -1,8 +1,7 @@
 include:
   - project: SocialGouv/gitlab-ci-yml
     file: /autodevops.yml
-    ref: no-k8s
-
+    ref: v20.7.0
 variables:
   AUTO_DEVOPS_KANIKO: "pouet"
   AUTO_DEVOPS_RELEASE_AUTO: "🔖"
