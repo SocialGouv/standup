@@ -1,5 +1,7 @@
 {
   "name": "standup",
   "type": "static",
-  "subdomain": "standup"
+  "subdomain": "standup",
+  "hasura": false,
+  "azure-pg": false
 }
