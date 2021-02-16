@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/SocialGouv/standup/compare/v1.4.1...v1.4.2) (2021-02-16)
+
+
+### Bug Fixes
+
+* Trigger release. ([460abd9](https://github.com/SocialGouv/standup/commit/460abd9e430b63307fa9bff5eceb071b085c491d))
+
 ## [1.4.1](https://github.com/SocialGouv/standup/compare/v1.4.0...v1.4.1) (2021-02-03)
 
 
