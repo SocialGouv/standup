@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/SocialGouv/standup/compare/v1.4.3...v1.4.4) (2021-02-23)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies (minor) ([#334](https://github.com/SocialGouv/standup/issues/334)) ([4712d39](https://github.com/SocialGouv/standup/commit/4712d391018aad06678b3a9c4925112d3f493df8))
+
 ## [1.4.3](https://github.com/SocialGouv/standup/compare/v1.4.2...v1.4.3) (2021-02-22)
 
 
