@@ -1,49 +1,55 @@
-stages:
-  - test
-  - deploy
+include:
+  - project: SocialGouv/gitlab-ci-yml
+    file: /autodevops.yml
+    ref: v20.7.10
+
+# stages:
+#   - test
+#   - deploy
+
+Install:
+  rules:
+    - when: never
+Lint:
+  rules:
+    - when: never
 
 Test:
-  stage: test
+  stage: Code Quality
   script:
     - echo "It Works!"
 
-Deploy:
-  stage: deploy
+K8S Test:
   rules:
+    - when: never
+Build:
+  rules:
+    - when: never
+Register image:
+  rules:
+    - when: never
+Register Kaniko image:
+  rules:
+    - when: never
+
+.autodevops_review:
+  extends:
+    - .deploy_stage
+  rules:
+    - if: "$PRODUCTION || $RELEASE || $CI_COMMIT_TAG"
+      when: never
     - if: "$DEPLOY"
       when: always
     - when: never
-  script:
-    - echo "It Works!"
+  variables:
+    KOSKO_APPEND_YAML_FROM: .k8s/environments/dev/manifests
+    KOSKO_GENERATE_ARGS: >-
+      --env dev
+  environment:
+    auto_stop_in: 1 day
+    name: ${CI_COMMIT_REF_NAME}${AUTO_DEVOPS_DEV_ENVIRONMENT_NAME}
+    on_stop: Stop review
+    url: https://${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}.${KUBE_INGRESS_BASE_DOMAIN}
 
-# include:
-#   - project: SocialGouv/gitlab-ci-yml
-#     file: /autodevops.yml
-#     ref: v20.7.9
-
-# variables:
-#   AUTO_DEVOPS_KANIKO: "pouet"
-#   AUTO_DEVOPS_RELEASE_AUTO: "🔖"
-#   AUTO_DEVOPS_ENABLE_KAPP: "plop"
-#   AUTO_DEVOPS_PRODUCTION_AUTO: "🚀"
-
-# Build:
-#   needs: []
-#   cache:
-#     key:
-#       files:
-#         - yarn.lock
-#       prefix: ${CI_JOB_NAME}
-#     paths:
-#       - .cache
-#   script:
-#     - yarn config set cache-folder $CI_PROJECT_DIR/.cache/yarn
-#     - yarn --frozen-lockfile --prefer-offline
-#     - yarn build
-#     - yarn export
-#   variables:
-#     VERSION: ${CI_COMMIT_SHORT_SHA}
-#   artifacts:
-#     expire_in: 1 day
-#     paths:
-#       - out
+Deploy from Github:
+  extends: .autodevops_review
