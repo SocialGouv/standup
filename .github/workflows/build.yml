@@ -1,0 +1,43 @@
+name: Build
+
+on:
+  push:
+    branches: [master, alpha, beta, next]
+
+jobs:
+  build:
+    name: Build & Register
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Node setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Yarn cache setup
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: App build
+        run: |
+          yarn --frozen-lockfile --prefer-offline
+          yarn build
+          yarn export
+
+      - name: Image build and register
+        uses: aevea/action-kaniko@master
+        with:
+          cache: true
+          image: ${{ secrets.HARBOR_PROJECT }}
+          cache_registry: fabrique/standupx/cache
+          registry: ${{ secrets.HARBOR_REGISTRY }}
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
