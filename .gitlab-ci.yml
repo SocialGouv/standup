@@ -8,16 +8,16 @@ include:
 #   - deploy
 
 Install:
-  rules:
-    - when: never
+  script:
+    - echo "It Works!"
+
 Lint:
   rules:
     - when: never
 
 Test:
-  stage: Code Quality
-  script:
-    - echo "It Works!"
+  rules:
+    - when: never
 
 K8S Test:
   rules:
