@@ -43,7 +43,7 @@ jobs:
       - name: Trigger deployment
         uses: wei/curl@v1
         with:
-          args: -X POST -F token=${{ secrets.GITLAB_TRIGGER_TOKEN }} -F ref=alpha -F "variables[DEPLOY]=true" https://gitlab.factory.social.gouv.fr/api/v4/projects/27/trigger/pipeline
+          args: -X POST -F token=${{ secrets.GITLAB_TRIGGER_TOKEN }} -F ref=alpha -F "variables[DEPLOY]=true" https://gitlab.factory.social.gouv.fr/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/trigger/pipeline
           # args: --request POST https://gitlab.factory.social.gouv.fr/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/trigger/pipeline?ref=alpha&variables[DEPLOY]=true&token=${{ secrets.GITLAB_TRIGGER_TOKEN }}
           # args: --request POST --form ref="alpha" --form token="${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}" --form variables[DEPLOY]="true" https://gitlab.factory.social.gouv.fr/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/trigger/pipeline
           # args: --request POST https://gitlab.factory.social.gouv.fr/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/ref/alpha/trigger/pipeline?token=${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
