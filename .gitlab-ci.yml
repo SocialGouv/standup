@@ -31,6 +31,21 @@ Register image:
 Register Kaniko image:
   rules:
     - when: never
+Notify Starting Deployment:
+  rules:
+    - when: never
+Notify Fail:
+  rules:
+    - when: never
+Notify Success:
+  rules:
+    - when: never
+Stop review:
+  rules:
+    - when: never
+Trigger Release:
+  rules:
+    - when: never
 
 .autodevops_review:
   extends:
