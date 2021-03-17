@@ -3,6 +3,9 @@ include:
     file: /autodevops.yml
     ref: v20.7.10
 
+variables:
+  AUTO_DEVOPS_ENABLE_KAPP: "🕹️"
+
 # Fake job
 Install:
   script:
@@ -30,32 +33,36 @@ Register Kaniko image:
 Review:
   rules:
     - when: never
+Trigger Release:
+  rules:
+    - when: never
 
 # On $DEPLOY jobs
 Notify Starting Deployment:
+  extends: .autodevops_notify_starting_deployment
   rules:
     - if: "$DEPLOY"
-      when: always
+      when: on_success
     - when: never
+
 Notify Fail:
+  extends: .autodevops_notify_fail
   rules:
     - if: "$DEPLOY"
-      when: always
+      when: on_failure
     - when: never
+
 Notify Success:
+  extends: .autodevops_notify_success
   rules:
     - if: "$DEPLOY"
-      when: always
+      when: on_success
     - when: never
+
 Stop review:
   rules:
     - if: "$DEPLOY"
-      when: always
-    - when: never
-Trigger Release:
-  rules:
-    - if: "$DEPLOY"
-      when: always
+      when: manual
     - when: never
 
 .autodevops_review:
@@ -77,5 +84,5 @@ Trigger Release:
     on_stop: Stop review
     url: https://${CI_ENVIRONMENT_SLUG}-${CI_PROJECT_NAME}.${KUBE_INGRESS_BASE_DOMAIN}
 
-Deploy from Github:
+Deploy:
   extends: .autodevops_review
