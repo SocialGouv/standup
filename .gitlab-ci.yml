@@ -3,22 +3,18 @@ include:
     file: /autodevops.yml
     ref: v20.7.10
 
-# stages:
-#   - test
-#   - deploy
-
+# Fake job
 Install:
   script:
     - echo "It Works!"
 
+# Disabled jobs
 Lint:
   rules:
     - when: never
-
 Test:
   rules:
     - when: never
-
 K8S Test:
   rules:
     - when: never
@@ -31,20 +27,35 @@ Register image:
 Register Kaniko image:
   rules:
     - when: never
+Review:
+  rules:
+    - when: never
+
+# On $DEPLOY jobs
 Notify Starting Deployment:
   rules:
+    - if: "$DEPLOY"
+      when: always
     - when: never
 Notify Fail:
   rules:
+    - if: "$DEPLOY"
+      when: always
     - when: never
 Notify Success:
   rules:
+    - if: "$DEPLOY"
+      when: always
     - when: never
 Stop review:
   rules:
+    - if: "$DEPLOY"
+      when: always
     - when: never
 Trigger Release:
   rules:
+    - if: "$DEPLOY"
+      when: always
     - when: never
 
 .autodevops_review:
