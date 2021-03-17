@@ -2,6 +2,6 @@
   "name": "standup",
   "type": "static",
   "subdomain": "standup",
-  "hasura": false,
-  "azure-pg": false
+  "registry": "ghcr",
+  "project": "fabrique"
 }
