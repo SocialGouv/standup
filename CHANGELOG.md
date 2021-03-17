@@ -1,3 +1,15 @@
+# [1.5.0-alpha.1](https://github.com/SocialGouv/standup/compare/v1.4.4...v1.5.0-alpha.1) (2021-03-17)
+
+
+### Bug Fixes
+
+* Update autodevops version. ([b973be1](https://github.com/SocialGouv/standup/commit/b973be151a49250dc6a79873971c9249349d4a2d))
+
+
+### Features
+
+* Build from Github actions. ([68f2f88](https://github.com/SocialGouv/standup/commit/68f2f882b9fda52da5866585135c857093c7ae86))
+
 ## [1.4.4](https://github.com/SocialGouv/standup/compare/v1.4.3...v1.4.4) (2021-02-23)
 
 
