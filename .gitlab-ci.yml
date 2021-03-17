@@ -1,31 +1,49 @@
-include:
-  - project: SocialGouv/gitlab-ci-yml
-    file: /autodevops.yml
-    ref: v20.7.9
+stages:
+  - test
+  - deploy
 
-variables:
-  AUTO_DEVOPS_KANIKO: "pouet"
-  AUTO_DEVOPS_RELEASE_AUTO: "🔖"
-  AUTO_DEVOPS_ENABLE_KAPP: "plop"
-  AUTO_DEVOPS_PRODUCTION_AUTO: "🚀"
-
-Build:
-  needs: []
-  cache:
-    key:
-      files:
-        - yarn.lock
-      prefix: ${CI_JOB_NAME}
-    paths:
-      - .cache
+Test:
+  stage: test
   script:
-    - yarn config set cache-folder $CI_PROJECT_DIR/.cache/yarn
-    - yarn --frozen-lockfile --prefer-offline
-    - yarn build
-    - yarn export
-  variables:
-    VERSION: ${CI_COMMIT_SHORT_SHA}
-  artifacts:
-    expire_in: 1 day
-    paths:
-      - out
+    - echo "It Works!"
+
+Deploy:
+  stage: deploy
+  rules:
+    - if: "$DEPLOY"
+      when: always
+    - when: never
+  script:
+    - echo "It Works!"
+
+# include:
+#   - project: SocialGouv/gitlab-ci-yml
+#     file: /autodevops.yml
+#     ref: v20.7.9
+
+# variables:
+#   AUTO_DEVOPS_KANIKO: "pouet"
+#   AUTO_DEVOPS_RELEASE_AUTO: "🔖"
+#   AUTO_DEVOPS_ENABLE_KAPP: "plop"
+#   AUTO_DEVOPS_PRODUCTION_AUTO: "🚀"
+
+# Build:
+#   needs: []
+#   cache:
+#     key:
+#       files:
+#         - yarn.lock
+#       prefix: ${CI_JOB_NAME}
+#     paths:
+#       - .cache
+#   script:
+#     - yarn config set cache-folder $CI_PROJECT_DIR/.cache/yarn
+#     - yarn --frozen-lockfile --prefer-offline
+#     - yarn build
+#     - yarn export
+#   variables:
+#     VERSION: ${CI_COMMIT_SHORT_SHA}
+#   artifacts:
+#     expire_in: 1 day
+#     paths:
+#       - out

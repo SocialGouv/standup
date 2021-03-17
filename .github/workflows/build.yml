@@ -35,3 +35,12 @@ jobs:
           registry: ${{ secrets.HARBOR_REGISTRY }}
           username: ${{ secrets.HARBOR_USERNAME }}
           password: ${{ secrets.HARBOR_PASSWORD }}
+
+      - name: Debug
+        run: |
+          echo --form ref="${{ github.ref }}" --form token="${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}" --form variables[DEPLOY]="true" https://gitlab.factory.social.gouv.fr/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/trigger/pipeline
+
+      - name: Trigger deployment
+        uses: wei/curl@v1
+        with:
+          args: --form ref="${{ github.ref }}" --form token="${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}" --form variables[DEPLOY]="true" https://gitlab.factory.social.gouv.fr/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/trigger/pipeline
