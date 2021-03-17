@@ -5,34 +5,39 @@ include:
 
 variables:
   AUTO_DEVOPS_ENABLE_KAPP: "🕹️"
+  AUTO_DEVOPS_TEST_DISABLED: "🛑"
+  AUTO_DEVOPS_QUALITY_DISABLED: "🛑"
 
 # Fake job
-Install:
-  script:
-    - echo "It Works!"
+# Install:
+#   script:
+#     - echo "It Works!"
 
 # Disabled jobs
-Lint:
+Install:
   rules:
     - when: never
-Test:
-  rules:
-    - when: never
-K8S Test:
-  rules:
-    - when: never
+# Lint:
+#   rules:
+#     - when: never
+# Test:
+#   rules:
+#     - when: never
+# K8S Test:
+#   rules:
+#     - when: never
 Build:
   rules:
     - when: never
 Register image:
   rules:
     - when: never
-Register Kaniko image:
-  rules:
-    - when: never
-Review:
-  rules:
-    - when: never
+# Register Kaniko image:
+#   rules:
+#     - when: never
+# Review:
+#   rules:
+#     - when: never
 Trigger Release:
   rules:
     - when: never
