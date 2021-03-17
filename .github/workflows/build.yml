@@ -30,6 +30,7 @@ jobs:
         uses: aevea/action-kaniko@master
         with:
           cache: true
+          tag: ${{ github.sha }}
           image: ${{ secrets.HARBOR_PROJECT }}
           cache_registry: fabrique/standupx/cache
           registry: ${{ secrets.HARBOR_REGISTRY }}
