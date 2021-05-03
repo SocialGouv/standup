@@ -1,3 +1,10 @@
+## [1.4.8](https://github.com/SocialGouv/standup/compare/v1.4.7...v1.4.8) (2021-05-03)
+
+
+### Bug Fixes
+
+* mise à jour ([ef289a1](https://github.com/SocialGouv/standup/commit/ef289a165973cf9abeaa2b5d5856a3649e265468))
+
 ## [1.4.7](https://github.com/SocialGouv/standup/compare/v1.4.6...v1.4.7) (2021-04-26)
 
 
