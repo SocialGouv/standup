@@ -1,3 +1,10 @@
+## [1.4.9](https://github.com/SocialGouv/standup/compare/v1.4.8...v1.4.9) (2021-05-27)
+
+
+### Bug Fixes
+
+* Move to the new cluster. ([#351](https://github.com/SocialGouv/standup/issues/351)) ([3d47219](https://github.com/SocialGouv/standup/commit/3d47219df352c0f0fa64622b37fbbfcc10b277a3))
+
 ## [1.4.8](https://github.com/SocialGouv/standup/compare/v1.4.7...v1.4.8) (2021-05-03)
 
 
