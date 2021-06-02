@@ -1,3 +1,10 @@
+## [1.4.11](https://github.com/SocialGouv/standup/compare/v1.4.10...v1.4.11) (2021-06-02)
+
+
+### Bug Fixes
+
+* **ci:** upgrade gitlab-ci-yml ([c8ce4b6](https://github.com/SocialGouv/standup/commit/c8ce4b62d33066ee5d9955f6ef8e0cecbb9867f3))
+
 ## [1.4.10](https://github.com/SocialGouv/standup/compare/v1.4.9...v1.4.10) (2021-06-02)
 
 
