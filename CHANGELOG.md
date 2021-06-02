@@ -1,3 +1,10 @@
+## [1.4.10](https://github.com/SocialGouv/standup/compare/v1.4.9...v1.4.10) (2021-06-02)
+
+
+### Bug Fixes
+
+* **docker:** rm legacy image ([37cb0f8](https://github.com/SocialGouv/standup/commit/37cb0f8fc2b56b7b8ca44bdbd47c5071d83218ea))
+
 ## [1.4.9](https://github.com/SocialGouv/standup/compare/v1.4.8...v1.4.9) (2021-05-27)
 
 
