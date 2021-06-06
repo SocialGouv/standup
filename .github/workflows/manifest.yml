@@ -34,3 +34,10 @@ jobs:
 
       - name: Debug
         run: cat manifest.yml
+
+      - name: Archive lib components
+        uses: actions/upload-artifact@v2
+        with:
+          name: manifest.yml
+          path: manifest.yml
+

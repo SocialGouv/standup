@@ -63,19 +63,3 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           tags: "${{ steps.docker_meta.outputs.tags }}"
           labels: "${{ steps.docker_meta.outputs.labels }}"
-
-      # - name: Image build and register
-      #   uses: aevea/action-kaniko@master
-      #   with:
-      #     cache: true
-      #     tag: ${{ github.sha }}
-      #     image: ${{ secrets.HARBOR_PROJECT }}
-      #     registry: ${{ secrets.HARBOR_REGISTRY }}
-      #     username: ${{ secrets.HARBOR_USERNAME }}
-      #     password: ${{ secrets.HARBOR_PASSWORD }}
-      #     cache_registry: ${{ secrets.HARBOR_PROJECT }}/cache
-
-      # - name: Trigger deployment
-      #   uses: wei/curl@v1
-      #   with:
-      #     args: -X POST -F token=${{ secrets.GITLAB_TRIGGER_TOKEN }} -F ref=$GITHUB_REF -F "variables[DEPLOY]=true" https://gitlab.factory.social.gouv.fr/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/trigger/pipeline
