@@ -63,3 +63,13 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           tags: "${{ steps.docker_meta.outputs.tags }}"
           labels: "${{ steps.docker_meta.outputs.labels }}"
+
+      - name: Run kosko generate
+        run: |
+          npx @socialgouv/k8s@1.9.0-alpha.10 > manifest.yml
+
+      - name: Deploy
+        uses: danielr1996/kubectl-action@1.0.0
+        with:
+          kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
+          args: apply -f manifests.yml --namespace standup
