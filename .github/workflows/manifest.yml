@@ -5,6 +5,7 @@ on:
     branches: [alpha, beta, next]
 
 env:
+  SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
   SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
 jobs:
@@ -24,6 +25,7 @@ jobs:
         run: |
           echo GITHUB_REF: $GITHUB_REF
           echo GITHUB_SHA: $GITHUB_SHA
+          echo SOCIALGOUV_CONFIG_PATH: $SOCIALGOUV_CONFIG_PATH
           echo SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: $SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN
 
       - name: Run kosko generate
