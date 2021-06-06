@@ -4,6 +4,10 @@ on:
   push:
     branches: [alpha, beta, next]
 
+env:
+  SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
+  SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+
 jobs:
   build:
     name: Build & Register
@@ -20,9 +24,12 @@ jobs:
       - name: Yarn cache setup
         uses: c-hive/gha-yarn-cache@v1
 
-      - name: App build
+      - name: Install dependencies
         run: |
           yarn --frozen-lockfile --prefer-offline
+
+      - name: Build application
+        run: |
           yarn build
           yarn export
 
