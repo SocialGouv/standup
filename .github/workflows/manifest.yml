@@ -1,0 +1,23 @@
+name: Manifest
+
+on:
+  push:
+    branches: [alpha, beta, next]
+
+jobs:
+  build:
+    name: Generate k8s manifest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Node setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Run kosko generate
+        run: |
+          npx @socialgouv/k8s@1.9.0-alpha.3
+
