@@ -71,9 +71,15 @@ jobs:
           tags: "${{ steps.docker_meta.outputs.tags }}"
           labels: "${{ steps.docker_meta.outputs.labels }}"
 
-      - name: Run kosko generate
+      - name: Generate k8s manifests
         run: |
-          npx @socialgouv/k8s@1.9.0-alpha.10 > manifest.yml
+          npx @socialgouv/k8s@1.9.0-alpha.10 > manifests.yml
+
+      - name: Archive manifests
+        uses: actions/upload-artifact@v2
+        with:
+          name: manifests.yml
+          path: manifests.yml
 
       - name: Deploy
         uses: danielr1996/kubectl-action@1.0.0
