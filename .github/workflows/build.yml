@@ -4,10 +4,6 @@ on:
   push:
     branches: [alpha, beta, next]
 
-env:
-  SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
-  SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
-
 jobs:
   build:
     name: Build & Register
@@ -72,10 +68,12 @@ jobs:
           labels: "${{ steps.docker_meta.outputs.labels }}"
 
       - name: Generate k8s manifests
-        run: |
-          npx @socialgouv/k8s@1.9.0-alpha.10 > manifests.yml
+        run: npx @socialgouv/k8s@1.9.0-alpha.10 > manifests.yml
+        env:
+          SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
+          SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
-      - name: Archive manifests
+      - name: Archive k8s manifests
         uses: actions/upload-artifact@v2
         with:
           name: manifests.yml
@@ -85,4 +83,4 @@ jobs:
         uses: danielr1996/kubectl-action@1.0.0
         with:
           kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
-          args: apply -f manifests.yml --namespace standup
+          args: apply -f manifests.yml --namespace ${GITHUB_REF##*/}-standup
