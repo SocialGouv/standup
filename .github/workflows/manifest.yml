@@ -17,6 +17,12 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Show env variables
+        run: |
+          echo GITHUB_REF: $GITHUB_REF
+          echo GITHUB_SHA: $GITHUB_SHA
+          echo SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: $SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN
+
       - name: Run kosko generate
         run: |
           npx @socialgouv/k8s@1.9.0-alpha.4
