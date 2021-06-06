@@ -19,5 +19,5 @@ jobs:
 
       - name: Run kosko generate
         run: |
-          npx @socialgouv/k8s@1.9.0-alpha.3
+          npx @socialgouv/k8s@1.9.0-alpha.4
 
