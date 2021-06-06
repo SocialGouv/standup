@@ -4,6 +4,9 @@ on:
   push:
     branches: [alpha, beta, next]
 
+env:
+  SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+
 jobs:
   build:
     name: Generate k8s manifest
