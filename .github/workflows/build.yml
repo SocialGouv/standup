@@ -68,7 +68,7 @@ jobs:
           labels: "${{ steps.docker_meta.outputs.labels }}"
 
       - name: Generate k8s manifests
-        run: npx @socialgouv/k8s@1.9.0-alpha.11 > manifests.yml
+        run: npx @socialgouv/k8s@1.9.0-alpha.12 > manifests.yml
         env:
           SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
           SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
