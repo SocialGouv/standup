@@ -30,7 +30,7 @@ jobs:
 
       - name: Run kosko generate
         run: |
-          npx @socialgouv/k8s@1.9.0-alpha.7 > manifest.yml
+          npx @socialgouv/k8s@1.9.0-alpha.8 > manifest.yml
 
       - name: Debug
         run: cat manifest.yml
