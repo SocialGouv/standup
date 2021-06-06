@@ -1,5 +1,7 @@
 {
-  "name": "standupx",
+  "name": "standup",
   "type": "static",
-  "subdomain": "standup"
+  "subdomain": "standup",
+  "registry": "ghcr",
+  "project": "fabrique"
 }
