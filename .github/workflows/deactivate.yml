@@ -10,9 +10,9 @@ jobs:
 
     - name: Get branch, project and namespace names
       run: |
-        echo "branch=${GITHUB_REF##*/}" >> $GITHUB_ENV
+        echo "branch=${GITHUB_HEAD_REF##*/}" >> $GITHUB_ENV
         echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-        echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
+        echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_HEAD_REF##*/}" >> $GITHUB_ENV
 
     - name: Install Kapp
       uses: vmware-tanzu/carvel-setup-action@v1
