@@ -101,8 +101,10 @@ jobs:
         run: |
           mkdir ~/.kube
           touch ~/.kube/config
-          ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }} | base64 -d > ~/.kube/config
+          ${SOCIALGOUV_KUBE_CONFIG_DEV2} | base64 -d > ~/.kube/config
           ls -lah ~/.kube/config
+        env:
+          SOCIALGOUV_KUBE_CONFIG_DEV2: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
 
       - name: Install Kapp
         uses: vmware-tanzu/carvel-setup-action@v1
