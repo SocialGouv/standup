@@ -97,24 +97,30 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           desc: "Deploying environment: ${{ env.namespace }}"
 
-      - name: Create kubernetes config
-        run: |
-          mkdir ~/.kube
-          touch ~/.kube/config
-          ${SOCIALGOUV_KUBE_CONFIG_DEV2} | base64 -d > ~/.kube/config
-          ls -lah ~/.kube/config
-        env:
-          SOCIALGOUV_KUBE_CONFIG_DEV2: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
-
       - name: Install Kapp
         uses: vmware-tanzu/carvel-setup-action@v1
         with:
           only: kapp
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Create kubernetes config
+        run: |
+          mkdir ~/.kube
+          touch ~/.kube/config
+          echo TESTASS: $TESTASS
+          echo SOCIALGOUV_KUBE_CONFIG_DEV2: $SOCIALGOUV_KUBE_CONFIG_DEV2
+          echo $TESTASS | base64 -d > ~/.kube/toto
+          cat ~/.kube/toto
+          echo $SOCIALGOUV_KUBE_CONFIG_DEV2 | base64 -d > ~/.kube/config
+          ls -lah ~/.kube/config
+        env:
+          TESTASS: VGhpcyBpcyBhIHRlc3Q=
+          SOCIALGOUV_KUBE_CONFIG_DEV2: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
+
       - name: Run Kapp
         run: |
           kapp version
+          echo "kapp --dangerous-override-ownership-of-existing-resources -y deploy -a ${{ env.project }} --namespace ${{ env.namespace }} -f manifests.yml"
           kapp --dangerous-override-ownership-of-existing-resources -y deploy -a ${{ env.project }} --namespace ${{ env.namespace }} -f manifests.yml
 
       # - name: Deploy
