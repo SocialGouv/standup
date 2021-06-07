@@ -1,3 +1,11 @@
+# [1.5.0-beta.25](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.24...v1.5.0-beta.25) (2021-06-07)
+
+
+### Bug Fixes
+
+* Restore basic release. ([ab3110d](https://github.com/SocialGouv/standup/commit/ab3110dd967db9055cbee5bd17565642885d150b))
+* Use cycjimmy/semantic-release-action. ([f009f90](https://github.com/SocialGouv/standup/commit/f009f90785b7445bebae04ad5503d60e8fce730a))
+
 # [1.5.0-beta.24](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.23...v1.5.0-beta.24) (2021-06-07)
 
 
