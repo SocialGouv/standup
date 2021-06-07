@@ -14,8 +14,7 @@ jobs:
     steps:
       - name: Get branch name
         run: |
-          echo "branch=${GITHUB_REF##*/}" >> $GITHUB_ENV
-          echo repo: ${GITHUB_REPOSITORY#*/}
+          echo "namespace=${GITHUB_REF##*/}-${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -94,15 +93,15 @@ jobs:
         id: deployment
         with:
           step: start
-          env: ${{ env.branch }}-standup
+          env: ${{ env.namespace }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          desc: "Deploying environment: ${{ env.branch }}-standup"
+          desc: "Deploying environment: ${{ env.namespace }}"
 
       - name: Deploy
         uses: danielr1996/kubectl-action@1.0.0
         with:
           kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
-          args: apply -f manifests.yml --namespace ${{ env.branch }}-standup
+          args: apply -f manifests.yml --namespace ${{ env.namespace }}
 
       - name: Notify deployment end
         uses: bobheadxi/deployments@v0.4.3
@@ -112,4 +111,4 @@ jobs:
           status: ${{ job.status }}
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: https://${{ env.branch }}-standup.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+          env_url: https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
