@@ -8,9 +8,9 @@ jobs:
   build:
     name: Build & Register
     runs-on: ubuntu-latest
-    environment:
-        name: ${GITHUB_REF##*/}-standup
-        url: https://${GITHUB_REF##*/}-standup.${SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN}
+    # environment:
+    #     name: ${GITHUB_REF##*/}-standup
+    #     url: https://${GITHUB_REF##*/}-standup.${SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN}
     steps:
       - name: Get branch name
         run: echo "branch=${GITHUB_REF##*/}" >> $GITHUB_ENV
@@ -100,7 +100,7 @@ jobs:
         uses: danielr1996/kubectl-action@1.0.0
         with:
           kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
-          args: apply -f manifests.yml --namespace ${GITHUB_REF##*/}-standup
+          args: apply -f manifests.yml --namespace ${{ env.branch }}-standup
 
       - name: Notify deployment end
         uses: bobheadxi/deployments@v0.4.3
