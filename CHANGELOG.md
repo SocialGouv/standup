@@ -1,3 +1,10 @@
+# [1.5.0-beta.10](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.9...v1.5.0-beta.10) (2021-06-07)
+
+
+### Bug Fixes
+
+* Branches and tags matching. ([42051db](https://github.com/SocialGouv/standup/commit/42051dbf42f1bad74caede4648a9c35c5211f31f))
+
 # [1.5.0-beta.9](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.8...v1.5.0-beta.9) (2021-06-07)
 
 
