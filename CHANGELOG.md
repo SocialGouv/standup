@@ -1,3 +1,34 @@
+# [1.5.0-beta.1](https://github.com/SocialGouv/standup/compare/v1.4.4...v1.5.0-beta.1) (2021-06-07)
+
+
+### Bug Fixes
+
+* Add deployment notifications. ([483fb07](https://github.com/SocialGouv/standup/commit/483fb07bbd80639f9551591136e7c613414c6dff))
+* Add release and tag workflow. ([a03e71c](https://github.com/SocialGouv/standup/commit/a03e71ccb45362ed2642a59f714773f8bd45dc74))
+* Add semrel deps. ([07798fb](https://github.com/SocialGouv/standup/commit/07798fb1422c6fbe6acff2701c1f606584c3feb9))
+* Add visual change. ([75c58dd](https://github.com/SocialGouv/standup/commit/75c58dd449ba7907db19cc7d8e697b4441fec78a))
+* Add workflow to generate manifest. ([7a2a734](https://github.com/SocialGouv/standup/commit/7a2a73494037cb770f2edbdf4087f937db064798))
+* Catch repo name. ([2c6ebcb](https://github.com/SocialGouv/standup/commit/2c6ebcb4cac1e6617c1ce8b7e740155d6de81c13))
+* Deploy on any push. ([#354](https://github.com/SocialGouv/standup/issues/354)) ([313e9fa](https://github.com/SocialGouv/standup/commit/313e9fa6ebaf125cef1d61081e3d81eb76922b8f))
+* Deployment config. ([656259d](https://github.com/SocialGouv/standup/commit/656259d333308738273058527c816080ed503025))
+* Set SOCIALGOUV_CONFIG_PATH env var. ([6d75d79](https://github.com/SocialGouv/standup/commit/6d75d7923460b2131618337035a833878aa5d00d))
+* Update autodevops version. ([b973be1](https://github.com/SocialGouv/standup/commit/b973be151a49250dc6a79873971c9249349d4a2d))
+* Update k8s version. ([637da9f](https://github.com/SocialGouv/standup/commit/637da9fa66b6140ea554fa0f461d4d6e8203de35))
+* Upgrade k8s version. ([2713434](https://github.com/SocialGouv/standup/commit/2713434d50b29fc1c85706a22cfd43b281fe4872))
+* Upgrade k8s version. ([cb5325b](https://github.com/SocialGouv/standup/commit/cb5325bf760251b795a4c912baa0594ba5c8f2f0))
+* Upgrade k8s version. ([00ecd24](https://github.com/SocialGouv/standup/commit/00ecd24aa8ad22f6d5f2c4dc38ad700799a8c0e6))
+* Upgrade k8s version. ([d6b14e0](https://github.com/SocialGouv/standup/commit/d6b14e02f11aa6312d7d9186c6d98d37ccb29006))
+* Use env.branch in kubectl args. ([a6a3818](https://github.com/SocialGouv/standup/commit/a6a3818d6bbbaec91bb37fcc67563c2de1dd074f))
+* Use env.branch. ([d5a0c72](https://github.com/SocialGouv/standup/commit/d5a0c721e0d9a0946f31b397aaa356eaf5550511))
+* Use env.namespace. ([26941a2](https://github.com/SocialGouv/standup/commit/26941a2e5a801f5ccaf625dc47e73a6df7995c38))
+* Use Github registry. ([4e497c8](https://github.com/SocialGouv/standup/commit/4e497c829f8d0f930ee4dff8b06190b156a70be4))
+* Various fixes. ([9d0af42](https://github.com/SocialGouv/standup/commit/9d0af426aed62cbdc5747f63f9de993b4670edb0))
+
+
+### Features
+
+* Build from Github actions. ([68f2f88](https://github.com/SocialGouv/standup/commit/68f2f882b9fda52da5866585135c857093c7ae86))
+
 # [1.5.0-alpha.1](https://github.com/SocialGouv/standup/compare/v1.4.4...v1.5.0-alpha.1) (2021-03-17)
 
 
