@@ -19,8 +19,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-          persist-credentials: false
+          token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          # fetch-depth: 0
+          # persist-credentials: false
 
       - name: Node setup
         uses: actions/setup-node@v2
