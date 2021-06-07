@@ -11,4 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo "It Works!"
+        run: |
+          echo GITHUB_SHA: ${GITHUB_SHA}
+          echo GITHUB_REF: ${GITHUB_REF}
