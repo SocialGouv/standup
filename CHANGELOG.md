@@ -1,3 +1,10 @@
+# [1.5.0-beta.7](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.6...v1.5.0-beta.7) (2021-06-07)
+
+
+### Bug Fixes
+
+* Create .kube directory. ([#355](https://github.com/SocialGouv/standup/issues/355)) ([98ca5e9](https://github.com/SocialGouv/standup/commit/98ca5e971fff20a6b8e29758e183093bdd854d2a))
+
 # [1.5.0-beta.6](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.5...v1.5.0-beta.6) (2021-06-07)
 
 
