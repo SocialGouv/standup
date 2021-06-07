@@ -2,6 +2,8 @@ name: Deployment
 
 on:
   push:
+    tags-ignore:
+      - v*
 
 jobs:
 
