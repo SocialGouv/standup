@@ -1,3 +1,10 @@
+# [1.5.0-beta.5](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.4...v1.5.0-beta.5) (2021-06-07)
+
+
+### Bug Fixes
+
+* Echo env vars in tag job. ([2618c1e](https://github.com/SocialGouv/standup/commit/2618c1ebf17a8647e9a885e9afa46fe5e0cdec5c))
+
 # [1.5.0-beta.4](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.3...v1.5.0-beta.4) (2021-06-07)
 
 
