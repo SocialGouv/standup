@@ -1,3 +1,10 @@
+# [1.5.0-beta.8](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.7...v1.5.0-beta.8) (2021-06-07)
+
+
+### Bug Fixes
+
+* Use GITHUB_HEAD_REF to deactivate env. ([#356](https://github.com/SocialGouv/standup/issues/356)) ([73ba104](https://github.com/SocialGouv/standup/commit/73ba104a953b3a553e8d854f903166705b0961b7))
+
 # [1.5.0-beta.7](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.6...v1.5.0-beta.7) (2021-06-07)
 
 
