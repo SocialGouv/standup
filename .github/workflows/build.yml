@@ -168,14 +168,20 @@ jobs:
         run: |
           mkdir ~/.kube
           touch ~/.kube/config
-          echo $SOCIALGOUV_KUBE_CONFIG_DEV2 | base64 -d > ~/.kube/config
-        env:
-          SOCIALGOUV_KUBE_CONFIG_DEV2: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
+          echo ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }} | base64 -d > ~/.kube/config
+          # echo $SOCIALGOUV_KUBE_CONFIG_DEV2 | base64 -d > ~/.kube/config
+        # env:
+        #   SOCIALGOUV_KUBE_CONFIG_DEV2: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
+
+      - name: Create k8s namespace and annotations
+        run: |
+          kubectl create ns ${{ env.namespace }} || true
+          kubectl annotate ns ${{ env.namespace }} azure-pg-admin-user=${{ env.project }} || true
 
       - name: Run Kapp
         run: |
           kapp version
-          echo "kapp --dangerous-override-ownership-of-existing-resources -y deploy -a ${{ env.project }} --namespace ${{ env.namespace }} -f manifests.yml"
+          # echo "kapp --dangerous-override-ownership-of-existing-resources -y deploy -a ${{ env.project }} --namespace ${{ env.namespace }} -f manifests.yml"
           kapp --dangerous-override-ownership-of-existing-resources -y deploy -a ${{ env.project }} --namespace ${{ env.namespace }} -f manifests.yml
 
       - name: Notify deployment end
