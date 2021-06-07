@@ -1,3 +1,10 @@
+# [1.5.0-beta.4](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.3...v1.5.0-beta.4) (2021-06-07)
+
+
+### Bug Fixes
+
+* Tags selector, use v prefix. ([891c041](https://github.com/SocialGouv/standup/commit/891c0412e05011197ae939fe29ccb195a270603f))
+
 # [1.5.0-beta.3](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.2...v1.5.0-beta.3) (2021-06-07)
 
 
