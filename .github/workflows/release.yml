@@ -42,7 +42,7 @@ jobs:
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         with:
-          dry_run: true
+          # dry_run: true
           semantic_version: 16
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
