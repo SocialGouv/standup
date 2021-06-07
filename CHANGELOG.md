@@ -1,3 +1,10 @@
+# [1.5.0-beta.2](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.1...v1.5.0-beta.2) (2021-06-07)
+
+
+### Bug Fixes
+
+* Tags selector. ([4476e4e](https://github.com/SocialGouv/standup/commit/4476e4ee5ed55fe6b2d3916ee6d9b9e58ad76f23))
+
 # [1.5.0-beta.1](https://github.com/SocialGouv/standup/compare/v1.4.4...v1.5.0-beta.1) (2021-06-07)
 
 
