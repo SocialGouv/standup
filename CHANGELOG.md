@@ -1,3 +1,10 @@
+# [1.5.0-beta.23](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.22...v1.5.0-beta.23) (2021-06-07)
+
+
+### Bug Fixes
+
+* Use secrets.SOCIALGROOVYBOT_BOTO_PAT to checkout release. ([46e6515](https://github.com/SocialGouv/standup/commit/46e65157e0dfa2fdcc935d4e508124351d1daaed))
+
 # [1.5.0-beta.16](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.15...v1.5.0-beta.16) (2021-06-07)
 
 
