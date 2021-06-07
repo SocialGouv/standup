@@ -60,9 +60,14 @@ jobs:
 
       - name: Commit changes
         if: steps.semantic.outputs.new_release_published == 'true'
-        run: |
-          git config user.email "${{ secrets.SOCIALGROOVYBOT_EMAIL }}"
-          git config user.name "${{ secrets.SOCIALGROOVYBOT_NAME }}"
-          git add CHANGELOG.md package.json
-          git commit -m "chore(release): ${{ steps.semantic.outputs.new_release_version }} [skip ci]"
-          git push origin ${{ github.ref }}
+        uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
+        with:
+          pull_strategy: 'NO-PULL'
+          add: 'CHANGELOG.md package.json'
+          message: "chore(release): ${{ steps.semantic.outputs.new_release_version }} [skip ci]"
+        # run: |
+        #   git config user.email "${{ secrets.SOCIALGROOVYBOT_EMAIL }}"
+        #   git config user.name "${{ secrets.SOCIALGROOVYBOT_NAME }}"
+        #   git add CHANGELOG.md package.json
+        #   git commit -m "chore(release): ${{ steps.semantic.outputs.new_release_version }} [skip ci]"
+        #   git push origin ${{ github.ref }}
