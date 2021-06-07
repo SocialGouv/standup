@@ -45,8 +45,8 @@ jobs:
         with:
           # dry_run: true
           semantic_version: 16
-          # extra_plugins: |
-          #   @semantic-release/changelog@3.0.0
+          extra_plugins: |
+            @semantic-release/changelog@3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,3 +57,10 @@ jobs:
           git status
           ls -lah
           echo ${{ steps.semantic.outputs.new_release_version }}
+
+      - name: Commit changes
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: |
+          git add CHANGELOG.md package.json
+          git commit -m "chore(release): ${{ steps.semantic.outputs.new_release_version }} [skip ci]"
+          git push origin ${{ github.ref }}
