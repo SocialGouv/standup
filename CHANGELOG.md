@@ -1,3 +1,10 @@
+# [1.5.0-beta.16](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.15...v1.5.0-beta.16) (2021-06-07)
+
+
+### Bug Fixes
+
+* Check release commit message. ([6eb87c1](https://github.com/SocialGouv/standup/commit/6eb87c18d8ee92e29bc9cd5bff38fee90d4ae049))
+
 # [1.5.0-beta.15](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.14...v1.5.0-beta.15) (2021-06-07)
 
 
