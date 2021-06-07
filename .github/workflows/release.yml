@@ -48,16 +48,12 @@ jobs:
           # extra_plugins: |
           #   @semantic-release/changelog@3.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Debug
+        if: steps.semantic.outputs.new_release_published == 'true'
         run: |
           git status
           ls -lah
-          echo ${{ steps.semantic.outputs.new_release_published }}
           echo ${{ steps.semantic.outputs.new_release_version }}
-          echo ${{ steps.semantic.outputs.new_release_major_version }}
-          echo ${{ steps.semantic.outputs.new_release_minor_version }}
-          echo ${{ steps.semantic.outputs.new_release_patch_version }}
-          echo ${{ steps.semantic.outputs.new_release_channel }}
-          echo ${{ steps.semantic.outputs.new_release_notes }}
