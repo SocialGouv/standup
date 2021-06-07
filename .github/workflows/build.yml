@@ -61,6 +61,8 @@ jobs:
         with:
           name: out
 
+      - run: ls -lah
+
       - name: Create image labels and tags
         id: docker_meta
         uses: "crazy-max/ghaction-docker-meta@2e1a5c7fa42123697f82d479b551a1bbdb1bef88"
