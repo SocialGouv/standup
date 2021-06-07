@@ -12,8 +12,9 @@ jobs:
     #     name: ${GITHUB_REF##*/}-standup
     #     url: https://${GITHUB_REF##*/}-standup.${SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN}
     steps:
-      - name: Get branch name
+      - name: Get project and namespace
         run: |
+          echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
           echo "namespace=${GITHUB_REF##*/}-${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
       - name: Checkout repository
@@ -96,11 +97,27 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           desc: "Deploying environment: ${{ env.namespace }}"
 
-      - name: Deploy
-        uses: danielr1996/kubectl-action@1.0.0
+      - name: Create kubernetes config
+        run: |
+          ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }} | base64 -d > ~/.kube/config
+          ls -lah ~/.kube/config
+
+      - name: Install Kapp
+        uses: vmware-tanzu/carvel-setup-action@v1
         with:
-          kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
-          args: apply -f manifests.yml --namespace ${{ env.namespace }}
+          only: kapp
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Kapp
+        run: |
+          kapp version
+          kapp --dangerous-override-ownership-of-existing-resources -y deploy -a ${{ env.project }} --namespace ${{ env.namespace }} -f manifests.yml
+
+      # - name: Deploy
+      #   uses: danielr1996/kubectl-action@1.0.0
+      #   with:
+      #     kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
+      #     args: apply -f manifests.yml --namespace ${{ env.namespace }}
 
       - name: Notify deployment end
         uses: bobheadxi/deployments@v0.4.3
