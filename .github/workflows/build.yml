@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
         name: ${GITHUB_REF##*/}-standup
-        url: https://${GITHUB_REF##*/}-standup.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+        url: https://${GITHUB_REF##*/}-standup.${SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -84,8 +84,26 @@ jobs:
           name: manifests.yml
           path: manifests.yml
 
+      - name: Notify deployment start
+        uses: bobheadxi/deployments@v0.4.3
+        id: deployment
+        with:
+          step: start
+          env: ${GITHUB_REF##*/}-standup
+          token: ${{ secrets.GITHUB_TOKEN }}
+          desc: "Deploying environment: ${GITHUB_REF##*/}-standup"
+
       - name: Deploy
         uses: danielr1996/kubectl-action@1.0.0
         with:
           kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }}
           args: apply -f manifests.yml --namespace ${GITHUB_REF##*/}-standup
+
+      - name: Notify deployment end
+        uses: bobheadxi/deployments@v0.4.3
+        if: always()
+        with:
+          step: finish
+          status: ${{ job.status }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
