@@ -1,0 +1,14 @@
+name: Tag
+
+on:
+  push:
+    tags:
+      - *
+
+jobs:
+  tag:
+    name: Tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo "It Works!"
