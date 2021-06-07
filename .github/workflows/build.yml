@@ -116,7 +116,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate k8s manifests
-        run: npx @socialgouv/k8s@1.9.0-alpha.12 > manifests.yml
+        run: npx @socialgouv/k8s@1.9.0-alpha.13 > manifests.yml
         env:
           SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
           SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
@@ -142,7 +142,7 @@ jobs:
       - name: Get project and namespace names
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-          echo "namespace=${GITHUB_REF##*/}-${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+          echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
 
       - name: Download k8s manifests
         uses: actions/download-artifact@v2

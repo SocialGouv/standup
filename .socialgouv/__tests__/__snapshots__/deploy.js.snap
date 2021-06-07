@@ -17,11 +17,11 @@ metadata:
     app.github.com/sha: '0123456'
   labels:
     azure-pg-admin-user: standup
-    application: v1.2.3-dev2-standup
+    application: standup-dev2-v1.2.3
     owner: standup
     team: standup
     cert: wildcard
-  name: preprod-standup
+  name: standup-preprod
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -36,13 +36,13 @@ metadata:
     app.github.com/sha: '0123456'
   labels:
     app: standup
-    application: v1.2.3-dev2-standup
+    application: standup-dev2-v1.2.3
     owner: standup
     team: standup
     cert: wildcard
     component: nginx
   name: standup
-  namespace: preprod-standup
+  namespace: standup-preprod
 spec:
   replicas: 1
   selector:
@@ -60,7 +60,7 @@ spec:
         app.github.com/sha: '0123456'
       labels:
         app: standup
-        application: v1.2.3-dev2-standup
+        application: standup-dev2-v1.2.3
         owner: standup
         team: standup
         cert: wildcard
@@ -121,9 +121,9 @@ metadata:
     app.github.com/run: '1234'
     app.github.com/sha: '0123456'
   name: standup-sealed-secret
-  namespace: preprod-standup
+  namespace: standup-preprod
   labels:
-    application: v1.2.3-dev2-standup
+    application: standup-dev2-v1.2.3
     owner: standup
     team: standup
     cert: wildcard
@@ -144,7 +144,7 @@ spec:
         app.github.com/sha: '0123456'
       name: standup-sealed-secret
       labels:
-        application: v1.2.3-dev2-standup
+        application: standup-dev2-v1.2.3
         owner: standup
         team: standup
         cert: wildcard
@@ -163,11 +163,11 @@ metadata:
     app.github.com/run: '1234'
     app.github.com/sha: '0123456'
   labels:
-    application: v1.2.3-dev2-standup
+    application: standup-dev2-v1.2.3
     owner: standup
     team: standup
     cert: wildcard
-  namespace: preprod-standup
+  namespace: standup-preprod
 data:
   NODE_ENV: production
   GITHUB_ORGANIZATION: SocialGouv
@@ -180,7 +180,7 @@ kind: Service
 metadata:
   labels:
     app: standup
-    application: v1.2.3-dev2-standup
+    application: standup-dev2-v1.2.3
     owner: standup
     team: standup
     cert: wildcard
@@ -193,7 +193,7 @@ metadata:
     app.github.com/repo: socialgouv/standup
     app.github.com/run: '1234'
     app.github.com/sha: '0123456'
-  namespace: preprod-standup
+  namespace: standup-preprod
 spec:
   ports:
     - name: http
@@ -217,15 +217,15 @@ metadata:
     app.github.com/sha: '0123456'
   labels:
     app: standup
-    application: v1.2.3-dev2-standup
+    application: standup-dev2-v1.2.3
     owner: standup
     team: standup
     cert: wildcard
   name: standup
-  namespace: preprod-standup
+  namespace: standup-preprod
 spec:
   rules:
-    - host: v1.2.3-standup.dev2.fabrique.social.gouv.fr
+    - host: standup-v1.2.3.dev2.fabrique.social.gouv.fr
       http:
         paths:
           - backend:
@@ -234,7 +234,7 @@ spec:
             path: /
   tls:
     - hosts:
-        - v1.2.3-standup.dev2.fabrique.social.gouv.fr
+        - standup-v1.2.3.dev2.fabrique.social.gouv.fr
       secretName: wildcard-crt
 
 "
