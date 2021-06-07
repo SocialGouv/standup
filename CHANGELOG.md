@@ -1,3 +1,10 @@
+# [1.5.0-beta.6](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.5...v1.5.0-beta.6) (2021-06-07)
+
+
+### Bug Fixes
+
+* Use Kapp. ([89f331b](https://github.com/SocialGouv/standup/commit/89f331b0d5abae0b2aea7feb730968fa3aea83f2))
+
 # [1.5.0-beta.5](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.4...v1.5.0-beta.5) (2021-06-07)
 
 
