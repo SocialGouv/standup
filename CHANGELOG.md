@@ -1,3 +1,10 @@
+# [1.5.0-beta.15](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.14...v1.5.0-beta.15) (2021-06-07)
+
+
+### Bug Fixes
+
+* Remove branches rules from deployment. ([a88e125](https://github.com/SocialGouv/standup/commit/a88e125a7bef4afa16397290a267be011bb0031e))
+
 # [1.5.0-beta.14](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.13...v1.5.0-beta.14) (2021-06-07)
 
 
