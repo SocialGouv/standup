@@ -2,9 +2,13 @@ name: Release
 
 on:
   push:
-    tags:
-      - '!v*'
-    branches: [master, alpha, beta, next]
+    branches:
+      - master
+      - alpha
+      - beta
+      - next
+    tags-ignore:
+      - '**'
 
 jobs:
   release:
