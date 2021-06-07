@@ -1,3 +1,10 @@
+# [1.5.0-beta.9](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.8...v1.5.0-beta.9) (2021-06-07)
+
+
+### Bug Fixes
+
+* Trigger tag workflow. ([332e300](https://github.com/SocialGouv/standup/commit/332e300828677567b2a70d11ef68653be1ebd2b2))
+
 # [1.5.0-beta.8](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.7...v1.5.0-beta.8) (2021-06-07)
 
 
