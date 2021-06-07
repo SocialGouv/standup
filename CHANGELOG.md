@@ -1,3 +1,10 @@
+# [1.5.0-beta.24](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.23...v1.5.0-beta.24) (2021-06-07)
+
+
+### Bug Fixes
+
+* Remove useless conditions. ([a24532f](https://github.com/SocialGouv/standup/commit/a24532ff57329bf9d8404e5d5ecfdd1ce56c036f))
+
 # [1.5.0-beta.23](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.22...v1.5.0-beta.23) (2021-06-07)
 
 
