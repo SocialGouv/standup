@@ -60,8 +60,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: out
+          path: ./out
 
-      - run: ls -lah
+      - run: |
+          ls -lah
+          ls -lah ./out
 
       - name: Create image labels and tags
         id: docker_meta
