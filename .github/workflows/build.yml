@@ -8,6 +8,9 @@ jobs:
   build:
     name: Build & Register
     runs-on: ubuntu-latest
+    environment:
+        name: ${GITHUB_REF##*/}-standup
+        url: https://${GITHUB_REF##*/}-standup.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
