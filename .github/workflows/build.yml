@@ -12,6 +12,9 @@ jobs:
         name: ${GITHUB_REF##*/}-standup
         url: https://${GITHUB_REF##*/}-standup.${SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN}
     steps:
+      - name: Get branch name
+        run: echo "branch=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -89,9 +92,9 @@ jobs:
         id: deployment
         with:
           step: start
-          env: ${GITHUB_REF##*/}-standup
+          env: ${{ env.branch }}-standup
           token: ${{ secrets.GITHUB_TOKEN }}
-          desc: "Deploying environment: ${GITHUB_REF##*/}-standup"
+          desc: "Deploying environment: ${{ env.branch }}-standup"
 
       - name: Deploy
         uses: danielr1996/kubectl-action@1.0.0
@@ -107,3 +110,4 @@ jobs:
           status: ${{ job.status }}
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          env_url: https://${{ env.branch }}-standup.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
