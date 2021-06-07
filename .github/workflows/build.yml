@@ -2,12 +2,15 @@ name: Build
 
 on:
   push:
-    branches: [alpha, beta, next]
+    # branches: [alpha, beta, next]
 
 jobs:
   build:
     name: Build & Register
     runs-on: ubuntu-latest
+    environment:
+        name: ${GITHUB_REF##*/}-standup
+        url: https://${GITHUB_REF##*/}-standup.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -28,6 +31,8 @@ jobs:
         run: |
           yarn build
           yarn export
+        env:
+          HASURA_URL: "%%HASURA_URL%%"
 
       - name: Create image labels and tags
         id: docker_meta
