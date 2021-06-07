@@ -99,6 +99,8 @@ jobs:
 
       - name: Create kubernetes config
         run: |
+          mkdir ~/.kube
+          touch ~/.kube/config
           ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV2 }} | base64 -d > ~/.kube/config
           ls -lah ~/.kube/config
 
