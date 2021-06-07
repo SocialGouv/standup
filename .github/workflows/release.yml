@@ -13,12 +13,11 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
+        # with:
+        #   fetch-depth: 0
+        #   persist-credentials: false
 
       - name: Node setup
         uses: actions/setup-node@v2
@@ -31,27 +30,8 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile --prefer-offline
 
-      - name: Semantic Release
-        id: semantic
-        uses: cycjimmy/semantic-release-action@v2
-        with:
-          semantic_version: 16
-          extra_plugins: |
-            @semantic-release/changelog@3.0.0
+      - name: Run semantic release
+        run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
-
-      - name: Debug
-        if: steps.semantic.outputs.new_release_published == 'true'
-        run: |
-          git status
-          ls -lah
-          echo ${{ steps.semantic.outputs.new_release_version }}
-
-      - name: Commit changes
-        if: steps.semantic.outputs.new_release_published == 'true'
-        uses: EndBug/add-and-commit@v7
-        with:
-          pull_strategy: 'NO-PULL'
-          add: 'CHANGELOG.md package.json'
-          message: "chore(release): ${{ steps.semantic.outputs.new_release_version }} [skip ci]"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.SOCIALGROOVYBOT_BOTO_PAT }}
