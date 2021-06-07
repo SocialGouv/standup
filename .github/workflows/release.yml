@@ -3,8 +3,8 @@ name: Release
 on:
   push:
     branches: [master, alpha, beta, next]
-    tags-ignore:
-      - v*
+    tags:
+      - '!v*'
 
 jobs:
   release:
