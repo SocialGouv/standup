@@ -13,7 +13,9 @@ jobs:
     #     url: https://${GITHUB_REF##*/}-standup.${SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN}
     steps:
       - name: Get branch name
-        run: echo "branch=${GITHUB_REF##*/}" >> $GITHUB_ENV
+        run: |
+          echo "branch=${GITHUB_REF##*/}" >> $GITHUB_ENV
+          echo repo: ${GITHUB_REPOSITORY#*/}
 
       - name: Checkout repository
         uses: actions/checkout@v2
