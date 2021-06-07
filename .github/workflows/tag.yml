@@ -3,6 +3,7 @@ name: Tag
 on:
   push:
     tags:
+      - v*
 
 jobs:
   tag:
