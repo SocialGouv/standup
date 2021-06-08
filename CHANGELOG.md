@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/SocialGouv/standup/compare/v1.5.0...v1.5.1) (2021-06-08)
+
+
+### Bug Fixes
+
+* Add publish workflow. ([0421336](https://github.com/SocialGouv/standup/commit/0421336c8ca4c1de64697135487c881c3a150aeb))
+
 # [1.5.0](https://github.com/SocialGouv/standup/compare/v1.4.11...v1.5.0) (2021-06-08)
 
 
