@@ -32,14 +32,14 @@ jobs:
         echo GITHUB_REF ${GITHUB_REF}
         echo GITHUB_HEAD_REF ${GITHUB_HEAD_REF}
 
-      - name: Generate k8s manifests
-        run: npx @socialgouv/k8s@1.9.0-alpha.13 > manifests.yml
-        env:
-          SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
-          SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+      # - name: Generate k8s manifests
+      #   run: npx @socialgouv/k8s@1.9.0-alpha.13 > manifests.yml
+      #   env:
+      #     SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
+      #     SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
-      - name: Archive k8s manifests
-        uses: actions/upload-artifact@v2
-        with:
-          name: manifests.yml
-          path: manifests.yml
+      # - name: Archive k8s manifests
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: manifests.yml
+      #     path: manifests.yml
