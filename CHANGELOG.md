@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/SocialGouv/standup/compare/v1.4.11...v1.5.0) (2021-06-08)
+
+
+### Features
+
+* Deploy from Github ([#345](https://github.com/SocialGouv/standup/issues/345)) ([37ab124](https://github.com/SocialGouv/standup/commit/37ab124834f013a678f3286e43824bbd1fc9e0b5))
+
 # [1.5.0-alpha.1](https://github.com/SocialGouv/standup/compare/v1.4.11...v1.5.0-alpha.1) (2021-06-08)
 
 
