@@ -4,10 +4,42 @@ on: workflow_dispatch
 
 jobs:
 
-  build:
+  ##############################################################################
+  ## GENERATE KUBERNETES MANIFESTS
+  ##############################################################################
+  manifests:
     name: Build application
     runs-on: ubuntu-latest
     steps:
 
-    - name: Debug
-      run: echo "It Works!"
+      - name: Checkout repository
+        uses: actions/checkout@v2.2.0
+        with:
+          fetch-depth: 0
+
+      - name: Get latest tag
+        id: latesttag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+
+      - run: echo ${{ steps.latesttag.outputs.tag }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v2.2.0
+        with:
+          ref: ${{ steps.latesttag.outputs.tag }}
+
+      - run: |
+        echo GITHUB_REF ${GITHUB_REF}
+        echo GITHUB_HEAD_REF ${GITHUB_HEAD_REF}
+
+      - name: Generate k8s manifests
+        run: npx @socialgouv/k8s@1.9.0-alpha.13 > manifests.yml
+        env:
+          SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
+          SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+
+      - name: Archive k8s manifests
+        uses: actions/upload-artifact@v2
+        with:
+          name: manifests.yml
+          path: manifests.yml

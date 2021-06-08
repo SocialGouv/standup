@@ -1,0 +1,17 @@
+name: Publish
+
+on:
+  release:
+    types: [released]
+
+jobs:
+
+  publish:
+    name: Publish application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug
+        run: |
+          echo GITHUB_REF ${GITHUB_REF}
+          echo GITHUB_HEAD_REF ${GITHUB_HEAD_REF}
+          echo GITHUB_SHA ${GITHUB_SHA}
