@@ -1,3 +1,10 @@
+# [1.5.0-beta.26](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.25...v1.5.0-beta.26) (2021-06-08)
+
+
+### Bug Fixes
+
+* Add staging deployment workflow. ([4b99e66](https://github.com/SocialGouv/standup/commit/4b99e6651aa913ac502e843fe5455d6dd36e1781))
+
 # [1.5.0-beta.25](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.24...v1.5.0-beta.25) (2021-06-07)
 
 
