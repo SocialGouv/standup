@@ -1,3 +1,16 @@
+# [1.5.0-alpha.2](https://github.com/SocialGouv/standup/compare/v1.5.0-alpha.1...v1.5.0-alpha.2) (2021-06-08)
+
+
+### Bug Fixes
+
+* Add visual change. ([75c58dd](https://github.com/SocialGouv/standup/commit/75c58dd449ba7907db19cc7d8e697b4441fec78a))
+* Various fixes. ([9d0af42](https://github.com/SocialGouv/standup/commit/9d0af426aed62cbdc5747f63f9de993b4670edb0))
+
+
+### Features
+
+* Deploy to Kubernetes from Github. ([#357](https://github.com/SocialGouv/standup/issues/357)) ([eca7053](https://github.com/SocialGouv/standup/commit/eca70539bc2d642399b6f85f04fb4782dfe640f4))
+
 # [1.5.0-beta.26](https://github.com/SocialGouv/standup/compare/v1.5.0-beta.25...v1.5.0-beta.26) (2021-06-08)
 
 
