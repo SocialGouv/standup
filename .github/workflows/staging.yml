@@ -10,4 +10,4 @@ jobs:
     steps:
 
     - name: Debug
-      run: echo It Works!
+      run: echo "It Works!"
