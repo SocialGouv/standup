@@ -147,7 +147,7 @@ jobs:
     needs: [register, manifests]
     environment:
       name: preproduction
-      url: https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+      url: ${{ env.url }}
     steps:
   
       - name: Checkout repository
@@ -157,6 +157,7 @@ jobs:
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
           echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
+          echo "url=https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}" >> $GITHUB_ENV
 
       - name: Download k8s manifests
         uses: actions/download-artifact@v2
@@ -197,10 +198,11 @@ jobs:
         if: always()
         with:
           step: finish
+          env_url: ${{ env.url }}
           status: ${{ job.status }}
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+          # env_url: https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
   # ##############################################################################
   # ## TRIGGER RELEASE

@@ -1,6 +1,8 @@
 name: Review
 
-on: push
+on:
+  push:
+    branches:
 
 # on:
 #   push:
