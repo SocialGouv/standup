@@ -1,9 +1,5 @@
 name: Preproduction
 
-# on:
-#   push:
-#     branches: [master, alpha, beta, next]
-
 on:
   push:
     tags:
@@ -122,6 +118,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Load environment variables
+        run: |
+          cat ".github/preproduction.env" >> $GITHUB_ENV
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -130,7 +130,7 @@ jobs:
         env:
           SOCIALGOUV_PREPRODUCTION: true
           SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
-          SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+          SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
       - name: Archive k8s manifests
         uses: actions/upload-artifact@v2
@@ -147,26 +147,22 @@ jobs:
     needs: [register, manifests]
     environment:
       name: preproduction
-      url: ${{ env.url }}
+      url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
     steps:
   
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Load environment variables
-        env:
-          ENV_NAME: preproduction
         run: |
-          cat ".github/${ENV_NAME}.env" >> $GITHUB_ENV
+          cat ".github/preproduction.env" >> $GITHUB_ENV
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
           echo "namespace=${GITHUB_REPOSITORY#*/}-preprod" >> $GITHUB_ENV
-          echo "url=https://${GITHUB_REPOSITORY#*/}-preprod.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}" >> $GITHUB_ENV
 
       - name: Debug
         run: |
           echo project: ${{ env.project }}
           echo namespace: ${{ env.namespace }}
-          echo url: ${{ env.url }}
           echo SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
       - name: Download k8s manifests
@@ -208,20 +204,7 @@ jobs:
         if: always()
         with:
           step: finish
-          # env_url: ${{ env.url }}
           status: ${{ job.status }}
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
-
-  # ##############################################################################
-  # ## TRIGGER RELEASE
-  # ##############################################################################
-  # release:
-  #   name: Trigger release
-  #   runs-on: ubuntu-latest
-  #   needs: deploy
-  #   steps:
-  
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v2
+          env_url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
