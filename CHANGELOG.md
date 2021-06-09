@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/SocialGouv/standup/compare/v1.5.3...v1.5.4) (2021-06-09)
+
+
+### Bug Fixes
+
+* Preproduction workflow. ([3cc369e](https://github.com/SocialGouv/standup/commit/3cc369e565a81d9fd835cd4b87c55921d2bb85eb))
+
 ## [1.5.3](https://github.com/SocialGouv/standup/compare/v1.5.2...v1.5.3) (2021-06-09)
 
 
