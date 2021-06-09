@@ -3,6 +3,9 @@ name: Review
 on:
   push:
     branches:
+      - '**'
+    tags-ignore:
+      - v*
 
 # on:
 #   push:
@@ -125,7 +128,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate k8s manifests
-        run: npx @socialgouv/k8s@1.9.0-alpha.15 > manifests.yml
+        run: npx @socialgouv/k8s@1.9.0-alpha.19 > manifests.yml
         env:
           SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
           SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
