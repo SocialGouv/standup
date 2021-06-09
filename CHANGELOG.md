@@ -1,3 +1,10 @@
+## [1.5.9](https://github.com/SocialGouv/standup/compare/v1.5.8...v1.5.9) (2021-06-09)
+
+
+### Bug Fixes
+
+* Specify kosko env. ([b2e317e](https://github.com/SocialGouv/standup/commit/b2e317e795c351acd055015ee6e56c70d7721804))
+
 ## [1.5.8](https://github.com/SocialGouv/standup/compare/v1.5.7...v1.5.8) (2021-06-09)
 
 
