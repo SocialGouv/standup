@@ -127,11 +127,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Load review environment variables
+        run: |
+          cat ".github/review.env" >> $GITHUB_ENV
+
       - name: Generate k8s manifests
         run: npx @socialgouv/k8s@1.9.0-alpha.20 --env dev > manifests.yml
         env:
           SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
-          SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+          SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
       - name: Archive k8s manifests
         uses: actions/upload-artifact@v2
@@ -153,6 +157,7 @@ jobs:
 
       - name: Get project and namespace names
         run: |
+          cat ".github/review.env" >> $GITHUB_ENV
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
           echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
 
@@ -198,4 +203,4 @@ jobs:
           status: ${{ job.status }}
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+          env_url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}

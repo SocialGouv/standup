@@ -118,12 +118,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Load environment variables
         run: |
           cat ".github/preproduction.env" >> $GITHUB_ENV
-
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
       - name: Generate k8s manifests
         run: npx @socialgouv/k8s@1.9.0-alpha.20 --env preprod > manifests.yml
