@@ -28,9 +28,10 @@ jobs:
         with:
           ref: ${{ steps.latesttag.outputs.tag }}
 
-      - run: |
-        echo GITHUB_REF ${GITHUB_REF}
-        echo GITHUB_HEAD_REF ${GITHUB_HEAD_REF}
+      - name: Debug
+        run: |
+          echo GITHUB_REF ${GITHUB_REF}
+          echo GITHUB_HEAD_REF ${GITHUB_HEAD_REF}
 
       # - name: Generate k8s manifests
       #   run: npx @socialgouv/k8s@1.9.0-alpha.13 > manifests.yml
