@@ -1,11 +1,14 @@
-name: Deployment
+name: Review
 
-on:
-  push:
-    branches:
-      - '**'
-    # tags-ignore:
-    #   - '**'
+on: push
+
+# on:
+#   push:
+#     branches-ignore: [master, alpha, beta, next]
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.ref }}
 
 jobs:
 
