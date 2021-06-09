@@ -1,3 +1,10 @@
+## [1.5.23](https://github.com/SocialGouv/standup/compare/v1.5.22...v1.5.23) (2021-06-09)
+
+
+### Bug Fixes
+
+* Use SOCIALGOUV_PRODUCTION. ([70ef8d9](https://github.com/SocialGouv/standup/commit/70ef8d9d5cad59b75aa1135d7ba0ba5450466adc))
+
 ## [1.5.22](https://github.com/SocialGouv/standup/compare/v1.5.21...v1.5.22) (2021-06-09)
 
 
