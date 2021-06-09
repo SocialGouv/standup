@@ -1,3 +1,11 @@
+## [1.5.2](https://github.com/SocialGouv/standup/compare/v1.5.1...v1.5.2) (2021-06-09)
+
+
+### Bug Fixes
+
+* Deploy on release. ([#358](https://github.com/SocialGouv/standup/issues/358)) ([9766bba](https://github.com/SocialGouv/standup/commit/9766bba7d9d6721078ac6ed4e2ee0d73d6652b3f))
+* Release workflow. ([7759f98](https://github.com/SocialGouv/standup/commit/7759f987fdaacbf26a6ea1fce63128a0cfc3ced7))
+
 ## [1.5.1](https://github.com/SocialGouv/standup/compare/v1.5.0...v1.5.1) (2021-06-08)
 
 
