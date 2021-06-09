@@ -121,7 +121,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Load environment variables
+      - name: Load preproduction environment variables
         run: |
           cat ".github/preproduction.env" >> $GITHUB_ENV
 
@@ -159,25 +159,19 @@ jobs:
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
           echo "namespace=${GITHUB_REPOSITORY#*/}-preprod" >> $GITHUB_ENV
 
-      - name: Debug
-        run: |
-          echo project: ${{ env.project }}
-          echo namespace: ${{ env.namespace }}
-          echo SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
-
       - name: Download k8s manifests
         uses: actions/download-artifact@v2
         with:
           name: manifests.yml
 
-      - name: Notify deployment start
-        uses: bobheadxi/deployments@v0.4.3
-        id: deployment
-        with:
-          step: start
-          env: preproduction
-          token: ${{ secrets.GITHUB_TOKEN }}
-          desc: "Deploying environment: ${{ env.namespace }}"
+      # - name: Notify deployment start
+      #   uses: bobheadxi/deployments@v0.4.3
+      #   id: deployment
+      #   with:
+      #     step: start
+      #     env: preproduction
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     desc: "Deploying environment: ${{ env.namespace }}"
 
       - name: Install Kapp
         uses: vmware-tanzu/carvel-setup-action@v1
@@ -199,12 +193,12 @@ jobs:
       - name: Deploy application
         run: kapp --dangerous-override-ownership-of-existing-resources -y deploy -a ${{ env.project }} --namespace ${{ env.namespace }} -f manifests.yml
 
-      - name: Notify deployment end
-        uses: bobheadxi/deployments@v0.4.3
-        if: always()
-        with:
-          step: finish
-          status: ${{ job.status }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+      # - name: Notify deployment end
+      #   uses: bobheadxi/deployments@v0.4.3
+      #   if: always()
+      #   with:
+      #     step: finish
+      #     status: ${{ job.status }}
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+      #     env_url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
