@@ -1,3 +1,10 @@
+## [1.5.7](https://github.com/SocialGouv/standup/compare/v1.5.6...v1.5.7) (2021-06-09)
+
+
+### Bug Fixes
+
+* Upgrade k8s version. ([bc3d831](https://github.com/SocialGouv/standup/commit/bc3d831d921ff1b759732892b543e5210fb45e28))
+
 ## [1.5.6](https://github.com/SocialGouv/standup/compare/v1.5.5...v1.5.6) (2021-06-09)
 
 
