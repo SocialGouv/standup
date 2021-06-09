@@ -1,3 +1,10 @@
+## [1.5.16](https://github.com/SocialGouv/standup/compare/v1.5.15...v1.5.16) (2021-06-09)
+
+
+### Bug Fixes
+
+* Review URL. ([1ce0abd](https://github.com/SocialGouv/standup/commit/1ce0abd60f8499ac2a4bbf707f1ea9f8cbeee22f))
+
 ## [1.5.15](https://github.com/SocialGouv/standup/compare/v1.5.14...v1.5.15) (2021-06-09)
 
 
