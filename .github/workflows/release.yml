@@ -1,4 +1,4 @@
-name: Staging
+name: Release
 
 on: workflow_dispatch
 
