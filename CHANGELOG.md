@@ -1,3 +1,10 @@
+## [1.5.10](https://github.com/SocialGouv/standup/compare/v1.5.9...v1.5.10) (2021-06-09)
+
+
+### Bug Fixes
+
+* Set SOCIALGOUV_PREPRODUCTION. ([5cbe65f](https://github.com/SocialGouv/standup/commit/5cbe65f416a896c7d457b53ccbb305f5e8b3af49))
+
 ## [1.5.9](https://github.com/SocialGouv/standup/compare/v1.5.8...v1.5.9) (2021-06-09)
 
 
