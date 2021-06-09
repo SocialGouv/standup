@@ -1,3 +1,10 @@
+## [1.5.22](https://github.com/SocialGouv/standup/compare/v1.5.21...v1.5.22) (2021-06-09)
+
+
+### Bug Fixes
+
+* Always release on master. ([e0e7981](https://github.com/SocialGouv/standup/commit/e0e7981bca833f78cfaf3e49f132fe2792589863))
+
 ## [1.5.21](https://github.com/SocialGouv/standup/compare/v1.5.20...v1.5.21) (2021-06-09)
 
 
