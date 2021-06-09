@@ -4,43 +4,31 @@ on: workflow_dispatch
 
 jobs:
 
-  ##############################################################################
-  ## GENERATE KUBERNETES MANIFESTS
-  ##############################################################################
-  manifests:
-    name: Build application
+jobs:
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout repository
-        uses: actions/checkout@v2.2.0
+        uses: actions/checkout@v2
+
+      - name: Node setup
+        uses: actions/setup-node@v2
         with:
-          fetch-depth: 0
+          node-version: '14'
 
-      - name: Get latest tag
-        id: latesttag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      - name: Yarn cache setup
+        uses: c-hive/gha-yarn-cache@v1
 
-      - run: echo ${{ steps.latesttag.outputs.tag }}
+      - name: Install dependencies
+        run: yarn --frozen-lockfile --prefer-offline
 
-      - name: Checkout repository
-        uses: actions/checkout@v2.2.0
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
         with:
-          ref: ${{ steps.latesttag.outputs.tag }}
-
-      - name: Debug
-        run: |
-          echo GITHUB_REF ${GITHUB_REF}
-          echo GITHUB_HEAD_REF ${GITHUB_HEAD_REF}
-
-      # - name: Generate k8s manifests
-      #   run: npx @socialgouv/k8s@1.9.0-alpha.13 > manifests.yml
-      #   env:
-      #     SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
-      #     SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
-
-      # - name: Archive k8s manifests
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: manifests.yml
-      #     path: manifests.yml
+          semantic_version: 16
+          extra_plugins: |
+            @semantic-release/changelog@3.0.0
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
