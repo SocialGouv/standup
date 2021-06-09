@@ -156,8 +156,11 @@ jobs:
       - name: Get project and namespace names
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+          echo project: ${{ env.project }}
           echo "namespace=${GITHUB_REPOSITORY#*/}-preprod" >> $GITHUB_ENV
+          echo namespace: ${{ env.namespace }}
           echo "url=https://${GITHUB_REPOSITORY#*/}-preprod.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}" >> $GITHUB_ENV
+          echo url: ${{ env.url }}
 
       - name: Download k8s manifests
         uses: actions/download-artifact@v2
@@ -198,11 +201,11 @@ jobs:
         if: always()
         with:
           step: finish
-          env_url: ${{ env.url }}
+          # env_url: ${{ env.url }}
           status: ${{ job.status }}
           token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          # env_url: https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+          env_url: https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
   # ##############################################################################
   # ## TRIGGER RELEASE
