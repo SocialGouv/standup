@@ -128,7 +128,7 @@ jobs:
       - name: Generate k8s manifests
         run: npx @socialgouv/k8s@1.9.0-alpha.19 --env preprod > manifests.yml
         env:
-          SOCIALGOUV_PREPRODUCTION: ${{ secrets.SOCIALGOUV_PREPRODUCTION }}
+          SOCIALGOUV_PREPRODUCTION: true
           SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
           SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
