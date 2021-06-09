@@ -153,14 +153,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Get project and namespace names
+      - name: Load environment variables
+        env:
+          ENV_NAME: preproduction
         run: |
+          cat ".github/${ENV_NAME}.env" >> $GITHUB_ENV
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-          echo project: ${{ env.project }}
           echo "namespace=${GITHUB_REPOSITORY#*/}-preprod" >> $GITHUB_ENV
+          echo "url=https://${GITHUB_REPOSITORY#*/}-preprod.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}" >> $GITHUB_ENV
+
+      - name: Debug
+        run: |
+          echo project: ${{ env.project }}
           echo namespace: ${{ env.namespace }}
-          echo "url=https://${GITHUB_REPOSITORY#*/}-preprod.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}" >> $GITHUB_ENV
           echo url: ${{ env.url }}
+          echo SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
 
       - name: Download k8s manifests
         uses: actions/download-artifact@v2
