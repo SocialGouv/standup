@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/SocialGouv/standup/compare/v1.5.2...v1.5.3) (2021-06-09)
+
+
+### Bug Fixes
+
+* Release workflow token. ([2504d82](https://github.com/SocialGouv/standup/commit/2504d82c753c5f7282eb02029626625afaecad88))
+
 ## [1.5.2](https://github.com/SocialGouv/standup/compare/v1.5.1...v1.5.2) (2021-06-09)
 
 
