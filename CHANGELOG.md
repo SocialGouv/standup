@@ -1,3 +1,10 @@
+## [1.5.21](https://github.com/SocialGouv/standup/compare/v1.5.20...v1.5.21) (2021-06-09)
+
+
+### Bug Fixes
+
+* Go prod. ([11dce0a](https://github.com/SocialGouv/standup/commit/11dce0ad1c8ea0450fa12e1fd9a9fe078a01074a))
+
 ## [1.5.20](https://github.com/SocialGouv/standup/compare/v1.5.19...v1.5.20) (2021-06-09)
 
 
