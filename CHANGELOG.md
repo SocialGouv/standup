@@ -1,3 +1,10 @@
+## [1.5.6](https://github.com/SocialGouv/standup/compare/v1.5.5...v1.5.6) (2021-06-09)
+
+
+### Bug Fixes
+
+* Preprod namespace. ([155d688](https://github.com/SocialGouv/standup/commit/155d688d24806ac937d5f993c0c9674bf1ace580))
+
 ## [1.5.5](https://github.com/SocialGouv/standup/compare/v1.5.4...v1.5.5) (2021-06-09)
 
 
