@@ -1,3 +1,10 @@
+## [1.5.15](https://github.com/SocialGouv/standup/compare/v1.5.14...v1.5.15) (2021-06-09)
+
+
+### Bug Fixes
+
+* Preproduction URL. ([dab2cfc](https://github.com/SocialGouv/standup/commit/dab2cfc2235ee79dc7064e9edd8c9eb8dbd2dbcf))
+
 ## [1.5.14](https://github.com/SocialGouv/standup/compare/v1.5.13...v1.5.14) (2021-06-09)
 
 
