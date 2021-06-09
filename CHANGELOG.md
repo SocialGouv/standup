@@ -1,3 +1,10 @@
+## [1.5.19](https://github.com/SocialGouv/standup/compare/v1.5.18...v1.5.19) (2021-06-09)
+
+
+### Bug Fixes
+
+* Use SOCIALGOUV_KUBE_CONFIG_DEV2. ([728e73b](https://github.com/SocialGouv/standup/commit/728e73b77ef5141f5d007981c74f0242aa701248))
+
 ## [1.5.18](https://github.com/SocialGouv/standup/compare/v1.5.17...v1.5.18) (2021-06-09)
 
 
