@@ -156,7 +156,7 @@ jobs:
       - name: Get project and namespace names
         run: |
           echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-          echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
+          echo "namespace=${GITHUB_REPOSITORY#*/}-preprod" >> $GITHUB_ENV
           echo "url=https://${{ env.namespace }}.${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}" >> $GITHUB_ENV
 
       - name: Download k8s manifests
