@@ -1,3 +1,10 @@
+## [1.5.24](https://github.com/SocialGouv/standup/compare/v1.5.23...v1.5.24) (2021-06-09)
+
+
+### Bug Fixes
+
+* Remove visual test. ([3786a4d](https://github.com/SocialGouv/standup/commit/3786a4db0d70da93d038b3f029547d1834b1f586))
+
 ## [1.5.23](https://github.com/SocialGouv/standup/compare/v1.5.22...v1.5.23) (2021-06-09)
 
 
