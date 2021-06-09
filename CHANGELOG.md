@@ -1,3 +1,10 @@
+## [1.5.5](https://github.com/SocialGouv/standup/compare/v1.5.4...v1.5.5) (2021-06-09)
+
+
+### Bug Fixes
+
+* Use preprod suffix for Github env. ([ea40482](https://github.com/SocialGouv/standup/commit/ea40482e4edafcdb5c454d8327cd281911224d8d))
+
 ## [1.5.4](https://github.com/SocialGouv/standup/compare/v1.5.3...v1.5.4) (2021-06-09)
 
 
