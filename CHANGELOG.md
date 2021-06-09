@@ -1,3 +1,10 @@
+## [1.5.17](https://github.com/SocialGouv/standup/compare/v1.5.16...v1.5.17) (2021-06-09)
+
+
+### Bug Fixes
+
+* Remove preproduction env notifications. ([a22e681](https://github.com/SocialGouv/standup/commit/a22e6818e184aede3a842ae30f4e1a99b6beac39))
+
 ## [1.5.16](https://github.com/SocialGouv/standup/compare/v1.5.15...v1.5.16) (2021-06-09)
 
 
