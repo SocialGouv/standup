@@ -1,3 +1,10 @@
+## [1.5.14](https://github.com/SocialGouv/standup/compare/v1.5.13...v1.5.14) (2021-06-09)
+
+
+### Bug Fixes
+
+* Load env variables from file. ([752c15c](https://github.com/SocialGouv/standup/commit/752c15c5a23c9fbb44b3de1d2a7511a73208011f))
+
 ## [1.5.13](https://github.com/SocialGouv/standup/compare/v1.5.12...v1.5.13) (2021-06-09)
 
 
