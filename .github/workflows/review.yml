@@ -128,7 +128,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate k8s manifests
-        run: npx @socialgouv/k8s@1.9.0-alpha.19 --env dev > manifests.yml
+        run: npx @socialgouv/k8s@1.9.0-alpha.20 --env dev > manifests.yml
         env:
           SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
           SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ secrets.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
