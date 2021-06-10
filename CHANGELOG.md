@@ -1,3 +1,10 @@
+## [1.5.25](https://github.com/SocialGouv/standup/compare/v1.5.24...v1.5.25) (2021-06-10)
+
+
+### Bug Fixes
+
+* Add tests workflow. ([#359](https://github.com/SocialGouv/standup/issues/359)) ([2e01189](https://github.com/SocialGouv/standup/commit/2e01189be65371224cc899a7615ac5c5e978a2fe))
+
 ## [1.5.24](https://github.com/SocialGouv/standup/compare/v1.5.23...v1.5.24) (2021-06-09)
 
 
