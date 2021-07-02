@@ -128,10 +128,14 @@ jobs:
         cat ".github/review.env" >> $GITHUB_ENV
 
     - name: Generate k8s manifests
-      run: npx @socialgouv/k8s@1.9.0-alpha.20 --env dev > manifests.yml
+      run: |
+        npx degit SocialGouv/kosko-charts/templates/nok8s#8d4b2149a21b5ff079bd0e4eb7d2e426ed62571d nok8s
+        cp -r .socialgouv/environments .socialgouv/config.json nok8s/
+        yarn --cwd nok8s
+        yarn --cwd nok8s --silent generate:dev > manifests.yml
       env:
         SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
-        SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+        SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
 
     - name: Archive k8s manifests
       uses: actions/upload-artifact@v2
@@ -199,4 +203,4 @@ jobs:
         status: ${{ job.status }}
         token: ${{ secrets.GITHUB_TOKEN }}
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-        env_url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+        env_url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
