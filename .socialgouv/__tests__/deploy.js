@@ -18,7 +18,6 @@ test("deploy dev 2", async () => {
   const dir = directory()
   const env = project("standup").dev
   env.SOCIALGOUV_CONFIG_PATH = `${dir}/nok8s/config.json`
-  console.log("env", env);
   Object.assign(process.env, env)
   const cmd = `
     npx degit SocialGouv/kosko-charts/templates/nok8s#41779d2bd2d9592b5b4993d65150836f92dc7ef1 ${dir}/nok8s; \
