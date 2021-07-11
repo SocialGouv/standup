@@ -1,3 +1,10 @@
+## [1.5.27](https://github.com/SocialGouv/standup/compare/v1.5.26...v1.5.27) (2021-07-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sass to ^1.35.2 ([#373](https://github.com/SocialGouv/standup/issues/373)) ([6232cc3](https://github.com/SocialGouv/standup/commit/6232cc3b529cb701e8047b891cd81f71640c54f3))
+
 ## [1.5.26](https://github.com/SocialGouv/standup/compare/v1.5.25...v1.5.26) (2021-06-21)
 
 
