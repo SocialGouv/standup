@@ -130,7 +130,7 @@ jobs:
       env:
         SOCIALGOUV_PREPRODUCTION: true
         SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
-        SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+        SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
 
     - name: Archive k8s manifests
       uses: actions/upload-artifact@v2
@@ -147,7 +147,7 @@ jobs:
     needs: [register, manifests]
     environment:
       name: preproduction
-      url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+      url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
     steps:
   
     - name: Checkout repository
@@ -205,7 +205,7 @@ jobs:
       env:
         SOCIALGOUV_PRODUCTION: true
         SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
-        SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN: ${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+        SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
 
     - name: Archive k8s manifests
       uses: actions/upload-artifact@v2
@@ -222,7 +222,7 @@ jobs:
     needs: manifests-prod
     environment:
       name: production
-      url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_KUBE_INGRESS_BASE_DOMAIN }}
+      url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
     steps:
   
     - name: Checkout repository
