@@ -20,8 +20,9 @@ test("deploy dev 2", async () => {
   env.SOCIALGOUV_CONFIG_PATH = `${dir}/nok8s/config.json`
   console.log("ENV", env);
   Object.assign(process.env, env)
+  console.log("SOCIAL:", process.env.SOCIALGOUV_BASE_DOMAIN);
   const cmd = `
-    npx degit SocialGouv/kosko-charts/templates/nok8s#84a3175755bb13587d3a5bb0f481691ba4388c5f ${dir}/nok8s; \
+    npx degit SocialGouv/kosko-charts/templates/nok8s#101f3ae9478809aa845c5193722b83e8b0bde02a ${dir}/nok8s; \
     yarn --cwd ${dir}/nok8s --silent; \
     cp -r ${__dirname}/../environments ${__dirname}/../config.json ${dir}/nok8s/; \
     yarn --cwd ${dir}/nok8s --silent generate --env dev
