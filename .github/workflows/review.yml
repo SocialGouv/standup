@@ -51,7 +51,7 @@ jobs:
       run: |
         echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
         cd /tmp/kosko-charts/templates/nok8s/
-        yarn generate:dev 
+        yarn generate:dev | grep ghcr
         yarn --silent generate:dev > manifests.yml
         pwd
         ls
