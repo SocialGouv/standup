@@ -49,6 +49,7 @@ jobs:
         echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
         cd /tmp/kosko-charts/templates/nok8s/
         ls
+        cat package.json
         yarn generate:dev | grep ghcr
         yarn --silent generate:dev > /home/runner/work/standup/standup/manifests.yml
       env:
