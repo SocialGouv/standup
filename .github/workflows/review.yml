@@ -37,9 +37,9 @@ jobs:
         echo "${{ github.action_path }}"
         pwd
         npx degit SocialGouv/kosko-charts/templates/nok8s#alpha /tmp/nok8s
-        cd /tmp/nok8s
+        #cd /tmp/nok8s
         cat package.json
-        yarn
+        yarn --cwd /tmp/nok8s
         ls
         yarn --cwd templates/nok8s
 
@@ -50,12 +50,12 @@ jobs:
       run: |
         echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
         env
-        cd /tmp/nok8s/
+        #cd /tmp/nok8s/
         ls
         cat package.json
-        yarn
-        yarn generate:dev | grep ghcr
-        yarn --silent generate:dev > ../../manifests.yml
+        #yarn
+        yarn --cwd /tmp/nok8s generate:dev | grep ghcr
+        yarn --cwd /tmp/nok8s --silent generate:dev > ../../manifests.yml
       env:
         SOCIALGOUV_CONFIG_PATH: /tmp/nok8s/config.json
         SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
