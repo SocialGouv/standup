@@ -36,26 +36,27 @@ jobs:
         echo $RUNNER_TEMP
         echo "${{ github.action_path }}"
         pwd
-        npx degit SocialGouv/kosko-charts#v7.0.7-alpha.2 /tmp/kosko-charts
-        cd /tmp/kosko-charts
+        npx degit SocialGouv/kosko-charts#v7.0.7-alpha.2 /tmp/nok8s
+        cd /tmp/nok8s
         yarn
         ls
         yarn --cwd templates/nok8s
 
     - name: Copy application k8s config
-      run: cp -r .socialgouv/environments .socialgouv/config.json /tmp/kosko-charts/templates/nok8s/
+      run: cp -r .socialgouv/environments .socialgouv/config.json /tmp/nok8s
 
     - name: Generate k8s manifests
       run: |
         echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
-        cd /tmp/kosko-charts/templates/nok8s/
+        env
+        cd /tmp/nok8s/
         ls
         cat package.json
         yarn
         yarn generate:dev | grep ghcr
         yarn --silent generate:dev > /home/runner/work/standup/standup/manifests.yml
       env:
-        SOCIALGOUV_CONFIG_PATH: /tmp/kosko-charts/templates/nok8s/config.json
+        SOCIALGOUV_CONFIG_PATH: /tmp/nok8s/config.json
         SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
 
     - name: Archive k8s manifests
