@@ -36,7 +36,7 @@ jobs:
         echo $RUNNER_TEMP
         echo "${{ github.action_path }}"
         pwd
-        npx degit SocialGouv/kosko-charts#7.0.7-alpha.2 /tmp/kosko-charts
+        npx degit SocialGouv/kosko-charts#v7.0.7-alpha.2 /tmp/kosko-charts
         cd /tmp/kosko-charts
         yarn --cwd templates/nok8s
 
