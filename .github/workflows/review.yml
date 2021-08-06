@@ -33,15 +33,8 @@ jobs:
 
     - name: Install no-k8s template
       run: |
-        echo $RUNNER_TEMP
-        echo "${{ github.action_path }}"
-        pwd
         npx degit SocialGouv/kosko-charts/templates/nok8s#alpha /tmp/nok8s
-        #cd /tmp/nok8s
-        cat package.json
         yarn --cwd /tmp/nok8s
-        ls
-        yarn --cwd templates/nok8s
 
     - name: Copy application k8s config
       run: cp -r .socialgouv/environments .socialgouv/config.json /tmp/nok8s
@@ -49,11 +42,6 @@ jobs:
     - name: Generate k8s manifests
       run: |
         echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
-        env
-        #cd /tmp/nok8s/
-        ls
-        cat package.json
-        #yarn
         yarn --cwd /tmp/nok8s generate:dev | grep ghcr
         yarn --cwd /tmp/nok8s --silent generate:dev > ../../manifests.yml
       env:
