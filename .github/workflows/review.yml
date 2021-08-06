@@ -36,10 +36,8 @@ jobs:
         echo $RUNNER_TEMP
         echo "${{ github.action_path }}"
         pwd
-        npx degit SocialGouv/kosko-charts#judev /tmp/kosko-charts
+        npx degit SocialGouv/kosko-charts#7.0.7-alpha.2 /tmp/kosko-charts
         cd /tmp/kosko-charts
-        yarn 
-        yarn build
         yarn --cwd templates/nok8s
 
     - name: Copy application k8s config
