@@ -33,7 +33,7 @@ jobs:
 
     - name: Install kosko-charts autodevops
       run: |
-        npx degit SocialGouv/kosko-charts /tmp/kosko-charts
+        npx degit SocialGouv/kosko-charts#judev /tmp/kosko-charts
         cd /tmp/kosko-charts
         yarn 
         yarn build
