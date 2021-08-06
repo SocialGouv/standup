@@ -55,7 +55,7 @@ jobs:
         cat package.json
         yarn
         yarn generate:dev | grep ghcr
-        yarn --silent generate:dev > ${{ github.action_path }}/manifests.yml
+        yarn --silent generate:dev > ../../manifests.yml
       env:
         SOCIALGOUV_CONFIG_PATH: /tmp/nok8s/config.json
         SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
