@@ -50,6 +50,7 @@ jobs:
         cd /tmp/kosko-charts/templates/nok8s/
         ls
         cat package.json
+        yarn
         yarn generate:dev | grep ghcr
         yarn --silent generate:dev > /home/runner/work/standup/standup/manifests.yml
       env:
