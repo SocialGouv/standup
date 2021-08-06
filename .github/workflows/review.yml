@@ -38,6 +38,8 @@ jobs:
         pwd
         npx degit SocialGouv/kosko-charts#v7.0.7-alpha.2 /tmp/kosko-charts
         cd /tmp/kosko-charts
+        yarn
+        yarn build
         ls
         yarn --cwd templates/nok8s
 
