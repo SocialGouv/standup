@@ -31,12 +31,12 @@ jobs:
     - name: Yarn cache setup
       uses: c-hive/gha-yarn-cache@v1
 
-    - name: Install kosko-charts components
+    - name: Install no-k8s template
       run: |
         echo $RUNNER_TEMP
         echo "${{ github.action_path }}"
         pwd
-        npx degit SocialGouv/kosko-charts#v7.0.7-alpha.2 /tmp/nok8s
+        npx degit SocialGouv/kosko-charts/templates/nok8s#v7.0.7-alpha.2 /tmp/nok8s
         cd /tmp/nok8s
         yarn
         ls
@@ -54,7 +54,7 @@ jobs:
         cat package.json
         yarn
         yarn generate:dev | grep ghcr
-        yarn --silent generate:dev > /home/runner/work/standup/standup/manifests.yml
+        yarn --silent generate:dev > ${{ github.action_path }}/manifests.yml
       env:
         SOCIALGOUV_CONFIG_PATH: /tmp/nok8s/config.json
         SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
