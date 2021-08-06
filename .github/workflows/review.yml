@@ -38,6 +38,7 @@ jobs:
         pwd
         npx degit SocialGouv/kosko-charts#v7.0.7-alpha.2 /tmp/kosko-charts
         cd /tmp/kosko-charts
+        ls
         yarn --cwd templates/nok8s
 
     - name: Copy application k8s config
@@ -47,6 +48,7 @@ jobs:
       run: |
         echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
         cd /tmp/kosko-charts/templates/nok8s/
+        ls
         yarn generate:dev | grep ghcr
         yarn --silent generate:dev > /home/runner/work/standup/standup/manifests.yml
       env:
