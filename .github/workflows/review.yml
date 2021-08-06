@@ -49,7 +49,9 @@ jobs:
       run: |
         echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
         cd /tmp/kosko-charts/templates/nok8s/
+        yarn generate:dev
         yarn --silent generate:dev > manifests.yml
+        
       env:
         SOCIALGOUV_CONFIG_PATH: /tmp/kosko-charts/templates/nok8s/config.json
         SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
