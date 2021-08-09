@@ -132,7 +132,7 @@ jobs:
 
     - name: Install kosko-charts autodevops
       run: |
-        npx degit SocialGouv/kosko-charts/templates/nok8s#101f3ae9478809aa845c5193722b83e8b0bde02a /tmp/nok8s
+        npx degit SocialGouv/kosko-charts/templates/autodevops#beta /tmp/nok8s
         yarn --cwd /tmp/nok8s --frozen-lockfile --prefer-offline
 
     - name: Copy application k8s config to autodevops
