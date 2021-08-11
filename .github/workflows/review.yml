@@ -132,20 +132,19 @@ jobs:
 
     - name: Install kosko-charts autodevops
       run: |
-        npx degit SocialGouv/kosko-charts/templates/autodevops#beta /tmp/nok8s
-        # npx degit SocialGouv/kosko-charts/templates/nok8s#alpha /tmp/nok8s
-        yarn --cwd /tmp/nok8s
+        npx degit SocialGouv/kosko-charts/templates/autodevops#beta /tmp/autodevops
+        # npx degit SocialGouv/kosko-charts/templates/autodevops#alpha /tmp/autodevops
+        yarn --cwd /tmp/autodevops
 
     - name: Copy application k8s config to autodevops
-      run: cp -r .socialgouv/environments .socialgouv/config.json /tmp/nok8s/
+      run: cp -r .socialgouv/environments .socialgouv/config.json /tmp/autodevops/
 
     - name: Generate k8s manifests
       run: |
         echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
-        yarn --cwd /tmp/nok8s generate:dev | grep ghcr
-        yarn --cwd /tmp/nok8s --silent generate:dev > manifests.yml
+        yarn --cwd /tmp/autodevops --silent generate:dev > manifests.yml
       env:
-        SOCIALGOUV_CONFIG_PATH: /tmp/nok8s/config.json
+        SOCIALGOUV_CONFIG_PATH: /tmp/autodevops/config.json
         SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
 
     - name: Archive k8s manifests

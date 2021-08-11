@@ -125,11 +125,25 @@ jobs:
       run: |
         cat ".github/preproduction.env" >> $GITHUB_ENV
 
+    - name: Yarn cache setup
+      uses: c-hive/gha-yarn-cache@v1
+
+    - name: Install kosko-charts autodevops
+      run: |
+        npx degit SocialGouv/kosko-charts/templates/autodevops#beta /tmp/autodevops
+        # npx degit SocialGouv/kosko-charts/templates/autodevops#alpha /tmp/autodevops
+        yarn --cwd /tmp/autodevops
+
+    - name: Copy application k8s config to autodevops
+      run: cp -r .socialgouv/environments .socialgouv/config.json /tmp/autodevops/
+
     - name: Generate k8s manifests
-      run: npx @socialgouv/k8s@1.9.0-alpha.20 --env preprod > manifests.yml
+      run: |
+        echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
+        yarn --cwd /tmp/autodevops --silent generate:preprod > manifests.yml
       env:
         SOCIALGOUV_PREPRODUCTION: true
-        SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
+        SOCIALGOUV_CONFIG_PATH: /tmp/autodevops/config.json
         SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
 
     - name: Archive k8s manifests
@@ -200,11 +214,25 @@ jobs:
       run: |
         cat ".github/production.env" >> $GITHUB_ENV
 
+    - name: Yarn cache setup
+      uses: c-hive/gha-yarn-cache@v1
+
+    - name: Install kosko-charts autodevops
+      run: |
+        npx degit SocialGouv/kosko-charts/templates/autodevops#beta /tmp/autodevops
+        # npx degit SocialGouv/kosko-charts/templates/autodevops#alpha /tmp/autodevops
+        yarn --cwd /tmp/autodevops
+
+    - name: Copy application k8s config to autodevops
+      run: cp -r .socialgouv/environments .socialgouv/config.json /tmp/autodevops/
+
     - name: Generate k8s manifests
-      run: npx @socialgouv/k8s@1.9.0-alpha.20 --env prod > manifests-prod.yml
+      run: |
+        echo SOCIALGOUV_BASE_DOMAIN: $SOCIALGOUV_BASE_DOMAIN
+        yarn --cwd /tmp/autodevops --silent generate:prod > manifests-prod.yml
       env:
         SOCIALGOUV_PRODUCTION: true
-        SOCIALGOUV_CONFIG_PATH: ${{ github.workspace }}/.socialgouv/config.json
+        SOCIALGOUV_CONFIG_PATH: /tmp/autodevops/config.json
         SOCIALGOUV_BASE_DOMAIN: ${{ env.SOCIALGOUV_BASE_DOMAIN }}
 
     - name: Archive k8s manifests
