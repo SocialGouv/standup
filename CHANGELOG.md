@@ -1,3 +1,10 @@
+## [1.5.28](https://github.com/SocialGouv/standup/compare/v1.5.27...v1.5.28) (2021-08-11)
+
+
+### Bug Fixes
+
+* Use kosko-charts autodevops template. ([#372](https://github.com/SocialGouv/standup/issues/372)) ([e51003e](https://github.com/SocialGouv/standup/commit/e51003e62ca9af93d5439270cf56dfb05d08b7bb))
+
 ## [1.5.27](https://github.com/SocialGouv/standup/compare/v1.5.26...v1.5.27) (2021-07-11)
 
 
