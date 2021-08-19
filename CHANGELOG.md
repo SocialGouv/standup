@@ -1,3 +1,10 @@
+## [1.5.30](https://github.com/SocialGouv/standup/compare/v1.5.29...v1.5.30) (2021-08-19)
+
+
+### Bug Fixes
+
+* Change Carnets Hasura URL. ([0e1adbb](https://github.com/SocialGouv/standup/commit/0e1adbb1c956c0a822b86da29d027b9bf8057d39))
+
 ## [1.5.29](https://github.com/SocialGouv/standup/compare/v1.5.28...v1.5.29) (2021-08-19)
 
 
