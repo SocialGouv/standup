@@ -130,8 +130,7 @@ jobs:
 
     - name: Install kosko-charts autodevops
       run: |
-        npx degit SocialGouv/kosko-charts/templates/autodevops#beta /tmp/autodevops
-        # npx degit SocialGouv/kosko-charts/templates/autodevops#alpha /tmp/autodevops
+        npx degit SocialGouv/kosko-charts/templates/autodevops /tmp/autodevops
         yarn --cwd /tmp/autodevops
 
     - name: Copy application k8s config to autodevops
@@ -219,8 +218,7 @@ jobs:
 
     - name: Install kosko-charts autodevops
       run: |
-        npx degit SocialGouv/kosko-charts/templates/autodevops#beta /tmp/autodevops
-        # npx degit SocialGouv/kosko-charts/templates/autodevops#alpha /tmp/autodevops
+        npx degit SocialGouv/kosko-charts/templates/autodevops /tmp/autodevops
         yarn --cwd /tmp/autodevops
 
     - name: Copy application k8s config to autodevops
