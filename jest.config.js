@@ -12,7 +12,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: ["<rootDir>/.k8s"],
   setupFilesAfterEnv: ["<rootDir>/config/jest/setup.js"],
-  testPathIgnorePatterns: ["/node_modules/", "/.next/"],
+  testPathIgnorePatterns: ["/node_modules/", "/.next/", "/.socialgouv/"],
   transform: {
     "\\.yml$": "yaml-jest",
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
