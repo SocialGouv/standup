@@ -1,3 +1,10 @@
+## [1.5.34](https://github.com/SocialGouv/standup/compare/v1.5.33...v1.5.34) (2021-08-20)
+
+
+### Bug Fixes
+
+* Add cache to docker push action. ([3279c44](https://github.com/SocialGouv/standup/commit/3279c444d3a2156ca9a5602fc6e5a875634a230b))
+
 ## [1.5.33](https://github.com/SocialGouv/standup/compare/v1.5.32...v1.5.33) (2021-08-20)
 
 
