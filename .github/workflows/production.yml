@@ -17,7 +17,6 @@ jobs:
   register:
     name: Build & Register images
     runs-on: ubuntu-latest
-    needs: build
     steps:
 
     - name: Checkout repository
