@@ -1,3 +1,10 @@
+## [1.5.36](https://github.com/SocialGouv/standup/compare/v1.5.35...v1.5.36) (2021-08-20)
+
+
+### Bug Fixes
+
+* Use GITHUB_TOKEN to register docker image. ([f07a365](https://github.com/SocialGouv/standup/commit/f07a3659cd313b3d9b681b1ee3b39105e0fdb1eb))
+
 ## [1.5.35](https://github.com/SocialGouv/standup/compare/v1.5.34...v1.5.35) (2021-08-20)
 
 
