@@ -1,3 +1,10 @@
+## [1.5.32](https://github.com/SocialGouv/standup/compare/v1.5.31...v1.5.32) (2021-08-20)
+
+
+### Bug Fixes
+
+* Production workflow. ([e4feb08](https://github.com/SocialGouv/standup/commit/e4feb080177d239d4b01fa38e064db186e64f405))
+
 ## [1.5.31](https://github.com/SocialGouv/standup/compare/v1.5.30...v1.5.31) (2021-08-20)
 
 
