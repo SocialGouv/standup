@@ -12,10 +12,10 @@ concurrency:
 jobs:
 
   ##############################################################################
-  ## BUILD AND REGISTER DOCKER IMAGES
+  ## BUILD AND REGISTER DOCKER IMAGE
   ##############################################################################
   register:
-    name: Build & Register images
+    name: Build & Register app
     runs-on: ubuntu-latest
     steps:
 

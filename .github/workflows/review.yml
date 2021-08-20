@@ -62,7 +62,9 @@ jobs:
       with:
         context: .
         push: 'true'
-        builder: ${{ steps.buildx.outputs.name }}
+        cache-from: "type=gha"
+        cache-to: "type=gha,mode=max"
+        builder: "${{ steps.buildx.outputs.name }}"
         tags: "${{ steps.docker_meta.outputs.tags }}"
         labels: "${{ steps.docker_meta.outputs.labels }}"
 
