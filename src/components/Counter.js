@@ -1,5 +1,6 @@
-import setIndex from "@utils/index"
 import React, { useEffect, useRef, useState } from "react"
+
+import setIndex from "@/utils/index"
 
 const useInterval = (callback, delay) => {
   const savedCallback = useRef()
@@ -34,9 +35,9 @@ const Counter = ({ start }) => {
     dt.setSeconds(count)
     const seconds = dt.getSeconds()
     const minutes = dt.getMinutes()
-    return `${minutes
+    return `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
-      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
+      .padStart(2, "0")}`
   }
 
   return (

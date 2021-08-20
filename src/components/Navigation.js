@@ -1,7 +1,8 @@
-import useIndex from "@utils/index"
-import useSlides from "@utils/slides"
 import React from "react"
 import { ChevronLeft, ChevronRight } from "react-feather"
+
+import useIndex from "@/utils/index"
+import useSlides from "@/utils/slides"
 
 const Navigation = () => {
   const [index] = useIndex()

@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "./variables" as *;
 
 #__next > .header {
@@ -6,7 +7,7 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  padding: $base-size / 2;
+  padding: $base-size * 0.5;
   background-color: rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid $border-color;
 
@@ -20,8 +21,8 @@
 
   h1 {
     flex: 1;
-    margin: 0 0 0 $base-size / 2;
     line-height: $base-size * 1.8;
+    margin: 0 0 0 $base-size * 0.5;
 
     a {
       color: $font-color;
@@ -43,11 +44,11 @@
       text-align: right;
       flex-direction: column;
       justify-content: center;
-      margin-right: $base-size / 2;
+      margin-right: $base-size * 0.5;
 
       .name {
         font-size: $font-size * 1.1;
-        margin-bottom: $base-size / 4;
+        margin-bottom: math.div($base-size, 4);
       }
 
       .links {
@@ -55,12 +56,12 @@
         a {
           display: flex;
           align-items: center;
-          font-size: $font-size / 1.1;
-          padding: 0 $base-size / 4;
+          padding: 0 math.div($base-size, 4);
+          font-size: math.div($font-size, 1.1);
           border-right: 1px solid darken($background-color, 10%);
 
           svg {
-            margin-right: $base-size / 4;
+            margin-right: math.div($base-size, 4);
           }
 
           &:last-child {
