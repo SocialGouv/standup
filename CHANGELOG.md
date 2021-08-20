@@ -1,3 +1,10 @@
+## [1.5.37](https://github.com/SocialGouv/standup/compare/v1.5.36...v1.5.37) (2021-08-20)
+
+
+### Bug Fixes
+
+* **github:** use rlespinasse/github-slug-action slug variables ([6e0155d](https://github.com/SocialGouv/standup/commit/6e0155d471c05a91ad7a78a8a14d5cbe056efb06))
+
 ## [1.5.36](https://github.com/SocialGouv/standup/compare/v1.5.35...v1.5.36) (2021-08-20)
 
 
