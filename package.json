@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@socialgouv/eslint-config-react": "^1.75.0",
-    "@socialgouv/kosko-charts": "7.0.5",
+    "@socialgouv/kosko-charts": "7.0.8",
     "@socialgouv/sre-secrets": "^1.4.0",
     "@testing-library/dom": "^7.31.2",
     "@testing-library/jest-dom": "^5.12.0",
