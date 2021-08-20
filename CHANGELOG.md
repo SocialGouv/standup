@@ -1,3 +1,10 @@
+## [1.5.33](https://github.com/SocialGouv/standup/compare/v1.5.32...v1.5.33) (2021-08-20)
+
+
+### Bug Fixes
+
+* Remove kosko-charts from dependencies. ([186b0e9](https://github.com/SocialGouv/standup/commit/186b0e9801680da3746ac9a6b0eac3325795a66c))
+
 ## [1.5.32](https://github.com/SocialGouv/standup/compare/v1.5.31...v1.5.32) (2021-08-20)
 
 
