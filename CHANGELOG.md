@@ -1,3 +1,10 @@
+## [1.5.31](https://github.com/SocialGouv/standup/compare/v1.5.30...v1.5.31) (2021-08-20)
+
+
+### Bug Fixes
+
+* Build application within docker file. ([#378](https://github.com/SocialGouv/standup/issues/378)) ([58616d8](https://github.com/SocialGouv/standup/commit/58616d866b8a3d0604b3a2a78acdd3694c1a8832))
+
 ## [1.5.30](https://github.com/SocialGouv/standup/compare/v1.5.29...v1.5.30) (2021-08-19)
 
 
