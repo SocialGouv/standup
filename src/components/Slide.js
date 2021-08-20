@@ -1,8 +1,9 @@
-import Extra from "@components/Extra"
-import Missing from "@components/Missing"
-import Post from "@components/Post"
-import Weather from "@components/Weather"
 import React from "react"
+
+import Extra from "@/components/Extra"
+import Missing from "@/components/Missing"
+import Post from "@/components/Post"
+import Weather from "@/components/Weather"
 
 const Slide = ({ id, data }) => (
   <div id={id} className="slide" key={data.team_slug}>

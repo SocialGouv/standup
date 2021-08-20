@@ -1,8 +1,7 @@
-// import Header from "@components/Header"
-import Intro from "@components/Intro"
-// import Slider from "@components/Slider"
-import Main from "@components/Main"
 import React, { useState } from "react"
+
+import Intro from "@/components/Intro"
+import Main from "@/components/Main"
 
 const Page = () => {
   const [started, setStarted] = useState(false)

@@ -1,6 +1,7 @@
 .git
 .github
-.k8s*
+.socialgouv
 *.md
+.next
+.out
 **/node_modules
-**/.next/cache

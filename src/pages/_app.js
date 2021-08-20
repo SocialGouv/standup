@@ -1,9 +1,10 @@
 import "github-markdown-css"
 import "../styles/main.scss"
 
-import { initMatomo } from "@lib/matomo"
 import * as Sentry from "@sentry/node"
 import React, { useEffect } from "react"
+
+import { initMatomo } from "../lib/matomo"
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
