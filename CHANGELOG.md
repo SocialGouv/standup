@@ -1,3 +1,10 @@
+## [1.5.38-alpha.2](https://github.com/SocialGouv/standup/compare/v1.5.38-alpha.1...v1.5.38-alpha.2) (2021-08-30)
+
+
+### Bug Fixes
+
+* Remove hasura refs. ([c74e7d9](https://github.com/SocialGouv/standup/commit/c74e7d9ddbe2e7277d1bef5f760ad8413ff4b61b))
+
 ## [1.5.38-alpha.1](https://github.com/SocialGouv/standup/compare/v1.5.37...v1.5.38-alpha.1) (2021-08-30)
 
 
