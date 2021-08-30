@@ -1,3 +1,10 @@
+## [1.5.38-alpha.3](https://github.com/SocialGouv/standup/compare/v1.5.38-alpha.2...v1.5.38-alpha.3) (2021-08-30)
+
+
+### Bug Fixes
+
+* Clean workflow code. ([98de87d](https://github.com/SocialGouv/standup/commit/98de87d28a47256c0004c09d62fadda09fee264b))
+
 ## [1.5.38-alpha.2](https://github.com/SocialGouv/standup/compare/v1.5.38-alpha.1...v1.5.38-alpha.2) (2021-08-30)
 
 
