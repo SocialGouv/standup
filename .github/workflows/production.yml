@@ -55,6 +55,9 @@ jobs:
       url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
     steps:
   
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Get project and namespace names
       run: |
         cat ".github/preprod.env" >> $GITHUB_ENV
@@ -92,6 +95,9 @@ jobs:
       name: production
       url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
     steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
     - name: Get project and namespace names
       run: |
