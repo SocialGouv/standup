@@ -1,3 +1,10 @@
+## [1.5.39-alpha.6](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.5...v1.5.39-alpha.6) (2021-08-31)
+
+
+### Bug Fixes
+
+* Use autodevops master branch. ([c3b70c1](https://github.com/SocialGouv/standup/commit/c3b70c151bd6e86b6656d53a83524d0183e4abd1))
+
 ## [1.5.39-alpha.5](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.4...v1.5.39-alpha.5) (2021-08-31)
 
 
