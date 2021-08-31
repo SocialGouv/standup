@@ -22,7 +22,7 @@
     "@sentry/node": "^5.30.0",
     "@zeit/next-source-maps": "^0.0.3",
     "github-markdown-css": "^4.0.0",
-    "graphql": "^15.5.1",
+    "graphql": "^15.5.2",
     "graphql-request": "^3.4.0",
     "isomorphic-unfetch": "^3.1.0",
     "js-yaml-loader": "^1.2.2",
@@ -34,7 +34,7 @@
     "react-markdown": "^5.0.3",
     "react-spinners": "^0.10.6",
     "sass": "^1.35.2",
-    "swr": "^0.5.6"
+    "swr": "^0.5.7"
   },
   "devDependencies": {
     "@socialgouv/eslint-config-react": "^1.75.0",
