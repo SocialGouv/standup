@@ -52,7 +52,7 @@ jobs:
     needs: [register, manifests]
     environment:
       name: preproduction
-      url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
+      url: https://${{ env.ns }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
     steps:
   
     - name: Checkout repository
@@ -62,7 +62,7 @@ jobs:
       run: |
         cat ".github/preprod.env" >> $GITHUB_ENV
         echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-        echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
+        echo "ns=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
 
     - name: Use autodevops deployment
       uses: SocialGouv/actions/autodevops-deploy@autodevops-ns
@@ -93,7 +93,7 @@ jobs:
     needs: [deploy-preprod, manifests-prod]
     environment:
       name: production
-      url: https://${{ env.namespace }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
+      url: https://${{ env.ns }}.${{ env.SOCIALGOUV_BASE_DOMAIN }}
     steps:
 
     - name: Checkout repository
@@ -103,7 +103,7 @@ jobs:
       run: |
         cat ".github/prod.env" >> $GITHUB_ENV
         echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-        echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
+        echo "ns=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
 
     - name: Use autodevops deployment
       uses: SocialGouv/actions/autodevops-deploy@autodevops-ns
