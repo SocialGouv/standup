@@ -1,3 +1,11 @@
+## [1.5.39-alpha.2](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.1...v1.5.39-alpha.2) (2021-08-31)
+
+
+### Bug Fixes
+
+* Check repo. ([bc565da](https://github.com/SocialGouv/standup/commit/bc565da447f93c5f0c04fb9cb69ef85485eb705b))
+* Use autodevops-ns. ([993b9e7](https://github.com/SocialGouv/standup/commit/993b9e7eebb7b96c459b2643012767b80a45d706))
+
 ## [1.5.39-alpha.1](https://github.com/SocialGouv/standup/compare/v1.5.38...v1.5.39-alpha.1) (2021-08-31)
 
 
