@@ -1,3 +1,10 @@
+## [1.5.39-alpha.5](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.4...v1.5.39-alpha.5) (2021-08-31)
+
+
+### Bug Fixes
+
+* Use env.ns to build urls. ([4133f33](https://github.com/SocialGouv/standup/commit/4133f33c948fe7e86f549f8ce3057cb562504de0))
+
 ## [1.5.39-alpha.4](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.3...v1.5.39-alpha.4) (2021-08-31)
 
 
