@@ -1,3 +1,10 @@
+## [1.5.38](https://github.com/SocialGouv/standup/compare/v1.5.37...v1.5.38) (2021-08-31)
+
+
+### Bug Fixes
+
+* Use autodevops jobs. ([#380](https://github.com/SocialGouv/standup/issues/380)) ([b5e9d44](https://github.com/SocialGouv/standup/commit/b5e9d44329435dd7c50855a179d92c368bf90910))
+
 ## [1.5.38-alpha.3](https://github.com/SocialGouv/standup/compare/v1.5.38-alpha.2...v1.5.38-alpha.3) (2021-08-30)
 
 
