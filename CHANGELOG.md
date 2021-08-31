@@ -1,3 +1,10 @@
+## [1.5.40](https://github.com/SocialGouv/standup/compare/v1.5.39...v1.5.40) (2021-08-31)
+
+
+### Bug Fixes
+
+* Add env variables to build deployment urls. ([#381](https://github.com/SocialGouv/standup/issues/381)) ([a71cbd0](https://github.com/SocialGouv/standup/commit/a71cbd01bfd58e325bfbecee3e934caa1ea6c290))
+
 ## [1.5.40-alpha.1](https://github.com/SocialGouv/standup/compare/v1.5.39...v1.5.40-alpha.1) (2021-08-31)
 
 
