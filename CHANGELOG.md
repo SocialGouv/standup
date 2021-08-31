@@ -1,3 +1,10 @@
+## [1.5.39](https://github.com/SocialGouv/standup/compare/v1.5.38...v1.5.39) (2021-08-31)
+
+
+### Bug Fixes
+
+* **deps:** update all dependencies ([#379](https://github.com/SocialGouv/standup/issues/379)) ([bede6f4](https://github.com/SocialGouv/standup/commit/bede6f47cc57d52e175a1c46624a144d606934b8))
+
 ## [1.5.38](https://github.com/SocialGouv/standup/compare/v1.5.37...v1.5.38) (2021-08-31)
 
 
