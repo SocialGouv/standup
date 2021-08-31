@@ -1,9 +1,38 @@
-## [1.5.39](https://github.com/SocialGouv/standup/compare/v1.5.38...v1.5.39) (2021-08-31)
+## [1.5.39-alpha.5](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.4...v1.5.39-alpha.5) (2021-08-31)
 
 
 ### Bug Fixes
 
-* **deps:** update all dependencies ([#379](https://github.com/SocialGouv/standup/issues/379)) ([bede6f4](https://github.com/SocialGouv/standup/commit/bede6f47cc57d52e175a1c46624a144d606934b8))
+* Use env.ns to build urls. ([4133f33](https://github.com/SocialGouv/standup/commit/4133f33c948fe7e86f549f8ce3057cb562504de0))
+
+## [1.5.39-alpha.4](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.3...v1.5.39-alpha.4) (2021-08-31)
+
+
+### Bug Fixes
+
+* Bump version. ([59d1af6](https://github.com/SocialGouv/standup/commit/59d1af66d8aee78f95bbe96564f3b80556e3f2a4))
+
+## [1.5.39-alpha.3](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.2...v1.5.39-alpha.3) (2021-08-31)
+
+
+### Bug Fixes
+
+* Use autodevops-ns in preprod and prod. ([9bb1c43](https://github.com/SocialGouv/standup/commit/9bb1c43b2e203925d14009043866072744192582))
+
+## [1.5.39-alpha.2](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.1...v1.5.39-alpha.2) (2021-08-31)
+
+
+### Bug Fixes
+
+* Check repo. ([bc565da](https://github.com/SocialGouv/standup/commit/bc565da447f93c5f0c04fb9cb69ef85485eb705b))
+* Use autodevops-ns. ([993b9e7](https://github.com/SocialGouv/standup/commit/993b9e7eebb7b96c459b2643012767b80a45d706))
+
+## [1.5.39-alpha.1](https://github.com/SocialGouv/standup/compare/v1.5.38...v1.5.39-alpha.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* Add env variables to build deployment urls. ([c5a9ebb](https://github.com/SocialGouv/standup/commit/c5a9ebb34bfd81308b49bf4cd7628f0e294c9b92))
 
 ## [1.5.38](https://github.com/SocialGouv/standup/compare/v1.5.37...v1.5.38) (2021-08-31)
 
