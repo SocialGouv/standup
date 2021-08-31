@@ -1,3 +1,10 @@
+## [1.5.39-alpha.4](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.3...v1.5.39-alpha.4) (2021-08-31)
+
+
+### Bug Fixes
+
+* Bump version. ([59d1af6](https://github.com/SocialGouv/standup/commit/59d1af66d8aee78f95bbe96564f3b80556e3f2a4))
+
 ## [1.5.39-alpha.3](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.2...v1.5.39-alpha.3) (2021-08-31)
 
 
