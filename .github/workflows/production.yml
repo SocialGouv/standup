@@ -24,7 +24,7 @@ jobs:
         echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
     - name: Use autodevops build and register
-      uses: SocialGouv/actions/autodevops-build-register@master
+      uses: SocialGouv/actions/autodevops-build-register@autodevops-ns
       with:
         imageName: fabrique/standup
         project: ${{ env.project }}
@@ -39,7 +39,7 @@ jobs:
     steps:
 
     - name: Use autodevops manifests generation
-      uses: SocialGouv/actions/autodevops-manifests@master
+      uses: SocialGouv/actions/autodevops-manifests@autodevops-ns
       with:
         environment: "preprod"
 
@@ -65,7 +65,7 @@ jobs:
         echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
 
     - name: Use autodevops deployment
-      uses: SocialGouv/actions/autodevops-deploy@master
+      uses: SocialGouv/actions/autodevops-deploy@autodevops-ns
       with:
         environment: "preprod"
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -80,7 +80,7 @@ jobs:
     steps:
 
     - name: Use autodevops manifests generation
-      uses: SocialGouv/actions/autodevops-manifests@master
+      uses: SocialGouv/actions/autodevops-manifests@autodevops-ns
       with:
         environment: "prod"
 
@@ -106,7 +106,7 @@ jobs:
         echo "namespace=${GITHUB_REPOSITORY#*/}-${GITHUB_REF##*/}" >> $GITHUB_ENV
 
     - name: Use autodevops deployment
-      uses: SocialGouv/actions/autodevops-deploy@master
+      uses: SocialGouv/actions/autodevops-deploy@autodevops-ns
       with:
         environment: "prod"
         token: ${{ secrets.GITHUB_TOKEN }}
