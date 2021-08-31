@@ -1,3 +1,10 @@
+## [1.5.39-alpha.3](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.2...v1.5.39-alpha.3) (2021-08-31)
+
+
+### Bug Fixes
+
+* Use autodevops-ns in preprod and prod. ([9bb1c43](https://github.com/SocialGouv/standup/commit/9bb1c43b2e203925d14009043866072744192582))
+
 ## [1.5.39-alpha.2](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.1...v1.5.39-alpha.2) (2021-08-31)
 
 
