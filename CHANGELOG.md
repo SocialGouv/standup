@@ -1,3 +1,11 @@
+## [1.5.40-alpha.1](https://github.com/SocialGouv/standup/compare/v1.5.39...v1.5.40-alpha.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* Add env variables to build deployment urls. ([14ab8de](https://github.com/SocialGouv/standup/commit/14ab8de0fb610418f454376167ce9c8eb787b2df))
+* Rename deactivate workflow. ([7c6bdcc](https://github.com/SocialGouv/standup/commit/7c6bdccef1188ab4a78dac649774c31e836ae13f))
+
 ## [1.5.39-alpha.5](https://github.com/SocialGouv/standup/compare/v1.5.39-alpha.4...v1.5.39-alpha.5) (2021-08-31)
 
 
