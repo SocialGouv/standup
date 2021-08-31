@@ -1,3 +1,24 @@
+## [1.5.38-alpha.3](https://github.com/SocialGouv/standup/compare/v1.5.38-alpha.2...v1.5.38-alpha.3) (2021-08-30)
+
+
+### Bug Fixes
+
+* Clean workflow code. ([98de87d](https://github.com/SocialGouv/standup/commit/98de87d28a47256c0004c09d62fadda09fee264b))
+
+## [1.5.38-alpha.2](https://github.com/SocialGouv/standup/compare/v1.5.38-alpha.1...v1.5.38-alpha.2) (2021-08-30)
+
+
+### Bug Fixes
+
+* Remove hasura refs. ([c74e7d9](https://github.com/SocialGouv/standup/commit/c74e7d9ddbe2e7277d1bef5f760ad8413ff4b61b))
+
+## [1.5.38-alpha.1](https://github.com/SocialGouv/standup/compare/v1.5.37...v1.5.38-alpha.1) (2021-08-30)
+
+
+### Bug Fixes
+
+* Use autodevops jobs. ([a83b280](https://github.com/SocialGouv/standup/commit/a83b280c4c61ed22af0a94a6a9559e85d4ef4e23))
+
 ## [1.5.37](https://github.com/SocialGouv/standup/compare/v1.5.36...v1.5.37) (2021-08-20)
 
 
