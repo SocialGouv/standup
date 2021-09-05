@@ -1,3 +1,10 @@
+## [1.5.42](https://github.com/SocialGouv/standup/compare/v1.5.41...v1.5.42) (2021-09-05)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies (minor) ([#384](https://github.com/SocialGouv/standup/issues/384)) ([bd14202](https://github.com/SocialGouv/standup/commit/bd14202839b8baa49d27a20e0f1b557de68d61d1))
+
 ## [1.5.41](https://github.com/SocialGouv/standup/compare/v1.5.40...v1.5.41) (2021-09-05)
 
 
