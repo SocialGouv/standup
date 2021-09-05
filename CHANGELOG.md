@@ -1,3 +1,10 @@
+## [1.5.41](https://github.com/SocialGouv/standup/compare/v1.5.40...v1.5.41) (2021-09-05)
+
+
+### Bug Fixes
+
+* Use simple autodevops action. ([#391](https://github.com/SocialGouv/standup/issues/391)) ([8e59962](https://github.com/SocialGouv/standup/commit/8e599623fcf49ae3619f9418e8bf7537897e0673))
+
 ## [1.5.40](https://github.com/SocialGouv/standup/compare/v1.5.39...v1.5.40) (2021-08-31)
 
 
