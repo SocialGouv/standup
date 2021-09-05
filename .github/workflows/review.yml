@@ -14,7 +14,7 @@ concurrency:
 jobs:
 
   deploy:
-    name: Deploy
+    name: Deploy review branch
     runs-on: ubuntu-latest
     steps:
 
