@@ -17,9 +17,9 @@
     "k8s": "yarn --silent --cwd .k8s"
   },
   "dependencies": {
-    "@sentry/browser": "^5.30.0",
-    "@sentry/integrations": "^5.30.0",
-    "@sentry/node": "^5.30.0",
+    "@sentry/browser": "^6.12.0",
+    "@sentry/integrations": "^6.12.0",
+    "@sentry/node": "^6.12.0",
     "@zeit/next-source-maps": "^0.0.3",
     "github-markdown-css": "^4.0.0",
     "graphql": "^15.5.2",
