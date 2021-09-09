@@ -1,3 +1,10 @@
+## [1.5.44](https://github.com/SocialGouv/standup/compare/v1.5.43...v1.5.44) (2021-09-09)
+
+
+### Bug Fixes
+
+* **deps:** update sentry-javascript monorepo to v6 (major) ([#388](https://github.com/SocialGouv/standup/issues/388)) ([c5d7b45](https://github.com/SocialGouv/standup/commit/c5d7b45c69ddbaa517504d69634c3882d39b4cf2))
+
 ## [1.5.43](https://github.com/SocialGouv/standup/compare/v1.5.42...v1.5.43) (2021-09-06)
 
 
