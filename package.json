@@ -22,7 +22,7 @@
     "@sentry/node": "^6.12.0",
     "@zeit/next-source-maps": "^0.0.3",
     "github-markdown-css": "^4.0.0",
-    "graphql": "^15.5.2",
+    "graphql": "^15.5.3",
     "graphql-request": "^3.5.0",
     "isomorphic-unfetch": "^3.1.0",
     "js-yaml-loader": "^1.2.2",
@@ -33,7 +33,7 @@
     "react-feather": "^2.0.9",
     "react-markdown": "^5.0.3",
     "react-spinners": "^0.11.0",
-    "sass": "^1.39.0",
+    "sass": "^1.39.2",
     "swr": "^0.5.7"
   },
   "devDependencies": {
