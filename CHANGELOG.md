@@ -1,3 +1,10 @@
+## [1.5.48](https://github.com/SocialGouv/standup/compare/v1.5.47...v1.5.48) (2021-09-20)
+
+
+### Bug Fixes
+
+* Set GITHUB_TOKEN permissions ([6d9e384](https://github.com/SocialGouv/standup/commit/6d9e3848a17b0f48192459e70895e25b7afb79fe))
+
 ## [1.5.47](https://github.com/SocialGouv/standup/compare/v1.5.46...v1.5.47) (2021-09-20)
 
 
