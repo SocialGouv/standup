@@ -30,4 +30,4 @@ jobs:
         project: ${{ env.project }}
         token: ${{ secrets.GITHUB_TOKEN }}
         imageName: fabrique/${{ env.project }}
-        kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_PROD }}
+        kubeconfig: ${{ secrets.KUBECONFIG }}
