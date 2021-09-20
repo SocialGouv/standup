@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://standup.fabrique.social.gouv.fr/
+      url: ${{ steps.autodevops.outputs.url }}
     steps:
 
     - name: Get project name
@@ -25,6 +25,7 @@ jobs:
 
     - name: Use autodevops to deploy production
       uses: SocialGouv/actions/autodevops@v1
+      id: autodevops
       with:
         environment: prod
         project: ${{ env.project }}
