@@ -1,3 +1,10 @@
+## [1.5.43-alpha.1](https://github.com/SocialGouv/standup/compare/v1.5.42...v1.5.43-alpha.1) (2021-09-20)
+
+
+### Bug Fixes
+
+* Use secrets.KUBECONFIG ([5fd2cd3](https://github.com/SocialGouv/standup/commit/5fd2cd3bc085cbbab3279216f5f6149bf0471157))
+
 ## [1.5.42](https://github.com/SocialGouv/standup/compare/v1.5.41...v1.5.42) (2021-09-05)
 
 
