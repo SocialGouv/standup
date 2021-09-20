@@ -1,3 +1,10 @@
+## [1.5.47](https://github.com/SocialGouv/standup/compare/v1.5.46...v1.5.47) (2021-09-20)
+
+
+### Bug Fixes
+
+* Add rancherId input to autodevops action ([2b7614f](https://github.com/SocialGouv/standup/commit/2b7614f4a34e5d9d5089ff0edde921db66e1b3fc))
+
 ## [1.5.46](https://github.com/SocialGouv/standup/compare/v1.5.45...v1.5.46) (2021-09-20)
 
 
