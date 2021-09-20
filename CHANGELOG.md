@@ -1,3 +1,10 @@
+## [1.5.46](https://github.com/SocialGouv/standup/compare/v1.5.45...v1.5.46) (2021-09-20)
+
+
+### Bug Fixes
+
+* Use deployment url from autodevops action ([3ec3a52](https://github.com/SocialGouv/standup/commit/3ec3a525225cc49a88661acac0a6f8089a527899))
+
 ## [1.5.45](https://github.com/SocialGouv/standup/compare/v1.5.44...v1.5.45) (2021-09-20)
 
 
