@@ -1,3 +1,10 @@
+## [1.5.45](https://github.com/SocialGouv/standup/compare/v1.5.44...v1.5.45) (2021-09-20)
+
+
+### Bug Fixes
+
+* Use socialgouv/actions@v1 ([6b1b509](https://github.com/SocialGouv/standup/commit/6b1b509a9c3f6a6ebca9b1a8830435651dd41566))
+
 ## [1.5.44](https://github.com/SocialGouv/standup/compare/v1.5.43...v1.5.44) (2021-09-09)
 
 
