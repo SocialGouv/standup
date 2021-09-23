@@ -20,6 +20,9 @@ jobs:
   deploy:
     name: Deploy review branch
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
 
     - name: Get project name
