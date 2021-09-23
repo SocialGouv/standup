@@ -1,3 +1,10 @@
+## [1.5.50](https://github.com/SocialGouv/standup/compare/v1.5.49...v1.5.50) (2021-09-23)
+
+
+### Bug Fixes
+
+* Remove packages permissions from workflows ([ce50a61](https://github.com/SocialGouv/standup/commit/ce50a6199202afe0548c00c0de5bc2ecaa4addc2))
+
 ## [1.5.49](https://github.com/SocialGouv/standup/compare/v1.5.48...v1.5.49) (2021-09-23)
 
 
