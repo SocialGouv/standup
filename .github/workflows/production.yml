@@ -14,9 +14,6 @@ jobs:
   deploy:
     name: Deploy production
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     environment:
       name: production
       url: ${{ steps.autodevops.outputs.url }}
