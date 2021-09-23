@@ -1,3 +1,10 @@
+## [1.5.49](https://github.com/SocialGouv/standup/compare/v1.5.48...v1.5.49) (2021-09-23)
+
+
+### Bug Fixes
+
+* Add packages permissions into jobs workflows ([e6bc0d4](https://github.com/SocialGouv/standup/commit/e6bc0d4c7a9d8c15e5a072dba97d7fab32eb9d2e))
+
 ## [1.5.48](https://github.com/SocialGouv/standup/compare/v1.5.47...v1.5.48) (2021-09-20)
 
 
