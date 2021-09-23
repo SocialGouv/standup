@@ -1,3 +1,10 @@
+## [1.5.51](https://github.com/SocialGouv/standup/compare/v1.5.50...v1.5.51) (2021-09-23)
+
+
+### Bug Fixes
+
+* Remove packages permissions from prod workflow ([caf832e](https://github.com/SocialGouv/standup/commit/caf832e9a53ff99419c939cc846789d60cee15a9))
+
 ## [1.5.50](https://github.com/SocialGouv/standup/compare/v1.5.49...v1.5.50) (2021-09-23)
 
 
