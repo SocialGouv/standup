@@ -32,4 +32,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         imageName: fabrique/${{ env.project }}
         rancherId: ${{ env.RANCHER_PROJECT_ID }}
-        kubeconfig: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_PROD }}
+        kubeconfig: ${{ secrets.KUBECONFIG }}
