@@ -1,3 +1,10 @@
+## [1.5.57](https://github.com/SocialGouv/standup/compare/v1.5.56...v1.5.57) (2021-09-27)
+
+
+### Bug Fixes
+
+* Add CODEOWNERS file ([3bb9955](https://github.com/SocialGouv/standup/commit/3bb9955c7bc67ae75b71f0d701ecec3f61b9cf54))
+
 ## [1.5.56](https://github.com/SocialGouv/standup/compare/v1.5.55...v1.5.56) (2021-09-27)
 
 
