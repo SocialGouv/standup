@@ -31,3 +31,4 @@ jobs:
         imageName: fabrique/${{ env.project }}
         rancherId: ${{ env.RANCHER_PROJECT_ID }}
         kubeconfig: ${{ secrets.KUBECONFIG }}
+        socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
