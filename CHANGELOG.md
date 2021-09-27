@@ -1,3 +1,10 @@
+## [1.5.56](https://github.com/SocialGouv/standup/compare/v1.5.55...v1.5.56) (2021-09-27)
+
+
+### Bug Fixes
+
+* Add socialgouvBaseDomain to prod workflow ([7e5c960](https://github.com/SocialGouv/standup/commit/7e5c960437830f203f858352e3447da424021cb0))
+
 ## [1.5.55](https://github.com/SocialGouv/standup/compare/v1.5.54...v1.5.55) (2021-09-27)
 
 
