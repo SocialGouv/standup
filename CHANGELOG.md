@@ -1,3 +1,10 @@
+## [1.5.53](https://github.com/SocialGouv/standup/compare/v1.5.52...v1.5.53) (2021-09-27)
+
+
+### Bug Fixes
+
+* Remove workflows env files ([c0decd0](https://github.com/SocialGouv/standup/commit/c0decd0acedac9335f2dd6b57e255e131bc0850d))
+
 ## [1.5.52](https://github.com/SocialGouv/standup/compare/v1.5.51...v1.5.52) (2021-09-23)
 
 
