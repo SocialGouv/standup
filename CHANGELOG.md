@@ -1,3 +1,10 @@
+## [1.5.55](https://github.com/SocialGouv/standup/compare/v1.5.54...v1.5.55) (2021-09-27)
+
+
+### Bug Fixes
+
+* Get RANCHER_PROJECT_ID from secrets ([07e7e0a](https://github.com/SocialGouv/standup/commit/07e7e0a7dcea9e91a6902d78cc3fb14a394469ee))
+
 ## [1.5.54](https://github.com/SocialGouv/standup/compare/v1.5.53...v1.5.54) (2021-09-27)
 
 
