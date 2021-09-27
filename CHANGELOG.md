@@ -1,3 +1,10 @@
+## [1.5.54](https://github.com/SocialGouv/standup/compare/v1.5.53...v1.5.54) (2021-09-27)
+
+
+### Bug Fixes
+
+* Add SOCIALGOUV_BASE_DOMAIN to autodevops action ([70e51b9](https://github.com/SocialGouv/standup/commit/70e51b9074fb1cf446238324396c32cd66fd1798))
+
 ## [1.5.53](https://github.com/SocialGouv/standup/compare/v1.5.52...v1.5.53) (2021-09-27)
 
 
