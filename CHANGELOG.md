@@ -1,3 +1,10 @@
+## [1.5.58](https://github.com/SocialGouv/standup/compare/v1.5.57...v1.5.58) (2021-10-05)
+
+
+### Bug Fixes
+
+* update slide ([7f1c83d](https://github.com/SocialGouv/standup/commit/7f1c83d3c070c60334fd2c2dbd09bb113dbf3fa8))
+
 ## [1.5.57](https://github.com/SocialGouv/standup/compare/v1.5.56...v1.5.57) (2021-09-27)
 
 
