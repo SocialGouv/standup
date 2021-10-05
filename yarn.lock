@@ -853,22 +853,22 @@
     eslint-plugin-simple-import-sort "~7.0.0"
     eslint-plugin-sort-keys-fix "~1.1.2"
 
-"@socialgouv/sre-seal@^1.11.2":
-  version "1.11.2"
-  resolved "https://registry.yarnpkg.com/@socialgouv/sre-seal/-/sre-seal-1.11.2.tgz#c5c5f065bb27e054ebb04a23f7350f9abb4ab4e4"
-  integrity sha512-8UDj8Cu7uO0fpvo36BqE6hymkOpDKagfAwu+ZKnYri/yv/JxYD1rQ8y57lapIVbcxdjahtqPbj5fFkNYlLFZqw==
+"@socialgouv/sre-seal@^1.11.3":
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/@socialgouv/sre-seal/-/sre-seal-1.11.3.tgz#e88fbc47e024d74a8ad6ed71b7139b7bec3543a0"
+  integrity sha512-23QsYxjyAVKjuzwGSC7yCJmQ2q/oxRXK8xsnmUZuLqEqj2bnMj/5tuZU2naf8FP+eySGfwm4waHWUIq3p1o1XA==
   dependencies:
     execa "^5.1.1"
     pipe-args "^1.3.0"
     yaml "^1.10.2"
     yargs "^17.0.1"
 
-"@socialgouv/sre-secrets@^1.10.6":
-  version "1.11.2"
-  resolved "https://registry.yarnpkg.com/@socialgouv/sre-secrets/-/sre-secrets-1.11.2.tgz#5547ff60e6c8b1d3d5f7c5b818b2e77e498ca179"
-  integrity sha512-827ySZAG1PF3FhUdgsRmNhFIO9UkKM0M6LmeYWOGPfQO753LEFvXO+eHuwTZww50JhBaLRHSNx+horhAPt19GQ==
+"@socialgouv/sre-secrets@^1.11.3":
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/@socialgouv/sre-secrets/-/sre-secrets-1.11.3.tgz#005da9efe484dc7c5c6a8479065157d68e22fc0c"
+  integrity sha512-RYF+2eTZzYn0u6iFoaHm6kRzVyB/rZ+X2kpKAtH77nDFoOqkLCl/4rYoJrgs/H6LAbBFmnSEZBe6+m+3bLhpFw==
   dependencies:
-    "@socialgouv/sre-seal" "^1.11.2"
+    "@socialgouv/sre-seal" "^1.11.3"
     chalk "^4.1.2"
     js-yaml "^4.1.0"
     ora "^5.4.1"
@@ -2568,10 +2568,10 @@ eslint-plugin-react-hooks@~4.2.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz#8c229c268d468956334c943bb45fc860280f5556"
   integrity sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==
 
-eslint-plugin-react@^7.25.3:
-  version "7.26.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.26.0.tgz#3ae019a35d542b98e5af9e2f96b89c232c74b55b"
-  integrity sha512-dceliS5itjk4EZdQYtLMz6GulcsasguIs+VTXuiC7Q5IPIdGTkyfXVdmsQOqEhlD9MciofH4cMcT1bw1WWNxCQ==
+eslint-plugin-react@^7.26.1:
+  version "7.26.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.26.1.tgz#41bcfe3e39e6a5ac040971c1af94437c80daa40e"
+  integrity sha512-Lug0+NOFXeOE+ORZ5pbsh6mSKjBKXDXItUD2sQoT+5Yl0eoT82DqnXeTMfUare4QVCn9QwXbfzO/dBLjLXwVjQ==
   dependencies:
     array-includes "^3.1.3"
     array.prototype.flatmap "^1.2.4"
