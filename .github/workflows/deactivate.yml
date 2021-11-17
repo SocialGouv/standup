@@ -12,11 +12,11 @@ jobs:
 
     - uses: SocialGouv/actions/autodevops-deactivate@v1
       with:
+        kube-config: ${{ secrets.KUBECONFIG  }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        kube-config: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV  }}
 
     - uses: smartsquaregmbh/delete-old-packages@v0.3.2
       with:
         dry-run: true
         names: |
-          fabrique/standup
+          fabrique%2Fstandup
