@@ -6,9 +6,19 @@ on:
     
 jobs:
   bury_review_env:
-    name: 🪦 Review
+    name: Deactivate review branch
     runs-on: ubuntu-latest
     steps:
+
     - uses: SocialGouv/actions/k8s-funeral@v1
       with:
-        kube-config: ${{ secrets.KUBECONFIG  }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+        kube-config: ${{ secrets.SOCIALGOUV_KUBE_CONFIG_DEV  }}
+        socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+
+    - uses: smartsquaregmbh/delete-old-packages@v0.3.2
+      with:
+        dry-run: true
+        names: |
+          fabrique/standup
