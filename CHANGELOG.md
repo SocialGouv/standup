@@ -1,3 +1,11 @@
+## [1.5.59](https://github.com/SocialGouv/standup/compare/v1.5.58...v1.5.59) (2021-11-30)
+
+
+### Bug Fixes
+
+* last slide ([4336388](https://github.com/SocialGouv/standup/commit/43363886cca6c0aeabf7799356f722b4a05cde2e))
+* last slide ([be6ea0c](https://github.com/SocialGouv/standup/commit/be6ea0cf1ffa498da4a17a4e9b99efa8fb7d9a96))
+
 ## [1.5.58](https://github.com/SocialGouv/standup/compare/v1.5.57...v1.5.58) (2021-10-05)
 
 
