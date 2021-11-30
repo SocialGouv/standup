@@ -2,29 +2,6 @@
 
 exports[`deploy dev 2 1`] = `
 "---
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    socialgouv/creator: autodevops
-    janitor/ttl: 15d
-    field.cattle.io/creatorId: gitlab
-    field.cattle.io/projectId: ''
-    git/branch: refs/heads/mybranch
-    git/remote: socialgouv/standup
-    app.github.com/job: '5678'
-    app.github.com/ref: refs/heads/mybranch
-    app.github.com/repo: socialgouv/standup
-    app.github.com/run: '1234'
-    app.github.com/sha: '0123456'
-  labels:
-    azure-pg-admin-user: standup
-    application: standup
-    owner: standup
-    team: standup
-    cert: wildcard
-  name: standup-mybranch
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -39,10 +16,10 @@ metadata:
   labels:
     app: standup
     application: standup
+    component: nginx
     owner: standup
     team: standup
     cert: wildcard
-    component: nginx
   name: standup
   namespace: standup-mybranch
 spec:
@@ -63,10 +40,10 @@ spec:
       labels:
         app: standup
         application: standup
+        component: nginx
         owner: standup
         team: standup
         cert: wildcard
-        component: nginx
     spec:
       containers:
         - image: >-
@@ -127,6 +104,7 @@ metadata:
   namespace: standup-mybranch
   labels:
     application: standup
+    component: nginx
     owner: standup
     team: standup
     cert: wildcard
@@ -148,6 +126,7 @@ spec:
       name: standup-sealed-secret
       labels:
         application: standup
+        component: nginx
         owner: standup
         team: standup
         cert: wildcard
@@ -167,6 +146,7 @@ metadata:
     app.github.com/sha: '0123456'
   labels:
     application: standup
+    component: nginx
     owner: standup
     team: standup
     cert: wildcard
@@ -184,6 +164,7 @@ metadata:
   labels:
     app: standup
     application: standup
+    component: nginx
     owner: standup
     team: standup
     cert: wildcard
@@ -221,6 +202,7 @@ metadata:
   labels:
     app: standup
     application: standup
+    component: nginx
     owner: standup
     team: standup
     cert: wildcard
