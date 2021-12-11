@@ -17,13 +17,13 @@
     "k8s": "yarn --silent --cwd .k8s"
   },
   "dependencies": {
-    "@sentry/browser": "^6.12.0",
-    "@sentry/integrations": "^6.12.0",
-    "@sentry/node": "^6.12.0",
+    "@sentry/browser": "^6.16.1",
+    "@sentry/integrations": "^6.16.1",
+    "@sentry/node": "^6.16.1",
     "@zeit/next-source-maps": "^0.0.3",
     "github-markdown-css": "^4.0.0",
-    "graphql": "^15.5.3",
-    "graphql-request": "^3.5.0",
+    "graphql": "^15.8.0",
+    "graphql-request": "^3.7.0",
     "isomorphic-unfetch": "^3.1.0",
     "js-yaml-loader": "^1.2.2",
     "lodash": "^4.17.21",
@@ -33,7 +33,7 @@
     "react-feather": "^2.0.9",
     "react-markdown": "^5.0.3",
     "react-spinners": "^0.11.0",
-    "sass": "^1.39.2",
+    "sass": "^1.45.0",
     "swr": "^0.5.7"
   },
   "devDependencies": {
