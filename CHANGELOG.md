@@ -1,3 +1,10 @@
+## [1.5.61](https://github.com/SocialGouv/standup/compare/v1.5.60...v1.5.61) (2021-12-20)
+
+
+### Bug Fixes
+
+* dummy ([8a85429](https://github.com/SocialGouv/standup/commit/8a85429a17e3e30d949e6110501c03e64c95cdbb))
+
 ## [1.5.60](https://github.com/SocialGouv/standup/compare/v1.5.59...v1.5.60) (2021-11-30)
 
 
