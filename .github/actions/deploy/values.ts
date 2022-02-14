@@ -1,5 +1,7 @@
 import generate from "@socialgouv/env-slug"
 
+const env: NodeJS.ProcessEnv = process.env
+
 const {
   SOCIALGOUV_PRODUCTION,
   SOCIALGOUV_PREPRODUCTION,
@@ -9,16 +11,18 @@ const {
   GITHUB_REF,
   GITHUB_SHA,
   KEEP_ALIVE,
-} = process.env;
+} = env;
+
+const repository = GITHUB_REPOSITORY ?? ""
+const gitBranch = GITHUB_REF ?? ""
 
 const isProduction = Boolean(SOCIALGOUV_PRODUCTION);
 const isPreProduction = Boolean(SOCIALGOUV_PREPRODUCTION);
 
 const keepAlive = Boolean(KEEP_ALIVE);
 
-const gitBranch = GITHUB_REF
 
-const branchName = GITHUB_REF.replace("refs/heads/", "").replace(
+const branchName = gitBranch.replace("refs/heads/", "").replace(
   "refs/tags/",
   ""
 );
@@ -29,10 +33,10 @@ const isDestroyable = isDev && !keepAlive;
 
 const ttl = isDestroyable ? (isRenovate ? "1d" : "7d") : "";
 
-const projectName = SOCIALGOUV_PRODUCTION_NAMESPACE || GITHUB_REPOSITORY.split("/")[1];
+const projectName = SOCIALGOUV_PRODUCTION_NAMESPACE || repository.split("/")[1];
 
-const imageTag = GITHUB_REF.startsWith("refs/tags/")
-  ? (GITHUB_REF.split("/").pop() ?? "").substring(1)
+const imageTag = gitBranch.startsWith("refs/tags/")
+  ? (gitBranch.split("/").pop() ?? "").substring(1)
   : `sha-${GITHUB_SHA}`;
 
 const environmentSlug = generate(branchName);
