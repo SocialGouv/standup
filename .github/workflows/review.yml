@@ -22,13 +22,27 @@ jobs:
       run: |
         echo "project=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
-    - name: Use autodevops to deploy review branch
-      uses: SocialGouv/actions/autodevops@v1
+    # - name: Use autodevops to deploy review branch
+    #   uses: SocialGouv/actions/autodevops@v1
+    #   with:
+    #     environment: dev
+    #     project: ${{ env.project }}
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     kubeconfig: ${{ secrets.KUBECONFIG }}
+    #     imageName: fabrique/${{ env.project }}
+    #     rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+    #     socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Use autodevops build and register
+      uses: SocialGouv/actions/autodevops-build-register@v1
       with:
-        environment: dev
-        project: ${{ env.project }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        kubeconfig: ${{ secrets.KUBECONFIG }}
+        project: ${{ env.project }}
         imageName: fabrique/${{ env.project }}
-        rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
-        socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+        environment:  dev
+    
+    - name: Use autodevops deploy
+      uses: ./.github/actions/deploy
