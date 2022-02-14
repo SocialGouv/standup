@@ -68,17 +68,13 @@ const registry = `ghcr.io/socialgouv/${projectName}`
 
 const values = {
   isProduction,
+  isPreProduction,
   ttl,
   namespace,
   host,
   registry,
   gitBranch,
-  imageTag,
-  // rancherProjectId,
-  // sentryDsn: {
-  //   prod: sentryDsnProd,
-  //   dev: sentryDsnProdDev,
-  // }
+  imageTag,  
 }
 
 console.log(JSON.stringify(values, null, 2))
