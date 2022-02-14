@@ -6,6 +6,4 @@ ttl:
 rancherProjectId: 
 gitBranch: 
 isProduction: false
-sentryDsn:
-  prod:
-  dev:
+isPreProduction: false
