@@ -1,0 +1,11 @@
+namespace: 
+host: 
+registry:
+imageTag: 
+ttl: 
+rancherProjectId: 
+gitBranch: 
+isProduction: false
+sentryDsn:
+  prod:
+  dev:

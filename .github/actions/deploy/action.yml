@@ -1,0 +1,48 @@
+name: "Autodevops deploy using ArgoCD"
+description: "Autodevops deploy using ArgoCD and Helm charts"
+runs:
+  using: "composite"
+  steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup global env vars
+      uses: SocialGouv/actions/util-env@v1
+      with:
+        rancherId: ${{ inputs.rancherId }}
+    
+    - name: Setup action bin PATH
+      shell: bash
+      run: echo "${{ github.action_path }}/bin" >> $GITHUB_PATH
+
+    # - name: Setup action's env vars
+    #   shell: bash
+    #   run: |
+    #     echo "FOO=$FOO" >> $GITHUB_ENV
+    
+    - name: Setup node
+      uses: SocialGouv/actions/util-setup-node@v1
+      with:
+        actionPath: ${{ github.action_path }}
+
+    - name: Generate values file
+      shell: bash
+      run: yarn --cwd ${{ github.action_path }} run -s values > values.json
+
+    - name: Archive values.json
+      uses: actions/upload-artifact@v2
+      with:
+        name: values.json
+        path: values.json
+
+    # - name: Sync ArgoCD calling webhook
+    #   shell: bash
+    #   run: |
+        
+
+    # - name: Wait for Deployment
+    #   shell: bash
+    #   run: |
+
+    
