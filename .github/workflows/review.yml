@@ -46,3 +46,7 @@ jobs:
     
     - name: Use autodevops deploy
       uses: ./.github/actions/deploy
+      with:
+        environment: dev
+        rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
+        socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
