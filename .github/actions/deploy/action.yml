@@ -47,19 +47,31 @@ runs:
         RANCHER_PROJECT_ID: ${{ inputs.rancherId || env.RANCHER_PROJECT_ID }}
       run: yarn --cwd ${{ github.action_path }} run -s values > values-${{ inputs.environment }}.yaml
 
-    - name: Archive values.json
+    - name: Archive values
       uses: actions/upload-artifact@v2
       with:
-        name: values.json
-        path: values.json
+        name: values-${{ inputs.environment }}.yaml
+        path: values-${{ inputs.environment }}.yaml
 
-    # - name: Sync ArgoCD calling webhook
-    #   shell: bash
-    #   run: |
-        
+    - name: Generate manifest
+      shell: bash
+      run: |
+        helm template -f values-${{ inputs.environment }}.yaml . > manifest-${{ inputs.environment }}.yaml
+
+    - name: Archive manifest
+      uses: actions/upload-artifact@v2
+      with:
+        name: manifest-${{ inputs.environment }}.yaml
+        path: manifest-${{ inputs.environment }}.yaml
+
+    - name: Apply manifest
+      shell: bash
+      run: |
+        kubectl apply -f manifest-${{ inputs.environment }}.yaml
 
     # - name: Wait for Deployment
     #   shell: bash
     #   run: |
-
+    #     DEPLOYMENTS=$(cat manifests-${{ inputs.environment }}.yml | yq eval-all '.metadata.name')
+    #     kubectl -n $NAMESPACE rollout status deployment 
     

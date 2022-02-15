@@ -1,6 +1,7 @@
 import generate from "@socialgouv/env-slug"
+import yaml from "js-yaml"
 
-const env: NodeJS.ProcessEnv = process.env;
+const env = process.env
 
 const {
   SOCIALGOUV_PRODUCTION,
@@ -12,61 +13,57 @@ const {
   GITHUB_SHA,
   KEEP_ALIVE,
   RANCHER_PROJECT_ID,
-} = env;
+} = env
 
-const repository = GITHUB_REPOSITORY ?? "";
-const gitBranch = GITHUB_REF ?? "";
+const repository = GITHUB_REPOSITORY ?? ""
+const gitBranch = GITHUB_REF ?? ""
 
-const isProduction = Boolean(SOCIALGOUV_PRODUCTION);
-const isPreProduction = Boolean(SOCIALGOUV_PREPRODUCTION);
+const isProduction = Boolean(SOCIALGOUV_PRODUCTION)
+const isPreProduction = Boolean(SOCIALGOUV_PREPRODUCTION)
 
-const keepAlive = Boolean(KEEP_ALIVE);
+const keepAlive = Boolean(KEEP_ALIVE)
 
+const branchName = gitBranch
+  .replace("refs/heads/", "")
+  .replace("refs/tags/", "")
 
-const branchName = gitBranch.replace("refs/heads/", "").replace(
-  "refs/tags/",
-  ""
-);
+const isDev = !isPreProduction && !isProduction
+const isRenovate = branchName.startsWith("renovate")
+const isDestroyable = isDev && !keepAlive
 
-const isDev = !isPreProduction && !isProduction;
-const isRenovate = branchName?.startsWith("renovate");
-const isDestroyable = isDev && !keepAlive;
-
-const ttl = isDestroyable ? (isRenovate ? "1d" : "7d") : "";
-
+const ttl = isDestroyable ? (isRenovate ? "1d" : "7d") : ""
 
 const imageTag = gitBranch.startsWith("refs/tags/")
-? (gitBranch.split("/").pop() ?? "").substring(1)
-: `sha-${GITHUB_SHA}`;
+  ? (gitBranch.split("/").pop() ?? "").substring(1)
+  : `sha-${GITHUB_SHA ?? ""}`
 
-const environmentSlug = generate(branchName);
+const projectName = SOCIALGOUV_PRODUCTION_NAMESPACE || repository.split("/")[1]
 
-const projectName = SOCIALGOUV_PRODUCTION_NAMESPACE || repository.split("/")[1];
-
-const productionNamespace = SOCIALGOUV_PRODUCTION_NAMESPACE || projectName;
-const preProductionNamespace = `${projectName}-preprod`;
-const devNamespace = generate(`${projectName}-${branchName}`);
+const productionNamespace = SOCIALGOUV_PRODUCTION_NAMESPACE || projectName
+const preProductionNamespace = `${projectName}-preprod`
+const devNamespace = generate(`${projectName}-${branchName}`)
 
 const namespace = isProduction
   ? productionNamespace
   : isPreProduction
   ? preProductionNamespace
-  : devNamespace;
+  : devNamespace
 
 const subdomain = isProduction
   ? projectName
   : isPreProduction
   ? `${projectName}-preprod`
-  : devNamespace;
+  : devNamespace
 
-const MAX_HOSTNAME_SIZE = 53;
-const shortenHost = (hostname: string) => hostname.slice(0, MAX_HOSTNAME_SIZE).replace(/-+$/, "");
+const MAX_HOSTNAME_SIZE = 53
+const shortenHost = (hostname: string): string =>
+  hostname.slice(0, MAX_HOSTNAME_SIZE).replace(/-+$/, "")
 
-const domain = SOCIALGOUV_BASE_DOMAIN;
+const domain = SOCIALGOUV_BASE_DOMAIN ?? ""
 
-const host = `${shortenHost(subdomain)}.${domain}`;
+const host = `${shortenHost(subdomain)}.${domain}`
 
-const registry = `ghcr.io/socialgouv/${projectName}`;
+const registry = `ghcr.io/socialgouv/${projectName}`
 
 const rancherProjectId = RANCHER_PROJECT_ID
 
@@ -80,6 +77,9 @@ const values = {
   gitBranch,
   imageTag,
   rancherProjectId,
-};
+}
 
-console.log(JSON.stringify(values, null, 2));
+// const dump = JSON.stringify(values, null, 2)
+const dump: string = yaml.dump(values)
+
+console.log(dump)
