@@ -87,6 +87,8 @@ runs:
         kubectl create -f namespace-${{ inputs.environment }}.yaml || true
         
         NAMESPACE=$(cat namespace-${{ inputs.environment }}.yaml | yq eval-all ".metadata.name")
+        echo "NAMESPACE=$NAMESPACE" >> $GITHUB_ENV
+
         # wait for namespace to be ready
         n=0
         until [ "$n" -ge 10 ]; do
@@ -114,7 +116,7 @@ runs:
       shell: bash
       run: |
         project=${GITHUB_REPOSITORY#*/}
-        kapp --dangerous-override-ownership-of-existing-resources -y deploy -a $project --namespace ${{ env.namespace }} -f manifests-${{ inputs.environment }}.yaml
+        kapp --dangerous-override-ownership-of-existing-resources -y deploy -a $project --namespace $NAMESPACE -f manifests-${{ inputs.environment }}.yaml
 
     - name: Define environment URL
       id: environment-url
