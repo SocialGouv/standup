@@ -1,6 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ""
+    kapp.k14s.io/disable-default-label-scoping-rules: ""
+    kapp.k14s.io/delete-strategy: orphan
   labels:
     app: app
     application: standup
