@@ -1,5 +1,5 @@
-name: "Autodevops deploy using Helm"
-description: "Autodevops deploy Helm"
+name: "Autodevops deploy"
+description: "Autodevops deploy using Helm template and kapp"
 inputs:
   environment:
     default: 'dev'
@@ -29,15 +29,6 @@ runs:
         rancherId: ${{ inputs.rancherId }}
         environment: ${{ inputs.environment }}
         productionNamespace: ${{ inputs.productionNamespace }}
-    
-    - name: Setup action bin PATH
-      shell: bash
-      run: echo "${{ github.action_path }}/bin" >> $GITHUB_PATH
-
-    # - name: Setup action's env vars
-    #   shell: bash
-    #   run: |
-    #     echo "FOO=$FOO" >> $GITHUB_ENV
     
     - name: Setup node
       uses: SocialGouv/actions/util-setup-node@v1
