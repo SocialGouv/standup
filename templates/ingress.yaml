@@ -36,7 +36,7 @@ spec:
         - >-
           {{ .Values.host }}
       {{- if .Values.isProduction }}
-      secretName: wildcard-crt
-      {{- else }}
       secretName: standup-crt
+      {{- else }}
+      secretName: wildcard-crt
       {{- end }}
