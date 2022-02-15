@@ -118,7 +118,7 @@ runs:
       id: environment-url
       shell: bash
       run: |
-        HOSTS=$(cat manifests-${{ inputs.environment }}.yml | yq eval-all '.spec.rules[] .host')
+        HOSTS=$(cat manifests-${{ inputs.environment }}.yaml | yq eval-all '.spec.rules[] .host')
         HOST=$(echo "$HOSTS" | head -n 1)
         echo $HOST
         echo "::set-output name=url::https://$HOST"
@@ -136,4 +136,4 @@ runs:
       uses: SocialGouv/actions/k8s-manifests-debug@v1
       with:
         token: ${{ inputs.token }}
-        path: manifests-${{ inputs.environment }}.yml
+        path: manifests-${{ inputs.environment }}.yaml
