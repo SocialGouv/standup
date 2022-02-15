@@ -14,4 +14,7 @@ metadata:
     component: standup
     owner: standup
     team: standup
+    {{- if not .Values.isProduction }}
+    cert: wildcard
+    {{ .end }}
   name: {{ .Values.namespace }}
