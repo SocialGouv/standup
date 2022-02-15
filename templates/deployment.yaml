@@ -1,22 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    kapp.k14s.io/disable-default-ownership-label-rules: ""
+    kapp.k14s.io/disable-default-label-scoping-rules: ""
+    kapp.k14s.io/delete-strategy: orphan
   labels:
-    app: standup
+    app: app
     application: standup
     owner: standup
     team: standup
-  name: standup
+  name: app
   namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: standup
+      app: app
   template:
     metadata:
       labels:
-        app: standup
+        app: app
         application: standup
         component: nginx
         owner: standup
