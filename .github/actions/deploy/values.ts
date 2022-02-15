@@ -1,8 +1,6 @@
 import generate from "@socialgouv/env-slug"
 import yaml from "js-yaml"
 
-const env = process.env
-
 const {
   ENVIRONMENT,
   NAMESPACE,
@@ -13,7 +11,7 @@ const {
   GITHUB_SHA,
   BASE_DOMAIN,
   KEEP_ALIVE,
-} = env
+} = process.env
 
 const gitBranch = GITHUB_REF ?? ""
 
@@ -71,7 +69,6 @@ const values = {
   rancherProjectId,
 }
 
-// const dump = JSON.stringify(values, null, 2)
 const dump: string = yaml.dump(values)
 
 console.log(dump)
