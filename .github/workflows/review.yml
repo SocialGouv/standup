@@ -44,7 +44,7 @@ jobs:
         imageName: fabrique/${{ env.project }}
         environment:  dev
     
-    - name: Use autodevops deploy
+    - name: Use autodevops to deploy review branch
       uses: ./.github/actions/deploy
       with:
         environment: dev
@@ -52,3 +52,4 @@ jobs:
         socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
         kubeconfig: ${{ secrets.KUBECONFIG }}
         token: ${{ secrets.GITHUB_TOKEN }}
+        imageName: fabrique/${{ env.project }}

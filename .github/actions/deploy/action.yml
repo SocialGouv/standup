@@ -14,6 +14,8 @@ inputs:
     description: "The Rancher project ID, usually secrets.RANCHER_PROJECT_ID"
   socialgouvBaseDomain:
     description: "The base domain name, usually secrets.SOCIALGOUV_BASE_DOMAIN"
+  imageName:
+    description: "The image registry path"
 runs:
   using: "composite"
   steps:
@@ -25,6 +27,8 @@ runs:
       uses: SocialGouv/actions/util-env@v1
       with:
         rancherId: ${{ inputs.rancherId }}
+        environment: ${{ inputs.environment }}
+        productionNamespace: ${{ inputs.productionNamespace }}
     
     - name: Setup action bin PATH
       shell: bash
@@ -43,12 +47,8 @@ runs:
     - name: Generate values file
       shell: bash
       env:
-        ENV: ${{ inputs.environment }}
-        SOCIALGOUV_BASE_DOMAIN: ${{ inputs.socialgouvBaseDomain || env.SOCIALGOUV_BASE_DOMAIN }}
-        SOCIALGOUV_PRODUCTION_NAMESPACE: ${{ inputs.productionNamespace }}
-        SOCIALGOUV_PRODUCTION: ${{ inputs.environment == 'prod' && true || '' }}
-        SOCIALGOUV_PREPRODUCTION: ${{ inputs.environment == 'preprod' && true || '' }}
-        RANCHER_PROJECT_ID: ${{ inputs.rancherId || env.RANCHER_PROJECT_ID }}
+        BASE_DOMAIN: ${{ inputs.socialgouvBaseDomain }}
+        IMAGE_NAME: ${{ inputs.imageName }}
       run: yarn --cwd ${{ github.action_path }} run -s values > values-${{ inputs.environment }}.yaml
 
     - name: Archive values
@@ -86,16 +86,13 @@ runs:
 
         kubectl create -f namespace-${{ inputs.environment }}.yaml || true
         
-        NAMESPACE=$(cat namespace-${{ inputs.environment }}.yaml | yq eval-all ".metadata.name")
-        echo "NAMESPACE=$NAMESPACE" >> $GITHUB_ENV
-
         # wait for namespace to be ready
         n=0
         until [ "$n" -ge 10 ]; do
           command && break  # substitute your command here
           namespaceStatus=$(kubectl get ns $NAMESPACE -o json | jq .status.phase -r)
           [ $namespaceStatus == "Active" ] && break
-          n=$((n+1)) 
+          n=$((n+1))
           sleep 1
         done
 
@@ -115,8 +112,7 @@ runs:
     - name: Apply manifests
       shell: bash
       run: |
-        project=${GITHUB_REPOSITORY#*/}
-        kapp --dangerous-override-ownership-of-existing-resources -y deploy -a $project --namespace $NAMESPACE -f manifests-${{ inputs.environment }}.yaml
+        kapp --dangerous-override-ownership-of-existing-resources -y deploy -a $PROJECT_NAME --namespace $NAMESPACE -f manifests-${{ inputs.environment }}.yaml
 
     - name: Define environment URL
       id: environment-url
@@ -141,5 +137,3 @@ runs:
       with:
         token: ${{ inputs.token }}
         path: manifests-${{ inputs.environment }}.yml
-      env:
-        RANCHER_PROJECT_ID: ${{ inputs.rancherId }}
