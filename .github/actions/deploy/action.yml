@@ -6,6 +6,8 @@ inputs:
     description: "The deployment environment (dev | preprod | prod)"
   kubeconfig:
     description: "The Kubernetes authentication configuration"
+  token:
+    description: "The Github authentication token"
   productionNamespace:
     description: "Override production namesapce"
   rancherId:
@@ -58,13 +60,19 @@ runs:
     - name: Generate manifest
       shell: bash
       run: |
-        helm template -f values-${{ inputs.environment }}.yaml . > manifest-${{ inputs.environment }}.yaml
+        helm template -f values-${{ inputs.environment }}.yaml . > manifests-${{ inputs.environment }}.yaml
 
     - name: Archive manifest
       uses: actions/upload-artifact@v2
       with:
-        name: manifest-${{ inputs.environment }}.yaml
-        path: manifest-${{ inputs.environment }}.yaml
+        name: manifests-${{ inputs.environment }}.yaml
+        path: manifests-${{ inputs.environment }}.yaml
+
+    - name: Install Kapp
+      uses: vmware-tanzu/carvel-setup-action@v1
+      with:
+        only: kapp
+        token: ${{ inputs.token }}
 
     - name: Write kubeconfig
       uses: SocialGouv/actions/util-write-kubeconfig@v1
@@ -74,8 +82,8 @@ runs:
     - name: Create k8s namespace
       shell: bash
       run: |
-        cat manifest-${{ inputs.environment }}.yaml | yq eval 'select(.kind=="Namespace")' - > namespace-${{ inputs.environment }}.yaml
-        
+        cat manifests-${{ inputs.environment }}.yaml | yq eval 'select(.kind=="Namespace")' - > namespace-${{ inputs.environment }}.yaml
+
         kubectl create -f namespace-${{ inputs.environment }}.yaml || true
         
         NAMESPACE=$(cat namespace-${{ inputs.environment }}.yaml | yq eval-all ".metadata.name")
@@ -89,16 +97,47 @@ runs:
           sleep 1
         done
 
-    - name: Apply manifest
-      shell: bash
-      run: |
-        kubectl apply -f manifest-${{ inputs.environment }}.yaml
+    # - name: Apply manifests
+    #   shell: bash
+    #   run: |
+    #     kubectl apply -f manifests-${{ inputs.environment }}.yaml
 
-    - name: Wait for Deployment
+    # - name: Wait for Deployment
+    #   shell: bash
+    #   run: |
+    #     DEPLOYMENTS=$(cat manifests-${{ inputs.environment }}.yaml | yq eval-all 'select(.kind=="Deployment").metadata.name' -)
+    #     for DEPLOYMENT in $(echo $DEPLOYMENTS | tr "\-\-\-" "\n"); do
+    #       kubectl -n $NAMESPACE rollout status --timeout= deployment $DEPLOYMENT
+    #     done
+    
+    - name: Apply manifests
       shell: bash
       run: |
-        DEPLOYMENTS=$(cat manifest-${{ inputs.environment }}.yaml | yq eval-all 'select(.kind=="Deployment").metadata.name' -)
-        for DEPLOYMENT in $(echo $DEPLOYMENTS | tr "\-\-\-" "\n"); do
-          kubectl -n $NAMESPACE rollout status deployment $DEPLOYMENT
-        done
-    
+        project=${GITHUB_REPOSITORY#*/}
+        kapp --dangerous-override-ownership-of-existing-resources -y deploy -a $project --namespace ${{ env.namespace }} -f manifests-${{ inputs.environment }}.yaml
+
+    - name: Define environment URL
+      id: environment-url
+      shell: bash
+      run: |
+        HOSTS=$(cat manifests-${{ inputs.environment }}.yml | yq eval-all '.spec.rules[] .host')
+        HOST=$(echo "$HOSTS" | head -n 1)
+        echo $HOST
+        echo "::set-output name=url::https://$HOST"
+
+    - name: Notify deployment end
+      uses: bobheadxi/deployments@v0.4.3
+      with:
+        step: finish
+        status: ${{ job.status }}
+        token: ${{ inputs.token }}
+        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+        env_url: ${{ steps.environment-url.outputs.url }}
+
+    - name: Debug manifests
+      uses: SocialGouv/actions/k8s-manifests-debug@v1
+      with:
+        token: ${{ inputs.token }}
+        path: manifests-${{ inputs.environment }}.yml
+      env:
+        RANCHER_PROJECT_ID: ${{ inputs.rancherId }}
