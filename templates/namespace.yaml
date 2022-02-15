@@ -16,5 +16,5 @@ metadata:
     team: standup
     {{- if not .Values.isProduction }}
     cert: wildcard
-    {{ .end }}
+    {{- end }}
   name: {{ .Values.namespace }}
