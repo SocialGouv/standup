@@ -3,7 +3,7 @@ host:
 registry:
 imageTag: 
 ttl: 
-rancherProjectId: 
-gitBranch: 
+rancherProjectId: my-cluser-id:my-project-id
+gitBranch: my-awesome-branch
 isProduction: false
 isPreProduction: false
