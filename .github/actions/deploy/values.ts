@@ -9,14 +9,12 @@ const {
   PROJECT_NAME,
   RANCHER_PROJECT_ID,
   IMAGE_NAME,
-  GITHUB_REPOSITORY,
   GITHUB_REF,
   GITHUB_SHA,
   BASE_DOMAIN,
   KEEP_ALIVE,
 } = env
 
-const repository = GITHUB_REPOSITORY ?? ""
 const gitBranch = GITHUB_REF ?? ""
 
 const isProduction = ENVIRONMENT === "prod"
@@ -40,9 +38,8 @@ const imageTag = gitBranch.startsWith("refs/tags/")
   ? (gitBranch.split("/").pop() ?? "").substring(1)
   : `sha-${sha}`
 
-const projectName = PROJECT_NAME
-
-const namespace = NAMESPACE
+const projectName = PROJECT_NAME ?? ""
+const namespace = NAMESPACE ?? ""
 
 const subdomain = isProduction
   ? projectName
