@@ -4,7 +4,7 @@ metadata:
   annotations:
     {{- if .Values.ttl }}
     janitor/ttl: {{ .Values.ttl }}
-    {{ -end }}
+    {{ - end }}
     field.cattle.io/projectId: {{ .Values.rancherProjectId }}
     git/branch: {{ .Values.gitBranch }}
     git/remote: SocialGouv/standup
