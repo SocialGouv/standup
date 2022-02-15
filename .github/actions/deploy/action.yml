@@ -64,6 +64,11 @@ runs:
         name: manifest-${{ inputs.environment }}.yaml
         path: manifest-${{ inputs.environment }}.yaml
 
+    - name: Write kubeconfig
+      uses: SocialGouv/actions/util-write-kubeconfig@v1
+      with:
+        kubeconfig: ${{ inputs.kubeconfig }}
+
     - name: Apply manifest
       shell: bash
       run: |
