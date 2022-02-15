@@ -6,7 +6,7 @@ metadata:
     {{- if .Values.isProduction }}
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/tls-acme: 'true'
-    {{ -end }}
+    {{- end }}
   labels:
     app: standup
     application: standup
