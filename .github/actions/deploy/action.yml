@@ -4,6 +4,8 @@ inputs:
   environment:
     default: 'dev'
     description: "The deployment environment (dev | preprod | prod)"
+  kubeconfig:
+    description: "The Kubernetes authentication configuration"
   productionNamespace:
     description: "Override production namesapce"
   rancherId:
