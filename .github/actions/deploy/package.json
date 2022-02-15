@@ -3,11 +3,9 @@
   "license": "MIT",
   "dependencies": {
     "@socialgouv/env-slug": "^1.2.2",
-    "gomplate": "^3.10.0",
     "js-yaml": "^4.1.0"
   },
   "scripts": {
-    "postinstall": "ln -s ../gomplate/node_modules/.bin/gomplate node_modules/.bin/gomplate",
     "values": "ts-node --skip-project values.ts",
     "pre-commit": "lint-staged",
     "lint": "eslint ."

@@ -71,14 +71,34 @@ runs:
       with:
         kubeconfig: ${{ inputs.kubeconfig }}
 
+    - name: Create k8s namespace
+      shell: bash
+      run: |
+        cat manifest-${{ inputs.environment }}.yaml | yq eval 'select(.kind=="Namespace")' - > namespace-${{ inputs.environment }}.yaml
+        
+        kubectl create -f namespace-${{ inputs.environment }}.yaml || true
+        
+        NAMESPACE=$(cat namespace-${{ inputs.environment }}.yaml | yq eval-all ".metadata.name")
+        # wait for namespace to be ready
+        n=0
+        until [ "$n" -ge 10 ]; do
+          command && break  # substitute your command here
+          namespaceStatus=$(kubectl get ns $NAMESPACE -o json | jq .status.phase -r)
+          [ $namespaceStatus == "Active" ] && break
+          n=$((n+1)) 
+          sleep 1
+        done
+
     - name: Apply manifest
       shell: bash
       run: |
         kubectl apply -f manifest-${{ inputs.environment }}.yaml
 
-    # - name: Wait for Deployment
-    #   shell: bash
-    #   run: |
-    #     DEPLOYMENTS=$(cat manifests-${{ inputs.environment }}.yml | yq eval-all '.metadata.name')
-    #     kubectl -n $NAMESPACE rollout status deployment 
+    - name: Wait for Deployment
+      shell: bash
+      run: |
+        DEPLOYMENTS=$(cat manifest-${{ inputs.environment }}.yaml | yq eval-all 'select(.kind=="Deployment").metadata.name' -)
+        for DEPLOYMENT in $(echo $DEPLOYMENTS | tr "\-\-\-" "\n"); do
+          kubectl -n $NAMESPACE rollout status deployment $DEPLOYMENT
+        done
     
