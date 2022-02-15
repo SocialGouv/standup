@@ -33,9 +33,11 @@ const isDestroyable = isDev && !keepAlive
 
 const ttl = isDestroyable ? (isRenovate ? "1d" : "7d") : ""
 
+const sha = GITHUB_SHA ?? ""
+const shortSha = sha.slice(0, 7)
 const imageTag = gitBranch.startsWith("refs/tags/")
   ? (gitBranch.split("/").pop() ?? "").substring(1)
-  : `sha-${GITHUB_SHA ?? ""}`
+  : `sha-${shortSha}`
 
 const projectName = SOCIALGOUV_PRODUCTION_NAMESPACE || repository.split("/")[1]
 
