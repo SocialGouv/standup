@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/tls-acme: 'true'
     {{- end }}
   labels:
-    app: standup
+    app: app
     application: standup
     component: nginx
     owner: standup
