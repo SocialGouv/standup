@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: netpol-{{ Values.namespace }}
-  namespace: {{ Values.namespace }}
+  name: netpol-{{ .Values.namespace }}
+  namespace: {{ .Values.namespace }}
 spec:
   ingress:
     - from:
