@@ -8,7 +8,6 @@ metadata:
     field.cattle.io/projectId: {{ .Values.rancherProjectId }}
     git/branch: {{ .Values.gitBranch }}
   labels:
-    azure-pg-admin-user: {{ .Chart.Name }}
     application: {{ .Chart.Name }}
     {{- if not .Values.isProduction }}
     cert: wildcard
