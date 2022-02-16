@@ -9,14 +9,11 @@ metadata:
     {{- end }}
   labels:
     app: app
-    application: standup
-    component: nginx
-    owner: standup
-    team: standup
+    application: {{ .Chart.Name }}
     {{- if not .Values.isProduction }}
     cert: wildcard
     {{- end }}
-  name: standup
+  name: app
   namespace: {{ .Values.namespace }}
 spec:
   rules:
@@ -26,7 +23,7 @@ spec:
         paths:
           - backend:
               service:
-                name: standup
+                name: app
                 port:
                   name: http
             path: /
@@ -36,7 +33,7 @@ spec:
         - >-
           {{ .Values.host }}
       {{- if .Values.isProduction }}
-      secretName: standup-crt
+      secretName: {{ .Chart.Name }}-crt
       {{- else }}
       secretName: wildcard-crt
       {{- end }}

@@ -7,10 +7,8 @@ metadata:
     kapp.k14s.io/delete-strategy: orphan
   labels:
     app: app
-    application: standup
-    owner: standup
-    team: standup
-  name: standup
+    application: {{ .Chart.Name }}
+  name: app
   namespace: {{ .Values.namespace }}
 spec:
   ports:

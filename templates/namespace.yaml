@@ -7,13 +7,9 @@ metadata:
     {{- end }}
     field.cattle.io/projectId: {{ .Values.rancherProjectId }}
     git/branch: {{ .Values.gitBranch }}
-    git/remote: SocialGouv/standup
   labels:
-    azure-pg-admin-user: standup
-    application: standup
-    component: standup
-    owner: standup
-    team: standup
+    azure-pg-admin-user: {{ .Chart.Name }}
+    application: {{ .Chart.Name }}
     {{- if not .Values.isProduction }}
     cert: wildcard
     {{- end }}
