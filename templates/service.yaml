@@ -13,8 +13,8 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 80
-      targetPort: 80
+      port: {{ .Values.appPort }}
+      targetPort: {{ .Values.appPort }}
   selector:
     app: app
   type: ClusterIP

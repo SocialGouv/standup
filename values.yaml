@@ -7,3 +7,4 @@ rancherProjectId: my-cluser-id:my-project-id
 gitBranch: my-awesome-branch
 isProduction: false
 isPreProduction: false
+appPort: 80
