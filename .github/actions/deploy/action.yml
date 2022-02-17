@@ -16,6 +16,10 @@ inputs:
     description: "The base domain name, usually secrets.SOCIALGOUV_BASE_DOMAIN"
   imageName:
     description: "The image registry path"
+outputs:
+  url:
+    description: "Main deployment URL"
+    value: ${{ steps.environment-url.outputs.url }}
 runs:
   using: "composite"
   steps:
