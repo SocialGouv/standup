@@ -104,7 +104,7 @@ runs:
         kustomize build \
           --load-restrictor=LoadRestrictionsNone \
           "env/$ENVIRONMENT" \
-          > manifests.yaml
+          > ${{ env.AUTODEVOPS_PATH }}/manifests.yaml
 
     - name: Archive manifest
       uses: actions/upload-artifact@v2
@@ -136,6 +136,7 @@ runs:
 
     - name: Create k8s namespace
       shell: bash
+      working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
         cat manifests.yaml | yq eval 'select(.kind=="Namespace")' - > namespace.yaml
 
@@ -166,6 +167,7 @@ runs:
     
     - name: Apply manifests and wait for sync using kapp
       shell: bash
+      working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
         kapp \
           deploy \
@@ -178,6 +180,7 @@ runs:
     - name: Define environment URL
       id: environment-url
       shell: bash
+      working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
         HOSTS=$(cat manifests.yaml | yq eval-all '.spec.rules[] .host')
         HOST=$(echo "$HOSTS" | head -n 1)
