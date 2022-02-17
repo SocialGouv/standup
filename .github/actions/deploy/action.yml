@@ -73,16 +73,13 @@ runs:
       shell: bash
       working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
-        SOCIALGOUV_ENV_PATH=".socialgouv/environments/$ENVIRONMENT"
-        if [ -d "$SOCIALGOUV_ENV_PATH" ]; then
-          for filename in $SOCIALGOUV_ENV_PATH/*.{yml,yaml}; do
-            [ -f "$filename" ] || continue
-            echo "merging $f to manifests templates"
-            target="$DEST/templates/$(basename $filename)"
-            cp "$filename" "$target"
-            yq -i e '.metadata.namespace |= "'$NAMESPACE'"' "$target"
-          done
-        fi
+        for filename in environments/$ENVIRONMENT/*.{yml,yaml}; do
+          [ -f "$filename" ] || continue
+          echo "merging $f to manifests templates"
+          target="$DEST/templates/$(basename $filename)"
+          cp "$filename" "$target"
+          yq -i e '.metadata.namespace |= "'$NAMESPACE'"' "$target"
+        done
     
     - name: Build base manifest using helm
       shell: bash
@@ -104,13 +101,13 @@ runs:
         kustomize build \
           --load-restrictor=LoadRestrictionsNone \
           "env/$ENVIRONMENT" \
-          > ${{ env.AUTODEVOPS_PATH }}/manifests.yaml
+          > manifests.yaml
 
     - name: Archive manifest
       uses: actions/upload-artifact@v2
       with:
         name: manifests-${{ inputs.environment }}.yaml
-        path: manifests.yaml
+        path: ${{ env.AUTODEVOPS_PATH }}/manifests.yaml
     
     # end building manifests
 
