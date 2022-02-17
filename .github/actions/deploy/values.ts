@@ -66,7 +66,7 @@ const values = {
     registry,
     gitBranch,
     rancherProjectId,
-  }
+  },
   app: {
     host,
     imageTag,
