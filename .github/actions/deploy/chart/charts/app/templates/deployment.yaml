@@ -55,6 +55,6 @@ spec:
             periodSeconds: 5
           envFrom:
             - secretRef:
-                name: app-sealed-secret
+                name: {{ .Values.envSecretName }}
             - configMapRef:
-                name: app-configmap
+                name: {{ .Values.envConfigName }}

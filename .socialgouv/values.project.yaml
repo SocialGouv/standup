@@ -3,3 +3,8 @@ global:
   
 components:
   app: true
+
+app:
+  envSecretName: standup-sealed-secret
+  envConfigName: standup-configmap
+  appPort: 80
