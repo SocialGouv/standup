@@ -60,10 +60,13 @@ runs:
       working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
         cp -r "$GITHUB_ACTION_PATH/chart/." .
-        for filename in $AUTODEVOPS_PATH/kustomizations/*/kustomization.yaml; do
+        
+        shopt -s globstar
+        for filename in $AUTODEVOPS_PATH/**/kustomization.yaml; do
           [ -f "$filename" ] || continue
           cp "$filename" "$(dirname $filename)/kustomization.autodevops.yaml"
         done
+
         cp -r "$GITHUB_WORKSPACE/.socialgouv/." .
         
     - name: Merge .socialgouv env manifests
@@ -98,8 +101,10 @@ runs:
       shell: bash
       working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
-        mv manifests.base.yaml kustomizations/base/
-        kustomize build "kustomizations/$ENVIRONMENT" > manifests.yaml
+        kustomize build \
+          --load_restrictor=none \
+          "env/$ENVIRONMENT" \
+          > manifests.yaml
 
     - name: Archive manifest
       uses: actions/upload-artifact@v2
