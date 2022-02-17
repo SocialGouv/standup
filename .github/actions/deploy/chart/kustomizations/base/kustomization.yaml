@@ -1,5 +1,5 @@
 resources:
-- manifests.base.yaml
+- ./../../manifests.base.yaml
 
 patches:
 - target:
