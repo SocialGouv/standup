@@ -1,0 +1,5 @@
+global:
+  projectName: standup
+  
+components:
+  app: true

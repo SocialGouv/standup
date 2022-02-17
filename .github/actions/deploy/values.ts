@@ -58,15 +58,19 @@ const registry = `ghcr.io/socialgouv/${imageName ?? projectName}`
 const rancherProjectId = RANCHER_PROJECT_ID
 
 const values = {
-  isProduction,
-  isPreProduction,
-  ttl,
-  namespace,
-  host,
-  registry,
-  gitBranch,
-  imageTag,
-  rancherProjectId,
+  global: {
+    isProduction,
+    isPreProduction,
+    ttl,
+    namespace,
+    registry,
+    gitBranch,
+    rancherProjectId,
+  }
+  app: {
+    host,
+    imageTag,
+  }
 }
 
 const dump: string = yaml.dump(values)

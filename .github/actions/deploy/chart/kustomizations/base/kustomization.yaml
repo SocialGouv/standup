@@ -1,0 +1,10 @@
+resources:
+- manifests.base.yaml
+
+patches:
+- target:
+    kind: Deployment
+  path: ./kapp-annotations.yaml
+- target:
+    kind: Service
+  path: ./kapp-annotations.yaml

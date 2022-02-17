@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    component: app
+    application: {{ .Values.global.projectName }}
+  name: app
+  namespace: {{ .Values.global.namespace }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.appPort }}
+      targetPort: {{ .Values.appPort }}
+  selector:
+    component: app
+  type: ClusterIP

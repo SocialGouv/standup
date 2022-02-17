@@ -1,30 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kapp.k14s.io/disable-default-ownership-label-rules: ""
-    kapp.k14s.io/disable-default-label-scoping-rules: ""
-    kapp.k14s.io/delete-strategy: orphan
   labels:
-    app: app
-    application: {{ .Chart.Name }}
+    component: app
+    application: {{ .Values.global.projectName }}
   name: app
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.global.namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app
+      component: app
   template:
     metadata:
       labels:
-        app: app
-        application: {{ .Chart.Name }}
-        cert: wildcard
+        component: app
+        application: {{ .Values.global.projectName }}
     spec:
       containers:
-        - image: >-
-            {{ .Values.registry }}:{{ .Values.imageTag }}
+        - image: {{ .Values.global.registry }}:{{ .Values.imageTag }}
           livenessProbe:
             failureThreshold: 6
             httpGet:

@@ -35,29 +35,72 @@ runs:
       with:
         actionPath: ${{ github.action_path }}
 
+    # start building manifests
+
     - name: Generate values file
       shell: bash
       env:
         BASE_DOMAIN: ${{ inputs.socialgouvBaseDomain }}
         IMAGE_NAME: ${{ inputs.imageName }}
-      run: yarn --cwd ${{ github.action_path }} run -s values > values-${{ inputs.environment }}.yaml
+      working-directory: ${{ env.AUTODEVOPS_PATH }}
+      run: yarn --cwd ${{ github.action_path }} run -s values > values.env.yaml
 
     - name: Archive values
       uses: actions/upload-artifact@v2
       with:
-        name: values-${{ inputs.environment }}.yaml
-        path: values-${{ inputs.environment }}.yaml
+        name: values.env-${{ inputs.environment }}.yaml
+        path: ${{ env.AUTODEVOPS_PATH }}/values.env.yaml
 
-    - name: Generate manifest
+    - name: Prepare charts and overlays
       shell: bash
+      working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
-        helm template -f values-${{ inputs.environment }}.yaml . > manifests-${{ inputs.environment }}.yaml
+        mkdir -p $AUTODEVOPS_PATH
+        cp -r "$GITHUB_ACTION_PATH/chart/." .
+        cp -r "$GITHUB_WORKSPACE/.socialgouv/." .
+        
+    - name: Merge .socialgouv env manifests
+      shell: bash
+      working-directory: ${{ env.AUTODEVOPS_PATH }}
+      run: |
+        SOCIALGOUV_ENV_PATH=".socialgouv/environments/$ENVIRONMENT"
+        if [ -d "$SOCIALGOUV_ENV_PATH" ]; then
+          for filename in $SOCIALGOUV_ENV_PATH/*.{yml,yaml}; do
+            [ -f "$filename" ] || continue
+            echo "merging $f to manifests templates"
+            target="$DEST/templates/$(basename $filename)"
+            cp "$filename" "$target"
+            yq -i e '.metadata.namespace |= "'$NAMESPACE'"' "$target"
+          done
+        fi
+    
+    - name: Build base manifest using helm
+      shell: bash
+      working-directory: ${{ env.AUTODEVOPS_PATH }}
+      run: |
+        HELM_TEMPLATE_ARGS=""
+        if [ -f "values.project.yaml" ]; then
+          HELM_TEMPLATE_ARGS+=" -f values.project.yaml"
+        fi
+        HELM_TEMPLATE_ARGS+=" -f values.env.yaml"
+
+        helm template $HELM_TEMPLATE_ARGS . \
+          > manifests.base.yaml
+
+    - name: Build final manifests using kustomize
+      shell: bash
+      working-directory: ${{ env.AUTODEVOPS_PATH }}
+      run: |
+        kustomize build "kustomizations/$ENVIRONMENT" > manifests.yaml
+
 
     - name: Archive manifest
       uses: actions/upload-artifact@v2
       with:
         name: manifests-${{ inputs.environment }}.yaml
-        path: manifests-${{ inputs.environment }}.yaml
+        path: manifests.yaml
+    
+    # end building manifests
 
     - name: Notify deployment start
       uses: bobheadxi/deployments@v0.4.3
@@ -82,9 +125,9 @@ runs:
     - name: Create k8s namespace
       shell: bash
       run: |
-        cat manifests-${{ inputs.environment }}.yaml | yq eval 'select(.kind=="Namespace")' - > namespace-${{ inputs.environment }}.yaml
+        cat manifests.yaml | yq eval 'select(.kind=="Namespace")' - > namespace.yaml
 
-        kubectl create -f namespace-${{ inputs.environment }}.yaml || true
+        kubectl create -f namespace.yaml || true
         
         # wait for namespace to be ready
         n=0
@@ -99,26 +142,32 @@ runs:
     # - name: Apply manifests
     #   shell: bash
     #   run: |
-    #     kubectl apply -f manifests-${{ inputs.environment }}.yaml
+    #     kubectl apply -f manifests.yaml
 
     # - name: Wait for Deployment
     #   shell: bash
     #   run: |
-    #     DEPLOYMENTS=$(cat manifests-${{ inputs.environment }}.yaml | yq eval-all 'select(.kind=="Deployment").metadata.name' -)
+    #     DEPLOYMENTS=$(cat manifests.yaml | yq eval-all 'select(.kind=="Deployment").metadata.name' -)
     #     for DEPLOYMENT in $(echo $DEPLOYMENTS | tr "\-\-\-" "\n"); do
     #       kubectl -n $NAMESPACE rollout status --timeout= deployment $DEPLOYMENT
     #     done
     
-    - name: Apply manifests
+    - name: Apply manifests and wait for sync using kapp
       shell: bash
       run: |
-        kapp --dangerous-override-ownership-of-existing-resources -y deploy -a $PROJECT_NAME --namespace $NAMESPACE -f manifests-${{ inputs.environment }}.yaml
+        kapp \
+          deploy \
+          --app $PROJECT_NAME \
+          --namespace $NAMESPACE \
+          --logs-all \
+          --yes \
+          -f manifests.yaml
 
     - name: Define environment URL
       id: environment-url
       shell: bash
       run: |
-        HOSTS=$(cat manifests-${{ inputs.environment }}.yaml | yq eval-all '.spec.rules[] .host')
+        HOSTS=$(cat manifests.yaml | yq eval-all '.spec.rules[] .host')
         HOST=$(echo "$HOSTS" | head -n 1)
         echo $HOST
         echo "::set-output name=url::https://$HOST"
@@ -136,4 +185,4 @@ runs:
       uses: SocialGouv/actions/k8s-manifests-debug@v1
       with:
         token: ${{ inputs.token }}
-        path: manifests-${{ inputs.environment }}.yaml
+        path: manifests.yaml
