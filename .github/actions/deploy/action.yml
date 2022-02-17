@@ -102,7 +102,7 @@ runs:
       working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
         kustomize build \
-          --load_restrictor=none \
+          --load-restrictor=LoadRestrictionsNone \
           "env/$ENVIRONMENT" \
           > manifests.yaml
 
