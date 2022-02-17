@@ -75,8 +75,8 @@ runs:
       run: |
         for filename in environments/$ENVIRONMENT/*.{yml,yaml}; do
           [ -f "$filename" ] || continue
-          echo "merging $f to manifests templates"
-          target="$DEST/templates/$(basename $filename)"
+          echo "merging $filename to manifests templates"
+          target="templates/$(basename $filename)"
           cp "$filename" "$target"
           yq -i e '.metadata.namespace |= "'$NAMESPACE'"' "$target"
         done
