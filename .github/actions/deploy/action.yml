@@ -98,8 +98,8 @@ runs:
       shell: bash
       working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
+        mv manifests.base.yaml kustomizations/base/
         kustomize build "kustomizations/$ENVIRONMENT" > manifests.yaml
-
 
     - name: Archive manifest
       uses: actions/upload-artifact@v2
