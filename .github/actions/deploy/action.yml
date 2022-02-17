@@ -197,4 +197,4 @@ runs:
       uses: SocialGouv/actions/k8s-manifests-debug@v1
       with:
         token: ${{ inputs.token }}
-        path: manifests.yaml
+        path: ${{ env.AUTODEVOPS_PATH }}/manifests.yaml
