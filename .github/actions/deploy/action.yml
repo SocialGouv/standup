@@ -59,8 +59,11 @@ runs:
       shell: bash
       working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
-        mkdir -p $AUTODEVOPS_PATH
         cp -r "$GITHUB_ACTION_PATH/chart/." .
+        for filename in $AUTODEVOPS_PATH/kustomizations/*/kustomization.yaml; do
+          [ -f "$filename" ] || continue
+          cp "$filename" "$(dirname $filename)/kustomization.autodevops.yaml"
+        done
         cp -r "$GITHUB_WORKSPACE/.socialgouv/." .
         
     - name: Merge .socialgouv env manifests
