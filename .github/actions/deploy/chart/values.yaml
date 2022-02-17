@@ -6,4 +6,4 @@ global:
 components:
   app: true
 
-app:
+app: {}

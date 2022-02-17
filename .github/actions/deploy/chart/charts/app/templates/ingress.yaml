@@ -4,7 +4,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
   labels:
-    component: app
+    component: {{ .Chart.Name }}
     application: {{ .Values.global.projectName }}
   name: app
   namespace: {{ .Values.global.namespace }}

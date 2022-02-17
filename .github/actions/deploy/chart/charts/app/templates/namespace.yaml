@@ -9,7 +9,4 @@ metadata:
     git/branch: {{ .Values.global.gitBranch }}
   labels:
     application: {{ .Values.global.projectName }}
-    {{- if not .Values.global.isProduction }}
-    cert: wildcard
-    {{- end }}
   name: {{ .Values.global.namespace }}

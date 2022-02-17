@@ -1,0 +1,9 @@
+- op: add
+  path: "/metadata/labels"
+  value:
+    cert: wildcard
+
+patches:
+- target:
+    kind: Namespace
+  path: ./cert-labels.yaml

@@ -1,2 +1,7 @@
 resources:
 - ./../base
+
+patches:
+- target:
+    kind: Namespace
+  path: ../commons/cert-labels.yaml

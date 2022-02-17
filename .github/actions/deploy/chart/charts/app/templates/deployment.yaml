@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    component: app
+    component: {{ .Chart.Name }}
     application: {{ .Values.global.projectName }}
   name: app
   namespace: {{ .Values.global.namespace }}
@@ -10,15 +10,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      component: app
+      component: {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        component: app
+        component: {{ .Chart.Name }}
         application: {{ .Values.global.projectName }}
     spec:
       containers:
-        - image: {{ .Values.global.registry }}:{{ .Values.imageTag }}
+        - image: "{{ .Values.global.registry }}:{{ .Values.imageTag }}"
           livenessProbe:
             failureThreshold: 6
             httpGet:
