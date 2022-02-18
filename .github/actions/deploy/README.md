@@ -1,10 +1,10 @@
-# `socialgouv/actions/autodevops-deploy`
+# `socialgouv/actions/autodevops-helm`
 Deploy application over kubernetes
 
 ## Call it in review, preprod, and prod github workflows
 
 ```yaml
-- uses: SocialGouv/actions/autodevops-deploy@v2
+- uses: SocialGouv/actions/autodevops-helm
   id: deploy
   with:
     environment: "dev"
