@@ -5,6 +5,3 @@
 .next
 .out
 **/node_modules
-/templates
-/Chart.yaml
-/values.yaml
