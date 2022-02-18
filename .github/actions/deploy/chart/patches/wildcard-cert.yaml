@@ -1,4 +1,0 @@
-- op: add
-  path: "/metadata/labels"
-  value:
-    cert: wildcard

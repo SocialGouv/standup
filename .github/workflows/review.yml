@@ -32,22 +32,12 @@ jobs:
     #     imageName: fabrique/${{ env.project }}
     #     rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
     #     socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
-
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Use autodevops build and register
-      uses: SocialGouv/actions/autodevops-build-register@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        project: ${{ env.project }}
-        imageName: fabrique/${{ env.project }}
-        environment:  dev
     
     - name: Use autodevops to deploy review branch
-      uses: ./.github/actions/deploy
+      uses: SocialGouv/actions/autodevops-helm@v1
       with:
         environment: dev
+        project: ${{ env.project }}
         rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
         socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
         kubeconfig: ${{ secrets.KUBECONFIG }}

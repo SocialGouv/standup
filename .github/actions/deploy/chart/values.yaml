@@ -1,9 +1,0 @@
-global:
-  isProduction: false
-  namespace: default
-  projectName: the-awesome
-
-components:
-  app: true
-
-app: {}
