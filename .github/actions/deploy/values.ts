@@ -59,6 +59,7 @@ const rancherProjectId = RANCHER_PROJECT_ID
 
 const values = {
   global: {
+    projectName,
     isProduction,
     isPreProduction,
     ttl,

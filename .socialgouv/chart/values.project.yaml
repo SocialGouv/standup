@@ -1,5 +1,4 @@
-global:
-  projectName: standup
+global: {}
   
 components:
   app: true
