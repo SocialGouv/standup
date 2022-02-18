@@ -100,3 +100,14 @@ patches:
 
 If you think you patches can be reused by other project, contribute to [chart/patches](chart/patches) folder of the action by sharing them.
 
+### Test Helm chart generation
+required:
+- helm v3
+- kustomize v4
+- yq
+- yarn
+- npx
+- node
+- bash >= v4
+
+download and run this script [dev-local.sh](dev-local.sh)

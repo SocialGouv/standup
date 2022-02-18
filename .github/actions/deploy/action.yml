@@ -62,7 +62,7 @@ runs:
         cp -r "$GITHUB_ACTION_PATH/chart/." .
         
         shopt -s globstar
-        for filename in $AUTODEVOPS_PATH/**/kustomization.yaml; do
+        for filename in $AUTODEVOPS_PATH/chart/**/kustomization.yaml; do
           [ -f "$filename" ] || continue
           cp "$filename" "$(dirname $filename)/kustomization.autodevops.yaml"
         done
