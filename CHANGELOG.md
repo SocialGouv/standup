@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/SocialGouv/standup/compare/v1.5.62...v1.6.0) (2022-02-18)
+
+
+### Features
+
+* **autodevops-deploy:** helm template manifests ([#417](https://github.com/SocialGouv/standup/issues/417)) ([63a5989](https://github.com/SocialGouv/standup/commit/63a59892cf00fe641edd29d79dc7d22573c6e1c9))
+
 ## [1.5.62](https://github.com/SocialGouv/standup/compare/v1.5.61...v1.5.62) (2021-12-21)
 
 
