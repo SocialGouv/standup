@@ -67,13 +67,13 @@ runs:
           cp "$filename" "$(dirname $filename)/kustomization.autodevops.yaml"
         done
 
-        cp -r "$GITHUB_WORKSPACE/.socialgouv/." .
+        cp -r "$GITHUB_WORKSPACE/.socialgouv/chart/." .
         
     - name: Merge .socialgouv env manifests
       shell: bash
       working-directory: ${{ env.AUTODEVOPS_PATH }}
       run: |
-        for filename in environments/$ENVIRONMENT/*.{yml,yaml}; do
+        for filename in $GITHUB_WORKSPACE/.socialgouv/environments/$ENVIRONMENT/*.{yml,yaml}; do
           [ -f "$filename" ] || continue
           echo "merging $filename to manifests templates"
           target="templates/$(basename $filename)"
