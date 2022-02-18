@@ -32,3 +32,4 @@ jobs:
         imageName: fabrique/${{ env.project }}
         rancherId: ${{ secrets.RANCHER_PROJECT_ID }}
         socialgouvBaseDomain: ${{ secrets.SOCIALGOUV_BASE_DOMAIN }}
+        
