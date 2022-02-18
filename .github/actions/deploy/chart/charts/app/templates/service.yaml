@@ -9,8 +9,8 @@ metadata:
 spec:
   ports:
     - name: http
-      port: {{ .Values.appPort }}
-      targetPort: {{ .Values.appPort }}
+      port: {{ .Values.containerPort }}
+      targetPort: {{ .Values.containerPort }}
   selector:
     component: {{ .Chart.Name }}
   type: ClusterIP

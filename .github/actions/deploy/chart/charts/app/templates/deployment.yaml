@@ -29,7 +29,7 @@ spec:
             timeoutSeconds: 5
           name: app
           ports:
-            - containerPort: {{ .Values.appPort }}
+            - containerPort: {{ .Values.containerPort }}
               name: http
           readinessProbe:
             failureThreshold: 15

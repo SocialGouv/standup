@@ -7,4 +7,4 @@ components:
 app:
   envSecretName: standup-sealed-secret
   envConfigName: standup-configmap
-  appPort: 80
+  containerPort: 80
