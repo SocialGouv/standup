@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/SocialGouv/standup/compare/v1.6.0...v1.6.1) (2022-02-22)
+
+
+### Bug Fixes
+
+* **ci:** autodevops-helm prod ([#421](https://github.com/SocialGouv/standup/issues/421)) ([8d3a318](https://github.com/SocialGouv/standup/commit/8d3a31803d1a85898f271a62ffd388ac3d008bb6))
+
 # [1.6.0](https://github.com/SocialGouv/standup/compare/v1.5.62...v1.6.0) (2022-02-18)
 
 
