@@ -8,3 +8,4 @@ data:
   HASURA_URL: "https://hasura-carnets.fabrique.social.gouv.fr/v1/graphql"
   MATOMO_SITE_ID: "30"
   MATOMO_URL: "https://matomo.fabrique.social.gouv.fr/"
+  YO: "pouet"
