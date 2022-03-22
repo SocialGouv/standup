@@ -1,9 +1,5 @@
-global: {}
-  
-components:
-  app: true
-
 app:
+  enabled: true
   envSecretName: standup-sealed-secret
   envConfigName: standup-configmap
   containerPort: 80
