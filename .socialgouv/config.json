@@ -1,7 +1,0 @@
-{
-  "name": "standup",
-  "type": "static",
-  "subdomain": "standup",
-  "registry": "ghcr",
-  "project": "fabrique"
-}
