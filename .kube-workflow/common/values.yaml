@@ -1,5 +1,8 @@
 app:
   enabled: true
-  envSecretName: standup-sealed-secret
-  envConfigName: standup-configmap
   containerPort: 80
+  envFrom:
+    - secretRef:
+        name: standup-sealed-secret
+    - configMapRef:
+        name: standup-configmap
