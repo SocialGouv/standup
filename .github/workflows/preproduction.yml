@@ -29,7 +29,7 @@ jobs:
     needs: [register]
     environment:
       name: preproduction
-      url: https://PROJECT-preprod.dev.fabrique.social.gouv.fr
+      url: https://standup-preprod.dev.fabrique.social.gouv.fr
     steps:
     - name: Use kube-workflow deployment
       uses: SocialGouv/kube-workflow@v1
