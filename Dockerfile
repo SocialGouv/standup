@@ -4,8 +4,6 @@ COPY . .
 
 RUN yarn --production --frozen-lockfile --prefer-offline && yarn cache clean
 
-ENV HASURA_URL="%%HASURA_URL%%"
-
 RUN yarn build
 RUN yarn export
 

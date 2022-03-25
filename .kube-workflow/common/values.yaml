@@ -4,5 +4,3 @@ app:
   envFrom:
     - secretRef:
         name: standup-sealed-secret
-    - configMapRef:
-        name: standup-configmap
