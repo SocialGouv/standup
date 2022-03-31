@@ -1,3 +1,17 @@
+## [1.6.3](https://github.com/SocialGouv/standup/compare/v1.6.2...v1.6.3) (2022-03-29)
+
+
+### Bug Fixes
+
+* **end:** add ptit dej emjpm ([50cf313](https://github.com/SocialGouv/standup/commit/50cf3132845da41b829aa1ab6eab2ecc32f39475))
+
+## [1.6.2](https://github.com/SocialGouv/standup/compare/v1.6.1...v1.6.2) (2022-03-28)
+
+
+### Bug Fixes
+
+* update date onboarding ([9842183](https://github.com/SocialGouv/standup/commit/9842183187b650b03e25dcf0c9889634fc4c18f4))
+
 ## [1.6.1](https://github.com/SocialGouv/standup/compare/v1.6.0...v1.6.1) (2022-02-22)
 
 
