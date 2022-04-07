@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/SocialGouv/standup/compare/v1.6.3...v1.6.4) (2022-04-05)
+
+
+### Bug Fixes
+
+* add apero ([70b8f26](https://github.com/SocialGouv/standup/commit/70b8f2612bcf389a304e1b1d08a7b52cced6e437))
+
 ## [1.6.3](https://github.com/SocialGouv/standup/compare/v1.6.2...v1.6.3) (2022-03-29)
 
 
