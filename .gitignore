@@ -1,5 +1,5 @@
-node_modules
-.env
+node_module
+.env.local
 .next
 .secrets.yaml
 out

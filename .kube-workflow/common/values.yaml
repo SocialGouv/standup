@@ -1,0 +1,6 @@
+app:
+  enabled: true
+  containerPort: 8080
+  envFrom:
+    - secretRef:
+        name: standup-sealed-secret
