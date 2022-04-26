@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/SocialGouv/standup/compare/v1.6.4...v1.6.5) (2022-04-26)
+
+
+### Bug Fixes
+
+* annonce onboarding ([477e43c](https://github.com/SocialGouv/standup/commit/477e43cc9d9888cbf171dbdda156e6c57207f0c3))
+
 ## [1.6.4](https://github.com/SocialGouv/standup/compare/v1.6.3...v1.6.4) (2022-04-05)
 
 
