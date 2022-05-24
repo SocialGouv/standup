@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/SocialGouv/standup/compare/v1.6.5...v1.6.6) (2022-05-24)
+
+
+### Bug Fixes
+
+* update slide transverse ([90ad404](https://github.com/SocialGouv/standup/commit/90ad4047f523652ccb7c647b7302b8eac456571c))
+
 ## [1.6.5](https://github.com/SocialGouv/standup/compare/v1.6.4...v1.6.5) (2022-04-26)
 
 
