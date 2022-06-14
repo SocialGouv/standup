@@ -1,3 +1,10 @@
+## [1.6.7](https://github.com/SocialGouv/standup/compare/v1.6.6...v1.6.7) (2022-06-14)
+
+
+### Bug Fixes
+
+* add onboarding note ([3b9eff8](https://github.com/SocialGouv/standup/commit/3b9eff8acd4a8209a0bdca0b21e6f7070adbbea3))
+
 ## [1.6.6](https://github.com/SocialGouv/standup/compare/v1.6.5...v1.6.6) (2022-05-24)
 
 
