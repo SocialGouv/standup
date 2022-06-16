@@ -1,3 +1,10 @@
+## [1.6.8](https://github.com/SocialGouv/standup/compare/v1.6.7...v1.6.8) (2022-06-16)
+
+
+### Bug Fixes
+
+* upgrade nginx ([#430](https://github.com/SocialGouv/standup/issues/430)) ([59f9a0e](https://github.com/SocialGouv/standup/commit/59f9a0e8e6868ec24e7ffed21c3736abf591cfaa))
+
 ## [1.6.7](https://github.com/SocialGouv/standup/compare/v1.6.6...v1.6.7) (2022-06-14)
 
 
