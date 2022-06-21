@@ -1,3 +1,10 @@
+## [1.6.9](https://github.com/SocialGouv/standup/compare/v1.6.8...v1.6.9) (2022-06-21)
+
+
+### Bug Fixes
+
+* report onboarding ([10a7fda](https://github.com/SocialGouv/standup/commit/10a7fda015d85fdbcfbb0e52a30a6bed3bf281cc))
+
 ## [1.6.8](https://github.com/SocialGouv/standup/compare/v1.6.7...v1.6.8) (2022-06-16)
 
 
