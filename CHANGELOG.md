@@ -1,3 +1,10 @@
+## [1.6.10](https://github.com/SocialGouv/standup/compare/v1.6.9...v1.6.10) (2022-07-19)
+
+
+### Bug Fixes
+
+* ending ([6dbfc8c](https://github.com/SocialGouv/standup/commit/6dbfc8c8692a297a11006cbd44d32a38ffab784b))
+
 ## [1.6.9](https://github.com/SocialGouv/standup/compare/v1.6.8...v1.6.9) (2022-06-21)
 
 
