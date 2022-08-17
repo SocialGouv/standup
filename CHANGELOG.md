@@ -1,3 +1,10 @@
+## [1.6.12](https://github.com/SocialGouv/standup/compare/v1.6.11...v1.6.12) (2022-08-17)
+
+
+### Bug Fixes
+
+* slide ([e435fb3](https://github.com/SocialGouv/standup/commit/e435fb3555f1afe606f17588f0ef29ac73ba693f))
+
 ## [1.6.11](https://github.com/SocialGouv/standup/compare/v1.6.10...v1.6.11) (2022-08-02)
 
 
