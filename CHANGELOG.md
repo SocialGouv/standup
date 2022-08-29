@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/SocialGouv/standup/compare/v1.6.12...v1.7.0) (2022-08-29)
+
+
+### Features
+
+* exclude some teams from the posts list ([#431](https://github.com/SocialGouv/standup/issues/431)) ([2afb571](https://github.com/SocialGouv/standup/commit/2afb571192c7ec7382a82e4f3c606c8aecbf0799))
+
 ## [1.6.12](https://github.com/SocialGouv/standup/compare/v1.6.11...v1.6.12) (2022-08-17)
 
 
