@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/SocialGouv/standup/compare/v1.7.0...v1.7.1) (2022-09-13)
+
+
+### Bug Fixes
+
+* show picnic ([f5cf196](https://github.com/SocialGouv/standup/commit/f5cf1964b263042be2a502909c310a21065dc597))
+
 # [1.7.0](https://github.com/SocialGouv/standup/compare/v1.6.12...v1.7.0) (2022-08-29)
 
 
