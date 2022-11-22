@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/SocialGouv/standup/compare/v1.7.3...v1.7.4) (2022-11-22)
+
+
+### Bug Fixes
+
+* add apero noel ([be6fcfb](https://github.com/SocialGouv/standup/commit/be6fcfbf94d997449e34a10ac24b6ff8f3d4d229))
+
 ## [1.7.3](https://github.com/SocialGouv/standup/compare/v1.7.2...v1.7.3) (2022-11-22)
 
 
