@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/SocialGouv/standup/compare/v1.7.5...v1.7.6) (2022-12-20)
+
+
+### Bug Fixes
+
+* dernier slide Noël by Vincent ([#442](https://github.com/SocialGouv/standup/issues/442)) ([12ee73f](https://github.com/SocialGouv/standup/commit/12ee73f1298d4891988701988b7e1f90dadfc287))
+
 ## [1.7.5](https://github.com/SocialGouv/standup/compare/v1.7.4...v1.7.5) (2022-11-28)
 
 
