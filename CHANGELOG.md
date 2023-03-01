@@ -1,3 +1,10 @@
+## [1.7.10](https://github.com/SocialGouv/standup/compare/v1.7.9...v1.7.10) (2023-03-01)
+
+
+### Bug Fixes
+
+* release ([a7840cf](https://github.com/SocialGouv/standup/commit/a7840cfb1beb452b45a6e0631da23ed19f6efcfc))
+
 ## [1.7.9](https://github.com/SocialGouv/standup/compare/v1.7.8...v1.7.9) (2023-02-14)
 
 
