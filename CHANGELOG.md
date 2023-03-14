@@ -1,3 +1,10 @@
+## [1.7.11](https://github.com/SocialGouv/standup/compare/v1.7.10...v1.7.11) (2023-03-14)
+
+
+### Bug Fixes
+
+* Update slides.yml ([cdab210](https://github.com/SocialGouv/standup/commit/cdab2109646a2fea1d560b97295066cf8a4e5d5f))
+
 ## [1.7.10](https://github.com/SocialGouv/standup/compare/v1.7.9...v1.7.10) (2023-03-01)
 
 
