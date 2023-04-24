@@ -1,3 +1,10 @@
+## [1.7.12](https://github.com/SocialGouv/standup/compare/v1.7.11...v1.7.12) (2023-04-24)
+
+
+### Bug Fixes
+
+* **ci:** add production workflow_dispatch ([53c9f13](https://github.com/SocialGouv/standup/commit/53c9f130d50866690b431776a7dc6210d0de96e8))
+
 ## [1.7.11](https://github.com/SocialGouv/standup/compare/v1.7.10...v1.7.11) (2023-03-14)
 
 
