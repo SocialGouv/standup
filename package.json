@@ -1,6 +1,6 @@
 {
   "name": "standup",
-  "version": "1.7.12",
+  "version": "1.8.0",
   "main": "index.js",
   "author": "SocialGouv",
   "license": "MIT",

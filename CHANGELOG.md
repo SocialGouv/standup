@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/SocialGouv/standup/compare/v1.7.12...v1.8.0) (2023-05-22)
+
+
+### Features
+
+* ci on kontinuous ([#454](https://github.com/SocialGouv/standup/issues/454)) ([9cc616e](https://github.com/SocialGouv/standup/commit/9cc616ee55684a23fbdebe71cedaa24f1894bd12))
+
 ## [1.7.12](https://github.com/SocialGouv/standup/compare/v1.7.11...v1.7.12) (2023-04-24)
 
 
