@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: SocialGouv/actions/autodevops-release@v1
+    - uses: socialgouv/workflows/actions/semantic-release@v1
       with:
         author-name: ${{ secrets.SOCIALGROOVYBOT_NAME }}
         author-email: ${{ secrets.SOCIALGROOVYBOT_EMAIL }}
