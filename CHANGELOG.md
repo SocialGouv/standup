@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/SocialGouv/standup/compare/v1.8.0...v1.8.1) (2023-06-13)
+
+
+### Bug Fixes
+
+* 12 juin Maj dernier slide VBO slides.yml ([#455](https://github.com/SocialGouv/standup/issues/455)) ([f25b080](https://github.com/SocialGouv/standup/commit/f25b08073f49dfeb7c822f44361d7ba9183ca2c4))
+
 # [1.8.0](https://github.com/SocialGouv/standup/compare/v1.7.12...v1.8.0) (2023-05-22)
 
 
