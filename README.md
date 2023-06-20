@@ -15,3 +15,4 @@ Commiter puis créer une "pull request" avec votre titre adapté : `fix: modific
 Une fois la PR mergée, la modification sera envoyée en production
 
 (le prefixe `fix: ` est important pour envoyer en prod)
+
