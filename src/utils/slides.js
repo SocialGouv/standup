@@ -22,7 +22,7 @@ const query = `{
   posts(
     distinct_on: team_slug,
     order_by: {team_slug: asc, created_at: desc}
-    where: {team_slug: {_nin: ["fce", "transition-collective", "dora", "emjpm", "carnet-de-bord"]}}
+    where: {team_slug: {_nin: ["fce", "transition-collective", "dora", "emjpm", "carnet-de-bord", "nos1000jours", "enfants-du-spectacle"]}}
   ) {
     id
     mood
