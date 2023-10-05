@@ -27,7 +27,7 @@ const Navigation = () => {
             onKeyPress={() => slideTo(index - 1)}
           >
             <ChevronLeft />
-            {previousSlide.team.name}
+            {previousSlide.team?.name || previousSlide.title}
           </div>
         )}
       </div>
