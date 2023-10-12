@@ -1,5 +1,6 @@
-node_module
+node_modules
 .env.local
 .next
 .secrets.yaml
 out
+.vscode

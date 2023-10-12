@@ -1,4 +1,5 @@
 import React from "react"
+import ReactMarkdown from "react-markdown"
 
 const Extra = ({ data }) => (
   <div className="extra">
@@ -10,6 +11,7 @@ const Extra = ({ data }) => (
             <p dangerouslySetInnerHTML={{ __html: entry }} />
           </li>
         ))}
+      {data.markdown && <ReactMarkdown>{data.markdown}</ReactMarkdown>}
     </ul>
   </div>
 )
