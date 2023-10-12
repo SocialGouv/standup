@@ -18,32 +18,43 @@ const isRecentSlide = (slide) =>
   new Date(new Date(slide.created_at).getTime() + 30 * 24 * 60 * 60 * 1000) >=
     new Date()
 
+const filterPosts = (posts) =>
+  posts.reduce(
+    (result, slide) => {
+      result[isRecentSlide(slide) ? "recentPosts" : "outdatedPosts"].push(slide)
+      return result
+    },
+    { outdatedPosts: [], recentPosts: [] }
+  )
+
+const addOutdatedPostsSlideToExtraSlides = (posts) =>
+  extraSlides.unshift({
+    markdown: shuffle(posts)
+      .map(
+        (post) =>
+          `### ![other-startup-logo](${post.team?.avatarUrl}) ${post.team?.name}`
+      )
+      .join("\n"),
+    title: "Les autres startups",
+  })
+
 const fetcher = async (query) => {
   const { posts } = await request(url, query)
-  const visibleStartups =
+  const visiblePosts =
     posts &&
     posts.filter(
       (slide) =>
         slide.team &&
+        slide.created_at &&
         !slide.team.parentTeam &&
-        slide.team.privacy === "VISIBLE" &&
-        slide.created_at
+        slide.team.privacy === "VISIBLE"
     )
-  const filteredPosts = visibleStartups.filter((slide) => isRecentSlide(slide))
-  const hiddenPosts = visibleStartups.filter((slide) => !isRecentSlide(slide))
-  const slides = (filteredPosts && shuffle(filteredPosts)) || []
-  if (hiddenPosts.length) {
-    const markdown =
-      shuffle(hiddenPosts)
-        .map((post) => `### ${post.team?.name}`)
-        .join("\n") +
-      "\n\n![](https://media.giphy.com/media/d8oI97avlJAygnp7RC/giphy.gif)"
-    slides.push({
-      markdown,
-      title: "Elles nous manquent 😿",
-    })
-  }
-  slides.push(...extraSlides)
+  const { recentPosts, outdatedPosts } = filterPosts(visiblePosts)
+
+  addOutdatedPostsSlideToExtraSlides(outdatedPosts)
+
+  const slides = recentPosts && [...shuffle(recentPosts), ...extraSlides]
+
   return Promise.resolve(slides)
 }
 
