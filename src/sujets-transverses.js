@@ -2,11 +2,7 @@
 export default `
 
 
-
-
-### Numérique en communs les 18/19 Octobre
-
-### Forum BETA le 12 Octobre
+# @bientôt
 
 ---
 
