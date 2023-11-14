@@ -2,6 +2,8 @@
 export default `
 
 
+- Lundi 20/11 à 13h : présentation du modèle de language Albert (DINUM)
+
 # @bientôt
 
 ---
