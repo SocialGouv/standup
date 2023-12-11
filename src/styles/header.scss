@@ -12,11 +12,12 @@
   border-bottom: 1px solid $border-color;
 
   .marianne {
-    width: 115px;
+    width: 90px;
     height: 60px;
     background-size: auto 100%;
     background-repeat: no-repeat;
-    background-image: url(/images/marianne.svg);
+    background-position: center center;
+    background-image: url(/images/logo-fabrique.svg);
   }
 
   h1 {
