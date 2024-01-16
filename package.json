@@ -13,8 +13,7 @@
     "lint": "eslint src/**/*.js",
     "test": "jest --ci",
     "test:watch": "jest --watch",
-    "seal-secrets": "sre-secrets",
-    "k8s": "yarn --silent --cwd .k8s"
+    "seal-secrets": "sre-secrets"
   },
   "dependencies": {
     "@sentry/browser": "^6.12.0",
