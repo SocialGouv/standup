@@ -1,9 +1,10 @@
 FROM node:14-alpine as builder
 
+COPY yarn.lock .yarnrc.yml ./
+COPY .yarn .yarn
+RUN yarn workspaces focus --production && yarn cache clean
+
 COPY . .
-
-RUN yarn --production --frozen-lockfile --prefer-offline && yarn cache clean
-
 RUN yarn build
 RUN yarn export
 
