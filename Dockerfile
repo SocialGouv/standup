@@ -9,7 +9,7 @@ RUN chown -R 1000:1000 /app && \
 
 COPY yarn.lock .yarnrc.yml ./
 COPY --chown=1000:1000 .yarn .yarn
-RUN yarn workspaces focus --production && yarn cache clean
+RUN yarn fetch workspaces focus --production && yarn cache clean
 
 COPY --chown=1000:1000 . .
 RUN yarn build
