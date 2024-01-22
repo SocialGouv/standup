@@ -1,12 +1,20 @@
-FROM node:14-alpine as builder
+FROM node:14-alpine AS builder
 
-COPY . .
+WORKDIR /app
+# needed for node alpine
+RUN chown -R 1000:1000 /app && \
+  chmod -R 755 /app && \
+  chown 1000:1000 /tmp && \
+  chmod 1777 /tmp
 
-RUN yarn --production --frozen-lockfile --prefer-offline && yarn cache clean
+COPY yarn.lock .yarnrc.yml ./
+COPY --chown=1000:1000 .yarn .yarn
+RUN yarn fetch workspaces focus --production && yarn cache clean
 
+COPY --chown=1000:1000 . .
 RUN yarn build
 RUN yarn export
 
 FROM ghcr.io/socialgouv/docker/nginx4spa:7.0.1
 
-COPY --from=builder /out /usr/share/nginx/html
+COPY --from=builder /app/out /usr/share/nginx/html

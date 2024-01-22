@@ -13,8 +13,7 @@
     "lint": "eslint src/**/*.js",
     "test": "jest --ci",
     "test:watch": "jest --watch",
-    "seal-secrets": "sre-secrets",
-    "k8s": "yarn --silent --cwd .k8s"
+    "seal-secrets": "sre-secrets"
   },
   "dependencies": {
     "@sentry/browser": "^6.12.0",
@@ -52,5 +51,6 @@
     "react-test-renderer": "^17.0.2",
     "tempy": "^1.0.1",
     "yaml-jest": "^1.0.5"
-  }
+  },
+  "packageManager": "yarn@3.7.0"
 }
