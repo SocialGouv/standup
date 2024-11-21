@@ -62,7 +62,7 @@ const query = `{
   posts(
     distinct_on: team_slug,
     order_by: {team_slug: asc, created_at: desc}
-    where: {team_slug: {_nin: ["fce", "transition-collective", "dora", "emjpm", "carnet-de-bord", "nos1000jours", "enfants-du-spectacle", "appel-a-idees-fabrique-numerique",
+    where: {team_slug: {_nin: ["fce", "transition-collective", "dora", "emjpm", "carnet-de-bord", "nos1000jours", "appel-a-idees-fabrique-numerique",
   "data-ia",
   "devops-psn",
   "evolution-plateforme",
