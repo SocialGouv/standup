@@ -75,7 +75,8 @@ const query = `{
   "nata",
   "ozensemble",
   "tumeplay",
-  "vao"]}}
+  "vao",
+  "sre"]}}
   ) {
     id
     mood
