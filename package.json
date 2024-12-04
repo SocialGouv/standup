@@ -52,5 +52,5 @@
     "tempy": "^1.0.1",
     "yaml-jest": "^1.0.5"
   },
-  "packageManager": "yarn@3.7.0"
+  "packageManager": "yarn@3.8.7"
 }
