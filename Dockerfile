@@ -15,6 +15,6 @@ COPY --chown=1000:1000 . .
 RUN yarn build
 RUN yarn export
 
-FROM ghcr.io/socialgouv/docker/nginx4spa:7.0.1
+FROM ghcr.io/socialgouv/docker/nginx4spa:7.6.1
 
 COPY --from=builder /app/out /usr/share/nginx/html
