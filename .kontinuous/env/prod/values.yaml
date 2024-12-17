@@ -1,0 +1,8 @@
+app:
+  labels:
+    oblik.socialgouv.io/enabled: "true"
+  annotations:
+    oblik.socialgouv.io/increase-request-cpu-algo: "ratio"
+    oblik.socialgouv.io/increase-request-cpu-value: "0.1"
+    oblik.socialgouv.io/increase-request-memory-algo: "ratio"
+    oblik.socialgouv.io/increase-request-memory-value: "0.1"
