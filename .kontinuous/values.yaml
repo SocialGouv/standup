@@ -1,4 +1,7 @@
 app:
+  ~chart: app
+  imagePackage: app
+  containerPort: 8080
   envFrom:
     - secretRef:
         name: standup-sealed-secret
